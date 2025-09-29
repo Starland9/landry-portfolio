@@ -18,15 +18,18 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black w-full">
       <FloatingParticles />
 
-      {/* Background gradient orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse delay-1000" />
+      {/* Background gradient orbs - responsive positioning */}
+      <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      <div className="container mx-auto px-6 z-10">
-        <GlassCard className="max-w-4xl mx-auto p-12 text-center" hover>
+      <div className="container-safe z-10 w-full max-w-full">
+        <GlassCard
+          className="w-full max-w-4xl mx-auto p-4 sm:p-6 lg:p-12 text-center"
+          hover
+        >
           <motion.div
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
@@ -35,21 +38,20 @@ export default function HeroSection() {
           >
             {/* Avatar */}
             <motion.div
-              className="relative w-32 h-32 mx-auto mb-8"
+              className="relative w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-6 sm:mb-8"
               whileHover={{ scale: 1.1, rotateY: 10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="w-full h-full rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 p-1">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-4xl sm:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
                   LS
                 </div>
               </div>
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/50 to-purple-600/50 blur-xl animate-pulse" />
             </motion.div>
-
             {/* Main heading */}
             <div className="space-y-4">
-              <h1 className="text-7xl md:text-8xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-responsive-hero font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight break-words">
                 <TypeWriter
                   text={PERSONAL_INFO.fullName}
                   delay={500}
@@ -67,7 +69,6 @@ export default function HeroSection() {
                 </p>
               </div>
             </div>
-
             {/* Description */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -75,48 +76,28 @@ export default function HeroSection() {
               transition={{ delay: 6, duration: 1 }}
               className="max-w-2xl mx-auto"
             >
-              <p className="text-lg text-white/70 leading-relaxed">
-                {PERSONAL_INFO.bio}
+              <p className="text-responsive-lg text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+                Développeur Full-Stack passionné, créateur d'expériences
+                numériques exceptionnelles et architecte de solutions
+                innovantes.
               </p>
             </motion.div>
-
             {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 7, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6"
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
               <GlassButton
-                variant="primary"
-                size="lg"
-                onClick={scrollToProjects}
+                href="#contact"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 min-w-0"
               >
-                <ExternalLink className="w-5 h-5" />
+                Collaborons ensemble
+              </GlassButton>
+              <GlassButton
+                href="#projets"
+                variant="secondary"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold min-w-0"
+              >
                 Voir mes projets
               </GlassButton>
-
-              <GlassButton
-                variant="outline"
-                size="lg"
-                onClick={scrollToContact}
-              >
-                <Mail className="w-5 h-5" />
-                Me contacter
-              </GlassButton>
-
-              <motion.a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-3 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
-              >
-                <Github className="w-6 h-6" />
-              </motion.a>
-            </motion.div>
-
+            </div>{" "}
             {/* Tech stack preview */}
             <motion.div
               initial={{ opacity: 0 }}

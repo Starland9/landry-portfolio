@@ -25,11 +25,122 @@ body {
     sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100vw;
+  max-width: 100%;
+}
+
+/* Fixes pour débordements mobiles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Container responsive safe */
+.container-safe {
+  width: 100%;
+  max-width: 100vw;
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive text qui ne déborde pas */
+.text-responsive-hero {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+.text-responsive-xl {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  line-height: 1.2;
+}
+
+.text-responsive-lg {
+  font-size: clamp(1.25rem, 4vw, 2rem);
+  line-height: 1.3;
+}
+
+/* Grids qui ne débordent pas */
+.grid-responsive {
+  display: grid;
+  gap: clamp(1rem, 3vw, 2rem);
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* Custom cursor class */
 .custom-cursor * {
   cursor: none !important;
+}
+
+/* Additional responsive text classes */
+.text-responsive-3xl {
+  font-size: clamp(1.875rem, 6vw, 3rem);
+  line-height: 1.2;
+}
+
+.text-responsive-2xl {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  line-height: 1.2;
+}
+
+/* Prevent any element from overflowing */
+.no-overflow {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Safe container for mobile */
+.mobile-safe {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Responsive flex utilities */
+.flex-responsive {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+/* Mobile specific overrides */
+@media (max-width: 640px) {
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+
+  .mobile-full-width {
+    width: 100% !important;
+  }
+
+  .mobile-text-center {
+    text-align: center !important;
+  }
 }
 
 /* Hide default cursor on desktop */

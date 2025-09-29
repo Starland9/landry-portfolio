@@ -1,10 +1,12 @@
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode, AnchorHTMLAttributes } from "react";
 
-interface GlassButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface GlassButtonProps
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "href"> {
   children: ReactNode;
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg";
+  href?: string;
 }
 
 export function GlassButton({
@@ -12,10 +14,11 @@ export function GlassButton({
   className,
   variant = "primary",
   size = "md",
+  href,
   ...props
 }: GlassButtonProps) {
   const baseClasses =
-    "relative backdrop-blur-xl border rounded-xl font-medium transition-all duration-300 hover:scale-105 active:scale-95";
+    "relative backdrop-blur-xl border rounded-xl font-medium transition-all duration-300 hover:scale-105 active:scale-95 inline-block text-center";
 
   const variants = {
     primary:
@@ -32,15 +35,32 @@ export function GlassButton({
     lg: "px-8 py-4 text-lg",
   };
 
+  const commonContent = (
+    <>
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/10 to-purple-600/10 opacity-0 hover:opacity-100 transition-opacity" />
+      <span className="relative z-10 flex items-center justify-center gap-2">
+        {children}
+      </span>
+    </>
+  );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={cn(baseClasses, variants[variant], sizes[size], className)}
+      >
+        {commonContent}
+      </a>
+    );
+  }
+
   return (
     <button
       className={cn(baseClasses, variants[variant], sizes[size], className)}
       {...props}
     >
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/10 to-purple-600/10 opacity-0 hover:opacity-100 transition-opacity" />
-      <span className="relative z-10 flex items-center justify-center gap-2">
-        {children}
-      </span>
+      {commonContent}
     </button>
   );
 }
