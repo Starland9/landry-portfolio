@@ -10,51 +10,7 @@ import {
   Server,
   Palette,
 } from "lucide-react";
-
-const skills = [
-  {
-    name: "Frontend",
-    icon: Code2,
-    level: 95,
-    color: "from-cyan-400 to-blue-500",
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind"],
-  },
-  {
-    name: "Backend",
-    icon: Server,
-    level: 90,
-    color: "from-green-400 to-emerald-500",
-    technologies: ["Node.js", "Python", "Express", "FastAPI"],
-  },
-  {
-    name: "Database",
-    icon: Database,
-    level: 85,
-    color: "from-orange-400 to-red-500",
-    technologies: ["PostgreSQL", "MongoDB", "Redis", "Prisma"],
-  },
-  {
-    name: "Mobile",
-    icon: Smartphone,
-    level: 80,
-    color: "from-purple-400 to-pink-500",
-    technologies: ["React Native", "Expo", "Flutter"],
-  },
-  {
-    name: "DevOps",
-    icon: Globe,
-    level: 75,
-    color: "from-yellow-400 to-orange-500",
-    technologies: ["Docker", "AWS", "Vercel", "GitHub Actions"],
-  },
-  {
-    name: "UI/UX",
-    icon: Palette,
-    level: 88,
-    color: "from-indigo-400 to-purple-500",
-    technologies: ["Figma", "Framer", "Adobe XD"],
-  },
-];
+import { BIG_SKILLS } from "@/lib/constants";
 
 export default function SkillsRadar() {
   return (
@@ -105,7 +61,7 @@ export default function SkillsRadar() {
                   ))}
 
                   {/* Grid lines */}
-                  {skills.map((_, index) => {
+                  {BIG_SKILLS.map((_, index) => {
                     const angle = (index * 60 - 90) * (Math.PI / 180);
                     const x = 160 + Math.cos(angle) * 180;
                     const y = 160 + Math.sin(angle) * 180;
@@ -123,7 +79,7 @@ export default function SkillsRadar() {
                   })}
 
                   {/* Skill points */}
-                  {skills.map((skill, index) => {
+                  {BIG_SKILLS.map((skill, index) => {
                     const angle = (index * 60 - 90) * (Math.PI / 180);
                     const radius = (skill.level / 100) * 180;
                     const x = 160 + Math.cos(angle) * radius;
@@ -160,7 +116,7 @@ export default function SkillsRadar() {
                 </svg>
 
                 {/* Skill labels */}
-                {skills.map((skill, index) => {
+                {BIG_SKILLS.map((skill, index) => {
                   const angle = (index * 60 - 90) * (Math.PI / 180);
                   const x = 160 + Math.cos(angle) * 220;
                   const y = 160 + Math.sin(angle) * 220;
@@ -190,7 +146,7 @@ export default function SkillsRadar() {
 
           {/* Skills List */}
           <div className="space-y-6">
-            {skills.map((skill, index) => (
+            {BIG_SKILLS.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 initial={{ opacity: 0, x: 50 }}

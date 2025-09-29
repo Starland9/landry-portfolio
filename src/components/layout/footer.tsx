@@ -1,5 +1,6 @@
 "use client";
 
+import { SOCIAL_LINKS } from "@/lib/constants";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from "lucide-react";
 
@@ -9,17 +10,6 @@ export default function Footer() {
   };
 
   const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    { name: "GitHub", icon: Github, url: "https://github.com/Starland9" },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      url: "https://linkedin.com/in/starland9",
-    },
-    { name: "Twitter", icon: Twitter, url: "https://twitter.com/starland9" },
-    { name: "Email", icon: Mail, url: "mailto:contact@starland9.dev" },
-  ];
 
   return (
     <footer className="relative bg-gradient-to-b from-gray-900 to-black border-t border-white/10">
@@ -105,7 +95,7 @@ export default function Footer() {
                 contact@starland9.dev
               </a>
               <div className="flex gap-3 pt-2">
-                {socialLinks.map((social, index) => (
+                {SOCIAL_LINKS.map((social, index) => (
                   <motion.a
                     key={social.name}
                     href={social.url}

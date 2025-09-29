@@ -28,12 +28,14 @@ export default function ProjectsSection() {
 
   const technologies = [
     "all",
+    "Dart",
     "JavaScript",
     "TypeScript",
     "Python",
     "HTML",
     "CSS",
     "Java",
+    "GDScript",
   ];
 
   useEffect(() => {
@@ -61,6 +63,8 @@ export default function ProjectsSection() {
       Java: "from-red-400 to-red-600",
       HTML: "from-orange-400 to-orange-600",
       CSS: "from-purple-400 to-purple-600",
+      Dart: "from-blue-300 to-blue-500",
+      GDScript: "from-gray-400 to-gray-600",
     };
     return colors[language || ""] || "from-gray-400 to-gray-600";
   };

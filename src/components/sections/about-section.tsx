@@ -12,73 +12,17 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { GitHubUser } from "@/types/github";
-
-const skills = [
-  {
-    name: "Frontend",
-    icon: Code2,
-    level: 95,
-    color: "from-cyan-400 to-blue-500",
-  },
-  {
-    name: "Backend",
-    icon: Server,
-    level: 90,
-    color: "from-green-400 to-emerald-500",
-  },
-  {
-    name: "Database",
-    icon: Database,
-    level: 85,
-    color: "from-orange-400 to-red-500",
-  },
-  {
-    name: "Mobile",
-    icon: Smartphone,
-    level: 80,
-    color: "from-purple-400 to-pink-500",
-  },
-  {
-    name: "DevOps",
-    icon: Globe,
-    level: 75,
-    color: "from-yellow-400 to-orange-500",
-  },
-  {
-    name: "UI/UX",
-    icon: Palette,
-    level: 88,
-    color: "from-indigo-400 to-purple-500",
-  },
-];
-
-const experiences = [
-  {
-    title: "Développeur Full-Stack Senior",
-    company: "Tech Innovation",
-    period: "2023 - Présent",
-    description: [
-      "Développement d'applications web modernes avec React/Next.js",
-      "Architecture et optimisation de backends Node.js/Python",
-      "Leadership technique sur des projets complexes",
-    ],
-  },
-  {
-    title: "Développeur Frontend",
-    company: "Digital Agency",
-    period: "2021 - 2023",
-    description: [
-      "Création d'interfaces utilisateur innovantes",
-      "Intégration d'APIs REST et GraphQL",
-      "Optimisation des performances web",
-    ],
-  },
-];
+import {
+  BIG_SKILLS,
+  EXPERIENCES,
+  PERSONAL_INFO,
+  SKILLS,
+} from "../../lib/constants";
 
 export default function AboutSection() {
   const [githubUser, setGithubUser] = useState<GitHubUser | null>(null);
   const [visibleSkills, setVisibleSkills] = useState<boolean[]>(
-    new Array(skills.length).fill(false)
+    new Array(SKILLS.length).fill(false)
   );
 
   useEffect(() => {
@@ -126,17 +70,19 @@ export default function AboutSection() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white">
-                      Landry (Starland9)
+                      {PERSONAL_INFO.fullName}
                     </h3>
                     <p className="text-cyan-400">Développeur Full-Stack</p>
                   </div>
                 </div>
 
                 <p className="text-white/80 leading-relaxed">
-                  Développeur passionné avec plus de 4 ans d'expérience dans la
-                  création d'applications web et mobiles performantes. Je me
-                  spécialise dans l'écosystème JavaScript/TypeScript et les
-                  technologies modernes du web.
+                  Développeur autodidacte passionné avec plus de 4 ans
+                  d'expérience dans la création d'applications web et mobiles
+                  performantes. Je me spécialise dans l'écosystème
+                  JavaScript/TypeScript, notamment avec Next.js, ainsi qu'en
+                  Flutter pour le mobile, Python pour le backend et Godot Engine
+                  pour le développement de jeux et d'expériences interactives.
                 </p>
 
                 {githubUser && (
@@ -178,7 +124,7 @@ export default function AboutSection() {
                 Compétences
               </h3>
               <div className="space-y-6">
-                {skills.map((skill, index) => (
+                {BIG_SKILLS.map((skill, index) => (
                   <motion.div
                     key={skill.name}
                     initial={{ opacity: 0, x: -20 }}
@@ -244,7 +190,7 @@ export default function AboutSection() {
               Expérience
             </h3>
             <div className="space-y-8">
-              {experiences.map((exp, index) => (
+              {EXPERIENCES.map((exp, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}

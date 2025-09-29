@@ -6,6 +6,7 @@ import { FloatingParticles } from "@/components/animations/floating-particles";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { Github, ExternalLink, Mail, ChevronDown } from "lucide-react";
+import { PERSONAL_INFO, TECH_STACK } from "../../lib/constants";
 
 export default function HeroSection() {
   const scrollToProjects = () => {
@@ -40,7 +41,7 @@ export default function HeroSection() {
             >
               <div className="w-full h-full rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 p-1">
                 <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                  S9
+                  LS
                 </div>
               </div>
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/50 to-purple-600/50 blur-xl animate-pulse" />
@@ -49,13 +50,17 @@ export default function HeroSection() {
             {/* Main heading */}
             <div className="space-y-4">
               <h1 className="text-7xl md:text-8xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent leading-tight">
-                <TypeWriter text="Starland9" delay={500} speed={150} />
+                <TypeWriter
+                  text={PERSONAL_INFO.fullName}
+                  delay={500}
+                  speed={150}
+                />
               </h1>
 
               <div className="h-16 flex items-center justify-center">
                 <p className="text-2xl md:text-3xl text-white/80 font-light">
                   <TypeWriter
-                    text="Full-Stack Developer & UI/UX Enthusiast"
+                    text={PERSONAL_INFO.title}
                     delay={2500}
                     speed={80}
                   />
@@ -71,10 +76,7 @@ export default function HeroSection() {
               className="max-w-2xl mx-auto"
             >
               <p className="text-lg text-white/70 leading-relaxed">
-                Je crée des expériences web exceptionnelles qui allient
-                performance, esthétique et innovation. Passionné par les
-                technologies modernes et les interfaces utilisateur
-                révolutionnaires.
+                {PERSONAL_INFO.bio}
               </p>
             </motion.div>
 
@@ -104,7 +106,7 @@ export default function HeroSection() {
               </GlassButton>
 
               <motion.a
-                href="https://github.com/Starland9"
+                href={PERSONAL_INFO.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
@@ -123,14 +125,7 @@ export default function HeroSection() {
               className="pt-8"
             >
               <div className="flex flex-wrap justify-center gap-3 text-sm text-white/60">
-                {[
-                  "React",
-                  "Next.js",
-                  "TypeScript",
-                  "Node.js",
-                  "Python",
-                  "PostgreSQL",
-                ].map((tech, index) => (
+                {TECH_STACK.map((tech, index) => (
                   <motion.span
                     key={tech}
                     initial={{ opacity: 0, scale: 0 }}

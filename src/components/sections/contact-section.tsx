@@ -14,6 +14,7 @@ import {
   Send,
   CheckCircle,
 } from "lucide-react";
+import { CONTACT_INFO, SOCIAL_LINKS } from "@/lib/constants";
 
 interface ContactForm {
   name: string;
@@ -50,48 +51,6 @@ export default function ContactSection() {
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
-  const socialLinks = [
-    {
-      name: "GitHub",
-      icon: Github,
-      url: "https://github.com/Starland9",
-      color: "hover:text-white",
-    },
-    {
-      name: "LinkedIn",
-      icon: Linkedin,
-      url: "https://linkedin.com/in/starland9",
-      color: "hover:text-blue-400",
-    },
-    {
-      name: "Twitter",
-      icon: Twitter,
-      url: "https://twitter.com/starland9",
-      color: "hover:text-sky-400",
-    },
-  ];
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      value: "contact@starland9.dev",
-      href: "mailto:contact@starland9.dev",
-    },
-    {
-      icon: Phone,
-      title: "Téléphone",
-      value: "+33 X XX XX XX XX",
-      href: "tel:+33XXXXXXXXX",
-    },
-    {
-      icon: MapPin,
-      title: "Localisation",
-      value: "France",
-      href: null,
-    },
-  ];
 
   return (
     <section
@@ -235,7 +194,7 @@ export default function ContactSection() {
                 Informations de contact
               </h3>
               <div className="space-y-4">
-                {contactInfo.map((info, index) => (
+                {CONTACT_INFO.map((info, index) => (
                   <motion.div
                     key={info.title}
                     initial={{ opacity: 0, x: 20 }}
@@ -269,7 +228,7 @@ export default function ContactSection() {
             <GlassCard className="p-8">
               <h3 className="text-2xl font-bold text-white mb-6">Suivez-moi</h3>
               <div className="grid grid-cols-3 gap-4">
-                {socialLinks.map((social, index) => (
+                {SOCIAL_LINKS.map((social, index) => (
                   <motion.a
                     key={social.name}
                     href={social.url}
