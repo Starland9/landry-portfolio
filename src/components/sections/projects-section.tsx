@@ -9,6 +9,7 @@ import { GitHubRepo } from "@/types/github";
 import { formatDate } from "@/lib/utils";
 import { FEATURED_PROJECTS } from "@/lib/constants";
 import Image from "next/image";
+import { ProjectCarousel } from "@/components/ui/project-carousel";
 
 export default function ProjectsSection() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -61,7 +62,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="py-20 px-6 bg-gradient-to-b from-gray-900 to-black"
+      className="container-safe bg-gradient-to-b from-gray-900 to-black"
     >
       <div className="container mx-auto max-w-7xl">
         <motion.div
@@ -69,12 +70,12 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
+          <h2 className="text-responsive-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
             Projets
           </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-responsive-lg text-white/70 max-w-2xl mx-auto px-4">
             Découvrez mes créations les plus récentes et innovantes
           </p>
         </motion.div>
@@ -102,7 +103,7 @@ export default function ProjectsSection() {
           ))}
         </motion.div>
 
-        {/* Featured Project */}
+        {/* Featured Projects Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,65 +111,7 @@ export default function ProjectsSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-16"
         >
-          {FEATURED_PROJECTS.map((project, index) => (
-            <GlassCard key={project.id} className="p-8 lg:p-12" hover>
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="space-y-6">
-                  <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/50 rounded-full text-cyan-400 text-sm font-medium">
-                      Projet Vedette
-                    </span>
-                  </div>
-
-                  <h3 className="text-3xl font-bold text-white">
-                    {project.title}
-                  </h3>
-                  <p className="text-white/70 text-lg leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 bg-white/10 border border-white/20 rounded-full text-white/80 text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex gap-4">
-                    <GlassButton href={project.liveUrl} variant="primary">
-                      <ExternalLink className="w-4 h-4" />
-                      Voir le site
-                    </GlassButton>
-                    {project.githubUrl && (
-                      <GlassButton href={project.githubUrl} variant="outline">
-                        <Github className="w-4 h-4" />
-                        Code source
-                      </GlassButton>
-                    )}
-                  </div>
-                </div>
-
-                <div className="relative group">
-                  <div className="aspect-video rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/20 overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center text-white/60">
-                      <Image
-                        className="rounded-xl"
-                        src={project.image}
-                        alt={project.title}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-600/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </div>
-            </GlassCard>
-          ))}
+          <ProjectCarousel projects={FEATURED_PROJECTS} />
         </motion.div>
 
         {/* GitHub Projects Grid */}

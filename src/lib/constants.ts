@@ -311,4 +311,17 @@ export const FEATURED_PROJECTS = [
     featured: true,
     category: "mobile",
   },
+  {
+    id: "kamte",
+    title: "Kamte",
+    description:
+      "Kamte est une application mobile de gestion des sorties et entrées financières personnelles. L'objectif de l'application est de vous permettre de maîtriser vos dépenses quotidiennes et de mieux suivre vos revenus.",
+    technologies: ["Flutter", "Dart"],
+    image: "/images/projects/kamte.jpg",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=com.kamte.app&pcampaignid=web_share",
+    githubUrl: null,
+    featured: true,
+    category: "mobile",
+  },
 ];
