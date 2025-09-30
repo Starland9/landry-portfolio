@@ -87,7 +87,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
   return (
     <div className="relative">
       {/* Main Carousel */}
-      <div className="relative overflow-hidden min-h-[500px] lg:min-h-[600px] flex items-center">
+      <div className="relative overflow-hidden min-h-[600px] sm:min-h-[650px] lg:min-h-[700px] flex items-center">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
@@ -114,8 +114,8 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             }}
             className="w-full absolute inset-0 flex items-center z-10"
           >
-            <GlassCard className="p-6 sm:p-8 lg:p-12 w-full" hover>
-              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[400px]">
+            <GlassCard className="p-4 sm:p-6 lg:p-12 w-full" hover>
+              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[450px] sm:min-h-[500px] lg:min-h-[400px]">
                 <div className="space-y-4 lg:space-y-6 order-2 lg:order-1 flex flex-col justify-center">
                   <div className="flex items-center gap-3">
                     <span className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/50 rounded-full text-cyan-400 text-sm font-medium">

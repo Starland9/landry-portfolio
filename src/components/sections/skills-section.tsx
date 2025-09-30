@@ -51,7 +51,7 @@ export default function SkillsRadar() {
                   className="w-full h-full mt-2 lg:mt-4"
                   viewBox="0 0 500 500"
                   preserveAspectRatio="xMidYMid meet"
-                  style={{ overflow: 'visible' }}
+                  style={{ overflow: "visible" }}
                 >
                   {/* Grid circles */}
                   {[60, 120, 180].map((radius) => (
