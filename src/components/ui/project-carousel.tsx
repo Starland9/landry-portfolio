@@ -46,13 +46,13 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       position: "absolute" as const,
     }),
     center: {
-      zIndex: 1,
+      zIndex: 10,
       x: 0,
       opacity: 1,
       position: "absolute" as const,
     },
     exit: (direction: number) => ({
-      zIndex: 0,
+      zIndex: 5,
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
       position: "absolute" as const,
@@ -112,7 +112,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 paginate(-1);
               }
             }}
-            className="w-full absolute inset-0 flex items-center"
+            className="w-full absolute inset-0 flex items-center z-10"
           >
             <GlassCard className="p-6 sm:p-8 lg:p-12 w-full" hover>
               <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[400px]">
@@ -184,7 +184,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
 
         {/* Navigation Arrows */}
         <button
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 backdrop-blur-xl border border-white/20 rounded-full text-white hover:bg-white/10 transition-all duration-300 hover:scale-110"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/50 backdrop-blur-xl border border-white/20 rounded-full text-white hover:bg-white/10 transition-all duration-300 hover:scale-110"
           onClick={() => paginate(-1)}
           aria-label="Projet précédent"
         >
@@ -192,7 +192,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
         </button>
 
         <button
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 backdrop-blur-xl border border-white/20 rounded-full text-white hover:bg-white/10 transition-all duration-300 hover:scale-110"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 bg-black/50 backdrop-blur-xl border border-white/20 rounded-full text-white hover:bg-white/10 transition-all duration-300 hover:scale-110"
           onClick={() => paginate(1)}
           aria-label="Projet suivant"
         >

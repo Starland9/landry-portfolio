@@ -62,7 +62,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="container-safe bg-gradient-to-b from-gray-900 to-black"
+      className="container-safe bg-gradient-to-b from-gray-900 to-black relative z-10"
     >
       <div className="container mx-auto max-w-7xl">
         <motion.div

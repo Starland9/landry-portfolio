@@ -14,7 +14,7 @@ import { BIG_SKILLS } from "@/lib/constants";
 
 export default function SkillsRadar() {
   return (
-    <section className="container-safe bg-gradient-to-b from-gray-900 to-black">
+    <section className="container-safe bg-gradient-to-b from-gray-900 to-black relative z-0 overflow-hidden">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -32,14 +32,14 @@ export default function SkillsRadar() {
         </motion.div>
 
         {/* Circular Layout Container */}
-        <div className="relative w-full max-w-7xl mx-auto min-h-[800px] lg:min-h-[900px] flex items-center justify-center">
+        <div className="relative w-full max-w-7xl mx-auto min-h-[600px] lg:min-h-[700px] flex items-center justify-center overflow-visible">
           {/* Central Radar Chart */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative z-10"
+            className="relative z-2"
           >
             <GlassCard className="p-6 sm:p-8 lg:p-12">
               <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto">
@@ -176,7 +176,7 @@ export default function SkillsRadar() {
               // Calculate position around the central radar
               const angle =
                 (index * (360 / BIG_SKILLS.length) - 90) * (Math.PI / 180);
-              const radius = 350; // Distance from center
+              const radius = 280; // Distance from center - réduit pour éviter le débordement
               const x = 50 + (Math.cos(angle) * radius) / 10; // Convert to percentage
               const y = 50 + (Math.sin(angle) * radius) / 10; // Convert to percentage
 
@@ -192,8 +192,8 @@ export default function SkillsRadar() {
                     type: "spring",
                     stiffness: 100,
                   }}
-                  whileHover={{ scale: 1.1, zIndex: 20 }}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2"
+                  whileHover={{ scale: 1.1, zIndex: 5 }}
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2 z-3"
                   style={{
                     left: `${x}%`,
                     top: `${y}%`,
