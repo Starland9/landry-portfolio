@@ -137,7 +137,7 @@ export const CONTACT_INFO = [
     icon: Mail,
     title: "Email",
     value: "contact@starland9.dev",
-    href: "mailto:landrysimo99@gmail.com",
+    href: "mailto:contact@starland9.dev",
   },
   {
     icon: Phone,
@@ -149,7 +149,7 @@ export const CONTACT_INFO = [
     icon: MapPin,
     title: "Localisation",
     value: "Douala, Cameroun",
-    href: "https://goo.gl/maps/XXXX",
+    href: "https://www.google.com/maps/place/Camtel+Bepanda/@4.0603497,9.6871023,14z/data=!4m10!1m2!2m1!1scamtel+epanda!3m6!1s0x10610d87b864f281:0x3dd2a700e79b988!8m2!3d4.0603497!4d9.7252111!15sCg1jYW10ZWwgZXBhbmRhWg8iDWNhbXRlbCBlcGFuZGGSASN0ZWxlY29tbXVuaWNhdGlvbnNfc2VydmljZV9wcm92aWRlcpoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VSdGF6bHRUazVSRUFF4AEA-gEECAAQOA!16s%2Fg%2F11gf8g0dgv?hl=fr&entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D",
   },
 ];
 
