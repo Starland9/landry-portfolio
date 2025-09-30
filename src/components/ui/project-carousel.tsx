@@ -31,7 +31,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
   useEffect(() => {
     const timer = setInterval(() => {
       setDirection(1);
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === projects.length - 1 ? 0 : prevIndex + 1
       );
     }, 8000); // Change slide every 8 seconds
@@ -43,16 +43,19 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
+      position: "absolute" as const,
     }),
     center: {
       zIndex: 1,
       x: 0,
       opacity: 1,
+      position: "absolute" as const,
     },
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
       opacity: 0,
+      position: "absolute" as const,
     }),
   };
 
@@ -64,11 +67,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
     if (newDirection === 1) {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === projects.length - 1 ? 0 : prevIndex + 1
       );
     } else {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === 0 ? projects.length - 1 : prevIndex - 1
       );
     }
@@ -84,8 +87,8 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
   return (
     <div className="relative">
       {/* Main Carousel */}
-      <div className="relative overflow-hidden">
-        <AnimatePresence initial={false} custom={direction}>
+      <div className="relative overflow-hidden min-h-[500px] lg:min-h-[600px] flex items-center">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -109,11 +112,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 paginate(-1);
               }
             }}
-            className="w-full"
+            className="w-full absolute inset-0 flex items-center"
           >
-            <GlassCard className="p-6 sm:p-8 lg:p-12" hover>
-              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
-                <div className="space-y-4 lg:space-y-6 order-2 lg:order-1">
+            <GlassCard className="p-6 sm:p-8 lg:p-12 w-full" hover>
+              <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center min-h-[400px]">
+                <div className="space-y-4 lg:space-y-6 order-2 lg:order-1 flex flex-col justify-center">
                   <div className="flex items-center gap-3">
                     <span className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/50 rounded-full text-cyan-400 text-sm font-medium">
                       Projet Vedette {currentIndex + 1}/{projects.length}
@@ -123,7 +126,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                   <h3 className="text-2xl sm:text-3xl font-bold text-white break-words">
                     {projects[currentIndex].title}
                   </h3>
-                  
+
                   <p className="text-white/70 text-base lg:text-lg leading-relaxed">
                     {projects[currentIndex].description}
                   </p>
@@ -140,12 +143,20 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <GlassButton href={projects[currentIndex].liveUrl} variant="primary">
+                    <GlassButton
+                      href={projects[currentIndex].liveUrl}
+                      variant="primary"
+                    >
                       <ExternalLink className="w-4 h-4" />
-                      {projects[currentIndex].category === 'mobile' ? 'Télécharger' : 'Voir le site'}
+                      {projects[currentIndex].category === "mobile"
+                        ? "Télécharger"
+                        : "Voir le site"}
                     </GlassButton>
                     {projects[currentIndex].githubUrl && (
-                      <GlassButton href={projects[currentIndex].githubUrl} variant="outline">
+                      <GlassButton
+                        href={projects[currentIndex].githubUrl}
+                        variant="outline"
+                      >
                         <Github className="w-4 h-4" />
                         Code source
                       </GlassButton>
@@ -153,8 +164,8 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                   </div>
                 </div>
 
-                <div className="relative group order-1 lg:order-2">
-                  <div className="aspect-video rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/20 overflow-hidden">
+                <div className="relative group order-1 lg:order-2 flex items-center justify-center">
+                  <div className="aspect-video rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/20 overflow-hidden w-full max-w-lg">
                     <Image
                       className="rounded-xl object-cover w-full h-full"
                       src={projects[currentIndex].image}
@@ -179,7 +190,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
-        
+
         <button
           className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 backdrop-blur-xl border border-white/20 rounded-full text-white hover:bg-white/10 transition-all duration-300 hover:scale-110"
           onClick={() => paginate(1)}
@@ -210,7 +221,9 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
         <motion.div
           className="h-full bg-gradient-to-r from-cyan-400 to-purple-600"
           initial={{ width: 0 }}
-          animate={{ width: `${((currentIndex + 1) / projects.length) * 100}%` }}
+          animate={{
+            width: `${((currentIndex + 1) / projects.length) * 100}%`,
+          }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         />
       </div>
