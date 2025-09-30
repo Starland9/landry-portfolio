@@ -31,23 +31,24 @@ export default function SkillsRadar() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
-          {/* Radar Chart */}
+        {/* Circular Layout Container */}
+        <div className="relative w-full max-w-7xl mx-auto min-h-[800px] lg:min-h-[900px] flex items-center justify-center">
+          {/* Central Radar Chart */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative order-2 lg:order-1 lg:col-span-3"
+            className="relative z-10"
           >
             <GlassCard className="p-6 sm:p-8 lg:p-12">
-              <div className="relative w-80 h-80 sm:w-96 sm:h-96 lg:w-[450px] lg:h-[450px] mx-auto max-w-full">
-                <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-6">
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white text-center mb-4 lg:mb-6">
                   Radar des Compétences
                 </h3>
                 {/* Radar Grid */}
                 <svg
-                  className="w-full h-full mt-4"
+                  className="w-full h-full mt-2 lg:mt-4"
                   viewBox="0 0 400 400"
                   preserveAspectRatio="xMidYMid meet"
                 >
@@ -165,110 +166,161 @@ export default function SkillsRadar() {
                     </linearGradient>
                   </defs>
                 </svg>
-
-                {/* Skill labels */}
-                <div className="absolute inset-0">
-                  {BIG_SKILLS.map((skill, index) => {
-                    const angle =
-                      (index * (360 / BIG_SKILLS.length) - 90) *
-                      (Math.PI / 180);
-                    const labelRadius = 220; // Fixed radius for labels
-                    const x = 200 + Math.cos(angle) * labelRadius;
-                    const y = 200 + Math.sin(angle) * labelRadius;
-
-                    return (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 1.5 + index * 0.1 }}
-                        className="absolute flex items-center gap-2 text-white/90 text-sm font-medium bg-black/30 backdrop-blur-sm rounded-full px-3 py-1.5 border border-white/20"
-                        style={{
-                          left: x,
-                          top: y,
-                          transform: "translate(-50%, -50%)",
-                        }}
-                      >
-                        <skill.icon className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                        <span className="whitespace-nowrap text-xs sm:text-sm">
-                          {skill.name}
-                        </span>
-                        <span className="text-cyan-400 font-bold text-xs">
-                          {skill.level}%
-                        </span>
-                      </motion.div>
-                    );
-                  })}
-                </div>
               </div>
             </GlassCard>
           </motion.div>
 
-          {/* Skills List */}
-          <div className="space-y-3 sm:space-y-4 order-1 lg:order-2 lg:col-span-2">
-            {BIG_SKILLS.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <GlassCard className="p-3 sm:p-4" hover>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div
-                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-r ${skill.color} flex items-center justify-center flex-shrink-0`}
-                    >
-                      <skill.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-sm sm:text-base font-bold text-white truncate">
+          {/* Circular Skills Cards */}
+          <div className="absolute inset-0 hidden lg:block">
+            {BIG_SKILLS.map((skill, index) => {
+              // Calculate position around the central radar
+              const angle =
+                (index * (360 / BIG_SKILLS.length) - 90) * (Math.PI / 180);
+              const radius = 350; // Distance from center
+              const x = 50 + (Math.cos(angle) * radius) / 10; // Convert to percentage
+              const y = 50 + (Math.sin(angle) * radius) / 10; // Convert to percentage
+
+              return (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 1.5 + index * 0.2,
+                    type: "spring",
+                    stiffness: 100,
+                  }}
+                  whileHover={{ scale: 1.1, zIndex: 20 }}
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2"
+                  style={{
+                    left: `${x}%`,
+                    top: `${y}%`,
+                  }}
+                >
+                  <GlassCard
+                    className="p-4 hover:shadow-2xl transition-all duration-300 w-48"
+                    hover
+                  >
+                    <div className="flex flex-col items-center text-center space-y-3">
+                      {/* Icon */}
+                      <div
+                        className={`w-12 h-12 rounded-xl bg-gradient-to-r ${skill.color} flex items-center justify-center shadow-lg`}
+                      >
+                        <skill.icon className="w-6 h-6 text-white" />
+                      </div>
+
+                      {/* Title and Level */}
+                      <div>
+                        <h3 className="text-base font-bold text-white mb-1">
                           {skill.name}
                         </h3>
-                        <span className="text-cyan-400 font-medium text-xs sm:text-sm flex-shrink-0 ml-2">
+                        <span className="text-cyan-400 font-medium text-sm">
                           {skill.level}%
                         </span>
                       </div>
-                      <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
+
+                      {/* Progress Bar */}
+                      <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
                         <motion.div
                           className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
                           viewport={{ once: true }}
                           transition={{
-                            duration: 1,
-                            delay: 0.5 + index * 0.1,
+                            duration: 1.5,
+                            delay: 2 + index * 0.1,
                             ease: "easeOut",
                           }}
                         />
                       </div>
-                    </div>
-                  </div>
 
-                  <div className="flex flex-wrap gap-1">
-                    {skill.technologies.slice(0, 3).map((tech) => (
-                      <motion.span
-                        key={tech}
-                        initial={{ opacity: 0, scale: 0 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                        className="px-2 py-0.5 bg-white/10 border border-white/20 rounded-full text-xs text-white/70 whitespace-nowrap"
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-1 justify-center">
+                        {skill.technologies.slice(0, 2).map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-white/70"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {skill.technologies.length > 2 && (
+                          <span className="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/50">
+                            +{skill.technologies.length - 2}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Mobile Skills List */}
+          <div className="absolute top-full mt-12 w-full lg:hidden">
+            <div className="grid sm:grid-cols-2 gap-4 px-4">
+              {BIG_SKILLS.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <GlassCard className="p-4" hover>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div
+                        className={`w-10 h-10 rounded-lg bg-gradient-to-r ${skill.color} flex items-center justify-center flex-shrink-0`}
                       >
-                        {tech}
-                      </motion.span>
-                    ))}
-                    {skill.technologies.length > 3 && (
-                      <span className="px-2 py-0.5 bg-white/5 border border-white/10 rounded-full text-xs text-white/50">
-                        +{skill.technologies.length - 3}
-                      </span>
-                    )}
-                  </div>
-                </GlassCard>
-              </motion.div>
-            ))}
+                        <skill.icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between mb-1">
+                          <h3 className="text-base font-bold text-white truncate">
+                            {skill.name}
+                          </h3>
+                          <span className="text-cyan-400 font-medium text-sm flex-shrink-0 ml-2">
+                            {skill.level}%
+                          </span>
+                        </div>
+                        <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
+                          <motion.div
+                            className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true }}
+                            transition={{
+                              duration: 1,
+                              delay: 0.5 + index * 0.1,
+                              ease: "easeOut",
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1">
+                      {skill.technologies.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-white/70"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {skill.technologies.length > 3 && (
+                        <span className="px-2 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/50">
+                          +{skill.technologies.length - 3}
+                        </span>
+                      )}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
