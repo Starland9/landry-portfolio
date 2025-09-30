@@ -131,30 +131,36 @@ export default function SkillsRadar() {
                     );
                   })}
 
-                  {/* Skill Labels */}
+                  {/* Skill Labels - Style Chip Glassmorphism */}
                   {BIG_SKILLS.map((skill, index) => {
                     const angle =
                       (index * (360 / BIG_SKILLS.length) - 90) *
                       (Math.PI / 180);
-                    const labelRadius = 195; // Un peu plus loin que le bord
+                    const labelRadius = 210; // Plus loin pour accommoder les chips
                     const x = 200 + Math.cos(angle) * labelRadius;
                     const y = 200 + Math.sin(angle) * labelRadius;
 
                     return (
-                      <motion.text
+                      <motion.foreignObject
                         key={`${skill.name}-label`}
-                        x={x}
-                        y={y}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        className="fill-white text-xs font-medium"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
+                        x={x - 50} // Centré sur la position
+                        y={y - 14} // Centré verticalement
+                        width="100"
+                        height="28"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                       >
-                        {skill.name}
-                      </motion.text>
+                        <div className="flex items-center justify-center w-full h-full">
+                          <div className={`flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r ${skill.color} bg-opacity-20 backdrop-blur-xl border border-white/30 rounded-full shadow-lg`}>
+                            <skill.icon className="w-4 h-4 text-white flex-shrink-0" />
+                            <span className="text-white text-xs font-semibold truncate">
+                              {skill.name}
+                            </span>
+                          </div>
+                        </div>
+                      </motion.foreignObject>
                     );
                   })}
 
