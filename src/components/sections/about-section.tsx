@@ -2,28 +2,17 @@
 
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/glass-card";
-import {
-  Code2,
-  Database,
-  Globe,
-  Smartphone,
-  Server,
-  Palette,
-} from "lucide-react";
+
 import { useEffect, useState } from "react";
 import { GitHubUser } from "@/types/github";
 import {
-  BIG_SKILLS,
   EXPERIENCES,
   PERSONAL_INFO,
-  SKILLS,
 } from "../../lib/constants";
+import { TicTacToe } from "@/components/ui/tic-tac-toe";
 
 export default function AboutSection() {
   const [githubUser, setGithubUser] = useState<GitHubUser | null>(null);
-  const [visibleSkills, setVisibleSkills] = useState<boolean[]>(
-    new Array(SKILLS.length).fill(false)
-  );
 
   useEffect(() => {
     fetch("/api/github/user")
@@ -35,7 +24,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-20 px-6 bg-gradient-to-b from-black to-gray-900"
+      className="container-safe bg-gradient-to-b from-black to-gray-900"
     >
       <div className="container mx-auto max-w-6xl">
         <motion.div
@@ -43,18 +32,18 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
+          <h2 className="text-responsive-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
             À Propos
           </h2>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto">
+          <p className="text-responsive-lg text-white/70 max-w-2xl mx-auto px-4">
             Passionné par l'innovation technologique et l'excellence dans le
             développement
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-12 lg:mb-16">
           {/* Bio & Stats */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -112,69 +101,14 @@ export default function AboutSection() {
             </GlassCard>
           </motion.div>
 
-          {/* Skills */}
+          {/* Interactive TicTacToe */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <GlassCard className="p-8 h-full">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Compétences
-              </h3>
-              <div className="space-y-6">
-                {BIG_SKILLS.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        delay: index * 0.1,
-                        onComplete: () => {
-                          setVisibleSkills((prev) => {
-                            const newState = [...prev];
-                            newState[index] = true;
-                            return newState;
-                          });
-                        },
-                      },
-                    }}
-                    viewport={{ once: true }}
-                    className="space-y-2"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <skill.icon className="w-5 h-5 text-cyan-400" />
-                        <span className="text-white font-medium">
-                          {skill.name}
-                        </span>
-                      </div>
-                      <span className="text-white/60 text-sm">
-                        {skill.level}%
-                      </span>
-                    </div>
-
-                    <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
-                      <motion.div
-                        className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                        initial={{ width: 0 }}
-                        animate={{
-                          width: visibleSkills[index] ? `${skill.level}%` : 0,
-                        }}
-                        transition={{
-                          duration: 1,
-                          delay: 0.2,
-                          ease: "easeOut",
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </GlassCard>
+            <TicTacToe className="h-full" />
           </motion.div>
         </div>
 
