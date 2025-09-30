@@ -32,7 +32,7 @@ export default function SkillsRadar() {
         </motion.div>
 
         {/* Circular Layout Container */}
-        <div className="relative w-full max-w-7xl mx-auto min-h-[600px] lg:min-h-[700px] flex items-center justify-center overflow-visible">
+        <div className="relative w-full max-w-7xl mx-auto min-h-[700px] lg:min-h-[800px] flex items-center justify-center overflow-visible">
           {/* Central Radar Chart */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -131,6 +131,33 @@ export default function SkillsRadar() {
                     );
                   })}
 
+                  {/* Skill Labels */}
+                  {BIG_SKILLS.map((skill, index) => {
+                    const angle =
+                      (index * (360 / BIG_SKILLS.length) - 90) *
+                      (Math.PI / 180);
+                    const labelRadius = 195; // Un peu plus loin que le bord
+                    const x = 200 + Math.cos(angle) * labelRadius;
+                    const y = 200 + Math.sin(angle) * labelRadius;
+
+                    return (
+                      <motion.text
+                        key={`${skill.name}-label`}
+                        x={x}
+                        y={y}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        className="fill-white text-xs font-medium"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
+                      >
+                        {skill.name}
+                      </motion.text>
+                    );
+                  })}
+
                   {/* Gradient definitions */}
                   <defs>
                     <linearGradient
@@ -176,7 +203,7 @@ export default function SkillsRadar() {
               // Calculate position around the central radar
               const angle =
                 (index * (360 / BIG_SKILLS.length) - 90) * (Math.PI / 180);
-              const radius = 280; // Distance from center - réduit pour éviter le débordement
+              const radius = 350; // Distance from center - augmenté pour plus d'espacement
               const x = 50 + (Math.cos(angle) * radius) / 10; // Convert to percentage
               const y = 50 + (Math.sin(angle) * radius) / 10; // Convert to percentage
 
