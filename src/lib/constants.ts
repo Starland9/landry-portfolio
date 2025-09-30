@@ -196,10 +196,11 @@ export const FEATURED_PROJECTS = [
       "Tailwind CSS",
       "Firebase",
     ],
-    image: "/images/projects/cv.png",
+    image: "/images/projects/cv.jpg",
     liveUrl: "https://cv.starland9.dev",
     githubUrl: null,
     featured: true,
+    category: "web",
   },
   {
     id: "njangiflow",
@@ -213,10 +214,11 @@ export const FEATURED_PROJECTS = [
       "Tailwind CSS",
       "Firebase",
     ],
-    image: "/images/projects/njangiflow.png",
+    image: "/images/projects/njangiflow.jpg",
     liveUrl: "https://njangiflow.starland9.dev",
     githubUrl: null,
     featured: true,
+    category: "web",
   },
   {
     id: "tchokos",
@@ -230,9 +232,83 @@ export const FEATURED_PROJECTS = [
       "Tailwind CSS",
       "Firebase",
     ],
-    image: "/images/projects/tchokos.png",
+    image: "/images/projects/tchokos.jpg",
     liveUrl: "https://tchokos.starland9.dev",
     githubUrl: null,
     featured: true,
+    category: "web",
+  },
+  {
+    id: "kweekk",
+    title: "KweekK",
+    description:
+      "KWEEKK est une plateforme digitale socioéconomique qui permet à tout individu, groupe d'individus, société ou entreprise de profiter des RÉDUCTIONS EXCLUSIVES sur divers produits et services mis à leur disposition par les nombreux Partenaires du Réseau Croissance Plus International (PRCPI).",
+    technologies: ["Flutter", "Dart", "REST API"],
+    image: "/images/projects/kweekk.jpg",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=com.ovvpcorp.kweekk&pcampaignid=web_share",
+    githubUrl: null,
+    featured: true,
+    category: "mobile",
+  },
+  {
+    id: "isyjob",
+    title: "IsyJob",
+    description:
+      "ISYJOB, application socio-économique et innovante qui met en relation des personnes qui ont des services à offrir (isyworkers) ex : plombiers, électriciens, bricoleurs, maître de cérémonie etc…avec des personnes qui ont besoin de ces services (isyers).",
+    technologies: ["Flutter", "Dart", "REST API", "Firebase"],
+    image: "/images/projects/isyjob.jpg",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=com.ovvpcorp.isyjob&pcampaignid=web_share",
+    githubUrl: null,
+    featured: true,
+    category: "mobile",
+  },
+  {
+    id: "mbolo-gabon",
+    title: "Mbolo Gabon",
+    description:
+      "Application de référencement d'établissements touristiques au Gabon, regroupant les thématiques de manger, dormir et s'amuser. Offrant une visibilité aux professionnels et une totale autonomie au particulier avec en prime la géolocalisation de tout les établissements .",
+    technologies: ["Flutter", "Dart", "REST API", "Firebase"],
+    image: "/images/projects/mbolo-gabon.jpg",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=io.pekegno.mbolo&pcampaignid=web_share",
+    githubUrl: null,
+    featured: true,
+    category: "mobile",
+  },
+  {
+    id: "2ln-ai",
+    title: "2LN AI",
+    description:
+      "Vous avez des questions sur votre contrat de travail, vos droits en tant que salarié ou les obligations de votre employeur ? Obtenez des réponses claires et rapides grâce à notre assistant intelligent spécialisé en droit du travail.",
+    technologies: [
+      "Flutter",
+      "Dart",
+      "REST API",
+      "Firebase",
+      "Python",
+      "RAG",
+      "ML",
+    ],
+    image: "/images/projects/2ln-ai.jpg",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=com.lnexpertise.ia&pcampaignid=web_share",
+    githubUrl: null,
+    featured: true,
+    category: "mobile",
+  },
+  {
+    id: "omoh",
+    title: "OMOH",
+    description:
+      "Vous recevez des SMS de confirmation Orange Money ou MTN Mobile Money et vous perdez le fil de vos dépenses ? Cette application est faite pour vous !",
+    technologies: ["Flutter", "Dart"],
+    image: "/images/projects/omoh.webp",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=com.ozosotf.omoh&pcampaignid=web_share",
+    githubUrl: null,
+    featured: true,
+    category: "mobile",
   },
 ];
