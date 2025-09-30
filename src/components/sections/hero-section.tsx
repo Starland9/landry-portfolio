@@ -5,7 +5,7 @@ import { TypeWriter } from "@/components/ui/typewriter";
 import { FloatingParticles } from "@/components/animations/floating-particles";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import { Github, ExternalLink, Mail, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { PERSONAL_INFO, TECH_STACK } from "../../lib/constants";
 
 export default function HeroSection() {
@@ -43,7 +43,7 @@ export default function HeroSection() {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <div className="w-full h-full rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 p-1">
-                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-4xl sm:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                <div className="w-full h-full rounded-full bg-black flex items-center justify-center text-4xl sm:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-white">
                   LS
                 </div>
               </div>

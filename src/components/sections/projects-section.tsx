@@ -7,19 +7,8 @@ import { GlassButton } from "@/components/ui/glass-button";
 import { Github, ExternalLink, Star, GitFork, Calendar } from "lucide-react";
 import { GitHubRepo } from "@/types/github";
 import { formatDate } from "@/lib/utils";
-
-const featuredProjects = [
-  {
-    id: "portfolio",
-    title: "Portfolio Premium",
-    description:
-      "Portfolio révolutionnaire avec animations avancées et intégration GitHub API",
-    technologies: ["Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS"],
-    image: "/api/placeholder/600/400",
-    liveUrl: "https://starland9.dev",
-    featured: true,
-  },
-];
+import { FEATURED_PROJECTS } from "@/lib/constants";
+import Image from "next/image";
 
 export default function ProjectsSection() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -121,7 +110,7 @@ export default function ProjectsSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mb-16"
         >
-          {featuredProjects.map((project, index) => (
+          {FEATURED_PROJECTS.map((project, index) => (
             <GlassCard key={project.id} className="p-8 lg:p-12" hover>
               <div className="grid lg:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
@@ -150,24 +139,29 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="flex gap-4">
-                    <GlassButton variant="primary">
+                    <GlassButton href={project.liveUrl} variant="primary">
                       <ExternalLink className="w-4 h-4" />
                       Voir le site
                     </GlassButton>
-                    <GlassButton variant="outline">
-                      <Github className="w-4 h-4" />
-                      Code source
-                    </GlassButton>
+                    {project.githubUrl && (
+                      <GlassButton href={project.githubUrl} variant="outline">
+                        <Github className="w-4 h-4" />
+                        Code source
+                      </GlassButton>
+                    )}
                   </div>
                 </div>
 
                 <div className="relative group">
                   <div className="aspect-video rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/20 overflow-hidden">
                     <div className="w-full h-full flex items-center justify-center text-white/60">
-                      <div className="text-center">
-                        <ExternalLink className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                        <p>Aperçu du projet</p>
-                      </div>
+                      <Image
+                        className="rounded-xl"
+                        src={project.image}
+                        alt={project.title}
+                        layout="fill"
+                        objectFit="cover"
+                      />
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-600/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />

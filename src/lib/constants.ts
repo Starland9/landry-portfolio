@@ -182,3 +182,57 @@ export const EXPERIENCES = [
     ],
   },
 ];
+
+export const FEATURED_PROJECTS = [
+  {
+    id: "fais-mon-cv",
+    title: "Fais Mon CV",
+    description:
+      "Plateforme de création de CV en ligne avec modèles personnalisables et export PDF alimentée par une IA avancée.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Firebase",
+    ],
+    image: "/images/projects/cv.png",
+    liveUrl: "https://cv.starland9.dev",
+    githubUrl: null,
+    featured: true,
+  },
+  {
+    id: "njangiflow",
+    title: "NjangiFlow",
+    description:
+      "La plateforme intuitive et sécurisée pour organiser, suivre et optimiser vos groupes d'épargne rotatifs. Simplifiez la gestion, renforcez la confiance.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Firebase",
+    ],
+    image: "/images/projects/njangiflow.png",
+    liveUrl: "https://njangiflow.starland9.dev",
+    githubUrl: null,
+    featured: true,
+  },
+  {
+    id: "tchokos",
+    title: "Tchokos E-commerce",
+    description:
+      "Boutique en ligne spécialisée dans la vente des chaussures, vêtements et accessoires, offrant une expérience utilisateur fluide et sécurisée.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Framer Motion",
+      "Tailwind CSS",
+      "Firebase",
+    ],
+    image: "/images/projects/tchokos.png",
+    liveUrl: "https://tchokos.starland9.dev",
+    githubUrl: null,
+    featured: true,
+  },
+];
