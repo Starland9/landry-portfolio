@@ -5,10 +5,7 @@ import { GlassCard } from "@/components/ui/glass-card";
 
 import { useEffect, useState } from "react";
 import { GitHubUser } from "@/types/github";
-import {
-  EXPERIENCES,
-  PERSONAL_INFO,
-} from "../../lib/constants";
+import { EXPERIENCES, PERSONAL_INFO } from "../../lib/constants";
 import { TicTacToe } from "@/components/ui/tic-tac-toe";
 
 export default function AboutSection() {

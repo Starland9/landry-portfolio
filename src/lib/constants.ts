@@ -162,23 +162,25 @@ export const NAVIGATION_ITEMS = [
 ];
 export const EXPERIENCES = [
   {
-    title: "Développeur Full-Stack Senior",
-    company: "Tech Innovation",
-    period: "2023 - Présent",
+    title: "Développeur Full-Stack Mid-Level",
+    company: "OVVP CORP",
+    period: "2024 - Présent",
     description: [
+      "Développement d'applications mobiles avec Flutter",
       "Développement d'applications web modernes avec React/Next.js",
       "Architecture et optimisation de backends Node.js/Python",
       "Leadership technique sur des projets complexes",
     ],
   },
   {
-    title: "Développeur Frontend",
-    company: "Digital Agency",
-    period: "2021 - 2023",
+    title: "Développeur Freelance",
+    company: "A Mon Compte",
+    period: "2021 - Présent",
     description: [
-      "Création d'interfaces utilisateur innovantes",
-      "Intégration d'APIs REST et GraphQL",
-      "Optimisation des performances web",
+      "Création de sites web et applications mobiles pour divers clients",
+      "Gestion complète du cycle de vie des projets",
+      "Collaboration avec des designers et marketeurs",
+      "Livraison de solutions performantes et évolutives",
     ],
   },
 ];
