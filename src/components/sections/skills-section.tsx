@@ -41,23 +41,24 @@ export default function SkillsRadar() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative z-2"
           >
-            <GlassCard className="p-6 sm:p-8 lg:p-12">
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto">
+            <GlassCard className="p-6 sm:p-8 lg:p-12 overflow-visible">
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mx-auto overflow-visible">
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white text-center mb-4 lg:mb-6">
                   Radar des Compétences
                 </h3>
                 {/* Radar Grid */}
                 <svg
                   className="w-full h-full mt-2 lg:mt-4"
-                  viewBox="0 0 400 400"
+                  viewBox="0 0 500 500"
                   preserveAspectRatio="xMidYMid meet"
+                  style={{ overflow: 'visible' }}
                 >
                   {/* Grid circles */}
                   {[60, 120, 180].map((radius) => (
                     <circle
                       key={radius}
-                      cx="200"
-                      cy="200"
+                      cx="250"
+                      cy="250"
                       r={radius}
                       fill="none"
                       stroke="rgba(255,255,255,0.1)"
@@ -70,13 +71,13 @@ export default function SkillsRadar() {
                     const angle =
                       (index * (360 / BIG_SKILLS.length) - 90) *
                       (Math.PI / 180);
-                    const x = 200 + Math.cos(angle) * 180;
-                    const y = 200 + Math.sin(angle) * 180;
+                    const x = 250 + Math.cos(angle) * 180;
+                    const y = 250 + Math.sin(angle) * 180;
                     return (
                       <line
                         key={index}
-                        x1="200"
-                        y1="200"
+                        x1="250"
+                        y1="250"
                         x2={x}
                         y2={y}
                         stroke="rgba(255,255,255,0.1)"
@@ -92,8 +93,8 @@ export default function SkillsRadar() {
                         (index * (360 / BIG_SKILLS.length) - 90) *
                         (Math.PI / 180);
                       const radius = (skill.level / 100) * 180;
-                      const x = 200 + Math.cos(angle) * radius;
-                      const y = 200 + Math.sin(angle) * radius;
+                      const x = 250 + Math.cos(angle) * radius;
+                      const y = 250 + Math.sin(angle) * radius;
                       return `${x},${y}`;
                     }).join(" ")}
                     fill="url(#radar-fill)"
@@ -111,8 +112,8 @@ export default function SkillsRadar() {
                       (index * (360 / BIG_SKILLS.length) - 90) *
                       (Math.PI / 180);
                     const radius = (skill.level / 100) * 180;
-                    const x = 200 + Math.cos(angle) * radius;
-                    const y = 200 + Math.sin(angle) * radius;
+                    const x = 250 + Math.cos(angle) * radius;
+                    const y = 250 + Math.sin(angle) * radius;
 
                     return (
                       <motion.circle
@@ -136,9 +137,9 @@ export default function SkillsRadar() {
                     const angle =
                       (index * (360 / BIG_SKILLS.length) - 90) *
                       (Math.PI / 180);
-                    const labelRadius = 210; // Plus loin pour accommoder les chips
-                    const x = 200 + Math.cos(angle) * labelRadius;
-                    const y = 200 + Math.sin(angle) * labelRadius;
+                    const labelRadius = 220; // Plus loin pour accommoder les chips
+                    const x = 250 + Math.cos(angle) * labelRadius;
+                    const y = 250 + Math.sin(angle) * labelRadius;
 
                     return (
                       <motion.foreignObject
@@ -153,7 +154,9 @@ export default function SkillsRadar() {
                         transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
                       >
                         <div className="flex items-center justify-center w-full h-full">
-                          <div className={`flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r ${skill.color} bg-opacity-20 backdrop-blur-xl border border-white/30 rounded-full shadow-lg`}>
+                          <div
+                            className={`flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r ${skill.color} bg-opacity-20 backdrop-blur-xl border border-white/30 rounded-full shadow-lg`}
+                          >
                             <skill.icon className="w-4 h-4 text-white flex-shrink-0" />
                             <span className="text-white text-xs font-semibold truncate">
                               {skill.name}
