@@ -9,7 +9,6 @@ import { GitHubRepo } from "@/types/github";
 import { formatDate } from "@/lib/utils";
 import { FEATURED_PROJECTS } from "@/lib/constants";
 import Image from "next/image";
-import { ProjectCarousel } from "@/components/ui/project-carousel";
 
 export default function ProjectsSection() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -58,6 +57,10 @@ export default function ProjectsSection() {
     };
     return colors[language || ""] || "from-gray-400 to-gray-600";
   };
+
+  const flagshipProject =
+    FEATURED_PROJECTS.find((project) => project.id === "fais-mon-cv") ||
+    FEATURED_PROJECTS[0];
 
   return (
     <section
@@ -115,16 +118,74 @@ export default function ProjectsSection() {
           ))}
         </motion.div>
 
-        {/* Featured Projects Carousel */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-16"
-        >
-          <ProjectCarousel projects={FEATURED_PROJECTS} />
-        </motion.div>
+        {flagshipProject && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mb-16"
+          >
+            <GlassCard className="overflow-hidden">
+              <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 p-6 sm:p-10 items-center">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
+                  <Image
+                    src={flagshipProject.image}
+                    alt={flagshipProject.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div className="space-y-5">
+                  <div className="space-y-2">
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs uppercase tracking-[0.3em] text-white/60">
+                      Projet vedette
+                    </span>
+                    <h3 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                      {flagshipProject.title}
+                    </h3>
+                    <p className="text-base sm:text-lg text-white/70 leading-relaxed">
+                      {flagshipProject.headline ?? flagshipProject.summary}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    <GlassButton href={`/projects/${flagshipProject.id}`}>
+                      Étude de cas détaillée
+                    </GlassButton>
+                    {flagshipProject.liveUrl && (
+                      <GlassButton
+                        href={flagshipProject.liveUrl}
+                        variant="secondary"
+                      >
+                        Découvrir en ligne
+                      </GlassButton>
+                    )}
+                    {flagshipProject.githubUrl && (
+                      <GlassButton
+                        href={flagshipProject.githubUrl}
+                        variant="outline"
+                      >
+                        Voir le code
+                      </GlassButton>
+                    )}
+                  </div>
+                  <div className="flex flex-wrap gap-2 text-xs text-white/60">
+                    {flagshipProject.technologies.slice(0, 6).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 rounded-full border border-white/10 bg-white/5"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        )}
 
         {/* GitHub Projects Grid */}
         {loading ? (
