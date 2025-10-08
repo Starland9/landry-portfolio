@@ -17,6 +17,12 @@ import {
   Workflow,
 } from "lucide-react";
 
+type ProjectParams = {
+  id: string;
+};
+
+type ParamsInput = ProjectParams | Promise<ProjectParams>;
+
 function getProject(id: string) {
   return FEATURED_PROJECTS.find((project) => project.id === id);
 }
@@ -24,9 +30,10 @@ function getProject(id: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: ParamsInput;
 }): Promise<Metadata> {
-  const project = getProject(params.id);
+  const { id } = await params;
+  const project = getProject(id);
 
   if (!project) {
     return {
@@ -61,12 +68,13 @@ const CATEGORY_LABELS: Record<string, string> = {
   mobile: "Mobile",
 };
 
-export default function ProjectDetailPage({
+export default async function ProjectDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: ParamsInput;
 }) {
-  const project = getProject(params.id);
+  const { id } = await params;
+  const project = getProject(id);
 
   if (!project) {
     notFound();
