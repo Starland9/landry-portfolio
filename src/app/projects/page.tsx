@@ -208,13 +208,6 @@ export default function ProjectsPage() {
                             className="object-cover"
                             priority={index === 0}
                           />
-                          <div
-                            className={cn(
-                              "absolute inset-0 bg-gradient-to-br opacity-70",
-                              project.color ??
-                                "from-cyan-500/40 to-purple-600/40"
-                            )}
-                          />
                         </div>
                         <div className="absolute -bottom-6 left-6 flex items-center gap-3">
                           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-white/80 backdrop-blur">
