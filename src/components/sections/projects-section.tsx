@@ -70,7 +70,7 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-10 sm:mb-14"
         >
           <h2 className="text-responsive-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
             Projets
@@ -78,6 +78,18 @@ export default function ProjectsSection() {
           <p className="text-responsive-lg text-white/70 max-w-2xl mx-auto px-4">
             Découvrez mes créations les plus récentes et innovantes
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="flex justify-center mb-12"
+        >
+          <GlassButton href="/projects" size="lg">
+            Explorer tous mes projets vedettes
+          </GlassButton>
         </motion.div>
 
         {/* Filter buttons */}
