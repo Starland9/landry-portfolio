@@ -110,12 +110,6 @@ export default async function ProjectDetailPage({
                     className="object-cover"
                     priority
                   />
-                  <div
-                    className={cn(
-                      "absolute inset-0 bg-gradient-to-br opacity-70",
-                      project.color ?? "from-cyan-500/40 to-purple-600/40"
-                    )}
-                  />
                 </div>
                 <div className="absolute -bottom-6 left-6 flex flex-wrap gap-3">
                   <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-white/80 backdrop-blur">
@@ -284,12 +278,6 @@ export default async function ProjectDetailPage({
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover"
-                      />
-                      <div
-                        className={cn(
-                          "absolute inset-0 bg-gradient-to-br opacity-60",
-                          item.color ?? "from-cyan-500/40 to-purple-600/40"
-                        )}
                       />
                     </div>
                     <div className="space-y-2">
