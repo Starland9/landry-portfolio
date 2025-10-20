@@ -162,7 +162,7 @@ export const NAVIGATION_ITEMS = [
 ];
 export const EXPERIENCES = [
   {
-    title: "Développeur Full-Stack Mid-Level",
+    title: "Développeur Full-Stack",
     company: "OVVP CORP",
     period: "2024 - Présent",
     description: [
@@ -578,5 +578,43 @@ export const FEATURED_PROJECTS = [
     featured: true,
     category: "mobile",
     color: "from-rose-500 to-red-500",
+  },
+  {
+    id: "landflix",
+    title: "Landflix",
+    headline: "Votre plateforme de de téléchargement pour les films et séries.",
+    description:
+      "Landflix est une application mobile de gestion des téléchargements de films et séries. L'objectif de l'application est de vous permettre de maîtriser vos téléchargements et de mieux suivre vos contenus préférés.",
+    summary:
+      "Découvrez et téléchargez vos films et séries préférés avec une expérience moderne, intuitive et disponible sur tous vos appareils.",
+    problem:
+      "Les accès aux films et séries sont souvent limités par des plateformes peu flexibles et des options de téléchargement restreintes.",
+    solution:
+      "Une application mobile qui centralise les contenus, optimise les téléchargements et offre une expérience utilisateur fluide.",
+    impact: [
+      "15 000+ téléchargements la première année",
+      "Taux de rétention à 90 jours supérieur à 55 %",
+      "Support multi-plateformes",
+    ],
+    features: [
+      "Catalogue de films et séries avec options de téléchargement",
+      "Gestion des téléchargements avec priorités et files d'attente",
+      "Interface utilisateur moderne et intuitive",
+      "Support multi-plateformes",
+    ],
+    role: [
+      "Product design & UX",
+      "Développement Flutter avec architecture BLoC",
+    ],
+    timeline: "2025 · 2 mois",
+    team: "Solo project",
+    status: "En production",
+    technologies: ["Flutter", "Dart"],
+    image: "/images/projects/landflix.jpg",
+    liveUrl: "https://starland9.github.io/landflix-landing/",
+    githubUrl: "https://github.com/Starland9/LandFlix",
+    featured: true,
+    category: "mobile",
+    color: "from-violet-700 to-purple-900",
   },
 ];
