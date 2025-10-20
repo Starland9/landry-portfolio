@@ -162,7 +162,7 @@ export const NAVIGATION_ITEMS = [
 ];
 export const EXPERIENCES = [
   {
-    title: "Développeur Full-Stack Mid-Level",
+    title: "Développeur Full-Stack",
     company: "OVVP CORP",
     period: "2024 - Présent",
     description: [
