@@ -2,7 +2,6 @@
 
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { ArrowLeft } from "lucide-react";
 
