@@ -617,4 +617,100 @@ export const FEATURED_PROJECTS = [
     category: "mobile",
     color: "from-violet-700 to-purple-900",
   },
+  {
+    id: "social-dl",
+    title: "Social DL",
+    headline:
+      "Plateforme web pour télécharger contenu depuis les réseaux sociaux en un clic.",
+    description:
+      "Social DL est une application web qui permet de télécharger des vidéos, photos et contenus depuis les principales plateformes sociales (TikTok, Instagram, YouTube, etc.) de manière simple et rapide.",
+    summary:
+      "Un outil web moderne et intuitif pour télécharger vos contenus préférés des réseaux sociaux sans publicités ni complications.",
+    problem:
+      "Les utilisateurs ont du mal à télécharger leurs contenus préférés des réseaux sociaux avec des outils dispersés et peu fiables.",
+    solution:
+      "Une plateforme web centralisée qui supporte les principaux réseaux sociaux avec une interface minimale et performante.",
+    impact: [
+      "Interface ultra-rapide et responsive",
+      "Support de multiples plateformes (TikTok, Instagram, YouTube, etc.)",
+      "Zéro publicité et respect de la vie privée",
+    ],
+    features: [
+      "Téléchargement instantané depuis URL",
+      "Support multi-plateforme (TikTok, Instagram, YouTube, Twitter, etc.)",
+      "Interface minimaliste et intuitive",
+      "Pas de compte requis, entièrement gratuit",
+    ],
+    role: [
+      "Full-stack development (Next.js & backend)",
+      "Intégration API réseaux sociaux",
+      "Optimisation performance et UX",
+    ],
+    timeline: "2025 · En cours",
+    team: "Solo project",
+    status: "En production",
+    technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "API REST"],
+    image: "/images/projects/social-dl.png",
+    liveUrl: "https://social-dl.starland9.dev/",
+    githubUrl: "https://github.com/Starland9/social-dl-web",
+    featured: true,
+    category: "web",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    id: "open-whatsapp-bot",
+    title: "Open Whatsapp Bot",
+    headline:
+      "Un bot WhatsApp puissant et moderne en open-source avec architecture propre et plugins modulaires.",
+    description:
+      "Open Whatsapp Bot est une application open-source pour WhatsApp construite avec @whiskeysockets/baileys v6.7.9+ proposant une architecture propre, un système de plugins modulaire et des options de déploiement prêtes pour la production.",
+    summary:
+      "Bot WhatsApp communautaire, hautement configurables avec support IA (ChatGPT, Gemini), gestion de groupe, téléchargement de médias et système de permission avancé. Optimisé pour la production avec Docker, PM2 et Heroku.",
+    problem:
+      "Les bots WhatsApp existants manquent de flexibilité, de modularité et ne supportent pas les dernières fonctionnalités comme l'IA intégrée ou la gestion avancée des statuts.",
+    solution:
+      "Une architecture complète de bot WhatsApp avec système de plugins auto-chargeables, support multi-base de données (SQLite/PostgreSQL) et intégration IA native.",
+    impact: [
+      "Système de reconnexion intelligent avec backoff exponentiel",
+      "Réduction CPU de 70-80% grâce aux caches et traitement parallèle",
+      "Support production-ready avec PM2, Docker et Heroku",
+    ],
+    features: [
+      "Auto-reconnexion intelligente avec gestion d'erreurs",
+      "Système de plugins modulaires avec auto-loading",
+      "Support IA (ChatGPT, Google Gemini)",
+      "Répondeur automatique alimenté par Gemini",
+      "Visualiseur automatique de statuts",
+      "Téléchargement de médias (YouTube, Instagram, TikTok, etc.)",
+      "Gestion complète des groupes (outils admin)",
+      "Traitement de médias (stickers, édition d'images)",
+      "Système de permissions (sudo users, commandes admin)",
+    ],
+    role: [
+      "Architecture et design système",
+      "Développement backend Node.js avec structure modulaire",
+      "Intégration IA et APIs externes",
+      "Optimisation performance et gestion ressources",
+      "Configuration Docker et déploiement production",
+    ],
+    timeline: "2025 · Projet actif",
+    team: "Communauté open-source",
+    status: "En développement actif",
+    technologies: [
+      "Node.js",
+      "TypeScript",
+      "Baileys v6.7.9+",
+      "SQLite/PostgreSQL",
+      "ChatGPT API",
+      "Google Gemini",
+      "Docker",
+      "PM2",
+    ],
+    image: "/images/projects/open-whatsapp-bot.png",
+    liveUrl: "https://github.com/Starland9/OpenWhatsappBot",
+    githubUrl: "https://github.com/Starland9/OpenWhatsappBot",
+    featured: true,
+    category: "Bot",
+    color: "from-green-500 to-emerald-600",
+  },
 ];
