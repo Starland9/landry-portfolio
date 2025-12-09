@@ -710,7 +710,7 @@ export const FEATURED_PROJECTS = [
     liveUrl: "https://github.com/Starland9/OpenWhatsappBot",
     githubUrl: "https://github.com/Starland9/OpenWhatsappBot",
     featured: true,
-    category: "web",
+    category: "Bot",
     color: "from-green-500 to-emerald-600",
   },
 ];
