@@ -91,7 +91,7 @@ export default function HeroSection() {
                 Collaborons ensemble
               </GlassButton>
               <GlassButton
-                href="#projets"
+                href="/projects"
                 variant="secondary"
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold min-w-0"
               >
