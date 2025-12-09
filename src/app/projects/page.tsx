@@ -187,7 +187,7 @@ export default function ProjectsPage() {
               </p>
             </GlassCard>
           ) : (
-            <div className="grid gap-10 md:gap-12">
+            <div className="grid md:grid-cols-2 gap-6">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -196,98 +196,116 @@ export default function ProjectsPage() {
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.7, delay: index * 0.05 }}
                 >
-                  <GlassCard className="overflow-hidden" hover>
-                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center p-6 sm:p-8">
-                      <div className="relative">
-                        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+                  <GlassCard
+                    className="overflow-hidden h-full flex flex-col"
+                    hover
+                  >
+                    <div className="flex flex-col h-full p-6">
+                      {/* Image */}
+                      <div className="relative mb-4 -mx-6 -mt-6">
+                        <div className="relative aspect-video overflow-hidden rounded-b-2xl border-b border-white/10">
                           <Image
                             src={project.image}
                             alt={project.title}
                             fill
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover"
                             priority={index === 0}
                           />
                         </div>
-                        <div className="absolute -bottom-6 left-6 flex items-center gap-3">
-                          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-white/80 backdrop-blur">
-                            <Layers className="w-4 h-4 text-cyan-400" />
-                            {CATEGORY_LABELS[project.category] ??
-                              project.category}
-                          </span>
-                          <span className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/60 border border-white/10 text-sm text-white/80 backdrop-blur">
-                            {project.timeline}
-                          </span>
-                        </div>
                       </div>
 
-                      <div className="space-y-6 lg:pl-6 pt-10 lg:pt-0">
-                        <div className="space-y-3">
-                          <h2 className="text-3xl font-bold text-white leading-tight">
+                      {/* Content */}
+                      <div className="flex-1 flex flex-col gap-4">
+                        {/* Title & Category */}
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
+                              <Layers className="w-3 h-3 text-cyan-400" />
+                              {CATEGORY_LABELS[project.category] ??
+                                project.category}
+                            </span>
+                            <span className="text-xs text-white/50">
+                              {project.timeline}
+                            </span>
+                          </div>
+                          <h3 className="text-xl font-bold text-white leading-tight">
                             {project.title}
-                          </h2>
-                          <p className="text-lg text-white/80">
+                          </h3>
+                          <p className="text-sm text-white/80">
                             {project.headline}
-                          </p>
-                          <p className="text-sm text-white/60 leading-relaxed">
-                            {project.summary}
                           </p>
                         </div>
 
-                        <div className="grid gap-3">
+                        {/* Short summary */}
+                        <p className="text-xs text-white/60 line-clamp-2">
+                          {project.summary}
+                        </p>
+
+                        {/* Key features */}
+                        <div className="space-y-2">
                           <span className="text-xs uppercase tracking-[0.3em] text-white/40">
                             Capacités clés
                           </span>
-                          <ul className="grid gap-2">
-                            {project.features.slice(0, 3).map((feature) => (
+                          <ul className="space-y-1">
+                            {project.features.slice(0, 2).map((feature) => (
                               <li
                                 key={feature}
-                                className="flex items-start gap-3 text-sm text-white/80"
+                                className="flex items-start gap-2 text-xs text-white/70"
                               >
-                                <Sparkles className="w-4 h-4 mt-0.5 text-cyan-400 flex-shrink-0" />
-                                <span>{feature}</span>
+                                <Sparkles className="w-3 h-3 mt-0.5 text-cyan-400 flex-shrink-0" />
+                                <span className="line-clamp-1">{feature}</span>
                               </li>
                             ))}
                           </ul>
                         </div>
 
-                        <div className="grid gap-3">
+                        {/* Technologies */}
+                        <div className="space-y-2">
                           <span className="text-xs uppercase tracking-[0.3em] text-white/40">
-                            Stack technique
+                            Stack
                           </span>
-                          <div className="flex flex-wrap gap-2">
-                            {project.technologies.map((tech) => (
+                          <div className="flex flex-wrap gap-1">
+                            {project.technologies.slice(0, 4).map((tech) => (
                               <span
                                 key={tech}
-                                className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-white/70"
+                                className="px-2 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-white/70"
                               >
                                 {tech}
                               </span>
                             ))}
+                            {project.technologies.length > 4 && (
+                              <span className="px-2 py-1 text-xs text-white/50">
+                                +{project.technologies.length - 4}
+                              </span>
+                            )}
                           </div>
                         </div>
+                      </div>
 
-                        <div className="flex flex-wrap gap-3 pt-2">
-                          <GlassButton
-                            href={`/projects/${project.id}`}
-                            variant="secondary"
-                          >
-                            Explorer le détail
+                      {/* Buttons */}
+                      <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-white/10">
+                        <GlassButton
+                          href={`/projects/${project.id}`}
+                          variant="secondary"
+                          size="sm"
+                        >
+                          Détail
+                        </GlassButton>
+                        {project.liveUrl && (
+                          <GlassButton href={project.liveUrl} size="sm">
+                            En ligne
                           </GlassButton>
-                          {project.liveUrl && (
-                            <GlassButton href={project.liveUrl}>
-                              Voir en ligne
-                            </GlassButton>
-                          )}
-                          {project.githubUrl && (
-                            <GlassButton
-                              href={project.githubUrl}
-                              variant="outline"
-                            >
-                              Code source
-                            </GlassButton>
-                          )}
-                        </div>
+                        )}
+                        {project.githubUrl && (
+                          <GlassButton
+                            href={project.githubUrl}
+                            variant="outline"
+                            size="sm"
+                          >
+                            Code
+                          </GlassButton>
+                        )}
                       </div>
                     </div>
                   </GlassCard>
