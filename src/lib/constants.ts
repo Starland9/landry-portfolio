@@ -713,4 +713,54 @@ export const FEATURED_PROJECTS = [
     category: "Bot",
     color: "from-green-500 to-emerald-600",
   },
+  {
+    id: "flyers-maker",
+    title: "FlyerGen AI",
+    headline:
+      "Créez des flyers professionnels en quelques clics, directement depuis le navigateur.",
+    description:
+      "Outil web no-code pour concevoir, personnaliser et exporter des flyers et visuels marketing rapidement, avec templates responsives et export haute qualité.",
+    summary:
+      "FlyerGen AI permet aux petites structures et créateurs de réaliser des supports marketing visuels sans compétence design : templates modulaires, éditeur drag-and-drop et export PNG/PDF.",
+    problem:
+      "Les petites entreprises et indépendants manquent souvent de ressources pour produire des visuels marketing soignés et adaptables aux différents formats.",
+    solution:
+      "Un éditeur web simple d'utilisation combinant templates professionnels, édition en temps réel et export optimisé pour impression ou réseaux sociaux.",
+    impact: [
+      "MVP lancé en quelques semaines",
+      "Adoption rapide auprès des micro-entrepreneurs et associations locales",
+      "Réduction du temps de création de visuels marketing à quelques minutes",
+    ],
+    features: [
+      "Bibliothèque de templates modulaires",
+      "Éditeur drag-and-drop (texte, images, formes)",
+      "Ajustements typographiques et palette de couleurs",
+      "Export PNG / PDF haute résolution et dimensions personnalisées",
+      "Prévisualisation mobile et recadrage pour réseaux sociaux",
+      "Partage public de designs via lien",
+    ],
+    role: [
+      "Design UI/UX & prototypage",
+      "Développement frontend Next.js / TypeScript",
+      "Intégration Gemini AI / moteur d'export",
+      "Déploiement sur Vercel et monitoring",
+    ],
+    timeline: "2025 · 3 semaines",
+    team: "Solo project",
+    status: "En ligne",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Gemini API",
+      "Vercel",
+      "Firebase (auth & stockage)",
+    ],
+    image: "/images/projects/flyers-maker.png",
+    liveUrl: "https://flyers-maker.vercel.app/",
+    githubUrl: null,
+    featured: true,
+    category: "web",
+    color: "from-cyan-500 to-indigo-600",
+  },
 ];
