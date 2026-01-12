@@ -75,20 +75,22 @@ export default function AboutSection() {
                   <div className="grid grid-cols-3 gap-4 pt-4">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-cyan-400">
-                        {githubUser.public_repos}
+                        {githubUser.public_repos ?? 0}
                       </div>
                       <div className="text-sm text-white/60">Repositories</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-purple-400">
-                        {githubUser.followers}
+                        {githubUser.followers ?? 0}
                       </div>
                       <div className="text-sm text-white/60">Followers</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-green-400">
-                        {new Date().getFullYear() -
-                          new Date(githubUser.created_at).getFullYear()}
+                        {githubUser.created_at
+                          ? new Date().getFullYear() -
+                            new Date(githubUser.created_at).getFullYear()
+                          : "4+"}
                       </div>
                       <div className="text-sm text-white/60">Années</div>
                     </div>

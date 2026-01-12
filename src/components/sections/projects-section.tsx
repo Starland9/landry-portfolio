@@ -31,18 +31,20 @@ export default function ProjectsSection() {
     fetch("/api/github/repos")
       .then((res) => res.json())
       .then((data) => {
-        setRepos(data);
+        // Ensure data is an array
+        setRepos(Array.isArray(data) ? data : []);
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching repos:", error);
+        setRepos([]);
         setLoading(false);
       });
   }, []);
 
-  const filteredRepos = repos
-    .filter((repo) => filter === "all" || repo.language === filter)
-    .slice(0, 6);
+  const filteredRepos = Array.isArray(repos) 
+    ? repos.filter((repo) => filter === "all" || repo.language === filter).slice(0, 6)
+    : [];
 
   const getLanguageColor = (language: string | null) => {
     const colors: Record<string, string> = {
@@ -65,20 +67,34 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="container-safe bg-gradient-to-b from-gray-900 to-black relative z-10"
+      className="container-safe bg-gradient-to-b from-slate-900 via-slate-950 to-black relative z-10 py-20"
     >
-      <div className="container mx-auto max-w-7xl">
+      {/* Background decorations */}
+      <div className="absolute top-1/4 left-0 w-72 h-72 bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="container mx-auto max-w-7xl relative">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-10 sm:mb-14"
+          className="text-center mb-12"
         >
-          <h2 className="text-responsive-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mb-4">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-600/10 border border-cyan-400/20 text-sm text-white/70 mb-6"
+          >
+            <Star className="w-4 h-4 text-cyan-400" />
+            Portfolio
+          </motion.span>
+          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
             Projets
           </h2>
-          <p className="text-responsive-lg text-white/70 max-w-2xl mx-auto px-4">
+          <p className="text-lg text-white/60 max-w-2xl mx-auto px-4">
             Découvrez mes créations les plus récentes et innovantes
           </p>
         </motion.div>
@@ -90,8 +106,8 @@ export default function ProjectsSection() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="flex justify-center mb-12"
         >
-          <GlassButton href="/projects" size="lg">
-            Explorer tous mes projets vedettes
+          <GlassButton href="/projects" size="lg" className="shadow-lg shadow-cyan-500/20">
+            ✨ Explorer tous mes projets vedettes
           </GlassButton>
         </motion.div>
 
@@ -101,20 +117,24 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 mb-12"
         >
-          {technologies.map((tech) => (
-            <button
+          {technologies.map((tech, index) => (
+            <motion.button
               key={tech}
               onClick={() => setFilter(tech)}
-              className={`px-4 py-2 rounded-full border transition-all duration-300 ${
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.25 + index * 0.03 }}
+              className={`px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${
                 filter === tech
-                  ? "bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border-cyan-400/50 text-cyan-400"
-                  : "bg-white/10 border-white/20 text-white/70 hover:bg-white/20"
+                  ? "bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/10 scale-105"
+                  : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white/80 hover:border-white/20"
               }`}
             >
               {tech === "all" ? "Tous" : tech}
-            </button>
+            </motion.button>
           ))}
         </motion.div>
 

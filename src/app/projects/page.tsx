@@ -63,115 +63,128 @@ export default function ProjectsPage() {
   }, [activeCategory, search]);
 
   return (
-    <section className="container-safe bg-gradient-to-b from-black via-slate-950 to-black py-24">
-      <div className="container mx-auto max-w-7xl px-4">
+    <section className="container-safe bg-gradient-to-b from-black via-slate-950 to-black py-24 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 right-0 w-64 h-64 bg-pink-500/5 rounded-full blur-[80px] pointer-events-none" />
+      
+      <div className="container mx-auto max-w-7xl px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center max-w-3xl mx-auto"
+          className="text-center max-w-4xl mx-auto"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-white/70 mb-6">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-600/10 border border-cyan-400/20 text-sm text-white/80 mb-8 backdrop-blur-sm"
+          >
+            <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
             Mes projets vedettes
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Une vitrine immersive de mes réalisations les plus ambitieuses
+            <span className="ml-2 px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-semibold">
+              {FEATURED_PROJECTS.length}
+            </span>
+          </motion.span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-8">
+            Une vitrine immersive de mes réalisations
           </h1>
-          <p className="mt-6 text-lg sm:text-xl text-white/70">
-            Explorez, filtrez et plongez dans les détails de mes produits
-            phares. Chaque projet incarne un mélange d'innovation, de rigueur
-            technique et d'expérience utilisateur soignée pour résoudre des
-            défis réels.
+          <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
+            Explorez mes produits phares — chaque projet incarne innovation, 
+            rigueur technique et expérience utilisateur soignée.
           </p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-12"
         >
-          <GlassCard className="p-6 md:p-8">
+          <GlassCard className="p-6 md:p-8 border-white/10">
             <div className="flex flex-col gap-6">
-              <div className="grid md:grid-cols-3 gap-4 items-center">
+              {/* Search and Stats */}
+              <div className="grid md:grid-cols-3 gap-6 items-end">
                 <div className="md:col-span-2">
                   <label
                     htmlFor="projects-search"
-                    className="text-sm font-medium text-white/70 block mb-2"
+                    className="text-sm font-medium text-white/60 block mb-3 uppercase tracking-wider"
                   >
-                    Rechercher un projet
+                    🔍 Rechercher un projet
                   </label>
-                  <div className="relative">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
+                  <div className="relative group">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40 group-focus-within:text-cyan-400 transition-colors" />
                     <input
                       id="projects-search"
                       type="search"
-                      placeholder="Ex : IA, Flutter, optimisation frontend..."
+                      placeholder="IA, Flutter, Next.js, Python..."
                       value={search}
                       onChange={(event) => setSearch(event.target.value)}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-cyan-400/70 focus:border-transparent"
+                      className="w-full bg-black/30 border border-white/10 rounded-xl pl-12 pr-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-cyan-400/30 transition-all duration-300 hover:border-white/20"
                     />
                   </div>
                 </div>
 
-                <div className="hidden md:flex flex-col gap-2">
-                  <span className="text-sm uppercase tracking-widest text-white/50">
-                    Statistiques
-                  </span>
-                  <div className="flex gap-6 text-white/80 text-sm">
-                    <div>
-                      <span className="block text-3xl font-bold text-white">
-                        {FEATURED_PROJECTS.length}
-                      </span>
-                      Projets vedettes
-                    </div>
-                    <div>
-                      <span className="block text-3xl font-bold text-white">
-                        {categories.length - 1}
-                      </span>
-                      Domaines couverts
-                    </div>
+                {/* Stats - Desktop */}
+                <div className="hidden md:grid grid-cols-2 gap-4">
+                  <div className="text-center p-3 rounded-xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-400/20">
+                    <span className="block text-2xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+                      {FEATURED_PROJECTS.length}
+                    </span>
+                    <span className="text-xs text-white/50 uppercase tracking-wider">Projets</span>
+                  </div>
+                  <div className="text-center p-3 rounded-xl bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-400/20">
+                    <span className="block text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      {categories.length - 1}
+                    </span>
+                    <span className="text-xs text-white/50 uppercase tracking-wider">Domaines</span>
                   </div>
                 </div>
               </div>
 
+              {/* Filter buttons */}
               <div className="flex flex-wrap items-center gap-3">
-                <div className="flex items-center gap-2 text-white/60 text-sm font-medium uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-2 text-white/50 text-xs font-semibold uppercase tracking-[0.2em]">
                   <Filter className="w-4 h-4" />
-                  Filtrer par domaine
+                  Filtrer
                 </div>
-                <div className="flex flex-wrap gap-3">
-                  {categories.map((category) => (
-                    <button
+                <div className="flex flex-wrap gap-2">
+                  {categories.map((category, index) => (
+                    <motion.button
                       key={category}
                       type="button"
                       onClick={() => setActiveCategory(category)}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.4 + index * 0.05 }}
                       className={cn(
-                        "px-4 py-2 rounded-full border text-sm transition-all duration-200",
+                        "px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300",
                         activeCategory === category
-                          ? "bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border-cyan-400/60 text-white shadow-lg shadow-cyan-500/20"
-                          : "bg-white/5 border-white/10 text-white/60 hover:bg-white/10"
+                          ? "bg-gradient-to-r from-cyan-500/30 to-purple-600/30 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/20 scale-105"
+                          : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white/80 hover:border-white/20"
                       )}
                     >
                       {CATEGORY_LABELS[category] ?? category}
-                    </button>
+                    </motion.button>
                   ))}
                 </div>
               </div>
 
-              <div className="md:hidden grid grid-cols-2 gap-4 text-white/80 text-sm pt-2">
-                <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3">
-                  <span className="block text-2xl font-bold text-white">
+              {/* Stats - Mobile */}
+              <div className="md:hidden grid grid-cols-2 gap-3">
+                <div className="text-center p-3 rounded-xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-400/20">
+                  <span className="block text-xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
                     {FEATURED_PROJECTS.length}
                   </span>
-                  Projets vedettes
+                  <span className="text-xs text-white/50 uppercase tracking-wider">Projets</span>
                 </div>
-                <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3">
-                  <span className="block text-2xl font-bold text-white">
+                <div className="text-center p-3 rounded-xl bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-400/20">
+                  <span className="block text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                     {categories.length - 1}
                   </span>
-                  Domaines couverts
+                  <span className="text-xs text-white/50 uppercase tracking-wider">Domaines</span>
                 </div>
               </div>
             </div>
@@ -187,123 +200,101 @@ export default function ProjectsPage() {
               </p>
             </GlassCard>
           ) : (
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: index * 0.05 }}
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.08, type: "spring", stiffness: 100 }}
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  className="group"
                 >
                   <GlassCard
-                    className="overflow-hidden h-full flex flex-col"
+                    className="overflow-hidden h-full flex flex-col relative"
                     hover
                   >
-                    <div className="flex flex-col h-full p-6">
+                    {/* Gradient overlay on hover */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none rounded-2xl`} />
+                    
+                    <div className="flex flex-col h-full p-5">
                       {/* Image */}
-                      <div className="relative mb-4 -mx-6 -mt-6">
-                        <div className="relative aspect-video overflow-hidden rounded-b-2xl border-b border-white/10">
+                      <div className="relative mb-4 -mx-5 -mt-5">
+                        <div className="relative aspect-[4/3] overflow-hidden">
                           <Image
                             src={project.image}
                             alt={project.title}
                             fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover"
-                            priority={index === 0}
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            priority={index < 3}
                           />
+                          {/* Image overlay gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                          {/* Status badge */}
+                          <div className="absolute top-3 right-3">
+                            <span className={`px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md bg-gradient-to-r ${project.color} text-white shadow-lg`}>
+                              {project.status === "En production" ? "Live" : project.status}
+                            </span>
+                          </div>
                         </div>
                       </div>
 
                       {/* Content */}
-                      <div className="flex-1 flex flex-col gap-4">
-                        {/* Title & Category */}
-                        <div className="space-y-2">
-                          <div className="flex items-center gap-2">
-                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
-                              <Layers className="w-3 h-3 text-cyan-400" />
-                              {CATEGORY_LABELS[project.category] ??
-                                project.category}
-                            </span>
-                            <span className="text-xs text-white/50">
-                              {project.timeline}
-                            </span>
-                          </div>
-                          <h3 className="text-xl font-bold text-white leading-tight">
-                            {project.title}
-                          </h3>
-                          <p className="text-sm text-white/80">
-                            {project.headline}
-                          </p>
+                      <div className="flex-1 flex flex-col gap-3">
+                        {/* Category & Timeline */}
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-medium text-white/80 uppercase tracking-wider">
+                            <Layers className="w-3 h-3 text-cyan-400" />
+                            {CATEGORY_LABELS[project.category] ?? project.category}
+                          </span>
+                          <span className="text-[10px] text-white/50 font-medium">
+                            {project.timeline}
+                          </span>
                         </div>
 
-                        {/* Short summary */}
-                        <p className="text-xs text-white/60 line-clamp-2">
-                          {project.summary}
+                        {/* Title */}
+                        <h3 className="text-lg font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
+                          {project.title}
+                        </h3>
+
+                        {/* Headline */}
+                        <p className="text-sm text-white/70 line-clamp-2 leading-relaxed">
+                          {project.headline}
                         </p>
 
-                        {/* Key features */}
-                        <div className="space-y-2">
-                          <span className="text-xs uppercase tracking-[0.3em] text-white/40">
-                            Capacités clés
-                          </span>
-                          <ul className="space-y-1">
-                            {project.features.slice(0, 2).map((feature) => (
-                              <li
-                                key={feature}
-                                className="flex items-start gap-2 text-xs text-white/70"
-                              >
-                                <Sparkles className="w-3 h-3 mt-0.5 text-cyan-400 flex-shrink-0" />
-                                <span className="line-clamp-1">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
                         {/* Technologies */}
-                        <div className="space-y-2">
-                          <span className="text-xs uppercase tracking-[0.3em] text-white/40">
-                            Stack
-                          </span>
-                          <div className="flex flex-wrap gap-1">
-                            {project.technologies.slice(0, 4).map((tech) => (
-                              <span
-                                key={tech}
-                                className="px-2 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-white/70"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                            {project.technologies.length > 4 && (
-                              <span className="px-2 py-1 text-xs text-white/50">
-                                +{project.technologies.length - 4}
-                              </span>
-                            )}
-                          </div>
+                        <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
+                          {project.technologies.slice(0, 3).map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-0.5 rounded-md border border-white/10 bg-white/5 text-[10px] text-white/60 font-medium"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          {project.technologies.length > 3 && (
+                            <span className="px-2 py-0.5 text-[10px] text-white/40">
+                              +{project.technologies.length - 3}
+                            </span>
+                          )}
                         </div>
                       </div>
 
                       {/* Buttons */}
-                      <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-white/10">
+                      <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/10">
                         <GlassButton
                           href={`/projects/${project.id}`}
                           variant="secondary"
                           size="sm"
+                          className="flex-1"
                         >
-                          Détail
+                          Détails
                         </GlassButton>
                         {project.liveUrl && (
-                          <GlassButton href={project.liveUrl} size="sm">
-                            En ligne
-                          </GlassButton>
-                        )}
-                        {project.githubUrl && (
-                          <GlassButton
-                            href={project.githubUrl}
-                            variant="outline"
-                            size="sm"
-                          >
-                            Code
+                          <GlassButton href={project.liveUrl} size="sm" className="flex-1">
+                            Voir
                           </GlassButton>
                         )}
                       </div>
