@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import Image from "next/image";
+import { ProjectImage } from "@/components/ui/project-image";
 
 interface Project {
   id: string;
@@ -32,7 +32,7 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
     const timer = setInterval(() => {
       setDirection(1);
       setCurrentIndex((prevIndex) =>
-        prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+        prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
       );
     }, 8000); // Change slide every 8 seconds
 
@@ -68,11 +68,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
     setDirection(newDirection);
     if (newDirection === 1) {
       setCurrentIndex((prevIndex) =>
-        prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+        prevIndex === projects.length - 1 ? 0 : prevIndex + 1,
       );
     } else {
       setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+        prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
       );
     }
   };
@@ -166,13 +166,13 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
 
                 <div className="relative group order-1 lg:order-2 flex items-center justify-center">
                   <div className="aspect-video rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-600/20 border border-white/20 overflow-hidden w-full max-w-lg">
-                    <Image
+                    <ProjectImage
                       className="rounded-xl object-cover w-full h-full"
                       src={projects[currentIndex].image}
                       alt={projects[currentIndex].title}
                       width={600}
                       height={400}
-                      priority={currentIndex === 0}
+                      priority
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-purple-600/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />

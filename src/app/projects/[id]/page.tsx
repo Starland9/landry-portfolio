@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ProjectImage } from "@/components/ui/project-image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -81,7 +81,7 @@ export default async function ProjectDetailPage({
   }
 
   const relatedProjects = FEATURED_PROJECTS.filter(
-    (item) => item.id !== project.id
+    (item) => item.id !== project.id,
   ).slice(0, 3);
 
   return (
@@ -102,7 +102,7 @@ export default async function ProjectDetailPage({
             <div className="space-y-6">
               <div className="relative">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
-                  <Image
+                  <ProjectImage
                     src={project.image}
                     alt={project.title}
                     fill
@@ -272,12 +272,13 @@ export default async function ProjectDetailPage({
                 <GlassCard key={item.id} className="p-6 h-full" hover>
                   <div className="space-y-4">
                     <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10">
-                      <Image
+                      <ProjectImage
                         src={item.image}
                         alt={item.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover"
+                        priority
                       />
                     </div>
                     <div className="space-y-2">
