@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ProjectImage } from "@/components/ui/project-image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -81,12 +81,12 @@ export default async function ProjectDetailPage({
   }
 
   const relatedProjects = FEATURED_PROJECTS.filter(
-    (item) => item.id !== project.id
+    (item) => item.id !== project.id,
   ).slice(0, 3);
 
   return (
-    <section className="container-safe bg-gradient-to-b from-black via-slate-950 to-black py-24">
-      <div className="container mx-auto max-w-6xl px-4">
+    <section className="container-safe bg-gradient-to-b from-black via-slate-950 to-black py-16 sm:py-24">
+      <div className="container mx-auto max-w-6xl px-3 sm:px-4">
         <div className="mb-10">
           <Link
             href="/projects"
@@ -98,11 +98,11 @@ export default async function ProjectDetailPage({
         </div>
 
         <GlassCard className="overflow-hidden">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 p-6 sm:p-10">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 p-3 sm:p-6 lg:p-10">
             <div className="space-y-6">
               <div className="relative">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
-                  <Image
+                  <ProjectImage
                     src={project.image}
                     alt={project.title}
                     fill
@@ -152,7 +152,7 @@ export default async function ProjectDetailPage({
             </div>
 
             <div className="space-y-8">
-              <GlassCard className="p-6 bg-black/40 border-white/10">
+              <GlassCard className="p-4 sm:p-6 bg-black/40 border-white/10">
                 <div className="grid gap-6">
                   <div>
                     <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
@@ -173,7 +173,7 @@ export default async function ProjectDetailPage({
                 </div>
               </GlassCard>
 
-              <GlassCard className="p-6">
+              <GlassCard className="p-4 sm:p-6">
                 <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
                   Impact mesurable
                 </h2>
@@ -190,7 +190,7 @@ export default async function ProjectDetailPage({
                 </ul>
               </GlassCard>
 
-              <GlassCard className="p-6">
+              <GlassCard className="p-4 sm:p-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
@@ -249,7 +249,7 @@ export default async function ProjectDetailPage({
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {project.features.map((feature) => (
-                <GlassCard key={feature} className="p-5">
+                <GlassCard key={feature} className="p-4 sm:p-5">
                   <div className="flex items-start gap-3">
                     <Sparkles className="w-5 h-5 text-cyan-400" />
                     <p className="text-sm text-white/80 leading-relaxed">
@@ -269,15 +269,16 @@ export default async function ProjectDetailPage({
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
               {relatedProjects.map((item) => (
-                <GlassCard key={item.id} className="p-6 h-full" hover>
+                <GlassCard key={item.id} className="p-4 sm:p-6 h-full" hover>
                   <div className="space-y-4">
                     <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10">
-                      <Image
+                      <ProjectImage
                         src={item.image}
                         alt={item.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="object-cover"
+                        priority
                       />
                     </div>
                     <div className="space-y-2">

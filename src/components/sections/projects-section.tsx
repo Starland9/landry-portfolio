@@ -8,7 +8,7 @@ import { Github, ExternalLink, Star, GitFork, Calendar } from "lucide-react";
 import { GitHubRepo } from "@/types/github";
 import { formatDate } from "@/lib/utils";
 import { FEATURED_PROJECTS } from "@/lib/constants";
-import Image from "next/image";
+import { ProjectImage } from "@/components/ui/project-image";
 
 export default function ProjectsSection() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -42,8 +42,10 @@ export default function ProjectsSection() {
       });
   }, []);
 
-  const filteredRepos = Array.isArray(repos) 
-    ? repos.filter((repo) => filter === "all" || repo.language === filter).slice(0, 6)
+  const filteredRepos = Array.isArray(repos)
+    ? repos
+        .filter((repo) => filter === "all" || repo.language === filter)
+        .slice(0, 6)
     : [];
 
   const getLanguageColor = (language: string | null) => {
@@ -72,7 +74,7 @@ export default function ProjectsSection() {
       {/* Background decorations */}
       <div className="absolute top-1/4 left-0 w-72 h-72 bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-600/5 rounded-full blur-[120px] pointer-events-none" />
-      
+
       <div className="container mx-auto max-w-7xl relative">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -106,7 +108,11 @@ export default function ProjectsSection() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="flex justify-center mb-12"
         >
-          <GlassButton href="/projects" size="lg" className="shadow-lg shadow-cyan-500/20">
+          <GlassButton
+            href="/projects"
+            size="lg"
+            className="shadow-lg shadow-cyan-500/20"
+          >
             ✨ Explorer tous mes projets vedettes
           </GlassButton>
         </motion.div>
@@ -149,7 +155,7 @@ export default function ProjectsSection() {
             <GlassCard className="overflow-hidden">
               <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 p-6 sm:p-10 items-center">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
-                  <Image
+                  <ProjectImage
                     src={flagshipProject.image}
                     alt={flagshipProject.title}
                     fill
