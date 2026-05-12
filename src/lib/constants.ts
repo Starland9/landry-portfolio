@@ -658,6 +658,114 @@ export const FEATURED_PROJECTS = [
     color: "from-blue-500 to-cyan-500",
   },
   {
+    id: "gestion-stock-entrepot",
+    title: "Gestion Stock Entrepot",
+    headline:
+      "Solution complete de gestion d'entrepot avec backend Django 6/DRF et frontend Next.js.",
+    description:
+      "Application full-stack pour piloter produits, stocks, ventes, achats, inventaires et transferts entre entrepots depuis une interface moderne.",
+    summary:
+      "Gestion Stock Entrepot est une plateforme de gestion operationnelle qui centralise tous les flux metiers d'un entrepot: mouvements de stock, ventes, achats, inventaires et administration des vendeurs, avec une API REST versionnee securisee par JWT.",
+    problem:
+      "Le suivi manuel des stocks provoque des erreurs d'inventaire, des ruptures et une faible visibilite sur les flux entre differents entrepots.",
+    solution:
+      "Une architecture moderne Django 6 + DRF + Next.js qui automatise les mouvements de stock en temps reel, standardise les operations et expose une API REST versionnee avec authentification JWT.",
+    impact: [
+      "Centralisation complete des operations d'entrepot dans une seule plateforme",
+      "Automatisation des flux de stock lies aux ventes, achats et transferts",
+      "Traçabilite renforcée grace a une API versionnee securisee par JWT",
+    ],
+    features: [
+      "Gestion des produits",
+      "Gestion des entrepots et du stock",
+      "Ventes (diminue le stock)",
+      "Achats (augmente le stock)",
+      "Inventaires",
+      "Transferts entre entrepots",
+      "Gestion des vendeurs",
+      "API REST versionnee + JWT",
+    ],
+    role: [
+      "Conception et developpement backend avec Django 6 et DRF",
+      "Developpement frontend avec Next.js",
+      "Modelisation des flux de stock et securisation API JWT",
+    ],
+    timeline: "2026 · En cours",
+    team: "Solo project",
+    status: "En production",
+    technologies: [
+      "Django 6",
+      "Django REST Framework",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "JWT",
+    ],
+    image: "/images/projects/stock-entrepot.png",
+    liveUrl: "https://stockpro-three.vercel.app/",
+    githubUrl: null,
+    featured: true,
+    category: "web",
+    color: "from-emerald-500 to-cyan-600",
+  },
+  {
+    id: "g-buy-web",
+    title: "G-Buy",
+    headline:
+      "Marketplace hybride qui digitalise le commerce de groupage en Afrique, notamment au Cameroun.",
+    description:
+      "Plateforme web qui connecte vendeurs groupeurs et clients avec des parcours d'achat modernes, des paiements structures et une gestion operationnelle complete.",
+    summary:
+      "G-Buy remplace les process informels (WhatsApp, fichiers Excel, paiements non traces) par une plateforme structurée, traçable et scalable pour professionnaliser le commerce de groupage.",
+    problem:
+      "Le commerce de groupage repose souvent sur des outils disperses et manuels, ce qui limite la visibilite des operations, la fiabilite des paiements et la croissance des vendeurs.",
+    solution:
+      "Une architecture Django + Next.js avec des espaces dedies Client, Groupeur et Admin, couvrant tout le cycle: decouverte produit, commande, paiement partiel, suivi et pilotage metier.",
+    impact: [
+      "Structuration des flux commerciaux avec suivi des commandes en temps reel",
+      "Professionnalisation des vendeurs groupeurs via des outils de gestion integres",
+      "Gouvernance renforcee grace a un espace admin et un journal d'audit",
+    ],
+    features: [
+      "Zone Client: parcours produits avec filtres et recherche",
+      "Zone Client: page produit detaillee",
+      "Zone Client: panier et checkout avec paiement partiel (50%, 75%, 100%)",
+      "Zone Client: suivi des commandes en temps reel",
+      "Zone Client: profil et historique des achats",
+      "Zone Groupeur: tableau de bord (revenus, commandes, activite)",
+      "Zone Groupeur: gestion des produits (creation, modification, desactivation)",
+      "Zone Groupeur: gestion des groupages (campagnes de vente)",
+      "Zone Groupeur: gestion des categories",
+      "Zone Groupeur: suivi des commandes avec mise a jour des statuts",
+      "Zone Admin: supervision utilisateurs, groupers et revenus",
+      "Zone Admin: attribution des roles",
+      "Zone Admin: activation/desactivation des comptes groupeurs",
+      "Zone Admin: journal d'audit",
+    ],
+    role: [
+      "Architecture et developpement full-stack Django + Next.js",
+      "Conception des flux metier e-commerce et groupage",
+      "Mise en place des espaces Client, Groupeur et Admin",
+    ],
+    timeline: "2026 · En production",
+    team: "Solo project",
+    status: "En production",
+    technologies: [
+      "Django",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "REST API",
+      "JWT",
+    ],
+    image: "/images/projects/g-buy.png",
+    liveUrl: "https://www.gbuy-cm.com/",
+    githubUrl: null,
+    featured: true,
+    category: "web",
+    color: "from-amber-500 to-orange-600",
+  },
+  {
     id: "open-whatsapp-bot",
     title: "Open Whatsapp Bot",
     headline:
