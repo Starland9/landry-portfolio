@@ -1,10 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import { Github, ExternalLink, Star, GitFork, Calendar } from "lucide-react";
+import {
+  Github,
+  ExternalLink,
+  Star,
+  GitFork,
+  Calendar,
+  AlertTriangle,
+  RefreshCw,
+} from "lucide-react";
 import { GitHubRepo } from "@/types/github";
 import { formatDate } from "@/lib/utils";
 import { FEATURED_PROJECTS } from "@/lib/constants";
@@ -13,6 +21,7 @@ import { ProjectImage } from "@/components/ui/project-image";
 export default function ProjectsSection() {
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("all");
 
   const technologies = [
@@ -28,15 +37,20 @@ export default function ProjectsSection() {
   ];
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
     fetch("/api/github/repos")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`Erreur ${res.status}: ${res.statusText}`);
+        return res.json();
+      })
       .then((data) => {
-        // Ensure data is an array
         setRepos(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch((error) => {
-        console.error("Error fetching repos:", error);
+      .catch((err) => {
+        console.error("Error fetching repos:", err);
+        setError(err.message || "Impossible de charger les projets GitHub");
         setRepos([]);
         setLoading(false);
       });
@@ -215,17 +229,86 @@ export default function ProjectsSection() {
 
         {/* GitHub Projects Grid */}
         {loading ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            aria-busy="true"
+            aria-label="Chargement des projets GitHub"
+          >
             {Array.from({ length: 6 }).map((_, i) => (
-              <GlassCard key={i} className="p-6 animate-pulse">
-                <div className="space-y-4">
-                  <div className="h-4 bg-white/10 rounded w-3/4"></div>
-                  <div className="h-3 bg-white/10 rounded w-full"></div>
-                  <div className="h-3 bg-white/10 rounded w-2/3"></div>
+              <GlassCard key={i} className="p-6">
+                <div className="space-y-4" aria-hidden="true">
+                  <div className="skeleton h-5 w-3/4" />
+                  <div className="skeleton h-3 w-full" />
+                  <div className="skeleton h-3 w-2/3" />
+                  <div className="flex gap-3">
+                    <div className="skeleton h-6 w-16 rounded-full" />
+                    <div className="skeleton h-6 w-12 rounded-full" />
+                  </div>
                 </div>
               </GlassCard>
             ))}
           </div>
+        ) : error ? (
+          /* Error State */
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12"
+            role="alert"
+          >
+            <div className="relative mx-auto mb-6 w-16 h-16">
+              <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-xl" />
+              <div className="relative w-16 h-16 rounded-full bg-amber-500/10 border border-amber-400/30 flex items-center justify-center">
+                <AlertTriangle className="w-8 h-8 text-amber-400" />
+              </div>
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">
+              Projets momentanément indisponibles
+            </h3>
+            <p className="text-white/50 mb-6 max-w-md mx-auto">
+              {error.includes("403")
+                ? "Limite API GitHub atteinte. Revenez dans une heure."
+                : "Une erreur est survenue lors du chargement des projets."}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <GlassButton
+                onClick={() => window.location.reload()}
+                variant="primary"
+                size="sm"
+              >
+                <RefreshCw className="w-4 h-4" />
+                Réessayer
+              </GlassButton>
+              <GlassButton
+                variant="outline"
+                size="sm"
+                onClick={() =>
+                  window.open("https://github.com/Starland9", "_blank")
+                }
+              >
+                <Github className="w-4 h-4" />
+                Voir sur GitHub
+              </GlassButton>
+            </div>
+          </motion.div>
+        ) : filteredRepos.length === 0 ? (
+          /* Empty State */
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12"
+          >
+            <p className="text-white/40 text-lg">
+              Aucun projet trouvé pour le filtre{" "}
+              <span className="text-cyan-400">{filter}</span>.
+            </p>
+            <button
+              onClick={() => setFilter("all")}
+              className="mt-3 text-cyan-400 hover:underline text-sm"
+            >
+              Réinitialiser le filtre
+            </button>
+          </motion.div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredRepos.map((repo, index) => (
@@ -255,8 +338,9 @@ export default function ProjectsSection() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="hover:text-white transition-colors"
+                          aria-label={`Voir le code source de ${repo.name} sur GitHub`}
                         >
-                          <Github className="w-5 h-5" />
+                          <Github className="w-5 h-5" aria-hidden="true" />
                         </a>
                         {repo.homepage && (
                           <a
@@ -264,8 +348,12 @@ export default function ProjectsSection() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-white transition-colors"
+                            aria-label={`Visiter le site de ${repo.name}`}
                           >
-                            <ExternalLink className="w-5 h-5" />
+                            <ExternalLink
+                              className="w-5 h-5"
+                              aria-hidden="true"
+                            />
                           </a>
                         )}
                       </div>

@@ -57,8 +57,10 @@ export default function Navbar() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           scrolled
             ? "backdrop-blur-xl bg-black/20 border-b border-white/10 shadow-2xl"
-            : "bg-transparent"
+            : "bg-transparent",
         )}
+        role="navigation"
+        aria-label="Navigation principale"
       >
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -90,7 +92,7 @@ export default function Navbar() {
                     "relative px-3 py-2 text-sm font-medium transition-all duration-300",
                     activeSection === item.href.substring(1)
                       ? "text-cyan-400"
-                      : "text-white/70 hover:text-white"
+                      : "text-white/70 hover:text-white",
                   )}
                 >
                   {item.name}
@@ -115,16 +117,18 @@ export default function Navbar() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="p-2 rounded-lg bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition-all"
+                  aria-label="Profil GitHub"
                 >
-                  <Github className="w-5 h-5" />
+                  <Github className="w-5 h-5" aria-hidden="true" />
                 </motion.a>
                 <motion.button
                   onClick={() => scrollToSection("#contact")}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="p-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/50 text-cyan-400 hover:from-cyan-500/30 hover:to-purple-600/30 transition-all"
+                  aria-label="Contact"
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-5 h-5" aria-hidden="true" />
                 </motion.button>
               </div>
 
@@ -133,11 +137,13 @@ export default function Navbar() {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
                 className="lg:hidden p-2 rounded-lg bg-white/10 border border-white/20 text-white"
+                aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                aria-expanded={isOpen}
               >
                 {isOpen ? (
-                  <X className="w-6 h-6" />
+                  <X className="w-6 h-6" aria-hidden="true" />
                 ) : (
-                  <Menu className="w-6 h-6" />
+                  <Menu className="w-6 h-6" aria-hidden="true" />
                 )}
               </motion.button>
             </div>
@@ -195,7 +201,7 @@ export default function Navbar() {
                           "w-full text-left px-4 py-3 rounded-xl transition-all duration-300",
                           activeSection === item.href.substring(1)
                             ? "bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/50 text-cyan-400"
-                            : "text-white/70 hover:text-white hover:bg-white/10"
+                            : "text-white/70 hover:text-white hover:bg-white/10",
                         )}
                       >
                         {item.name}

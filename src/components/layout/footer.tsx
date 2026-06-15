@@ -50,31 +50,29 @@ export default function Footer() {
             className="space-y-4"
           >
             <h3 className="text-white font-semibold">Navigation</h3>
-            <nav className="space-y-2">
-              {["Accueil", "À Propos", "Projets", "Contact"].map(
-                (item, index) => (
-                  <motion.button
-                    key={item}
-                    onClick={() => {
-                      const section =
-                        item === "Accueil"
-                          ? "hero"
-                          : item === "À Propos"
-                            ? "about"
-                            : item === "Projets"
-                              ? "projects"
-                              : "contact";
-                      document
-                        .getElementById(section)
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                    whileHover={{ x: 5 }}
-                    className="block text-white/70 hover:text-cyan-400 transition-colors"
-                  >
-                    {item}
-                  </motion.button>
-                )
-              )}
+            <nav className="space-y-2" aria-label="Navigation du pied de page">
+              {["Accueil", "À Propos", "Projets", "Contact"].map((item) => (
+                <motion.button
+                  key={item}
+                  onClick={() => {
+                    const section =
+                      item === "Accueil"
+                        ? "hero"
+                        : item === "À Propos"
+                          ? "about"
+                          : item === "Projets"
+                            ? "projects"
+                            : "contact";
+                    document
+                      .getElementById(section)
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  whileHover={{ x: 5 }}
+                  className="block text-white/70 hover:text-cyan-400 transition-colors"
+                >
+                  {item}
+                </motion.button>
+              ))}
             </nav>
           </motion.div>
 
@@ -107,8 +105,9 @@ export default function Footer() {
                     transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
                     whileHover={{ scale: 1.2, y: -2 }}
                     className="p-2 rounded-lg bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition-all"
+                    aria-label={`${social.name} - ${social.url}`}
                   >
-                    <social.icon className="w-4 h-4" />
+                    <social.icon className="w-4 h-4" aria-hidden="true" />
                   </motion.a>
                 ))}
               </div>
@@ -139,8 +138,9 @@ export default function Footer() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="p-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/50 text-cyan-400 hover:from-cyan-500/30 hover:to-purple-600/30 transition-all"
+            aria-label="Retour en haut de la page"
           >
-            <ArrowUp className="w-4 h-4" />
+            <ArrowUp className="w-4 h-4" aria-hidden="true" />
           </motion.button>
         </motion.div>
       </div>

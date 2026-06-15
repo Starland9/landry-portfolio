@@ -44,17 +44,20 @@ export function FloatingParticles() {
   }
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-gradient-to-r from-cyan-400 to-purple-600"
+          className="absolute rounded-full bg-gradient-to-r from-cyan-400/60 to-purple-600/40"
           style={{
             width: particle.size,
             height: particle.size,
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-            opacity: particle.opacity,
+            opacity: particle.opacity * 0.35, // Réduit pour moins de bruit visuel
           }}
           animate={{
             x: [0, particle.speedX * 100, 0],

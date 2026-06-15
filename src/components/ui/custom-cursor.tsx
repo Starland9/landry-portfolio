@@ -1,20 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    // Désactiver sur mobile (écran tactile)
+    const isTouchDevice =
+      "ontouchstart" in window ||
+      window.matchMedia("(pointer: coarse)").matches;
+
+    // Désactiver si l'utilisateur préfère réduire les animations
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (isTouchDevice || prefersReducedMotion) {
+      document.body.classList.remove("custom-cursor");
+      return;
+    }
+
+    setIsEnabled(true);
+  }, []);
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Tab") {
+      document.body.classList.add("keyboard-user");
+    }
+  }, []);
+
+  const handleMouseDownGlobal = useCallback(() => {
+    document.body.classList.remove("keyboard-user");
   }, []);
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isEnabled) return;
 
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -23,39 +48,51 @@ export default function CustomCursor() {
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
 
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
-
-    // Add event listeners
-    window.addEventListener("mousemove", updateMousePosition);
+    window.addEventListener("mousemove", updateMousePosition, {
+      passive: true,
+    });
     window.addEventListener("mousedown", handleMouseDown);
     window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDownGlobal);
 
-    // Add hover listeners to interactive elements
-    const interactiveElements = document.querySelectorAll(
-      'a, button, [role="button"]'
-    );
-    interactiveElements.forEach((el) => {
-      el.addEventListener("mouseenter", handleMouseEnter);
-      el.addEventListener("mouseleave", handleMouseLeave);
-    });
+    // Hover detection via event delegation (perf optimisée)
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a, button, [role='button']")
+      ) {
+        setIsHovering(true);
+      }
+    };
+    const handleMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        target.tagName === "A" ||
+        target.tagName === "BUTTON" ||
+        target.closest("a, button, [role='button']")
+      ) {
+        setIsHovering(false);
+      }
+    };
+
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
-
-      interactiveElements.forEach((el) => {
-        el.removeEventListener("mouseenter", handleMouseEnter);
-        el.removeEventListener("mouseleave", handleMouseLeave);
-      });
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("mousedown", handleMouseDownGlobal);
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
     };
-  }, [isClient]);
+  }, [isEnabled, handleKeyDown, handleMouseDownGlobal]);
 
-  // Ne pas rendre le curseur côté serveur
-  if (!isClient) {
-    return null;
-  }
+  if (!isEnabled) return null;
 
   return (
     <>
@@ -66,14 +103,9 @@ export default function CustomCursor() {
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
         }}
-        animate={{
-          scale: isClicking ? 0.8 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 30,
-        }}
+        animate={{ scale: isClicking ? 0.8 : 1 }}
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        aria-hidden="true"
       />
 
       {/* Outer ring */}
@@ -87,11 +119,8 @@ export default function CustomCursor() {
           scale: isHovering ? 2 : 1,
           opacity: isHovering ? 0.6 : 0.3,
         }}
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 20,
-        }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        aria-hidden="true"
       />
     </>
   );

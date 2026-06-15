@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <PageTransition>
       <Navbar />
-      <main className="relative">
+      <main className="relative" id="main-content" tabIndex={-1}>
         <section id="hero">
           <HeroSection />
         </section>

@@ -1,37 +1,115 @@
 @import "tailwindcss";
 
+/* ============================================
+   DESIGN TOKENS — Système de design cohérent
+   ============================================ */
 @theme {
-  --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-family-mono: ui-monospace, "SF Mono", Monaco, "Andale Mono", monospace;
 
+  /* Couleurs d'accent */
+  --color-cyber-cyan: #22d3ee;
+  --color-cyber-purple: #a855f7;
+  --color-cyber-pink: #ec4899;
+
+  /* Glassmorphism */
+  --color-glass-bg: rgba(255, 255, 255, 0.06);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-hover: rgba(255, 255, 255, 0.12);
+
+  /* Ombres glow */
+  --shadow-glow-cyan: 0 0 20px rgba(34, 211, 238, 0.25);
+  --shadow-glow-purple: 0 0 20px rgba(168, 85, 247, 0.25);
+  --shadow-glow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  /* Rayons */
+  --radius-glass: 16px;
+
+  /* Animations */
   --animate-gradient-shift: gradient-shift 3s ease infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-glow: glow 2s ease-in-out infinite alternate;
+  --animate-skeleton: skeleton-pulse 2s ease-in-out infinite;
 }
 
+/* ============================================
+   BASE — Reset & Accessibilité
+   ============================================ */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 body {
   background: #0a0a0a;
   color: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
   width: 100vw;
   max-width: 100%;
 }
 
-/* Fixes pour débordements mobiles */
 * {
   box-sizing: border-box;
 }
 
-html {
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100%;
+/* ============================================
+   ACCESSIBILITÉ — Focus visible (WCAG 2.4.7)
+   ============================================ */
+:focus-visible {
+  outline: 3px solid #22d3ee;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Réduire les animations pour les utilisateurs qui le préfèrent */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Désactiver le curseur custom pour les utilisateurs clavier */
+body.keyboard-user .custom-cursor * {
+  cursor: auto !important;
+}
+
+/* ============================================
+   SKELETON — États de chargement animés
+   ============================================ */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.skeleton {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  animation: skeleton-pulse 2s ease-in-out infinite;
 }
 
 /* Container responsive safe */
@@ -258,7 +336,8 @@ html {
 
 /* Float animation */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -286,7 +365,8 @@ html {
 
 /* Glow effect */
 @keyframes glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
   }
   50% {
