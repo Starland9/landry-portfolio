@@ -26,8 +26,8 @@ export default function ProjectsLayout({
         <div className="container mx-auto max-w-7xl px-4 py-6">
           <button
             onClick={handleBack}
-            aria-label="Retour"
-            title="Retour"
+            aria-label="Back"
+            title="Back"
             className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 text-white/70 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

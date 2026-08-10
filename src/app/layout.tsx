@@ -11,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body className="font-sans antialiased bg-black text-white overflow-x-hidden custom-cursor">
         <SkipLink />
         <CustomCursor />
