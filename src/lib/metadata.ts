@@ -8,7 +8,7 @@ export const siteConfig = {
   ogImage: "https://portfolio.starland9.dev/og-image.jpg",
   links: {
     github: "https://github.com/Starland9",
-    linkedin: "https://www.linkedin.com/in/landry-simo-7b326122b/",
+    linkedin: "https://www.linkedin.com/in/landry-simo9/",
     twitter: "https://x.com/starland237",
   },
 };
