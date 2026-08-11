@@ -36,8 +36,7 @@ export default function Footer() {
               <span className="text-white font-bold text-xl">Starland9</span>
             </div>
             <p className="text-white/70 max-w-sm">
-              Développeur Full-Stack passionné, créant des expériences web
-              exceptionnelles avec les technologies modernes.
+              Software engineer building production web and mobile applications.
             </p>
           </motion.div>
 
@@ -50,27 +49,24 @@ export default function Footer() {
             className="space-y-4"
           >
             <h3 className="text-white font-semibold">Navigation</h3>
-            <nav className="space-y-2" aria-label="Navigation du pied de page">
-              {["Accueil", "À Propos", "Projets", "Contact"].map((item) => (
+            <nav className="space-y-2" aria-label="Footer navigation">
+              {[
+                { label: "Home", section: "hero" },
+                { label: "About", section: "about" },
+                { label: "Projects", section: "projects" },
+                { label: "Contact", section: "contact" },
+              ].map((item) => (
                 <motion.button
-                  key={item}
+                  key={item.label}
                   onClick={() => {
-                    const section =
-                      item === "Accueil"
-                        ? "hero"
-                        : item === "À Propos"
-                          ? "about"
-                          : item === "Projets"
-                            ? "projects"
-                            : "contact";
                     document
-                      .getElementById(section)
+                      .getElementById(item.section)
                       ?.scrollIntoView({ behavior: "smooth" });
                   }}
                   whileHover={{ x: 5 }}
                   className="block text-white/70 hover:text-cyan-400 transition-colors"
                 >
-                  {item}
+                  {item.label}
                 </motion.button>
               ))}
             </nav>
@@ -127,9 +123,9 @@ export default function Footer() {
           className="flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <div className="flex items-center gap-2 text-white/60 text-sm">
-            <span>© {currentYear} Starland9. Fait avec</span>
+            <span>© {currentYear} Landry Simo. Built with</span>
             <Heart className="w-4 h-4 text-red-400 animate-pulse" />
-            <span>et beaucoup de café ☕</span>
+            <span>and lots of coffee ☕</span>
           </div>
 
           {/* Back to Top */}
@@ -138,7 +134,7 @@ export default function Footer() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className="p-2 rounded-lg bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border border-cyan-400/50 text-cyan-400 hover:from-cyan-500/30 hover:to-purple-600/30 transition-all"
-            aria-label="Retour en haut de la page"
+            aria-label="Back to top"
           >
             <ArrowUp className="w-4 h-4" aria-hidden="true" />
           </motion.button>
