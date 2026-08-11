@@ -18,7 +18,7 @@ export const PERSONAL_INFO = {
   subtitle: "Flutter · Django · Next.js",
   email: "contact@starland9.dev",
   github: "https://github.com/Starland9",
-  linkedin: "https://www.linkedin.com/in/landry-simo-7b326122b/",
+  linkedin: "https://www.linkedin.com/in/landry-simo9/",
   twitter: "https://x.com/starland237",
   location: "Douala, Cameroon",
   bio: "Software engineer with 4+ years of experience building production web and mobile applications. Specialized in Flutter for mobile, Django and Next.js for web, with strong backend ownership across REST API design, PostgreSQL, and deployment.",
