@@ -60,7 +60,7 @@ export default function Navbar() {
             : "bg-transparent",
         )}
         role="navigation"
-        aria-label="Navigation principale"
+        aria-label="Main navigation"
       >
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -117,7 +117,7 @@ export default function Navbar() {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   className="p-2 rounded-lg bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 transition-all"
-                  aria-label="Profil GitHub"
+                  aria-label="GitHub profile"
                 >
                   <Github className="w-5 h-5" aria-hidden="true" />
                 </motion.a>
@@ -137,7 +137,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
                 className="lg:hidden p-2 rounded-lg bg-white/10 border border-white/20 text-white"
-                aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}
               >
                 {isOpen ? (
