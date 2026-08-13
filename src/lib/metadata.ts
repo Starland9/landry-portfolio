@@ -1,48 +1,48 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-  name: "Starland9 Portfolio",
+  name: "Landry Simo — Software Engineer",
   description:
-    "Portfolio de Starland9, développeur Full-Stack passionné par les technologies modernes et les interfaces utilisateur révolutionnaires.",
-  url: "https://starland9.dev",
-  ogImage: "https://starland9.dev/og-image.jpg",
+    "Software engineer building production web and mobile applications. Specialized in Flutter, Django, Next.js, and the systems behind them.",
+  url: "https://portfolio.starland9.dev",
+  ogImage: "https://portfolio.starland9.dev/og-image.jpg",
   links: {
     github: "https://github.com/Starland9",
-    linkedin: "https://linkedin.com/in/starland9",
-    twitter: "https://twitter.com/starland9",
+    linkedin: "https://www.linkedin.com/in/landry-simo9/",
+    twitter: "https://x.com/starland237",
   },
 };
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | Landry Simo`,
   },
   description: siteConfig.description,
   keywords: [
-    "développeur",
-    "full-stack",
-    "react",
-    "nextjs",
+    "software engineer",
+    "flutter developer",
+    "django developer",
+    "next.js",
     "typescript",
-    "nodejs",
+    "python",
+    "mobile development",
+    "web development",
+    "full-stack",
     "portfolio",
-    "web developer",
-    "frontend",
-    "backend",
-    "javascript",
+    "remote engineer",
   ],
   authors: [
     {
-      name: "Starland9",
+      name: "Landry Simo",
       url: siteConfig.url,
     },
   ],
-  creator: "Starland9",
+  creator: "Landry Simo",
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: "website",
-    locale: "fr_FR",
+    locale: "en_US",
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@starland9",
+    creator: "@starland237",
   },
   icons: {
     icon: "/favicon.ico",

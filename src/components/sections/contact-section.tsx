@@ -10,7 +10,6 @@ import {
   Linkedin,
   Twitter,
   MapPin,
-  Phone,
   Send,
   CheckCircle,
   AlertCircle,
@@ -32,14 +31,14 @@ interface FormErrors {
 
 function validateForm(form: ContactForm): FormErrors {
   const errors: FormErrors = {};
-  if (!form.name.trim()) errors.name = "Le nom est requis";
-  else if (form.name.trim().length < 2) errors.name = "Le nom est trop court";
-  if (!form.email.trim()) errors.email = "L'email est requis";
+  if (!form.name.trim()) errors.name = "Name is required";
+  else if (form.name.trim().length < 2) errors.name = "Name is too short";
+  if (!form.email.trim()) errors.email = "Email is required";
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-    errors.email = "Format d'email invalide";
-  if (!form.message.trim()) errors.message = "Le message est requis";
+    errors.email = "Invalid email format";
+  if (!form.message.trim()) errors.message = "Message is required";
   else if (form.message.trim().length < 10)
-    errors.message = "Le message doit contenir au moins 10 caractères";
+    errors.message = "Message must be at least 10 characters";
   return errors;
 }
 
@@ -61,7 +60,6 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validation
     const validationErrors = validateForm(form);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -71,7 +69,6 @@ export default function ContactSection() {
     setStatus("submitting");
 
     try {
-      // Simulation réaliste avec latence réseau
       await new Promise((resolve) =>
         setTimeout(resolve, 1000 + Math.random() * 500),
       );
@@ -87,7 +84,6 @@ export default function ContactSection() {
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    // Effacer l'erreur quand l'utilisateur tape
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -112,7 +108,7 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
           <h2
@@ -122,7 +118,7 @@ export default function ContactSection() {
             Contact
           </h2>
           <p className="text-xl text-white/70 max-w-2xl mx-auto">
-            Prêt à collaborer ? Discutons de votre prochain projet !
+            Have a project in mind? Let&apos;s talk.
           </p>
         </motion.div>
 
@@ -132,14 +128,13 @@ export default function ContactSection() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
             <GlassCard className="p-8">
               <h3 className="text-2xl font-bold text-white mb-6">
-                Envoyez-moi un message
+                Send a message
               </h3>
 
-              {/* Success state — feedback honnête */}
               {status === "success" && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -149,13 +144,10 @@ export default function ContactSection() {
                 >
                   <CheckCircle className="w-10 h-10 text-green-400 mx-auto mb-3" />
                   <h4 className="text-green-400 font-semibold text-lg mb-2">
-                    Démo — Message reçu ✓
+                    Demo — Message received ✓
                   </h4>
                   <p className="text-green-300/70 text-sm">
-                    Ceci est une démonstration. En production, votre message
-                    serait envoyé.
-                    <br />
-                    Pour me contacter directement :{" "}
+                    This is a demo form. To reach me directly:{" "}
                     <a
                       href={`mailto:${PERSONAL_INFO.email}`}
                       className="underline hover:text-green-200 inline-flex items-center gap-1"
@@ -167,7 +159,6 @@ export default function ContactSection() {
                 </motion.div>
               )}
 
-              {/* Error state */}
               {status === "error" && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -177,8 +168,7 @@ export default function ContactSection() {
                 >
                   <AlertCircle className="w-5 h-5 flex-shrink-0" />
                   <span>
-                    Une erreur est survenue. Veuillez réessayer ou me contacter
-                    directement à{" "}
+                    Something went wrong. Please try again or reach me at{" "}
                     <a
                       href={`mailto:${PERSONAL_INFO.email}`}
                       className="underline"
@@ -191,13 +181,12 @@ export default function ContactSection() {
 
               <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="space-y-4">
-                  {/* Nom */}
                   <div>
                     <label
                       htmlFor={nameId}
                       className="block text-white/80 text-sm font-medium mb-2"
                     >
-                      Nom complet <span aria-hidden="true">*</span>
+                      Full name <span aria-hidden="true">*</span>
                     </label>
                     <input
                       type="text"
@@ -212,7 +201,7 @@ export default function ContactSection() {
                         errors.name ? `${nameId}-error` : undefined
                       }
                       className={inputClasses("name")}
-                      placeholder="Votre nom"
+                      placeholder="Your name"
                       autoComplete="name"
                     />
                     {errors.name && (
@@ -226,7 +215,6 @@ export default function ContactSection() {
                     )}
                   </div>
 
-                  {/* Email */}
                   <div>
                     <label
                       htmlFor={emailId}
@@ -247,7 +235,7 @@ export default function ContactSection() {
                         errors.email ? `${emailId}-error` : undefined
                       }
                       className={inputClasses("email")}
-                      placeholder="votre@email.com"
+                      placeholder="you@email.com"
                       autoComplete="email"
                     />
                     {errors.email && (
@@ -261,7 +249,6 @@ export default function ContactSection() {
                     )}
                   </div>
 
-                  {/* Message */}
                   <div>
                     <label
                       htmlFor={messageId}
@@ -282,7 +269,7 @@ export default function ContactSection() {
                       }
                       rows={6}
                       className={inputClasses("message") + " resize-none"}
-                      placeholder="Parlez-moi de votre projet..."
+                      placeholder="Tell me about your project..."
                     />
                     {errors.message && (
                       <p
@@ -304,19 +291,19 @@ export default function ContactSection() {
                   disabled={status === "submitting"}
                   aria-label={
                     status === "submitting"
-                      ? "Envoi en cours..."
-                      : "Envoyer le message"
+                      ? "Sending..."
+                      : "Send message"
                   }
                 >
                   {status === "submitting" ? (
                     <span className="flex items-center gap-2">
                       <span className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      Envoi en cours...
+                      Sending...
                     </span>
                   ) : (
                     <span className="flex items-center gap-2">
                       <Send className="w-5 h-5" />
-                      Envoyer le message
+                      Send message
                     </span>
                   )}
                 </GlassButton>
@@ -329,13 +316,13 @@ export default function ContactSection() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
             className="space-y-8"
           >
             {/* Contact Information */}
             <GlassCard className="p-8">
               <h3 className="text-2xl font-bold text-white mb-6">
-                Informations de contact
+                Contact details
               </h3>
               <div className="space-y-4" role="list">
                 {CONTACT_INFO.map((info, index) => (
@@ -374,7 +361,7 @@ export default function ContactSection() {
 
             {/* Social Links */}
             <GlassCard className="p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Suivez-moi</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">Socials</h3>
               <div className="grid grid-cols-3 gap-4" role="list">
                 {SOCIAL_LINKS.map((social, index) => (
                   <motion.a
@@ -386,11 +373,11 @@ export default function ContactSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
+                    whileHover={{ scale: 1.05, y: -4 }}
                     whileTap={{ scale: 0.95 }}
                     className={`flex flex-col items-center gap-3 p-4 bg-white/10 border border-white/20 rounded-xl text-white/70 transition-all duration-300 ${social.color}`}
                     role="listitem"
-                    aria-label={`${social.name} - ${PERSONAL_INFO.fullName}`}
+                    aria-label={`${social.name} — ${PERSONAL_INFO.fullName}`}
                   >
                     <social.icon className="w-8 h-8" aria-hidden="true" />
                     <span className="text-sm font-medium">{social.name}</span>
@@ -407,12 +394,12 @@ export default function ContactSection() {
                   aria-hidden="true"
                 />
                 <span className="text-white font-medium">
-                  Disponible pour de nouveaux projets
+                  Available for new projects
                 </span>
               </div>
               <p className="text-white/60 text-sm mt-2">
-                Je suis actuellement ouvert aux opportunités de collaboration et
-                aux projets freelance.
+                Open to remote opportunities, freelance projects, and
+                full-time positions.
               </p>
             </GlassCard>
           </motion.div>

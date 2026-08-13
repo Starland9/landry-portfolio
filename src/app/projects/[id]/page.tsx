@@ -21,8 +21,6 @@ type ProjectParams = {
   id: string;
 };
 
-type ParamsInput = ProjectParams | Promise<ProjectParams>;
-
 function getProject(id: string) {
   return FEATURED_PROJECTS.find((project) => project.id === id);
 }
@@ -30,14 +28,14 @@ function getProject(id: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: ParamsInput;
+  params: Promise<ProjectParams>;
 }): Promise<Metadata> {
   const { id } = await params;
   const project = getProject(id);
 
   if (!project) {
     return {
-      title: "Projet introuvable | Landry Simo",
+      title: "Project not found | Landry Simo",
     };
   }
 
@@ -71,7 +69,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 export default async function ProjectDetailPage({
   params,
 }: {
-  params: ParamsInput;
+  params: Promise<ProjectParams>;
 }) {
   const { id } = await params;
   const project = getProject(id);
@@ -93,7 +91,7 @@ export default async function ProjectDetailPage({
             className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Retour aux projets vedettes
+            Back to projects
           </Link>
         </div>
 
@@ -140,11 +138,11 @@ export default async function ProjectDetailPage({
 
                 <div className="flex flex-wrap gap-3">
                   <GlassButton href={project.liveUrl}>
-                    Découvrir le produit
+                    View live
                   </GlassButton>
                   {project.githubUrl && (
                     <GlassButton href={project.githubUrl} variant="outline">
-                      Code source
+                      Source code
                     </GlassButton>
                   )}
                 </div>
@@ -156,7 +154,7 @@ export default async function ProjectDetailPage({
                 <div className="grid gap-6">
                   <div>
                     <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
-                      Le défi
+                      The challenge
                     </h2>
                     <p className="mt-3 text-white/75 leading-relaxed">
                       {project.problem}
@@ -164,7 +162,7 @@ export default async function ProjectDetailPage({
                   </div>
                   <div>
                     <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
-                      La réponse produit
+                      The solution
                     </h2>
                     <p className="mt-3 text-white/75 leading-relaxed">
                       {project.solution}
@@ -175,7 +173,7 @@ export default async function ProjectDetailPage({
 
               <GlassCard className="p-4 sm:p-6">
                 <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
-                  Impact mesurable
+                  Impact
                 </h2>
                 <ul className="mt-4 grid gap-3">
                   {project.impact.map((item) => (
@@ -194,7 +192,7 @@ export default async function ProjectDetailPage({
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
-                      Mon rôle
+                      My role
                     </h2>
                     <ul className="mt-4 grid gap-3 text-sm text-white/80">
                       {project.role.map((item) => (
@@ -207,12 +205,12 @@ export default async function ProjectDetailPage({
                   </div>
                   <div>
                     <h2 className="text-sm uppercase tracking-[0.3em] text-white/40">
-                      Stack & organisation
+                      Stack & team
                     </h2>
                     <div className="mt-4 space-y-4">
                       <div className="text-sm text-white/75">
                         <span className="block text-white/40 text-xs uppercase tracking-[0.3em] mb-1">
-                          Stack technique
+                          Tech stack
                         </span>
                         <div className="flex flex-wrap gap-2">
                           {project.technologies.map((tech) => (
@@ -227,7 +225,7 @@ export default async function ProjectDetailPage({
                       </div>
                       <div className="text-sm text-white/75">
                         <span className="block text-white/40 text-xs uppercase tracking-[0.3em] mb-1">
-                          Équipe & gouvernance
+                          Team
                         </span>
                         <div className="flex items-center gap-2 text-white/70">
                           <Users className="w-4 h-4 text-emerald-400" />
@@ -245,7 +243,7 @@ export default async function ProjectDetailPage({
         {project.features.length > 0 && (
           <div className="mt-16">
             <h2 className="text-sm uppercase tracking-[0.3em] text-white/40 mb-6">
-              Capacités produit détaillées
+              Product capabilities
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               {project.features.map((feature) => (
@@ -265,7 +263,7 @@ export default async function ProjectDetailPage({
         {relatedProjects.length > 0 && (
           <div className="mt-20">
             <h2 className="text-sm uppercase tracking-[0.3em] text-white/40 mb-6">
-              Autres projets vedettes
+              Other projects
             </h2>
             <div className="grid gap-6 md:grid-cols-3">
               {relatedProjects.map((item) => (
@@ -303,7 +301,7 @@ export default async function ProjectDetailPage({
                       href={`/projects/${item.id}`}
                       variant="secondary"
                     >
-                      Explorer
+                      Explore
                     </GlassButton>
                   </div>
                 </GlassCard>

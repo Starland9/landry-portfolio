@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect } from "react";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import {
@@ -41,7 +41,7 @@ export default function ProjectsSection() {
     setError(null);
     fetch("/api/github/repos")
       .then((res) => {
-        if (!res.ok) throw new Error(`Erreur ${res.status}: ${res.statusText}`);
+        if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
         return res.json();
       })
       .then((data) => {
@@ -50,7 +50,7 @@ export default function ProjectsSection() {
       })
       .catch((err) => {
         console.error("Error fetching repos:", err);
-        setError(err.message || "Impossible de charger les projets GitHub");
+        setError(err.message || "Could not load GitHub projects");
         setRepos([]);
         setLoading(false);
       });
@@ -76,8 +76,9 @@ export default function ProjectsSection() {
     return colors[language || ""] || "from-gray-400 to-gray-600";
   };
 
+  // Use G-Buy as the flagship project
   const flagshipProject =
-    FEATURED_PROJECTS.find((project) => project.id === "fais-mon-cv") ||
+    FEATURED_PROJECTS.find((project) => project.id === "g-buy-web") ||
     FEATURED_PROJECTS[0];
 
   return (
@@ -94,7 +95,7 @@ export default function ProjectsSection() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
           <motion.span
@@ -108,10 +109,10 @@ export default function ProjectsSection() {
             Portfolio
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
-            Projets
+            Projects
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto px-4">
-            Découvrez mes créations les plus récentes et innovantes
+            Production applications shipped across web and mobile
           </p>
         </motion.div>
 
@@ -119,7 +120,7 @@ export default function ProjectsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="flex justify-center mb-12"
         >
           <GlassButton
@@ -127,7 +128,7 @@ export default function ProjectsSection() {
             size="lg"
             className="shadow-lg shadow-cyan-500/20"
           >
-            ✨ Explorer tous mes projets vedettes
+            View all projects
           </GlassButton>
         </motion.div>
 
@@ -136,7 +137,7 @@ export default function ProjectsSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {technologies.map((tech, index) => (
@@ -146,24 +147,25 @@ export default function ProjectsSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.25 + index * 0.03 }}
+              transition={{ delay: 0.2 + index * 0.03 }}
               className={`px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${
                 filter === tech
                   ? "bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/10 scale-105"
                   : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white/80 hover:border-white/20"
               }`}
             >
-              {tech === "all" ? "Tous" : tech}
+              {tech === "all" ? "All" : tech}
             </motion.button>
           ))}
         </motion.div>
 
+        {/* Flagship project spotlight */}
         {flagshipProject && (
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-16"
           >
             <GlassCard className="overflow-hidden">
@@ -181,7 +183,7 @@ export default function ProjectsSection() {
                 <div className="space-y-5">
                   <div className="space-y-2">
                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs uppercase tracking-[0.3em] text-white/60">
-                      Projet vedette
+                      Featured project
                     </span>
                     <h3 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
                       {flagshipProject.title}
@@ -192,14 +194,14 @@ export default function ProjectsSection() {
                   </div>
                   <div className="flex flex-wrap gap-3">
                     <GlassButton href={`/projects/${flagshipProject.id}`}>
-                      Étude de cas détaillée
+                      Case study
                     </GlassButton>
                     {flagshipProject.liveUrl && (
                       <GlassButton
                         href={flagshipProject.liveUrl}
                         variant="secondary"
                       >
-                        Découvrir en ligne
+                        Live site
                       </GlassButton>
                     )}
                     {flagshipProject.githubUrl && (
@@ -207,7 +209,7 @@ export default function ProjectsSection() {
                         href={flagshipProject.githubUrl}
                         variant="outline"
                       >
-                        Voir le code
+                        Source code
                       </GlassButton>
                     )}
                   </div>
@@ -232,7 +234,7 @@ export default function ProjectsSection() {
           <div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             aria-busy="true"
-            aria-label="Chargement des projets GitHub"
+            aria-label="Loading GitHub projects"
           >
             {Array.from({ length: 6 }).map((_, i) => (
               <GlassCard key={i} className="p-6">
@@ -249,7 +251,6 @@ export default function ProjectsSection() {
             ))}
           </div>
         ) : error ? (
-          /* Error State */
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -263,12 +264,12 @@ export default function ProjectsSection() {
               </div>
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">
-              Projets momentanément indisponibles
+              GitHub projects temporarily unavailable
             </h3>
             <p className="text-white/50 mb-6 max-w-md mx-auto">
               {error.includes("403")
-                ? "Limite API GitHub atteinte. Revenez dans une heure."
-                : "Une erreur est survenue lors du chargement des projets."}
+                ? "GitHub API rate limit reached. Try again in an hour."
+                : "An error occurred while loading GitHub projects."}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <GlassButton
@@ -277,7 +278,7 @@ export default function ProjectsSection() {
                 size="sm"
               >
                 <RefreshCw className="w-4 h-4" />
-                Réessayer
+                Retry
               </GlassButton>
               <GlassButton
                 variant="outline"
@@ -287,26 +288,25 @@ export default function ProjectsSection() {
                 }
               >
                 <Github className="w-4 h-4" />
-                Voir sur GitHub
+                View on GitHub
               </GlassButton>
             </div>
           </motion.div>
         ) : filteredRepos.length === 0 ? (
-          /* Empty State */
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
             <p className="text-white/40 text-lg">
-              Aucun projet trouvé pour le filtre{" "}
+              No projects found for filter{" "}
               <span className="text-cyan-400">{filter}</span>.
             </p>
             <button
               onClick={() => setFilter("all")}
               className="mt-3 text-cyan-400 hover:underline text-sm"
             >
-              Réinitialiser le filtre
+              Reset filter
             </button>
           </motion.div>
         ) : (
@@ -323,11 +323,10 @@ export default function ProjectsSection() {
                   type: "spring",
                   stiffness: 100,
                 }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -8 }}
               >
                 <GlassCard className="p-6 h-full" hover>
                   <div className="space-y-4">
-                    {/* Header */}
                     <div className="flex items-start justify-between">
                       <h3 className="text-xl font-bold text-white truncate pr-2">
                         {repo.name}
@@ -338,7 +337,7 @@ export default function ProjectsSection() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="hover:text-white transition-colors"
-                          aria-label={`Voir le code source de ${repo.name} sur GitHub`}
+                          aria-label={`Source code for ${repo.name} on GitHub`}
                         >
                           <Github className="w-5 h-5" aria-hidden="true" />
                         </a>
@@ -348,7 +347,7 @@ export default function ProjectsSection() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-white transition-colors"
-                            aria-label={`Visiter le site de ${repo.name}`}
+                            aria-label={`Visit ${repo.name}`}
                           >
                             <ExternalLink
                               className="w-5 h-5"
@@ -359,12 +358,10 @@ export default function ProjectsSection() {
                       </div>
                     </div>
 
-                    {/* Description */}
                     <p className="text-white/70 text-sm line-clamp-3 min-h-[60px]">
-                      {repo.description || "Aucune description disponible"}
+                      {repo.description || "No description available"}
                     </p>
 
-                    {/* Stats */}
                     <div className="flex items-center gap-4 text-sm text-white/60">
                       <div className="flex items-center gap-1">
                         <Star className="w-4 h-4" />
@@ -380,7 +377,6 @@ export default function ProjectsSection() {
                       </div>
                     </div>
 
-                    {/* Language & Topics */}
                     <div className="space-y-2">
                       {repo.language && (
                         <div className="flex items-center gap-2">
@@ -418,7 +414,7 @@ export default function ProjectsSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
           className="text-center mt-12"
         >
           <GlassButton
@@ -429,7 +425,7 @@ export default function ProjectsSection() {
             }
           >
             <Github className="w-5 h-5" />
-            Voir tous mes projets sur GitHub
+            View all repositories on GitHub
           </GlassButton>
         </motion.div>
       </div>
