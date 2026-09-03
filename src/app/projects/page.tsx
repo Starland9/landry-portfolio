@@ -72,7 +72,7 @@ export default function ProjectsPage() {
   const totalVisible = filteredFeatured.length + filteredOther.length;
 
   return (
-    <section className="container-safe bg-gradient-to-b from-black via-slate-950 to-black py-24 relative overflow-hidden">
+    <section className="container-safe bg-linear-to-b from-black via-slate-950 to-black py-24 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
@@ -84,7 +84,7 @@ export default function ProjectsPage() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto mb-12"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight bg-linear-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
             Projects
           </h1>
           <p className="text-lg sm:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed">
@@ -124,16 +124,16 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="hidden md:grid grid-cols-2 gap-4">
-                  <div className="text-center p-3 rounded-xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-400/20">
-                    <span className="block text-2xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+                  <div className="text-center p-3 rounded-xl bg-linear-to-br from-cyan-500/10 to-transparent border border-cyan-400/20">
+                    <span className="block text-2xl font-bold bg-linear-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">
                       {totalVisible}
                     </span>
                     <span className="text-xs text-white/50 uppercase tracking-wider">
                       Projects
                     </span>
                   </div>
-                  <div className="text-center p-3 rounded-xl bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-400/20">
-                    <span className="block text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  <div className="text-center p-3 rounded-xl bg-linear-to-br from-purple-500/10 to-transparent border border-purple-400/20">
+                    <span className="block text-2xl font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                       {categories.length - 1}
                     </span>
                     <span className="text-xs text-white/50 uppercase tracking-wider">
@@ -160,7 +160,7 @@ export default function ProjectsPage() {
                       className={cn(
                         "px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300",
                         activeCategory === category
-                          ? "bg-gradient-to-r from-cyan-500/30 to-purple-600/30 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/20 scale-105"
+                          ? "bg-linear-to-r from-cyan-500/30 to-purple-600/30 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/20 scale-105"
                           : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white/80 hover:border-white/20",
                       )}
                     >
@@ -254,13 +254,15 @@ function ProjectCard({
         hover
       >
         <div
-          className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none rounded-2xl`}
+          className={`absolute inset-0 bg-linear-to-br ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none rounded-2xl`}
         />
 
         <div className="flex flex-col h-full p-5">
           {/* Image */}
           <div className="relative mb-4 -mx-5 -mt-5">
-            <div className={`relative overflow-hidden ${featured ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+            <div
+              className={`relative overflow-hidden ${featured ? "aspect-video" : "aspect-4/3"}`}
+            >
               <ProjectImage
                 src={project.image}
                 alt={project.title}
@@ -269,12 +271,14 @@ function ProjectCard({
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute top-3 right-3">
                 <span
-                  className={`px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md bg-gradient-to-r ${project.color} text-white shadow-lg`}
+                  className={`px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md bg-linear-to-r ${project.color} text-white shadow-lg`}
                 >
-                  {project.status === "In production" || project.status === "Live on Play Store" || project.status === "Available on Play Store"
+                  {project.status === "In production" ||
+                  project.status === "Live on Play Store" ||
+                  project.status === "Available on Play Store"
                     ? "Live"
                     : project.status}
                 </span>
@@ -294,7 +298,7 @@ function ProjectCard({
               </span>
             </div>
 
-            <h3 className="text-lg font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
+            <h3 className="text-lg font-bold text-white leading-tight group-hover:text-transparent group-hover:bg-linear-to-r group-hover:from-cyan-400 group-hover:to-purple-500 group-hover:bg-clip-text transition-all duration-300">
               {project.title}
             </h3>
 
@@ -330,11 +334,7 @@ function ProjectCard({
               Details
             </GlassButton>
             {project.liveUrl && (
-              <GlassButton
-                href={project.liveUrl}
-                size="sm"
-                className="flex-1"
-              >
+              <GlassButton href={project.liveUrl} size="sm" className="flex-1">
                 View
               </GlassButton>
             )}
