@@ -49,13 +49,27 @@ export const SKILL_CATEGORIES = [
     name: "Core Stack",
     icon: Code2,
     color: "from-cyan-400 to-blue-500",
-    technologies: ["Flutter", "Dart", "Django", "Python", "TypeScript", "Next.js"],
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Django",
+      "Python",
+      "TypeScript",
+      "Next.js",
+    ],
   },
   {
     name: "Backend & Infrastructure",
     icon: Server,
     color: "from-green-400 to-emerald-500",
-    technologies: ["REST API", "PostgreSQL", "Docker", "Node.js", "JWT", "Firebase"],
+    technologies: [
+      "REST API",
+      "PostgreSQL",
+      "Docker",
+      "Node.js",
+      "JWT",
+      "Firebase",
+    ],
   },
   {
     name: "Mobile",
@@ -67,7 +81,14 @@ export const SKILL_CATEGORIES = [
     name: "Web & Frontend",
     icon: Globe,
     color: "from-blue-400 to-indigo-500",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vercel",
+    ],
   },
   {
     name: "Databases",
@@ -355,6 +376,58 @@ export const FEATURED_PROJECTS = [
     color: "from-emerald-500 to-cyan-600",
   },
   {
+    id: "2ln-learning-institute",
+    title: "2LN Learning Institute",
+    headline:
+      "Panafrican professional training platform for leadership, HR, and employability.",
+    description:
+      "A premium learning and assessment platform designed for professionals and organizations, with certifying training paths, diagnostics, and a reliable technical stack built around Next.js, Django, PostgreSQL, Redis, Celery, Docker, Dokploy, and Stalwart.",
+    summary:
+      "2LN Learning Institute helps learners and companies build skills through structured programs, digital diagnostics, online certificates, and a guided learning experience aligned with African professional realities, supported by SEO-focused delivery and production infrastructure.",
+    problem:
+      "Professional training platforms often ignore local market realities, certification workflows, and the need for an accessible, premium digital experience for African learners.",
+    solution:
+      "A modern education platform built around structured course catalogs, diagnostics, learner progression, automated certificates, Mobile Money payments through MTN Mobile Money and Orange Money, and a production stack spanning Next.js, Django, PostgreSQL, Redis, Celery, Docker, Dokploy, Stalwart, and SEO.",
+    impact: [
+      "Panafrican positioning for leadership and human-capital development",
+      "Structured learning paths with certifications and diagnostics",
+      "Mobile Money payment flow for accessible FCFA checkout",
+    ],
+    features: [
+      "Training catalogue with professional and certifying programs",
+      "Diagnostics that produce actionable plans, not just assessments",
+      "Learner dashboard with progression tracking and resources",
+      "Automated certificates with online verification",
+      "Mobile Money payment flow for MTN and Orange Money",
+      "Blog, contact, and enterprise-oriented conversion paths",
+    ],
+    role: [
+      "Website architecture and premium front-end implementation",
+      "Content structure for training, diagnostics, and conversion flows",
+      "Responsive design with mobile-first accessibility",
+    ],
+    timeline: "2026 · Live",
+    team: "Client project",
+    status: "Live",
+    technologies: [
+      "Next.js",
+      "Django",
+      "Stalwart",
+      "Docker",
+      "Dokploy",
+      "PostgreSQL",
+      "Celery",
+      "Redis",
+      "SEO",
+    ],
+    image: "https://2lnlearninginstitute.com/home/approche-pedagogique.webp",
+    liveUrl: "https://2lnlearninginstitute.com/",
+    githubUrl: null,
+    featured: true,
+    category: "web",
+    color: "from-cyan-500 to-blue-600",
+  },
+  {
     id: "fais-mon-cv",
     title: "Fais Mon CV",
     headline:
@@ -554,8 +627,7 @@ export const FEATURED_PROJECTS = [
   {
     id: "tchokos",
     title: "Tchokos E-commerce",
-    headline:
-      "Premium e-commerce experience for Cameroonian urban fashion.",
+    headline: "Premium e-commerce experience for Cameroonian urban fashion.",
     description:
       "An online store specializing in shoes, clothing, and accessories, with a smooth and secure user experience.",
     summary:
@@ -600,8 +672,7 @@ export const FEATURED_PROJECTS = [
   {
     id: "2ln-ai",
     title: "2LN AI",
-    headline:
-      "AI legal assistant democratizing labor law for employees.",
+    headline: "AI legal assistant democratizing labor law for employees.",
     description:
       "Questions about your employment contract, employee rights, or employer obligations? Get clear and fast answers via an AI assistant specialized in labor law.",
     summary:
@@ -690,8 +761,7 @@ export const FEATURED_PROJECTS = [
   {
     id: "mbolo-gabon",
     title: "Mbolo Gabon",
-    headline:
-      "Immersive tourist guide for exploring Gabon with confidence.",
+    headline: "Immersive tourist guide for exploring Gabon with confidence.",
     description:
       "An establishment directory app for Gabon, covering food, accommodation, and entertainment — with geolocation, professional visibility tools, and offline maps.",
     summary:

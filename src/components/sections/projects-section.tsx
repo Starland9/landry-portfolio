@@ -1,80 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
+import Link from "next/link";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
-import {
-  Github,
-  ExternalLink,
-  Star,
-  GitFork,
-  Calendar,
-  AlertTriangle,
-  RefreshCw,
-} from "lucide-react";
-import { GitHubRepo } from "@/types/github";
-import { formatDate } from "@/lib/utils";
+import { Star, Calendar } from "lucide-react";
 import { FEATURED_PROJECTS } from "@/lib/constants";
 import { ProjectImage } from "@/components/ui/project-image";
 
 export default function ProjectsSection() {
-  const [repos, setRepos] = useState<GitHubRepo[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<string>("all");
 
-  const technologies = [
-    "all",
-    "Dart",
-    "JavaScript",
-    "TypeScript",
-    "Python",
-    "HTML",
-    "CSS",
-    "Java",
-    "GDScript",
-  ];
+  const technologies = useMemo(
+    () => [
+      "all",
+      ...Array.from(
+        new Set(
+          FEATURED_PROJECTS.flatMap((project) =>
+            project.technologies.map((technology) =>
+              technology.replace(/\s+\d+.*$/, ""),
+            ),
+          ),
+        ),
+      ),
+    ],
+    [],
+  );
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-    fetch("/api/github/repos")
-      .then((res) => {
-        if (!res.ok) throw new Error(`Error ${res.status}: ${res.statusText}`);
-        return res.json();
-      })
-      .then((data) => {
-        setRepos(Array.isArray(data) ? data : []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching repos:", err);
-        setError(err.message || "Could not load GitHub projects");
-        setRepos([]);
-        setLoading(false);
-      });
-  }, []);
-
-  const filteredRepos = Array.isArray(repos)
-    ? repos
-        .filter((repo) => filter === "all" || repo.language === filter)
-        .slice(0, 6)
-    : [];
-
-  const getLanguageColor = (language: string | null) => {
-    const colors: Record<string, string> = {
-      JavaScript: "from-yellow-400 to-yellow-600",
-      TypeScript: "from-blue-400 to-blue-600",
-      Python: "from-green-400 to-green-600",
-      Java: "from-red-400 to-red-600",
-      HTML: "from-orange-400 to-orange-600",
-      CSS: "from-purple-400 to-purple-600",
-      Dart: "from-blue-300 to-blue-500",
-      GDScript: "from-gray-400 to-gray-600",
-    };
-    return colors[language || ""] || "from-gray-400 to-gray-600";
-  };
+  const filteredProjects = FEATURED_PROJECTS.filter(
+    (project) =>
+      filter === "all" ||
+      project.technologies.some((technology) =>
+        technology.toLowerCase().includes(filter.toLowerCase()),
+      ),
+  ).slice(0, 6);
 
   // Use G-Buy as the flagship project
   const flagshipProject =
@@ -84,7 +44,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="container-safe bg-gradient-to-b from-slate-900 via-slate-950 to-black relative z-10 py-20"
+      className="container-safe bg-linear-to-b from-slate-900 via-slate-950 to-black relative z-10 py-20"
     >
       {/* Background decorations */}
       <div className="absolute top-1/4 left-0 w-72 h-72 bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
@@ -103,12 +63,12 @@ export default function ProjectsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-600/10 border border-cyan-400/20 text-sm text-white/70 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-linear-to-r from-cyan-500/10 to-purple-600/10 border border-cyan-400/20 text-sm text-white/70 mb-6"
           >
             <Star className="w-4 h-4 text-cyan-400" />
             Portfolio
           </motion.span>
-          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold bg-linear-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
             Projects
           </h2>
           <p className="text-lg text-white/60 max-w-2xl mx-auto px-4">
@@ -150,7 +110,7 @@ export default function ProjectsSection() {
               transition={{ delay: 0.2 + index * 0.03 }}
               className={`px-4 py-2 rounded-full border text-sm font-medium transition-all duration-300 ${
                 filter === tech
-                  ? "bg-gradient-to-r from-cyan-500/20 to-purple-600/20 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/10 scale-105"
+                  ? "bg-linear-to-r from-cyan-500/20 to-purple-600/20 border-cyan-400/50 text-white shadow-lg shadow-cyan-500/10 scale-105"
                   : "bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:text-white/80 hover:border-white/20"
               }`}
             >
@@ -170,7 +130,7 @@ export default function ProjectsSection() {
           >
             <GlassCard className="overflow-hidden">
               <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-8 p-6 sm:p-10 items-center">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
+                <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-white/10">
                   <ProjectImage
                     src={flagshipProject.image}
                     alt={flagshipProject.title}
@@ -204,14 +164,6 @@ export default function ProjectsSection() {
                         Live site
                       </GlassButton>
                     )}
-                    {flagshipProject.githubUrl && (
-                      <GlassButton
-                        href={flagshipProject.githubUrl}
-                        variant="outline"
-                      >
-                        Source code
-                      </GlassButton>
-                    )}
                   </div>
                   <div className="flex flex-wrap gap-2 text-xs text-white/60">
                     {flagshipProject.technologies.slice(0, 6).map((tech) => (
@@ -229,70 +181,8 @@ export default function ProjectsSection() {
           </motion.div>
         )}
 
-        {/* GitHub Projects Grid */}
-        {loading ? (
-          <div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-            aria-busy="true"
-            aria-label="Loading GitHub projects"
-          >
-            {Array.from({ length: 6 }).map((_, i) => (
-              <GlassCard key={i} className="p-6">
-                <div className="space-y-4" aria-hidden="true">
-                  <div className="skeleton h-5 w-3/4" />
-                  <div className="skeleton h-3 w-full" />
-                  <div className="skeleton h-3 w-2/3" />
-                  <div className="flex gap-3">
-                    <div className="skeleton h-6 w-16 rounded-full" />
-                    <div className="skeleton h-6 w-12 rounded-full" />
-                  </div>
-                </div>
-              </GlassCard>
-            ))}
-          </div>
-        ) : error ? (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12"
-            role="alert"
-          >
-            <div className="relative mx-auto mb-6 w-16 h-16">
-              <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-xl" />
-              <div className="relative w-16 h-16 rounded-full bg-amber-500/10 border border-amber-400/30 flex items-center justify-center">
-                <AlertTriangle className="w-8 h-8 text-amber-400" />
-              </div>
-            </div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              GitHub projects temporarily unavailable
-            </h3>
-            <p className="text-white/50 mb-6 max-w-md mx-auto">
-              {error.includes("403")
-                ? "GitHub API rate limit reached. Try again in an hour."
-                : "An error occurred while loading GitHub projects."}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <GlassButton
-                onClick={() => window.location.reload()}
-                variant="primary"
-                size="sm"
-              >
-                <RefreshCw className="w-4 h-4" />
-                Retry
-              </GlassButton>
-              <GlassButton
-                variant="outline"
-                size="sm"
-                onClick={() =>
-                  window.open("https://github.com/Starland9", "_blank")
-                }
-              >
-                <Github className="w-4 h-4" />
-                View on GitHub
-              </GlassButton>
-            </div>
-          </motion.div>
-        ) : filteredRepos.length === 0 ? (
+        {/* Constant projects grid */}
+        {filteredProjects.length === 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -311,9 +201,9 @@ export default function ProjectsSection() {
           </motion.div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredRepos.map((repo, index) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
-                key={repo.id}
+                key={project.id}
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
@@ -325,109 +215,73 @@ export default function ProjectsSection() {
                 }}
                 whileHover={{ y: -8 }}
               >
-                <GlassCard className="p-6 h-full" hover>
-                  <div className="space-y-4">
-                    <div className="flex items-start justify-between">
-                      <h3 className="text-xl font-bold text-white truncate pr-2">
-                        {repo.name}
-                      </h3>
-                      <div className="flex gap-2 text-white/60">
-                        <a
-                          href={repo.html_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hover:text-white transition-colors"
-                          aria-label={`Source code for ${repo.name} on GitHub`}
-                        >
-                          <Github className="w-5 h-5" aria-hidden="true" />
-                        </a>
-                        {repo.homepage && (
-                          <a
-                            href={repo.homepage}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-white transition-colors"
-                            aria-label={`Visit ${repo.name}`}
-                          >
-                            <ExternalLink
-                              className="w-5 h-5"
-                              aria-hidden="true"
-                            />
-                          </a>
+                <Link href={`/projects/${project.id}`} className="block h-full">
+                  <GlassCard className="group p-6 h-full" hover>
+                    <div className="space-y-4">
+                      <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                        <ProjectImage
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
+                      </div>
+
+                      <div className="flex items-start justify-between">
+                        <h3 className="text-xl font-bold text-white truncate pr-2">
+                          {project.title}
+                        </h3>
+                      </div>
+
+                      <p className="text-white/70 text-sm line-clamp-3 min-h-15">
+                        {project.headline ??
+                          project.summary ??
+                          project.description}
+                      </p>
+
+                      <div className="flex items-center gap-4 text-sm text-white/60">
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{project.timeline}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4" />
+                          <span>{project.status}</span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        {project.technologies[0] && (
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-linear-to-r from-cyan-400 to-blue-600" />
+                            <span className="text-white/80 text-sm">
+                              {project.technologies[0]}
+                            </span>
+                          </div>
+                        )}
+
+                        {project.technologies.length > 1 && (
+                          <div className="flex flex-wrap gap-1">
+                            {project.technologies.slice(1, 4).map((topic) => (
+                              <span
+                                key={topic}
+                                className="px-2 py-1 bg-white/10 rounded-full text-xs text-white/70"
+                              >
+                                {topic}
+                              </span>
+                            ))}
+                          </div>
                         )}
                       </div>
                     </div>
-
-                    <p className="text-white/70 text-sm line-clamp-3 min-h-[60px]">
-                      {repo.description || "No description available"}
-                    </p>
-
-                    <div className="flex items-center gap-4 text-sm text-white/60">
-                      <div className="flex items-center gap-1">
-                        <Star className="w-4 h-4" />
-                        <span>{repo.stargazers_count}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <GitFork className="w-4 h-4" />
-                        <span>{repo.forks_count}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>{formatDate(repo.updated_at)}</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      {repo.language && (
-                        <div className="flex items-center gap-2">
-                          <div
-                            className={`w-3 h-3 rounded-full bg-gradient-to-r ${getLanguageColor(repo.language)}`}
-                          />
-                          <span className="text-white/80 text-sm">
-                            {repo.language}
-                          </span>
-                        </div>
-                      )}
-
-                      {repo.topics && repo.topics.length > 0 && (
-                        <div className="flex flex-wrap gap-1">
-                          {repo.topics.slice(0, 3).map((topic) => (
-                            <span
-                              key={topic}
-                              className="px-2 py-1 bg-white/10 rounded-full text-xs text-white/70"
-                            >
-                              {topic}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </GlassCard>
+                  </GlassCard>
+                </Link>
               </motion.div>
             ))}
           </div>
         )}
-
-        {/* GitHub Profile Link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <GlassButton
-            variant="outline"
-            size="lg"
-            onClick={() =>
-              window.open("https://github.com/Starland9", "_blank")
-            }
-          >
-            <Github className="w-5 h-5" />
-            View all repositories on GitHub
-          </GlassButton>
-        </motion.div>
       </div>
     </section>
   );

@@ -83,8 +83,8 @@ export default async function ProjectDetailPage({
   ).slice(0, 3);
 
   return (
-    <section className="container-safe bg-gradient-to-b from-black via-slate-950 to-black py-16 sm:py-24">
-      <div className="container mx-auto max-w-6xl px-3 sm:px-4">
+    <section className="container-safe bg-linear-to-b from-black via-slate-950 to-black py-16 sm:py-24">
+      <div className="container mx-auto max-w-6xl px-0 sm:px-4">
         <div className="mb-10">
           <Link
             href="/projects"
@@ -99,7 +99,7 @@ export default async function ProjectDetailPage({
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 p-3 sm:p-6 lg:p-10">
             <div className="space-y-6">
               <div className="relative">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
+                <div className="relative aspect-4/3 overflow-hidden rounded-3xl border border-white/10">
                   <ProjectImage
                     src={project.image}
                     alt={project.title}
@@ -137,9 +137,7 @@ export default async function ProjectDetailPage({
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <GlassButton href={project.liveUrl}>
-                    View live
-                  </GlassButton>
+                  <GlassButton href={project.liveUrl}>View live</GlassButton>
                   {project.githubUrl && (
                     <GlassButton href={project.githubUrl} variant="outline">
                       Source code
@@ -181,7 +179,7 @@ export default async function ProjectDetailPage({
                       key={item}
                       className="flex items-start gap-3 text-sm text-white/80"
                     >
-                      <Sparkles className="w-4 h-4 mt-0.5 text-cyan-400 flex-shrink-0" />
+                      <Sparkles className="w-4 h-4 mt-0.5 text-cyan-400 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}

@@ -27,6 +27,7 @@ export function ProjectImage({
   className,
 }: ProjectImageProps) {
   const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(priority ?? false);
 
   if (error) {
     return (
@@ -53,7 +54,8 @@ export function ProjectImage({
       height={!fill ? height : undefined}
       sizes={sizes}
       priority={priority}
-      className={className}
+      className={cn(className, loaded && "loaded")}
+      onLoad={() => setLoaded(true)}
       onError={() => setError(true)}
     />
   );
