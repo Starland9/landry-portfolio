@@ -1,0 +1,26 @@
+# dépendances / build locaux
+node_modules
+.next
+out
+build
+coverage
+
+# git / éditeur
+.git
+.gitignore
+.vscode
+.idea
+
+# env & secrets (à définir dans Dokploy)
+.env*
+*.pem
+
+# divers
+Dockerfile
+.dockerignore
+docs
+README.md
+*.md
+.pnpm-debug.log*
+*.tsbuildinfo
+.DS_Store
