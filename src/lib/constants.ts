@@ -187,6 +187,62 @@ export const EXPERIENCES = [
 
 export const FEATURED_PROJECTS = [
   {
+    id: "secret",
+    title: "Secret",
+    headline:
+      "Group messenger built around the party games friends already play, with the app as game master.",
+    description:
+      "A WhatsApp-style group chat dedicated to party games — Hot Seat, Truth or Dare, Werewolf, Undercover, Secret Crush, Quiz, Ludo and more. The app plays the game master: guaranteed anonymity, draws, timers, votes, scores and leaderboards.",
+    summary:
+      "Secret replaces the friend who relays questions by hand with a server-authoritative game engine, a real-time arena for action games, and live voice rooms — shipped on Google Play, web, and a dedicated game server.",
+    problem:
+      "Party games between teenagers and young adults depend on an admin who relays questions, keeps score, and can see who said what — which kills both anonymity and momentum.",
+    solution:
+      "A Flutter app on top of a Django game engine where every game is a pluggable handler with pure-function rules, a separate pure-Dart real-time server for action games, and self-hosted LiveKit voice rooms during matches.",
+    impact: [
+      "Published on Google Play Store — verifiable via Play Store link",
+      "9,000+ automated tests (≈3,700 backend, ≈5,900 Dart), including anonymity-leak tests",
+      "Designed, built, and shipped solo in about four weeks (733 commits)",
+    ],
+    features: [
+      "30+ games: Hot Seat, Truth or Dare, Werewolf, Undercover, Secret Crush, Quiz (≈6,000 questions), Photo Puzzle, Checkers, Snakes, Ludo, a Bomberman-style arena game, and auto racing",
+      "Full messaging: sticker studio, voice messages, view-once media, replies and mentions, push notifications",
+      "Live voice rooms during games, powered by self-hosted LiveKit",
+      "Anonymous by design: the server never serializes a submission's author or hidden information (card hands, roles)",
+      "Real-time arena: separate Dart game server, binary protocol, client-side prediction with a clock-synced client",
+      "Security and moderation: content filter, view-once media never written to disk, single-use tokens, SSRF-protected outbound requests, audited moderator access",
+      "Bilingual interface (French and English) on Android and web",
+    ],
+    role: [
+      "Solo design, architecture, and development across mobile, web, backend, and real-time server",
+      "Server-authoritative game engine: pluggable handlers, pure-function rules verified by 10,000-game self-play runs",
+      "Real-time Dart arena validated byte-for-byte against an independent Python reference implementation",
+      "Spec-driven delivery (spec → plan → tasks → implementation) with API contracts written before code",
+      "Docker and Dokploy deployment, FCM and Web Push, Google Play release",
+    ],
+    timeline: "2026 · 4 weeks",
+    team: "Solo project",
+    status: "Live on Play Store",
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Flame",
+      "Django",
+      "Channels",
+      "Celery",
+      "PostgreSQL",
+      "Redis",
+      "LiveKit",
+      "Docker",
+    ],
+    image: "/images/projects/secret.jpg",
+    liveUrl: "https://play.google.com/store/apps/details?id=app.secret.games",
+    githubUrl: null,
+    featured: true,
+    category: "mobile",
+    color: "from-rose-500 to-purple-600",
+  },
+  {
     id: "g-buy-web",
     title: "G-Buy",
     headline:
