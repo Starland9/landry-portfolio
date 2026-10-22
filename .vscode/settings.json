@@ -1,3 +1,9 @@
 {
-  "js/ts.experimental.useTsgo": false
+  "js/ts.experimental.useTsgo": false,
+  "json.schemas": [
+    { "fileMatch": ["src/content/experience.json"], "url": "./src/content/schema/experience.schema.json" },
+    { "fileMatch": ["src/content/stack.json"], "url": "./src/content/schema/stack.schema.json" },
+    { "fileMatch": ["src/content/education.json"], "url": "./src/content/schema/education.schema.json" },
+    { "fileMatch": ["src/content/languages.json"], "url": "./src/content/schema/languages.schema.json" }
+  ]
 }

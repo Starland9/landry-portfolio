@@ -1,0 +1,198 @@
+{
+  "meta": {
+    "home": {
+      "title": "Landry Simo — Software engineer, web & mobile",
+      "description": "Software engineer in Douala building production web and mobile apps with Flutter, Django and Next.js. Case studies, CV and contact."
+    },
+    "work": {
+      "title": "Work",
+      "description": "All of Landry Simo’s shipped projects — web, mobile and more — with a case study for each one."
+    },
+    "about": {
+      "title": "About",
+      "description": "Background, experience, tech stack and GitHub activity of Landry Simo, software engineer in Douala."
+    },
+    "cv": {
+      "title": "CV",
+      "description": "Printable CV of Landry Simo, software engineer: experience, selected projects and skills."
+    },
+    "caseStudy": "{title} — Case study",
+    "notFound": "Page not found"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "home": "Home",
+    "work": "Work",
+    "about": "About",
+    "cv": "CV",
+    "contact": "Contact",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "skip": "Skip to content",
+    "breadcrumb": "Breadcrumb",
+    "language": "Language",
+    "languageNames": { "fr": "Français", "en": "English" }
+  },
+  "theme": {
+    "toDark": "Switch to dark theme",
+    "toLight": "Switch to light theme"
+  },
+  "common": {
+    "externalSite": "(external site)",
+    "present": "present",
+    "allProjects": "All projects",
+    "moreAboutMe": "More about me",
+    "backToTop": "Back to top",
+    "email": "Email"
+  },
+  "types": {
+    "web": "Web",
+    "mobile": "Mobile",
+    "other": "Other"
+  },
+  "typesLong": {
+    "web": "Web app",
+    "mobile": "Mobile app",
+    "other": "Bot & tooling"
+  },
+  "status": {
+    "live": "Live",
+    "in-production": "In production",
+    "pilot": "Pilot in production",
+    "ongoing": "Ongoing",
+    "maintained": "Actively maintained"
+  },
+  "store": "Play Store",
+  "links": {
+    "live": "Visit the site",
+    "store": "View on Google Play",
+    "code": "View the code"
+  },
+  "home": {
+    "viewWork": "View my work",
+    "viewCv": "View CV",
+    "contact": "Get in touch",
+    "freelanceCta": "Let’s talk",
+    "photoAlt": "Portrait of Landry Simo",
+    "facts": {
+      "basedIn": "Based in",
+      "stack": "Stack",
+      "shipped": "Shipped",
+      "shippedValue": "{count} projects since {year}"
+    },
+    "featured": "Selected work",
+    "experience": "Experience"
+  },
+  "work": {
+    "title": "Work",
+    "intro": "{count} projects shipped since {year}, most recent first.",
+    "filterLabel": "Filter by type",
+    "all": "All",
+    "empty": "No project matches this filter.",
+    "showAll": "Show all projects"
+  },
+  "caseStudy": {
+    "sheetLabel": "Project facts",
+    "sheet": {
+      "type": "Type",
+      "year": "Year",
+      "duration": "Duration",
+      "team": "Team",
+      "status": "Status",
+      "code": "Code"
+    },
+    "codePrivate": "Private",
+    "sections": {
+      "problem": "Problem",
+      "solution": "Solution",
+      "role": "My role",
+      "impact": "Impact",
+      "features": "Key features",
+      "stack": "Stack"
+    },
+    "nextProject": "Next project",
+    "similar": "Something similar in mind, or a role where this kind of work matters?"
+  },
+  "about": {
+    "title": "About",
+    "experience": "Experience",
+    "stack": "Tech stack",
+    "education": "Education",
+    "languages": "Languages",
+    "github": {
+      "title": "On GitHub",
+      "repos": "public repositories",
+      "followers": "followers",
+      "since": "on GitHub since",
+      "updated": "Updated {date}",
+      "unavailable": "GitHub stats are unavailable right now.",
+      "profile": "See my GitHub profile"
+    },
+    "bonus": {
+      "title": "Bonus: tic-tac-toe",
+      "intro": "A small game for the curious. You play X against the computer.",
+      "board": "Tic-tac-toe board",
+      "cell": "Cell {n}, {state}",
+      "empty": "empty",
+      "yourTurn": "Your turn.",
+      "computerTurn": "The computer is playing…",
+      "win": "You win!",
+      "lose": "The computer wins.",
+      "draw": "Draw.",
+      "reset": "New game"
+    }
+  },
+  "cv": {
+    "title": "CV",
+    "print": "Print / Save as PDF",
+    "printHint": "Your browser’s print dialog lets you save this page as a PDF.",
+    "profile": "Profile",
+    "experience": "Experience",
+    "projects": "Selected projects",
+    "skills": "Skills",
+    "education": "Education",
+    "languages": "Languages",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "lead": "A role to fill, a project, a question? Write to me — I reply within 2 business days.",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "reason": "Subject",
+      "message": "Message"
+    },
+    "reasons": {
+      "job": "Job opportunity",
+      "freelance": "Freelance project",
+      "other": "Other"
+    },
+    "submit": "Send message",
+    "sending": "Sending…",
+    "note": "Your address is only used to reply to you.",
+    "success": "Message sent. Thank you — I’ll reply within 2 business days.",
+    "rateLimited": "Too many messages sent. Try again in an hour or write directly to {email}.",
+    "error": "Sending failed. Your message is kept below; you can try again or write directly to {email}.",
+    "errors": {
+      "name": "Enter your name.",
+      "email": "Enter a valid email address, for example name@domain.com.",
+      "messageShort": "Your message must be at least 10 characters long.",
+      "messageLong": "Your message must be at most 5000 characters long."
+    }
+  },
+  "footer": {
+    "tagline": "Software engineer, Douala."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page doesn’t exist or has moved.",
+    "home": "Back to home",
+    "work": "See all projects"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "text": "An unexpected error occurred while loading this page.",
+    "retry": "Try again"
+  }
+}

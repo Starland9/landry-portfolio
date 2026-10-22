@@ -1,0 +1,32 @@
+[
+  {
+    "id": "core",
+    "label": { "fr": "Stack principale", "en": "Core stack" },
+    "items": ["Flutter", "Dart", "Django", "Python", "TypeScript", "Next.js"]
+  },
+  {
+    "id": "backend",
+    "label": { "fr": "Backend et infrastructure", "en": "Backend & infrastructure" },
+    "items": ["REST API", "PostgreSQL", "Docker", "Node.js", "JWT", "Firebase"]
+  },
+  {
+    "id": "mobile",
+    "label": { "fr": "Mobile", "en": "Mobile" },
+    "items": ["Flutter", "Dart", "Firebase", "Play Store", "CI/CD"]
+  },
+  {
+    "id": "web",
+    "label": { "fr": "Web et frontend", "en": "Web & frontend" },
+    "items": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"]
+  },
+  {
+    "id": "databases",
+    "label": { "fr": "Bases de données", "en": "Databases" },
+    "items": ["PostgreSQL", "Firebase / Firestore", "SQLite", "MongoDB"]
+  },
+  {
+    "id": "other",
+    "label": { "fr": "Autres", "en": "Other" },
+    "items": ["Godot Engine", "GDScript", "GitHub Actions"]
+  }
+]

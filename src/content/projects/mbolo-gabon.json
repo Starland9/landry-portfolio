@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "mbolo-gabon",
+  "title": "Mbolo Gabon",
+  "type": "mobile",
+  "year": 2020,
+  "featured": false,
+  "status": "in-production",
+  "duration": { "fr": "3 mois", "en": "3 months" },
+  "team": { "fr": "Consortium touristique (2 devs · 1 data manager)", "en": "Tourism consortium (2 devs · 1 data manager)" },
+  "headline": {
+    "fr": "Guide touristique immersif pour explorer le Gabon en toute confiance.",
+    "en": "Immersive tourist guide for exploring Gabon with confidence."
+  },
+  "description": {
+    "fr": "Une app d’annuaire des établissements du Gabon — restauration, hébergement et loisirs — avec géolocalisation, outils de visibilité pour les professionnels et cartes hors ligne.",
+    "en": "An establishment directory app for Gabon, covering food, accommodation, and entertainment — with geolocation, professional visibility tools, and offline maps."
+  },
+  "summary": {
+    "fr": "Mbolo Gabon fédère les acteurs du tourisme autour d’une app qui centralise l’offre, simplifie la découverte et accompagne les voyageurs sur le terrain.",
+    "en": "Mbolo Gabon federates tourism stakeholders around an app that centralizes the offer, simplifies discovery, and accompanies travelers on the ground."
+  },
+  "problem": {
+    "fr": "Les voyageurs manquaient d’informations fiables et centralisées sur les établissements, tandis que les professionnels avaient une visibilité numérique limitée.",
+    "en": "Travelers lacked reliable, consolidated information about establishments, while professionals had limited digital visibility."
+  },
+  "solution": {
+    "fr": "Un guide tout-en-un avec cartographie hors ligne, fiches détaillées et outils marketing pour les établissements.",
+    "en": "An all-in-one guide with offline mapping, detailed profiles, and marketing tools for establishments."
+  },
+  "role": {
+    "fr": [
+      "Lead du développement Flutter et intégration de la carte",
+      "Gestion du cache hors ligne et de la synchronisation",
+      "Coordination avec l’équipe contenu et marketing"
+    ],
+    "en": [
+      "Lead Flutter development and map integration",
+      "Offline cache and synchronization management",
+      "Coordination with content and marketing team"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Publié sur le Google Play Store, vérifiable via le lien du store",
+      "Carte hors ligne avec cache local et synchronisation",
+      "Espace professionnel pour gérer les fiches et les disponibilités"
+    ],
+    "en": [
+      "Published on Google Play Store — verifiable via Play Store link",
+      "Offline map with local caching and sync",
+      "Professional space for managing listings and availability"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Recherche multicritère (budget, thématique, localisation)",
+      "Carte interactive avec mode hors ligne",
+      "Espace professionnel pour gérer les fiches et les disponibilités",
+      "Avis et listes de favoris synchronisées"
+    ],
+    "en": [
+      "Multi-criteria search (budget, theme, location)",
+      "Interactive map with offline mode",
+      "Professional space to manage listings and availability",
+      "Reviews and synchronized favorite lists"
+    ]
+  },
+  "technologies": ["Flutter", "Dart", "REST API", "Firebase"],
+  "image": {
+    "src": "/images/projects/mbolo-gabon.jpg",
+    "width": 3000,
+    "height": 2000,
+    "alt": {
+      "fr": "Smartphone posé sur une table de restaurant à côté d’une fourchette, affichant l’accueil de Mbolo Gabon avec ses catégories et des fiches d’établissements à proximité",
+      "en": "Smartphone on a restaurant table next to a fork, showing the Mbolo Gabon home screen with its categories and nearby establishment cards"
+    }
+  },
+  "links": {
+    "live": null,
+    "store": "https://play.google.com/store/apps/details?id=io.pekegno.mbolo",
+    "code": null
+  }
+}

@@ -24,3 +24,9 @@ README.md
 .pnpm-debug.log*
 *.tsbuildinfo
 .DS_Store
+
+# speckit / agents (not needed in the image)
+specs
+.specify
+.claude
+tests

@@ -1,0 +1,83 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "social-dl",
+  "title": "Social DL",
+  "type": "web",
+  "year": 2025,
+  "featured": false,
+  "status": "in-production",
+  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "headline": {
+    "fr": "Plateforme web pour télécharger les contenus des réseaux sociaux en un clic.",
+    "en": "Web platform to download content from social networks in one click."
+  },
+  "description": {
+    "fr": "Social DL est une application web qui permet de télécharger simplement et rapidement vidéos, photos et contenus des principales plateformes sociales (TikTok, Instagram, YouTube, etc.).",
+    "en": "Social DL is a web application for downloading videos, photos, and content from major social platforms (TikTok, Instagram, YouTube, etc.) simply and quickly."
+  },
+  "summary": {
+    "fr": "Un outil web moderne et minimaliste pour télécharger vos contenus préférés des réseaux sociaux, sans publicité ni complication.",
+    "en": "A modern, minimal web tool to download your favorite social media content without ads or complications."
+  },
+  "problem": {
+    "fr": "Les utilisateurs peinent à télécharger les contenus des plateformes sociales avec des outils dispersés et peu fiables.",
+    "en": "Users struggle to download content from social platforms with scattered, unreliable tools."
+  },
+  "solution": {
+    "fr": "Une plateforme web centralisée qui prend en charge les principaux réseaux sociaux, avec une interface minimaliste et performante.",
+    "en": "A centralized web platform supporting major social networks with a minimal, performant interface."
+  },
+  "role": {
+    "fr": [
+      "Développement full-stack (Next.js et backend)",
+      "Intégration des API des réseaux sociaux",
+      "Optimisation des performances et de l’UX"
+    ],
+    "en": [
+      "Full-stack development (Next.js and backend)",
+      "Social media API integration",
+      "Performance and UX optimization"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Dépôt GitHub accessible publiquement",
+      "Accès sans création de compte",
+      "Prise en charge de plusieurs plateformes (TikTok, Instagram, YouTube, Twitter, etc.)"
+    ],
+    "en": [
+      "GitHub repository publicly available",
+      "Zero-account required access",
+      "Multi-platform support (TikTok, Instagram, YouTube, Twitter, etc.)"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Téléchargement instantané à partir d’une URL",
+      "Prise en charge de plusieurs plateformes (TikTok, Instagram, YouTube, Twitter, etc.)",
+      "Interface minimaliste et intuitive",
+      "Sans compte, entièrement gratuit"
+    ],
+    "en": [
+      "Instant download from URL",
+      "Multi-platform support (TikTok, Instagram, YouTube, Twitter, etc.)",
+      "Minimalist and intuitive interface",
+      "No account required, fully free"
+    ]
+  },
+  "technologies": ["Next.js 15", "TypeScript", "Tailwind CSS", "REST API"],
+  "image": {
+    "src": "/images/projects/social-dl.png",
+    "width": 1830,
+    "height": 1003,
+    "alt": {
+      "fr": "Interface web de SocialDL avec un lien YouTube collé, le format vidéo et la qualité 720p sélectionnés, un téléchargement en cours à 64 % et un panneau d’aperçu",
+      "en": "SocialDL web interface with a YouTube link pasted, video format and 720p quality selected, a download in progress at 64% and a preview panel"
+    }
+  },
+  "links": {
+    "live": "https://social-dl.starland9.dev/",
+    "store": null,
+    "code": "https://github.com/Starland9/social-dl-web"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "open-whatsapp-bot",
+  "title": "Open WhatsApp Bot",
+  "type": "other",
+  "year": 2025,
+  "featured": false,
+  "status": "maintained",
+  "team": { "fr": "Communauté open source", "en": "Open-source community" },
+  "headline": {
+    "fr": "Bot WhatsApp open source à l’architecture propre et aux plugins modulaires.",
+    "en": "Open-source WhatsApp bot with clean architecture and modular plugins."
+  },
+  "description": {
+    "fr": "Une application WhatsApp open source construite avec @whiskeysockets/baileys v6.7.9+, dotée d’une architecture propre, d’un système de plugins modulaire et d’options de déploiement prêtes pour la production.",
+    "en": "An open-source WhatsApp application built with @whiskeysockets/baileys v6.7.9+, featuring a clean architecture, a modular plugin system, and production-ready deployment options."
+  },
+  "summary": {
+    "fr": "Un bot WhatsApp communautaire hautement configurable, avec prise en charge de l’IA (ChatGPT, Gemini), gestion de groupes, téléchargement de médias et système de permissions avancé. Optimisé pour la production avec Docker, PM2 et Heroku.",
+    "en": "A highly configurable community WhatsApp bot with AI support (ChatGPT, Gemini), group management, media download, and an advanced permission system. Optimized for production with Docker, PM2, and Heroku."
+  },
+  "problem": {
+    "fr": "Les bots WhatsApp existants manquent de flexibilité, de modularité et de prise en charge des fonctionnalités modernes comme l’IA intégrée ou la gestion avancée des statuts.",
+    "en": "Existing WhatsApp bots lack flexibility, modularity, and support for modern features like integrated AI or advanced status management."
+  },
+  "solution": {
+    "fr": "Une architecture de bot WhatsApp complète, avec un système de plugins à chargement automatique, la prise en charge de plusieurs bases de données (SQLite/PostgreSQL) et une intégration native de l’IA.",
+    "en": "A complete WhatsApp bot architecture with auto-loadable plugin system, multi-database support (SQLite/PostgreSQL), and native AI integration."
+  },
+  "role": {
+    "fr": [
+      "Architecture et conception du système",
+      "Développement backend en Node.js avec une structure modulaire",
+      "Intégration de l’IA et d’API externes",
+      "Optimisation des performances et gestion des ressources",
+      "Configuration Docker et déploiement en production"
+    ],
+    "en": [
+      "Architecture and system design",
+      "Backend development in Node.js with modular structure",
+      "AI and external API integration",
+      "Performance optimization and resource management",
+      "Docker configuration and production deployment"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Projet open source avec dépôt GitHub public",
+      "Système de reconnexion intelligent avec backoff exponentiel",
+      "Prêt pour la production, avec prise en charge de PM2, Docker et Heroku"
+    ],
+    "en": [
+      "Open-source project with public GitHub repository",
+      "Intelligent reconnection system with exponential backoff",
+      "Production-ready with PM2, Docker, and Heroku support"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Reconnexion automatique intelligente avec gestion des erreurs",
+      "Système de plugins modulaire à chargement automatique",
+      "Prise en charge de l’IA (ChatGPT, Google Gemini)",
+      "Consultation automatique des statuts",
+      "Téléchargement de médias (YouTube, Instagram, TikTok, etc.)",
+      "Gestion complète des groupes (outils d’administration)",
+      "Système de permissions (utilisateurs sudo, commandes d’administration)"
+    ],
+    "en": [
+      "Intelligent auto-reconnection with error handling",
+      "Modular plugin system with auto-loading",
+      "AI support (ChatGPT, Google Gemini)",
+      "Automatic status viewer",
+      "Media download (YouTube, Instagram, TikTok, etc.)",
+      "Full group management (admin tools)",
+      "Permission system (sudo users, admin commands)"
+    ]
+  },
+  "technologies": [
+    "Node.js",
+    "TypeScript",
+    "Baileys v6.7.9+",
+    "SQLite/PostgreSQL",
+    "ChatGPT API",
+    "Google Gemini",
+    "Docker",
+    "PM2"
+  ],
+  "image": {
+    "src": "/images/projects/open-whatsapp-bot.png",
+    "width": 1271,
+    "height": 993,
+    "alt": {
+      "fr": "README du dépôt GitHub Open Whatsapp Bot : description du projet, liste des fonctionnalités, prérequis et démarrage rapide",
+      "en": "README of the Open Whatsapp Bot GitHub repository: project description, feature list, requirements and quick start"
+    }
+  },
+  "links": {
+    "live": null,
+    "store": null,
+    "code": "https://github.com/Starland9/OpenWhatsappBot"
+  }
+}

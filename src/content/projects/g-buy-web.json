@@ -1,0 +1,101 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "g-buy-web",
+  "title": "G-Buy",
+  "type": "web",
+  "year": 2026,
+  "featured": true,
+  "status": "in-production",
+  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "headline": {
+    "fr": "Plateforme marketplace qui digitalise le commerce par achats groupés au Cameroun.",
+    "en": "Marketplace platform that digitizes group-buying commerce in Cameroon."
+  },
+  "description": {
+    "fr": "Une plateforme web qui met en relation vendeurs et clients de l’achat groupé, avec des parcours d’achat structurés, des paiements traçables et une gestion opérationnelle.",
+    "en": "A web platform connecting group-buying sellers and customers with structured purchase flows, trackable payments, and operational management."
+  },
+  "summary": {
+    "fr": "G-Buy remplace les outils informels du commerce groupé (WhatsApp, tableurs, paiements non suivis) par une plateforme structurée, traçable et évolutive pour le marché camerounais.",
+    "en": "G-Buy replaces informal group commerce tools (WhatsApp, spreadsheets, untracked payments) with a structured, traceable, and scalable platform for the Cameroonian market."
+  },
+  "problem": {
+    "fr": "Les acteurs du commerce groupé s’appuyaient sur des outils manuels éparpillés, ce qui limitait la visibilité opérationnelle, la fiabilité des paiements et la croissance des vendeurs.",
+    "en": "Group commerce operators relied on scattered manual tools, which limited operational visibility, payment reliability, and seller growth."
+  },
+  "solution": {
+    "fr": "Une architecture Django + Next.js avec des espaces dédiés Client, Vendeur et Admin couvrant tout le cycle : découverte des produits, commande, paiement partiel, suivi des commandes et analyse de l’activité.",
+    "en": "A Django + Next.js architecture with dedicated Client, Seller, and Admin spaces covering the full cycle: product discovery, ordering, partial payment, order tracking, and business analytics."
+  },
+  "role": {
+    "fr": [
+      "Architecture et développement full-stack avec Django + Next.js",
+      "Conception des parcours métier de l’e-commerce et de l’achat groupé",
+      "Réalisation des espaces Client, Vendeur et Admin"
+    ],
+    "en": [
+      "Full-stack architecture and development with Django + Next.js",
+      "Business flow design for e-commerce and group-buying",
+      "Client, Seller, and Admin space implementation"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Flux commerciaux structurés, avec suivi des commandes en temps réel",
+      "Vendeurs équipés d’outils de gestion intégrés",
+      "Gouvernance renforcée grâce à un espace d’administration et une piste d’audit"
+    ],
+    "en": [
+      "Structured commercial flows with real-time order tracking",
+      "Sellers equipped with integrated management tools",
+      "Strengthened governance through an admin space and audit trail"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Espace Client : navigation dans les produits avec filtres et recherche",
+      "Espace Client : fiches produits détaillées",
+      "Espace Client : panier et validation de commande avec paiement partiel (50 %, 75 %, 100 %)",
+      "Espace Client : suivi des commandes en temps réel",
+      "Espace Client : profil et historique d’achats",
+      "Espace Vendeur : dashboard (chiffre d’affaires, commandes, activité)",
+      "Espace Vendeur : gestion des produits (création, modification, désactivation)",
+      "Espace Vendeur : gestion des campagnes de vente groupée",
+      "Espace Vendeur : gestion des commandes avec mise à jour des statuts",
+      "Espace Admin : supervision des utilisateurs, des vendeurs et du chiffre d’affaires",
+      "Espace Admin : attribution des rôles",
+      "Espace Admin : activation/désactivation des comptes vendeurs",
+      "Espace Admin : journal d’audit"
+    ],
+    "en": [
+      "Client space: product browsing with filters and search",
+      "Client space: detailed product pages",
+      "Client space: cart and checkout with partial payment (50%, 75%, 100%)",
+      "Client space: real-time order tracking",
+      "Client space: profile and purchase history",
+      "Seller space: dashboard (revenue, orders, activity)",
+      "Seller space: product management (create, edit, deactivate)",
+      "Seller space: group sale campaign management",
+      "Seller space: order management with status updates",
+      "Admin space: user, seller, and revenue oversight",
+      "Admin space: role assignment",
+      "Admin space: seller account activation/deactivation",
+      "Admin space: audit log"
+    ]
+  },
+  "technologies": ["Django", "Next.js", "TypeScript", "PostgreSQL", "REST API", "JWT"],
+  "image": {
+    "src": "/images/projects/g-buy.png",
+    "width": 1919,
+    "height": 1076,
+    "alt": {
+      "fr": "Page d’accueil de G-Buy : bandeau de groupage actif (17 participants, 12 jours restants) et grille de produits vedettes avec prix en FCFA",
+      "en": "G-Buy home page: active group-buy banner (17 participants, 12 days left) and a grid of featured products priced in FCFA"
+    }
+  },
+  "links": {
+    "live": "https://www.gbuy-cm.com/",
+    "store": null,
+    "code": null
+  }
+}

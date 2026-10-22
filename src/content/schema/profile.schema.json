@@ -1,0 +1,252 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Profil",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fullName",
+    "handle",
+    "role",
+    "lead",
+    "bio",
+    "freelanceNote",
+    "location",
+    "timezone",
+    "yearsOfExperience",
+    "availability",
+    "email",
+    "social",
+    "photo",
+    "siteUrl"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "handle": {
+      "type": "string"
+    },
+    "role": {
+      "type": "object",
+      "description": "Affiché sous le nom sur l’accueil",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "lead": {
+      "type": "object",
+      "description": "Phrase d’accroche de l’accueil",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "bio": {
+      "type": "object",
+      "description": "Présentation (À propos, CV)",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "freelanceNote": {
+      "type": "object",
+      "description": "Mention freelance, secondaire",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "description": "",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "yearsOfExperience": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "availability": {
+      "type": "object",
+      "required": [
+        "open",
+        "label"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "open": {
+          "type": "boolean"
+        },
+        "label": {
+          "type": "object",
+          "description": "",
+          "required": [
+            "fr",
+            "en"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "fr": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "social": {
+      "type": "object",
+      "required": [
+        "github",
+        "linkedin",
+        "x"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "github": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "linkedin": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "x": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "photo": {
+      "anyOf": [
+        {
+          "type": "object",
+          "required": [
+            "src",
+            "width",
+            "height",
+            "alt"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "src": {
+              "type": "string",
+              "pattern": "^/images/",
+              "description": "Fichier dans public/, ex. /images/projects/secret.jpg"
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Largeur réelle du fichier en px"
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Hauteur réelle du fichier en px"
+            },
+            "alt": {
+              "type": "object",
+              "description": "Description de l’image pour les lecteurs d’écran",
+              "required": [
+                "fr",
+                "en"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "fr": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "en": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "null tant que la photo n’est pas fournie (ratio 4:5 conseillé)"
+    },
+    "siteUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "./schema/profile.schema.json",
+  "fullName": "Landry Simo",
+  "handle": "Starland9",
+  "role": {
+    "fr": "Ingénieur logiciel, web & mobile.",
+    "en": "Software engineer, web & mobile."
+  },
+  "lead": {
+    "fr": "Je conçois et livre des applications qui tournent en production : Flutter pour le mobile, Django et Next.js pour le web et le backend. Plus de 4 ans d’expérience, de l’API jusqu’au store.",
+    "en": "I design and ship applications that run in production: Flutter for mobile, Django and Next.js for web and backend. 4+ years of experience, from the API to the app store."
+  },
+  "bio": {
+    "fr": "Ingénieur logiciel avec plus de 4 ans d’expérience dans la conception d’applications web et mobiles en production. Spécialisé en Flutter pour le mobile, Django et Next.js pour le web, avec une solide maîtrise du backend : conception d’API REST, PostgreSQL et déploiement.",
+    "en": "Software engineer with 4+ years of experience building production web and mobile applications. Specialized in Flutter for mobile, Django and Next.js for web, with strong backend ownership across REST API design, PostgreSQL, and deployment."
+  },
+  "freelanceNote": {
+    "fr": "Vous avez un projet ? J’accepte aussi des missions freelance.",
+    "en": "Have a project? I also take on freelance work."
+  },
+  "location": { "fr": "Douala, Cameroun", "en": "Douala, Cameroon" },
+  "timezone": "UTC+1",
+  "yearsOfExperience": 4,
+  "availability": {
+    "open": true,
+    "label": { "fr": "Disponible pour un nouveau poste", "en": "Open to new roles" }
+  },
+  "email": "contact@starland9.dev",
+  "social": {
+    "github": "https://github.com/Starland9",
+    "linkedin": "https://www.linkedin.com/in/landry-simo9/",
+    "x": "https://x.com/starland237"
+  },
+  "photo": null,
+  "siteUrl": "https://portfolio.starland9.dev"
+}

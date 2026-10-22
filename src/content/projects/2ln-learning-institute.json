@@ -1,0 +1,87 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "2ln-learning-institute",
+  "title": "2LN Learning Institute",
+  "type": "web",
+  "year": 2026,
+  "featured": true,
+  "status": "live",
+  "team": { "fr": "Projet client", "en": "Client project" },
+  "headline": {
+    "fr": "Plateforme panafricaine de formation professionnelle en leadership, RH et employabilité.",
+    "en": "Panafrican professional training platform for leadership, HR, and employability."
+  },
+  "description": {
+    "fr": "Une plateforme premium de formation et d’évaluation conçue pour les professionnels et les organisations, avec des parcours certifiants, des diagnostics et une stack technique fiable construite autour de Next.js, Django, PostgreSQL, Redis, Celery, Docker, Dokploy et Stalwart.",
+    "en": "A premium learning and assessment platform designed for professionals and organizations, with certifying training paths, diagnostics, and a reliable technical stack built around Next.js, Django, PostgreSQL, Redis, Celery, Docker, Dokploy, and Stalwart."
+  },
+  "summary": {
+    "fr": "2LN Learning Institute aide apprenants et entreprises à développer leurs compétences grâce à des programmes structurés, des diagnostics digitaux, des certificats en ligne et une expérience d’apprentissage guidée, ancrée dans les réalités professionnelles africaines, le tout appuyé par une mise en ligne orientée SEO et une infrastructure de production.",
+    "en": "2LN Learning Institute helps learners and companies build skills through structured programs, digital diagnostics, online certificates, and a guided learning experience aligned with African professional realities, supported by SEO-focused delivery and production infrastructure."
+  },
+  "problem": {
+    "fr": "Les plateformes de formation professionnelle ignorent souvent les réalités du marché local, les processus de certification et le besoin d’une expérience digitale premium et accessible pour les apprenants africains.",
+    "en": "Professional training platforms often ignore local market realities, certification workflows, and the need for an accessible, premium digital experience for African learners."
+  },
+  "solution": {
+    "fr": "Une plateforme de formation moderne bâtie autour de catalogues de cours structurés, de diagnostics, de la progression des apprenants, de certificats automatisés, du paiement Mobile Money via MTN Mobile Money et Orange Money, et d’une stack de production couvrant Next.js, Django, PostgreSQL, Redis, Celery, Docker, Dokploy, Stalwart et le SEO.",
+    "en": "A modern education platform built around structured course catalogs, diagnostics, learner progression, automated certificates, Mobile Money payments through MTN Mobile Money and Orange Money, and a production stack spanning Next.js, Django, PostgreSQL, Redis, Celery, Docker, Dokploy, Stalwart, and SEO."
+  },
+  "role": {
+    "fr": [
+      "Architecture du site et développement d’un front-end premium",
+      "Structuration des contenus pour les formations, les diagnostics et les parcours de conversion",
+      "Design responsive avec une accessibilité mobile-first"
+    ],
+    "en": [
+      "Website architecture and premium front-end implementation",
+      "Content structure for training, diagnostics, and conversion flows",
+      "Responsive design with mobile-first accessibility"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Positionnement panafricain sur le leadership et le développement du capital humain",
+      "Parcours d’apprentissage structurés, avec certifications et diagnostics",
+      "Parcours de paiement Mobile Money pour un règlement accessible en FCFA"
+    ],
+    "en": [
+      "Panafrican positioning for leadership and human-capital development",
+      "Structured learning paths with certifications and diagnostics",
+      "Mobile Money payment flow for accessible FCFA checkout"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Catalogue de formations avec programmes professionnels et certifiants",
+      "Des diagnostics qui débouchent sur des plans d’action concrets, pas seulement sur des évaluations",
+      "Dashboard apprenant avec suivi de la progression et ressources",
+      "Certificats automatisés avec vérification en ligne",
+      "Parcours de paiement Mobile Money pour MTN et Orange Money",
+      "Blog, contact et parcours de conversion orientés entreprises"
+    ],
+    "en": [
+      "Training catalogue with professional and certifying programs",
+      "Diagnostics that produce actionable plans, not just assessments",
+      "Learner dashboard with progression tracking and resources",
+      "Automated certificates with online verification",
+      "Mobile Money payment flow for MTN and Orange Money",
+      "Blog, contact, and enterprise-oriented conversion paths"
+    ]
+  },
+  "technologies": ["Next.js", "Django", "Stalwart", "Docker", "Dokploy", "PostgreSQL", "Celery", "Redis", "SEO"],
+  "image": {
+    "src": "/images/projects/2ln-learning-institute.webp",
+    "width": 740,
+    "height": 493,
+    "alt": {
+      "fr": "Trois jeunes adultes étudiant ensemble autour d’un ordinateur portable et d’un livre ouvert, dans une salle d’étude",
+      "en": "Three young adults studying together around a laptop and an open book in a study room"
+    }
+  },
+  "links": {
+    "live": "https://2lnlearninginstitute.com/",
+    "store": null,
+    "code": null
+  }
+}

@@ -63,7 +63,7 @@ libellé du statut).
 | `g-buy-web.json` | oui (2) | web | 2026 | in-production | live |
 | `kweekk.json` | oui (3) | mobile | 2022 | live | store |
 | `isyjob.json` | oui (4) | mobile | 2021 | in-production | store |
-| `gestion-stock-entrepot.json` | oui (5) | web | 2026 | ongoing | live |
+| `gestion-stock-entrepot.json` | oui (5) | web | 2026 | in-production | live |
 | `2ln-learning-institute.json` | oui (6) | web | 2026 | live | live |
 | `fais-mon-cv.json` | non | web | 2024 | in-production | live |
 | `open-whatsapp-bot.json` | non | other | 2025 | maintained | code |
@@ -75,7 +75,7 @@ libellé du statut).
 | `mbolo-gabon.json` | non | mobile | 2020 | in-production | store |
 | `kamte.json` | non | mobile | 2020 | in-production | store |
 | `landflix.json` | non | mobile | 2025 | in-production | live + code |
-| `social-dl.json` | non | web | 2025 | ongoing | live + code |
+| `social-dl.json` | non | web | 2025 | in-production | live + code |
 
 Les liens Play Store actuels portent un paramètre de suivi `&pcampaignid=web_share`, retiré à la
 migration.

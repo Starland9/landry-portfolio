@@ -1,0 +1,434 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Projet du portfolio",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "title",
+    "type",
+    "year",
+    "featured",
+    "status",
+    "team",
+    "headline",
+    "description",
+    "summary",
+    "problem",
+    "solution",
+    "role",
+    "impact",
+    "features",
+    "technologies",
+    "image",
+    "links"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Identique au nom du fichier ; utilisé dans /work/<slug>"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Nom propre, non traduit"
+    },
+    "type": {
+      "enum": [
+        "web",
+        "mobile",
+        "other"
+      ]
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 2015
+    },
+    "featured": {
+      "type": "boolean",
+      "description": "Exactement 6 projets phares sur l’accueil"
+    },
+    "status": {
+      "enum": [
+        "live",
+        "in-production",
+        "pilot",
+        "ongoing",
+        "maintained"
+      ]
+    },
+    "duration": {
+      "type": "object",
+      "description": "Durée, ex. 4 semaines / 4 weeks (facultatif)",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "team": {
+      "type": "object",
+      "description": "ex. Projet solo / Solo project",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "headline": {
+      "type": "object",
+      "description": "Accroche des cartes et de l’en-tête (≤ 140 caractères)",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 140
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 140
+        }
+      }
+    },
+    "description": {
+      "type": "object",
+      "description": "",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "description": "",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "problem": {
+      "type": "object",
+      "description": "Section 01",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "solution": {
+      "type": "object",
+      "description": "Section 02",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "role": {
+      "type": "object",
+      "description": "Section 03",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "en": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "impact": {
+      "type": "object",
+      "description": "Section 04",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "en": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "description": "Section 05",
+      "required": [
+        "fr",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fr": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "en": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "technologies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Section 06"
+    },
+    "image": {
+      "type": "object",
+      "required": [
+        "src",
+        "width",
+        "height",
+        "alt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "src": {
+          "type": "string",
+          "pattern": "^/images/",
+          "description": "Fichier dans public/, ex. /images/projects/secret.jpg"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Largeur réelle du fichier en px"
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Hauteur réelle du fichier en px"
+        },
+        "alt": {
+          "type": "object",
+          "description": "Description de l’image pour les lecteurs d’écran",
+          "required": [
+            "fr",
+            "en"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "fr": {
+              "type": "string",
+              "minLength": 1
+            },
+            "en": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "required": [
+        "live",
+        "store",
+        "code"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "live": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "store": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Lien Play Store / App Store"
+        },
+        "code": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "highlights": {
+      "type": "array",
+      "maxItems": 3,
+      "description": "Chiffres clés vérifiables (facultatif)",
+      "items": {
+        "type": "object",
+        "required": [
+          "value",
+          "label"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "object",
+            "description": "",
+            "required": [
+              "fr",
+              "en"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "fr": {
+                "type": "string",
+                "minLength": 1
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "label": {
+            "type": "object",
+            "description": "",
+            "required": [
+              "fr",
+              "en"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "fr": {
+                "type": "string",
+                "minLength": 1
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

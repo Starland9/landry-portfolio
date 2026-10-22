@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "isyjob",
+  "title": "IsyJob",
+  "type": "mobile",
+  "year": 2021,
+  "featured": true,
+  "status": "in-production",
+  "duration": { "fr": "5 mois", "en": "5 months" },
+  "team": { "fr": "Équipe startup (3 devs · 1 designer · 1 PM)", "en": "Startup crew (3 devs · 1 designer · 1 PM)" },
+  "headline": {
+    "fr": "Marketplace de services qui met en relation prestataires et clients en temps réel.",
+    "en": "Service marketplace connecting providers and clients in real time."
+  },
+  "description": {
+    "fr": "IsyJob met en relation des prestataires de services (plombiers, électriciens, organisateurs d’événements, etc.) avec les personnes qui en ont besoin — une mise en relation géolocalisée, vérifiée et guidée par les données.",
+    "en": "IsyJob connects service providers (plumbers, electricians, event managers, etc.) with people who need those services — geolocated, verified, and data-driven."
+  },
+  "summary": {
+    "fr": "IsyJob structure l’économie informelle des services grâce à une marketplace géolocalisée et vérifiée, portée par les avis et la mise en relation en temps réel.",
+    "en": "IsyJob structures the informal service economy with a geolocated, verified marketplace driven by reviews and real-time matching."
+  },
+  "problem": {
+    "fr": "Les prestataires informels peinaient à trouver des clients qualifiés, tandis que les particuliers doutaient de leur fiabilité.",
+    "en": "Informal service providers struggled to find qualified clients, while individuals doubted provider reliability."
+  },
+  "solution": {
+    "fr": "Une application mobile qui rapproche l’offre et la demande selon les compétences, la localisation et des avis vérifiés.",
+    "en": "A mobile application that matches offers and demand based on skills, location, and verified reviews."
+  },
+  "role": {
+    "fr": [
+      "Architecture mobile et intégration du backend REST",
+      "Recherche UX pour simplifier l’onboarding",
+      "Mise en place de la CI/CD avec Firebase App Distribution"
+    ],
+    "en": [
+      "Mobile architecture and REST backend integration",
+      "UX research to simplify onboarding",
+      "CI/CD setup with Firebase App Distribution"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Publié sur le Google Play Store, vérifiable via le lien du store",
+      "Mise en relation géolocalisée en temps réel, toutes catégories de compétences confondues",
+      "Chat intégré, portefeuille sécurisé et suivi des missions"
+    ],
+    "en": [
+      "Published on Google Play Store — verifiable via Play Store link",
+      "Geolocated real-time matching across skill categories",
+      "In-app chat, secure wallet, and mission tracking"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Mise en relation géolocalisée instantanée selon les compétences",
+      "Portefeuille sécurisé et gestion des paiements",
+      "Chat intégré en temps réel entre clients et prestataires",
+      "Dashboard de suivi des missions et des revenus"
+    ],
+    "en": [
+      "Instant geolocated matching based on skills",
+      "Secure wallet and payment management",
+      "Real-time in-app chat between clients and providers",
+      "Dashboard to track missions and revenue"
+    ]
+  },
+  "technologies": ["Flutter", "Dart", "REST API", "Firebase"],
+  "image": {
+    "src": "/images/projects/isyjob.jpg",
+    "width": 3000,
+    "height": 2000,
+    "alt": {
+      "fr": "Téléphone posé sur une table en bois près d’une tasse de café, affichant l’accueil d’IsyJob : recherche de services, recherches récentes et services à proximité",
+      "en": "Phone on a wooden table next to a cup of coffee, showing the IsyJob home screen: service search, recent searches and nearby services"
+    }
+  },
+  "links": {
+    "live": null,
+    "store": "https://play.google.com/store/apps/details?id=com.ovvpcorp.isyjob",
+    "code": null
+  }
+}

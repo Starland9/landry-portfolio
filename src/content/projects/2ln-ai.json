@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "2ln-ai",
+  "title": "2LN AI",
+  "type": "mobile",
+  "year": 2024,
+  "featured": false,
+  "status": "in-production",
+  "duration": { "fr": "6 semaines", "en": "6 weeks" },
+  "team": { "fr": "Équipe IA (2 devs · 1 juriste · 1 PM)", "en": "AI team (2 devs · 1 legal expert · 1 PM)" },
+  "headline": {
+    "fr": "Assistant juridique IA qui démocratise le droit du travail auprès des salariés.",
+    "en": "AI legal assistant democratizing labor law for employees."
+  },
+  "description": {
+    "fr": "Des questions sur votre contrat de travail, vos droits de salarié ou les obligations de l’employeur ? Obtenez des réponses claires et rapides grâce à un assistant IA spécialisé en droit du travail.",
+    "en": "Questions about your employment contract, employee rights, or employer obligations? Get clear and fast answers via an AI assistant specialized in labor law."
+  },
+  "summary": {
+    "fr": "2LN AI associe une application mobile fluide à un moteur RAG entraîné sur la législation locale pour fournir des réponses fiables en quelques secondes.",
+    "en": "2LN AI combines a fluid mobile application and a RAG engine trained on local legislation to deliver reliable answers within seconds."
+  },
+  "problem": {
+    "fr": "Les salariés n’ont pas d’accès rapide à un conseil juridique personnalisé sans passer par des consultations coûteuses.",
+    "en": "Employees lack fast access to personalized legal advice without expensive consultations."
+  },
+  "solution": {
+    "fr": "Un chatbot juridique spécialisé qui contextualise chaque question, propose des modèles de lettres et renvoie aux textes officiels.",
+    "en": "A specialized legal chatbot that contextualizes each question, suggests letter templates, and references official texts."
+  },
+  "role": {
+    "fr": [
+      "Architecture Flutter multiplateforme",
+      "Développement du backend Python et du pipeline RAG",
+      "Mise en place d’une base de données vectorielle et d’un MLOps léger"
+    ],
+    "en": [
+      "Multi-platform Flutter architecture",
+      "Python backend and RAG pipeline development",
+      "Vector database and lightweight MLOps setup"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Publié sur le Google Play Store, vérifiable via le lien du store",
+      "Pipeline RAG construit sur la législation locale",
+      "Prise en charge des conversations multilingues"
+    ],
+    "en": [
+      "Published on Google Play Store — verifiable via Play Store link",
+      "RAG pipeline built on local legislation",
+      "Multi-language conversation support"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Chat IA contextualisé, adossé à un pipeline RAG",
+      "Bibliothèque de cas pratiques et de modèles de lettres",
+      "Conversation multilingue avec mode hors ligne",
+      "Dashboard d’administration pour suivre le dataset et les retours"
+    ],
+    "en": [
+      "Contextualized AI chat backed by a RAG pipeline",
+      "Library of practical cases and letter templates",
+      "Multi-language conversation with offline mode",
+      "Admin dashboard to monitor dataset and feedback"
+    ]
+  },
+  "technologies": ["Flutter", "Dart", "REST API", "Firebase", "Python", "RAG", "ML"],
+  "image": {
+    "src": "/images/projects/2ln-ai.jpg",
+    "width": 3000,
+    "height": 2000,
+    "alt": {
+      "fr": "Smartphone posé sur un carnet de croquis d’interface, affichant une réponse de 2LN AI sur le Code du travail camerounais",
+      "en": "Smartphone on a notebook of interface sketches, showing a 2LN AI answer about the Cameroonian Labor Code"
+    }
+  },
+  "links": {
+    "live": null,
+    "store": "https://play.google.com/store/apps/details?id=com.lnexpertise.ia",
+    "code": null
+  }
+}

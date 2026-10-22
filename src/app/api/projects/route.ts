@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { FEATURED_PROJECTS } from "@/lib/constants";
+import { legacyProjects as FEATURED_PROJECTS } from "@/content/legacy";
 
 export async function GET(request: NextRequest) {
   try {

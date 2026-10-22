@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "kamte",
+  "title": "Kamte",
+  "type": "mobile",
+  "year": 2020,
+  "featured": false,
+  "status": "in-production",
+  "duration": { "fr": "2 mois", "en": "2 months" },
+  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "headline": {
+    "fr": "Gestionnaire de finances personnelles pour suivre et optimiser ses dépenses au quotidien.",
+    "en": "Personal finance manager for tracking and optimizing daily expenses."
+  },
+  "description": {
+    "fr": "Kamte est une app mobile de finances personnelles qui permet de suivre revenus et dépenses — pour une visibilité complète sur vos dépenses et vos rentrées d’argent au quotidien.",
+    "en": "Kamte is a mobile personal finance app for tracking income and expenses — giving you full visibility over your daily spending and revenue."
+  },
+  "summary": {
+    "fr": "Kamte aide les utilisateurs à gérer leur budget au quotidien grâce à une vision claire de leur trésorerie, des rappels intelligents et des recommandations personnalisées.",
+    "en": "Kamte helps users manage their daily budget with clear cash flow visibility, smart reminders, and personalized recommendations."
+  },
+  "problem": {
+    "fr": "Le suivi manuel des dépenses décourage les utilisateurs et n’offre aucune vision consolidée.",
+    "en": "Manual expense tracking discourages users and lacks consolidated visibility."
+  },
+  "solution": {
+    "fr": "Une app intuitive avec catégorisation automatique, dashboards et export comptable.",
+    "en": "An intuitive app with automatic categorization, dashboards, and accounting export."
+  },
+  "role": {
+    "fr": [
+      "Conception produit et UX",
+      "Développement Flutter avec une architecture BLoC",
+      "Mise en place des analytics et du crash reporting"
+    ],
+    "en": [
+      "Product design and UX",
+      "Flutter development with BLoC architecture",
+      "Analytics and crash reporting setup"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Publié sur le Google Play Store, vérifiable via le lien du store",
+      "Architecture BLoC pour une gestion d’état prévisible",
+      "Prise en charge multidevise et synchronisation cloud"
+    ],
+    "en": [
+      "Published on Google Play Store — verifiable via Play Store link",
+      "BLoC architecture for predictable state management",
+      "Multi-currency support and cloud sync"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Suivi multicompte et budgets intelligents",
+      "Analyse des habitudes de dépense avec des insights générés par IA",
+      "Rappels automatiques et widgets iOS/Android",
+      "Export PDF et CSV pour la comptabilité personnelle"
+    ],
+    "en": [
+      "Multi-account tracking and smart budgets",
+      "Spending habit analysis with AI insights",
+      "Automatic reminders and iOS/Android widgets",
+      "PDF and CSV export for personal accounting"
+    ]
+  },
+  "technologies": ["Flutter", "Dart"],
+  "image": {
+    "src": "/images/projects/kamte.jpg",
+    "width": 2940,
+    "height": 2177,
+    "alt": {
+      "fr": "Main tenant une tablette qui affiche la liste des dépenses Kamte pour des vacances entre amis, au-dessus d’un bureau près d’une fenêtre",
+      "en": "Hand holding a tablet showing the Kamte expense list for a vacation with friends, above a desk near a window"
+    }
+  },
+  "links": {
+    "live": null,
+    "store": "https://play.google.com/store/apps/details?id=com.kamte.app",
+    "code": null
+  }
+}

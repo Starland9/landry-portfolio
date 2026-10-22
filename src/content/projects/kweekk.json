@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "kweekk",
+  "title": "KweekK",
+  "type": "mobile",
+  "year": 2022,
+  "featured": true,
+  "status": "live",
+  "duration": { "fr": "4 mois", "en": "4 months" },
+  "team": { "fr": "Équipe mobile (2 devs · 1 QA · 1 PO)", "en": "Mobile team (2 devs · 1 QA · 1 PO)" },
+  "headline": {
+    "fr": "Club de fidélité digital offrant des réductions exclusives en Afrique centrale.",
+    "en": "Digital loyalty club delivering exclusive discounts across Central Africa."
+  },
+  "description": {
+    "fr": "KweekK est une plateforme digitale qui permet aux particuliers, aux groupes et aux entreprises d’accéder à des réductions exclusives sur les produits et services de réseaux partenaires (PRCPI).",
+    "en": "KweekK is a digital platform enabling individuals, groups, and businesses to access exclusive discounts on products and services from partner networks (PRCPI)."
+  },
+  "summary": {
+    "fr": "KweekK réunit membres et partenaires autour d’un programme de fidélité gamifié qui fluidifie l’accès aux réductions et simplifie la gestion des campagnes.",
+    "en": "KweekK connects members and partners around a gamified loyalty program that streamlines access to discounts and simplifies campaign management."
+  },
+  "problem": {
+    "fr": "Les commerçants partenaires ne disposaient d’aucun canal digital fiable pour diffuser leurs offres exclusives et en mesurer l’impact.",
+    "en": "Partner merchants lacked a reliable digital channel to distribute and measure the impact of their exclusive offers."
+  },
+  "solution": {
+    "fr": "Une application Flutter multi-tenant avec un dashboard partenaire, une validation sécurisée des coupons et un suivi analytique en temps réel.",
+    "en": "A multi-tenant Flutter application with a partner dashboard, secure coupon validation, and real-time analytics."
+  },
+  "role": {
+    "fr": [
+      "Lead développeur Flutter et intégration des API",
+      "Mise en place de la Clean Architecture et de la gestion d’état",
+      "Coordination avec l’équipe produit sur la roadmap mobile"
+    ],
+    "en": [
+      "Lead Flutter engineer and API integration",
+      "Clean architecture and state management implementation",
+      "Coordination with product team on mobile roadmap"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Publié sur le Google Play Store, vérifiable via le lien du store",
+      "Back-office partenaire pour gérer les offres en temps réel",
+      "Validation sécurisée des QR codes, y compris hors ligne"
+    ],
+    "en": [
+      "Published on Google Play Store — verifiable via Play Store link",
+      "Partner back-office for managing real-time offers",
+      "Secure QR code validation with offline support"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Espace membre avec cartes de réduction dynamiques",
+      "QR codes sécurisés avec validation hors ligne",
+      "Module partenaire pour publier des offres en temps réel",
+      "Dashboard analytique pour suivre les conversions"
+    ],
+    "en": [
+      "Member space with dynamic discount cards",
+      "Secure QR codes with offline validation",
+      "Partner module for publishing real-time offers",
+      "Analytics dashboard to track conversions"
+    ]
+  },
+  "technologies": ["Flutter", "Dart", "REST API"],
+  "image": {
+    "src": "/images/projects/kweekk.jpg",
+    "width": 2000,
+    "height": 2500,
+    "alt": {
+      "fr": "Main tenant un téléphone affichant l’app KweekK : liste de réductions partenaires avec prix d’origine et prix remisé",
+      "en": "Hand holding a phone showing the KweekK app: a list of partner discounts with original and discounted prices"
+    }
+  },
+  "links": {
+    "live": null,
+    "store": "https://play.google.com/store/apps/details?id=com.ovvpcorp.kweekk",
+    "code": null
+  }
+}

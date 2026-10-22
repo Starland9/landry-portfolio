@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "omoh",
+  "title": "OMOH",
+  "type": "mobile",
+  "year": 2021,
+  "featured": false,
+  "status": "live",
+  "duration": { "fr": "2 mois", "en": "2 months" },
+  "team": { "fr": "Projet personnel (2 devs)", "en": "Side project (2 devs)" },
+  "headline": {
+    "fr": "Suivez vos dépenses Mobile Money grâce à l’analyse intelligente de vos SMS.",
+    "en": "Track your Mobile Money spending through intelligent SMS analysis."
+  },
+  "description": {
+    "fr": "Vous recevez des SMS de confirmation Orange Money ou MTN Mobile Money et perdez le fil de vos dépenses ? Cette app est faite pour vous.",
+    "en": "Receive Orange Money or MTN Mobile Money confirmation SMS and lose track of your expenses? This app is for you."
+  },
+  "summary": {
+    "fr": "OMOH catégorise automatiquement les transactions Mobile Money, génère des rapports en temps réel et aide les utilisateurs à reprendre le contrôle de leur budget.",
+    "en": "OMOH automatically categorizes Mobile Money transactions, generates real-time reports, and helps users regain control of their budget."
+  },
+  "problem": {
+    "fr": "Les utilisateurs ne disposent d’aucun dashboard consolidé de leurs transactions Mobile Money, tous opérateurs confondus.",
+    "en": "Users have no consolidated dashboard for their Mobile Money transactions across operators."
+  },
+  "solution": {
+    "fr": "Une application offline-first qui analyse les SMS, enrichit les données et en tire des indicateurs exploitables.",
+    "en": "An offline-first application that parses SMS messages, enriches data, and produces actionable insights."
+  },
+  "role": {
+    "fr": [
+      "Développement Flutter et mise en œuvre du NLP hors ligne",
+      "Sécurité des données (chiffrement, sandbox)",
+      "Product discovery menée avec des utilisateurs avancés"
+    ],
+    "en": [
+      "Flutter development and offline NLP implementation",
+      "Data security (encryption, sandbox)",
+      "Product discovery with power users"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Publié sur le Google Play Store, vérifiable via le lien du store",
+      "Offline-first avec chiffrement local pour préserver la confidentialité des données",
+      "Analyse automatisée des SMS Orange et MTN"
+    ],
+    "en": [
+      "Published on Google Play Store — verifiable via Play Store link",
+      "Offline-first with local encryption for data privacy",
+      "Automated SMS parsing for Orange and MTN"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Analyse intelligente des SMS Orange et MTN",
+      "Dashboards budgétaires en temps réel",
+      "Alertes personnalisées en cas de dépassement de budget",
+      "Export CSV et rapports mensuels"
+    ],
+    "en": [
+      "Intelligent SMS parsing for Orange & MTN",
+      "Real-time budget dashboards",
+      "Custom alerts for overspending",
+      "CSV export and monthly reports"
+    ]
+  },
+  "technologies": ["Flutter", "Dart"],
+  "image": {
+    "src": "/images/projects/omoh.webp",
+    "width": 240,
+    "height": 240,
+    "alt": {
+      "fr": "Icône de l’application OMOH : une bulle de discussion blanche contenant une flèche montante, des barres et une flèche descendante, sur fond sombre",
+      "en": "OMOH app icon: a white speech bubble containing an up arrow, bars and a down arrow, on a dark background"
+    }
+  },
+  "links": {
+    "live": null,
+    "store": "https://play.google.com/store/apps/details?id=com.ozosotf.omoh",
+    "code": null
+  }
+}

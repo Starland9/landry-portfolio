@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2022",
     "lib": [
       "dom",
       "dom.iterable",
@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -35,6 +36,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "**/*.css",
+    "tests/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [

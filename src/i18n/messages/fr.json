@@ -1,0 +1,198 @@
+{
+  "meta": {
+    "home": {
+      "title": "Landry Simo — Ingénieur logiciel, web & mobile",
+      "description": "Ingénieur logiciel à Douala : applications web et mobiles en production avec Flutter, Django et Next.js. Études de cas, CV et contact."
+    },
+    "work": {
+      "title": "Projets",
+      "description": "Tous les projets livrés par Landry Simo — web, mobile et autres — avec une étude de cas pour chacun."
+    },
+    "about": {
+      "title": "À propos",
+      "description": "Parcours, expériences, stack technique et activité GitHub de Landry Simo, ingénieur logiciel à Douala."
+    },
+    "cv": {
+      "title": "CV",
+      "description": "CV imprimable de Landry Simo, ingénieur logiciel : expériences, projets sélectionnés et compétences."
+    },
+    "caseStudy": "{title} — Étude de cas",
+    "notFound": "Page introuvable"
+  },
+  "nav": {
+    "label": "Navigation principale",
+    "home": "Accueil",
+    "work": "Projets",
+    "about": "À propos",
+    "cv": "CV",
+    "contact": "Contact",
+    "menu": "Menu",
+    "closeMenu": "Fermer le menu",
+    "skip": "Aller au contenu",
+    "breadcrumb": "Fil d’Ariane",
+    "language": "Langue",
+    "languageNames": { "fr": "Français", "en": "English" }
+  },
+  "theme": {
+    "toDark": "Passer au thème sombre",
+    "toLight": "Passer au thème clair"
+  },
+  "common": {
+    "externalSite": "(site externe)",
+    "present": "aujourd’hui",
+    "allProjects": "Tous les projets",
+    "moreAboutMe": "En savoir plus",
+    "backToTop": "Retour en haut",
+    "email": "E-mail"
+  },
+  "types": {
+    "web": "Web",
+    "mobile": "Mobile",
+    "other": "Autre"
+  },
+  "typesLong": {
+    "web": "Application web",
+    "mobile": "Application mobile",
+    "other": "Bot et outillage"
+  },
+  "status": {
+    "live": "En ligne",
+    "in-production": "En production",
+    "pilot": "Pilote en production",
+    "ongoing": "En cours",
+    "maintained": "Maintenu activement"
+  },
+  "store": "Play Store",
+  "links": {
+    "live": "Voir le site",
+    "store": "Voir sur Google Play",
+    "code": "Voir le code"
+  },
+  "home": {
+    "viewWork": "Voir les projets",
+    "viewCv": "Voir le CV",
+    "contact": "Me contacter",
+    "freelanceCta": "Discutons-en",
+    "photoAlt": "Portrait de Landry Simo",
+    "facts": {
+      "basedIn": "Basé à",
+      "stack": "Stack",
+      "shipped": "Livré",
+      "shippedValue": "{count} projets depuis {year}"
+    },
+    "featured": "Projets phares",
+    "experience": "Parcours"
+  },
+  "work": {
+    "title": "Projets",
+    "intro": "{count} projets livrés depuis {year}, du plus récent au plus ancien.",
+    "filterLabel": "Filtrer par type",
+    "all": "Tous",
+    "empty": "Aucun projet ne correspond à ce filtre.",
+    "showAll": "Voir tous les projets"
+  },
+  "caseStudy": {
+    "sheetLabel": "Fiche projet",
+    "sheet": {
+      "type": "Type",
+      "year": "Année",
+      "duration": "Durée",
+      "team": "Équipe",
+      "status": "Statut",
+      "code": "Code"
+    },
+    "codePrivate": "Privé",
+    "sections": {
+      "problem": "Problème",
+      "solution": "Solution",
+      "role": "Mon rôle",
+      "impact": "Impact",
+      "features": "Fonctionnalités clés",
+      "stack": "Stack"
+    },
+    "nextProject": "Projet suivant",
+    "similar": "Un projet similaire, ou un poste où ce type de travail compte ?"
+  },
+  "about": {
+    "title": "À propos",
+    "experience": "Parcours",
+    "stack": "Stack technique",
+    "education": "Formation",
+    "languages": "Langues",
+    "github": {
+      "title": "Sur GitHub",
+      "repos": "dépôts publics",
+      "followers": "abonnés",
+      "since": "sur GitHub depuis",
+      "updated": "Mis à jour le {date}",
+      "unavailable": "Les statistiques GitHub sont momentanément indisponibles.",
+      "profile": "Voir mon profil GitHub"
+    },
+    "bonus": {
+      "title": "Bonus : morpion",
+      "intro": "Un petit jeu pour les curieux. Vous jouez les X contre l’ordinateur.",
+      "board": "Grille de morpion",
+      "cell": "Case {n}, {state}",
+      "empty": "vide",
+      "yourTurn": "À vous de jouer.",
+      "computerTurn": "L’ordinateur joue…",
+      "win": "Vous avez gagné !",
+      "lose": "L’ordinateur gagne.",
+      "draw": "Match nul.",
+      "reset": "Nouvelle partie"
+    }
+  },
+  "cv": {
+    "title": "CV",
+    "print": "Imprimer / Enregistrer en PDF",
+    "printHint": "La fenêtre d’impression de votre navigateur permet d’enregistrer cette page en PDF.",
+    "profile": "Profil",
+    "experience": "Expérience",
+    "projects": "Projets sélectionnés",
+    "skills": "Compétences",
+    "education": "Formation",
+    "languages": "Langues",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Me contacter",
+    "lead": "Un poste à pourvoir, une mission, une question ? Écrivez-moi, je réponds sous 48 h ouvrées.",
+    "fields": {
+      "name": "Nom",
+      "email": "E-mail",
+      "reason": "Motif",
+      "message": "Message"
+    },
+    "reasons": {
+      "job": "Poste à pourvoir",
+      "freelance": "Mission freelance",
+      "other": "Autre"
+    },
+    "submit": "Envoyer le message",
+    "sending": "Envoi…",
+    "note": "Votre adresse sert uniquement à vous répondre.",
+    "success": "Message envoyé. Merci, je vous réponds sous 48 h ouvrées.",
+    "rateLimited": "Trop de messages envoyés. Réessayez dans une heure ou écrivez directement à {email}.",
+    "error": "L’envoi a échoué. Votre message est conservé ci-dessous ; vous pouvez réessayer ou écrire directement à {email}.",
+    "errors": {
+      "name": "Indiquez votre nom.",
+      "email": "Indiquez une adresse e-mail valide, par exemple nom@domaine.com.",
+      "messageShort": "Votre message doit faire au moins 10 caractères.",
+      "messageLong": "Votre message doit faire au plus 5000 caractères."
+    }
+  },
+  "footer": {
+    "tagline": "Ingénieur logiciel, Douala."
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "text": "Cette page n’existe pas ou a été déplacée.",
+    "home": "Retour à l’accueil",
+    "work": "Voir tous les projets"
+  },
+  "error": {
+    "title": "Une erreur est survenue",
+    "text": "Une erreur inattendue s’est produite pendant le chargement de cette page.",
+    "retry": "Réessayer"
+  }
+}

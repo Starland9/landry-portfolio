@@ -1,0 +1,86 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "fais-mon-cv",
+  "title": "Fais Mon CV",
+  "type": "web",
+  "year": 2024,
+  "featured": false,
+  "status": "in-production",
+  "duration": { "fr": "4 semaines", "en": "4 weeks" },
+  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "headline": {
+    "fr": "Assistant CV propulsé par l’IA pour créer des dossiers de candidature qui se démarquent.",
+    "en": "AI-powered CV assistant to create standout job application materials."
+  },
+  "description": {
+    "fr": "Une plateforme en ligne de création de CV, avec modèles personnalisables et export PDF, propulsée par un moteur d’IA avancé.",
+    "en": "An online CV creation platform with customizable templates and PDF export powered by an advanced AI engine."
+  },
+  "summary": {
+    "fr": "Fais Mon CV est une plateforme SaaS qui accompagne les candidats de l’analyse de leur profil jusqu’à un CV prêt à envoyer, grâce à un moteur d’IA contextuel.",
+    "en": "Fais Mon CV is a SaaS platform that guides candidates from profile analysis to a ready-to-send CV, using a contextual AI engine."
+  },
+  "problem": {
+    "fr": "Les candidats passent des heures à structurer et à mettre en forme leur CV, au risque d’oublier des éléments clés ou d’aboutir à une présentation visuelle incohérente.",
+    "en": "Candidates spend hours structuring and formatting their CVs, risking missing key elements or inconsistent visual presentation."
+  },
+  "solution": {
+    "fr": "Un parcours guidé qui combine un assistant IA, des modèles modulaires et un export PDF au pixel près pour produire un CV professionnel en quelques minutes.",
+    "en": "A guided experience combining an AI assistant, modular templates, and pixel-perfect PDF export to produce a professional CV in minutes."
+  },
+  "role": {
+    "fr": [
+      "Conception produit et recherche utilisateur",
+      "Développement full-stack Next.js/TypeScript",
+      "Intégration Firebase (authentification, stockage, base de données)",
+      "Mise en place d’un pipeline d’inférence IA serverless"
+    ],
+    "en": [
+      "Product design and user research",
+      "Full-stack Next.js/TypeScript development",
+      "Firebase integration (auth, storage, database)",
+      "Serverless AI inference pipeline setup"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Version bêta lancée et déployée sur Vercel",
+      "La structuration assistée par IA réduit le temps de mise en forme manuelle",
+      "Export PDF avec une identité visuelle professionnelle"
+    ],
+    "en": [
+      "Beta launched and deployed on Vercel",
+      "AI-assisted structuring reduces manual formatting time",
+      "PDF export with professional branding"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Assistant IA pour structurer les expériences, les compétences et le pitch",
+      "Modèles modulaires et responsives, personnalisables en temps réel",
+      "Export PDF haute fidélité avec une identité visuelle professionnelle",
+      "Dashboard analytique pour suivre les téléchargements et les conversions"
+    ],
+    "en": [
+      "AI assistant for structuring experience, skills, and pitch",
+      "Modular responsive templates customizable in real time",
+      "High-fidelity PDF export with professional branding",
+      "Analytics dashboard to track downloads and conversions"
+    ]
+  },
+  "technologies": ["Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS", "Firebase"],
+  "image": {
+    "src": "/images/projects/cv.jpg",
+    "width": 3000,
+    "height": 2000,
+    "alt": {
+      "fr": "Ordinateur portable sur une table affichant l’éditeur Fais Mon CV : formulaire de profil à gauche, aperçu du CV à droite",
+      "en": "Laptop on a table showing the Fais Mon CV editor: profile form on the left, CV preview on the right"
+    }
+  },
+  "links": {
+    "live": "https://cv.starland9.dev",
+    "store": null,
+    "code": null
+  }
+}

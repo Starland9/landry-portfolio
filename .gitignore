@@ -33,3 +33,5 @@ next-env.d.ts
 
 PORTFOLIO_PROMPT.md
 .deploy.sh
+# env template is committed
+!.env.example

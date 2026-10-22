@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Expériences (plus récente d’abord)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "company",
+      "role",
+      "start",
+      "end",
+      "highlights"
+    ],
+    "properties": {
+      "company": {
+        "type": "object",
+        "description": "",
+        "required": [
+          "fr",
+          "en"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fr": {
+            "type": "string",
+            "minLength": 1
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "role": {
+        "type": "object",
+        "description": "",
+        "required": [
+          "fr",
+          "en"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fr": {
+            "type": "string",
+            "minLength": 1
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "start": {
+        "type": "integer"
+      },
+      "end": {
+        "anyOf": [
+          {
+            "type": "integer"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "null = aujourd’hui"
+      },
+      "highlights": {
+        "type": "object",
+        "description": "",
+        "required": [
+          "fr",
+          "en"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fr": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "en": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

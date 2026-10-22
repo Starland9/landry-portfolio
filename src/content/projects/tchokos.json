@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "tchokos",
+  "title": "Tchokos E-commerce",
+  "type": "web",
+  "year": 2022,
+  "featured": false,
+  "status": "in-production",
+  "duration": { "fr": "6 semaines", "en": "6 weeks" },
+  "team": { "fr": "Studio digital (2 devs · 1 designer)", "en": "Digital studio (2 devs · 1 designer)" },
+  "headline": {
+    "fr": "Expérience e-commerce premium pour la mode urbaine camerounaise.",
+    "en": "Premium e-commerce experience for Cameroonian urban fashion."
+  },
+  "description": {
+    "fr": "Une boutique en ligne spécialisée dans les chaussures, les vêtements et les accessoires, avec une expérience utilisateur fluide et sécurisée.",
+    "en": "An online store specializing in shoes, clothing, and accessories, with a smooth and secure user experience."
+  },
+  "summary": {
+    "fr": "Tchokos modernise la vente de sneakers et d’accessoires haut de gamme grâce à une vitrine digitale immersive et à un tunnel de conversion optimisé mobile-first.",
+    "en": "Tchokos modernizes high-end sneaker and accessory sales with an immersive digital storefront and a mobile-first optimized conversion funnel."
+  },
+  "problem": {
+    "fr": "Les boutiques physiques n’avaient pas de canal digital capable de reproduire l’expérience premium et de gérer les stocks en temps réel.",
+    "en": "Physical stores lacked a digital channel capable of replicating the premium experience and managing stock in real time."
+  },
+  "solution": {
+    "fr": "Une plateforme e-commerce headless en Next.js, avec gestion du catalogue, paiement par mobile money et logistique intégrée.",
+    "en": "A headless Next.js e-commerce platform with catalog management, mobile money payment, and integrated logistics."
+  },
+  "role": {
+    "fr": [
+      "Architecture frontend Next.js / Tailwind",
+      "Intégration de l’API commerce et de la passerelle de paiement",
+      "Optimisations de performance (ISR, images, cache)"
+    ],
+    "en": [
+      "Next.js / Tailwind frontend architecture",
+      "Commerce API and payment gateway integration",
+      "Performance optimizations (ISR, images, caching)"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Catalogue entièrement géré depuis un back-office sécurisé",
+      "Intégration du paiement Mobile Money",
+      "ISR et optimisation des images pour les performances"
+    ],
+    "en": [
+      "Catalog fully managed from a secure back-office",
+      "Mobile Money payment integration",
+      "ISR and image optimization for performance"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Catalogue dynamique avec variantes et stock en temps réel",
+      "Tunnel de commande optimisé mobile-first",
+      "Notifications transactionnelles et suivi de commande",
+      "CMS headless pour les contenus marketing et les lookbooks"
+    ],
+    "en": [
+      "Dynamic catalog with variants and real-time stock",
+      "Mobile-first optimized checkout funnel",
+      "Transactional notifications and order tracking",
+      "Headless CMS for marketing content and lookbooks"
+    ]
+  },
+  "technologies": ["Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS", "Firebase"],
+  "image": {
+    "src": "/images/projects/tchokos.jpg",
+    "width": 3001,
+    "height": 3751,
+    "alt": {
+      "fr": "Tablette avec clavier sur un bureau blanc affichant la boutique Tchokos SARL : fiches de chaussures avec notes et prix en FCFA",
+      "en": "Tablet with keyboard on a white desk showing the Tchokos SARL store: shoe product cards with ratings and prices in FCFA"
+    }
+  },
+  "links": {
+    "live": "https://tchokos.starland9.dev",
+    "store": null,
+    "code": null
+  }
+}

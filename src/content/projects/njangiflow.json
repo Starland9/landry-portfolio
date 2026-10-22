@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "njangiflow",
+  "title": "NjangiFlow",
+  "type": "web",
+  "year": 2023,
+  "featured": false,
+  "status": "pilot",
+  "duration": { "fr": "3 mois", "en": "3 months" },
+  "team": { "fr": "Équipe produit (3 devs · 1 PM · 1 UX)", "en": "Product team (3 devs · 1 PM · 1 UX)" },
+  "headline": {
+    "fr": "Digitalise les tontines africaines pour une gestion transparente et automatisée.",
+    "en": "Digitalizes African rotating savings groups for transparent, automated management."
+  },
+  "description": {
+    "fr": "Une plateforme intuitive et sécurisée pour organiser, suivre et optimiser les groupes d’épargne rotatifs (tontines). Simplifiez la gestion, renforcez la confiance.",
+    "en": "An intuitive, secure platform for organizing, tracking, and optimizing rotating savings groups (tontines). Simplify management and reinforce trust."
+  },
+  "summary": {
+    "fr": "NjangiFlow centralise la gestion des tontines, avec un tableau de bord en temps réel pour les administrateurs et une application mobile-first pour les membres.",
+    "en": "NjangiFlow centralizes rotating savings group management, offering a real-time control panel for administrators and a mobile-first application for members."
+  },
+  "problem": {
+    "fr": "Les tontines sont souvent gérées avec des tableurs Excel et des discussions WhatsApp, ce qui entraîne des erreurs de calcul, des retards et un manque de transparence.",
+    "en": "Tontines are often managed with Excel spreadsheets and WhatsApp threads, leading to calculation errors, delays, and lack of transparency."
+  },
+  "solution": {
+    "fr": "Une application pilotée par les données qui automatise les rappels, sécurise les transactions et rend chaque cotisation traçable.",
+    "en": "A data-driven application that automates reminders, secures transactions, and makes every contribution traceable."
+  },
+  "role": {
+    "fr": [
+      "Lead frontend Next.js et design system",
+      "Conception UX centrée sur la confiance",
+      "Intégration temps réel avec Firebase et Cloud Functions"
+    ],
+    "en": [
+      "Lead Frontend Next.js and design system",
+      "Trust-centered UX design",
+      "Real-time integration with Firebase and Cloud Functions"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Pilote déployé en production",
+      "Rappels automatisés et gestion de l’échéancier des paiements",
+      "Suivi des cotisations en temps réel avec export comptable"
+    ],
+    "en": [
+      "Pilot deployed in production",
+      "Automated reminders and payment schedule management",
+      "Real-time contribution tracking with accounting export"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Gestion multigroupe avec cycles et rôles personnalisables",
+      "Calendrier et rappels de paiement automatisés",
+      "Portefeuille virtuel et rapprochement en un clic",
+      "Module analytique pour visualiser les flux de trésorerie"
+    ],
+    "en": [
+      "Multi-group management with customizable cycles and roles",
+      "Automated calendar and payment reminders",
+      "Virtual wallet and one-click reconciliation",
+      "Analytics module for cash flow visualization"
+    ]
+  },
+  "technologies": ["Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS", "Firebase"],
+  "image": {
+    "src": "/images/projects/njangiflow.jpg",
+    "width": 3000,
+    "height": 2000,
+    "alt": {
+      "fr": "Ordinateur portable sur un bureau affichant la page d’accueil de NjangiFlow, à côté d’objectifs photo et d’une pile de magazines",
+      "en": "Laptop on a desk showing the NjangiFlow landing page, next to camera lenses and a stack of magazines"
+    }
+  },
+  "links": {
+    "live": "https://njangiflow.starland9.dev",
+    "store": null,
+    "code": null
+  }
+}

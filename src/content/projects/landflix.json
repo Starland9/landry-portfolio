@@ -1,0 +1,82 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "landflix",
+  "title": "Landflix",
+  "type": "mobile",
+  "year": 2025,
+  "featured": false,
+  "status": "in-production",
+  "duration": { "fr": "2 mois", "en": "2 months" },
+  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "headline": {
+    "fr": "App mobile de gestion des téléchargements de films et de séries.",
+    "en": "Mobile app for managing movie and series downloads."
+  },
+  "description": {
+    "fr": "Landflix est une app mobile de gestion des téléchargements de films et de séries — pour suivre vos contenus préférés et votre file de téléchargement.",
+    "en": "Landflix is a mobile app for managing movie and series downloads — letting you track your preferred content and download queue."
+  },
+  "summary": {
+    "fr": "Découvrez et téléchargez vos films et séries préférés grâce à une expérience moderne et intuitive, disponible sur tous vos appareils.",
+    "en": "Discover and download your favorite movies and series with a modern, intuitive experience available across your devices."
+  },
+  "problem": {
+    "fr": "L’accès aux films et aux séries est souvent limité par des plateformes rigides aux options de téléchargement restreintes.",
+    "en": "Access to films and series is often limited by inflexible platforms with restricted download options."
+  },
+  "solution": {
+    "fr": "Une app mobile qui centralise les contenus, optimise les téléchargements et offre une expérience utilisateur fluide.",
+    "en": "A mobile app that centralizes content, optimizes downloads, and offers a smooth user experience."
+  },
+  "role": {
+    "fr": [
+      "Conception produit et UX",
+      "Développement Flutter avec une architecture BLoC"
+    ],
+    "en": [
+      "Product design and UX",
+      "Flutter development with BLoC architecture"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Dépôt GitHub accessible publiquement",
+      "Architecture BLoC pour la gestion d’état",
+      "Prise en charge multiplateforme grâce à Flutter"
+    ],
+    "en": [
+      "GitHub repository publicly available",
+      "BLoC architecture for state management",
+      "Multi-platform Flutter support"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Catalogue de films et de séries avec options de téléchargement",
+      "Gestion des téléchargements avec priorités et files d’attente",
+      "Interface utilisateur moderne et intuitive",
+      "Prise en charge multiplateforme"
+    ],
+    "en": [
+      "Film and series catalog with download options",
+      "Download management with priorities and queues",
+      "Modern and intuitive user interface",
+      "Cross-platform support"
+    ]
+  },
+  "technologies": ["Flutter", "Dart"],
+  "image": {
+    "src": "/images/projects/landflix.jpg",
+    "width": 2490,
+    "height": 2000,
+    "alt": {
+      "fr": "Main tenant un smartphone qui affiche les résultats de recherche Landflix pour Breaking Bad, avec les affiches de plusieurs saisons",
+      "en": "Hand holding a smartphone showing Landflix search results for Breaking Bad, with posters for several seasons"
+    }
+  },
+  "links": {
+    "live": "https://starland9.github.io/landflix-landing/",
+    "store": null,
+    "code": "https://github.com/Starland9/LandFlix"
+  }
+}

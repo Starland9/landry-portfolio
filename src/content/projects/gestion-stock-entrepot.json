@@ -1,0 +1,91 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "gestion-stock-entrepot",
+  "title": "Warehouse Stock Manager",
+  "type": "web",
+  "year": 2026,
+  "featured": true,
+  "status": "in-production",
+  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "headline": {
+    "fr": "Gestion d’entrepôt full-stack, avec un backend Django 6/DRF et un frontend Next.js.",
+    "en": "Full-stack warehouse management with Django 6/DRF backend and Next.js frontend."
+  },
+  "description": {
+    "fr": "Une application full-stack pour gérer produits, stocks, ventes, achats, inventaires et transferts entre entrepôts depuis une interface moderne.",
+    "en": "A full-stack application to manage products, stock, sales, purchases, inventories, and transfers between warehouses from a modern interface."
+  },
+  "summary": {
+    "fr": "Warehouse Stock Manager est une plateforme de gestion opérationnelle qui centralise tous les flux métier de l’entrepôt : mouvements de stock, ventes, achats, inventaires et administration des fournisseurs — avec une API REST versionnée et sécurisée par JWT.",
+    "en": "Warehouse Stock Manager is an operational management platform that centralizes all warehouse business flows: stock movements, sales, purchases, inventories, and vendor administration — with a versioned, JWT-secured REST API."
+  },
+  "problem": {
+    "fr": "Le suivi manuel des stocks entraîne des erreurs d’inventaire, des ruptures de stock et un manque de visibilité sur les transferts entre entrepôts.",
+    "en": "Manual stock tracking causes inventory errors, stockouts, and poor visibility across warehouse transfers."
+  },
+  "solution": {
+    "fr": "Une architecture moderne Django 6 + DRF + Next.js qui automatise les mouvements de stock en temps réel, standardise les opérations et expose une API REST versionnée, sécurisée par authentification JWT.",
+    "en": "A modern Django 6 + DRF + Next.js architecture that automates stock movements in real time, standardizes operations, and exposes a versioned REST API secured with JWT authentication."
+  },
+  "role": {
+    "fr": [
+      "Conception et développement du backend avec Django 6 et DRF",
+      "Développement du frontend avec Next.js",
+      "Modélisation des flux de stock et sécurisation de l’API par JWT"
+    ],
+    "en": [
+      "Backend design and development with Django 6 and DRF",
+      "Frontend development with Next.js",
+      "Stock flow modeling and JWT API security"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Centralisation complète des opérations d’entrepôt sur une seule plateforme",
+      "Flux de stock automatisés, liés aux ventes, aux achats et aux transferts",
+      "Traçabilité renforcée grâce à une API versionnée sécurisée par JWT"
+    ],
+    "en": [
+      "Full centralization of warehouse operations in a single platform",
+      "Automated stock flows linked to sales, purchases, and transfers",
+      "Strengthened traceability through a versioned JWT-secured API"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Gestion des produits",
+      "Gestion des entrepôts et des stocks",
+      "Ventes (décrémentent le stock)",
+      "Achats (incrémentent le stock)",
+      "Gestion des inventaires",
+      "Transferts entre entrepôts",
+      "Gestion des fournisseurs",
+      "API REST versionnée + authentification JWT"
+    ],
+    "en": [
+      "Product management",
+      "Warehouse and stock management",
+      "Sales (decrements stock)",
+      "Purchases (increments stock)",
+      "Inventory management",
+      "Transfers between warehouses",
+      "Vendor management",
+      "Versioned REST API + JWT authentication"
+    ]
+  },
+  "technologies": ["Django 6", "Django REST Framework", "Next.js", "TypeScript", "PostgreSQL", "JWT"],
+  "image": {
+    "src": "/images/projects/stock-entrepot.png",
+    "width": 1922,
+    "height": 1076,
+    "alt": {
+      "fr": "Dashboard de l’interface StockPro en mode sombre : compteurs de produits, entrepôts, fournisseurs et stock total, ventes et achats en FCFA, stock par entrepôt",
+      "en": "Dark-mode dashboard of the StockPro interface: counters for products, warehouses, suppliers and total stock, sales and purchases in FCFA, stock per warehouse"
+    }
+  },
+  "links": {
+    "live": "https://stockpro-three.vercel.app/",
+    "store": null,
+    "code": null
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Langues parlées (rubrique masquée si vide)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "language",
+      "level"
+    ],
+    "properties": {
+      "language": {
+        "type": "object",
+        "description": "",
+        "required": [
+          "fr",
+          "en"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fr": {
+            "type": "string",
+            "minLength": 1
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "level": {
+        "type": "object",
+        "description": "ex. Langue maternelle / Native",
+        "required": [
+          "fr",
+          "en"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fr": {
+            "type": "string",
+            "minLength": 1
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
