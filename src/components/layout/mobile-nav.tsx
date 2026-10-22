@@ -55,7 +55,7 @@ export function MobileNav({
         hidden={!open}
         className="absolute inset-x-0 top-full border-b border-border bg-bg"
       >
-        <ul className="mx-auto max-w-page px-[clamp(16px,4vw,40px)] pt-2 pb-4">
+        <ul className="page-container pt-2 pb-4">
           {items.map((item) => {
             const active = item.match !== undefined && pathname.startsWith(item.match);
             return (

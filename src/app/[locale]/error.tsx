@@ -10,7 +10,7 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
   const m = (params.locale === "fr" ? fr : en).error;
 
   return (
-    <div className="mx-auto max-w-page px-[clamp(16px,4vw,40px)] py-[clamp(64px,10vw,128px)]">
+    <div className="page-container py-[clamp(64px,10vw,128px)]">
       <h1 className="text-h1">{m.title}</h1>
       <p className="mt-6 max-w-lead text-lead text-muted">{m.text}</p>
       <Button className="mt-8" onClick={reset}>

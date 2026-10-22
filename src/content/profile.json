@@ -18,12 +18,23 @@
     "fr": "Vous avez un projet ? J’accepte aussi des missions freelance.",
     "en": "Have a project? I also take on freelance work."
   },
-  "location": { "fr": "Douala, Cameroun", "en": "Douala, Cameroon" },
+  "location": {
+    "fr": "Douala, Cameroun",
+    "en": "Douala, Cameroon"
+  },
   "timezone": "UTC+1",
   "yearsOfExperience": 4,
+  "mainStack": [
+    "Flutter",
+    "Django",
+    "Next.js"
+  ],
   "availability": {
     "open": true,
-    "label": { "fr": "Disponible pour un nouveau poste", "en": "Open to new roles" }
+    "label": {
+      "fr": "Disponible pour un nouveau poste",
+      "en": "Open to new roles"
+    }
   },
   "email": "contact@starland9.dev",
   "social": {

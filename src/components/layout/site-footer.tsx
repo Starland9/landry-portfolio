@@ -13,7 +13,7 @@ export async function SiteFooter() {
 
   return (
     <footer className="border-t border-border py-12 text-sm text-muted">
-      <div className="mx-auto flex max-w-page flex-wrap items-center justify-between gap-6 px-[clamp(16px,4vw,40px)]">
+      <div className="page-container flex flex-wrap items-center justify-between gap-6">
         <p>
           {profile.fullName} — {m.footer.tagline} © {new Date().getFullYear()}
         </p>

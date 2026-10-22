@@ -18,7 +18,7 @@ export async function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-20 border-b border-border bg-bg print:hidden">
-      <div className="relative mx-auto flex h-16 max-w-page items-center gap-4 px-[clamp(16px,4vw,40px)]">
+      <div className="relative page-container flex h-16 items-center gap-4">
         <Link
           href={localePath(locale)}
           className="mr-auto text-[1.0625rem] font-semibold whitespace-nowrap text-fg no-underline hover:text-fg hover:no-underline"

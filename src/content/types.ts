@@ -60,6 +60,7 @@ export type Profile = {
   location: Localized<string>;
   timezone: string;
   yearsOfExperience: number;
+  mainStack: string[];
   availability: { open: boolean; label: Localized<string> };
   email: string;
   social: { github: string; linkedin: string; x: string };
@@ -72,6 +73,7 @@ export type Experience = {
   role: Localized<string>;
   start: number;
   end: number | null;
+  summary: Localized<string>;
   highlights: Localized<string[]>;
 };
 

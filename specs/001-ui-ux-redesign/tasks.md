@@ -86,12 +86,12 @@ testable increment.
 
 **Independent Test**: quickstart scenarios 3 and 4 — at 360 × 640 the name, role, lead and the 3 actions are visible without scrolling; 6 project cards with uniform frames link to their case study.
 
-- [ ] T030 [P] [US1] Create `src/components/ui/project-card.tsx`: whole card is one link to `/{locale}/work/{slug}`, `image-frame` 4:3, mono meta row (`{type} · {year}` left, `Play Store` if `links.store` else status label right), h3 title with arrow (hover: accent underline + 3 px arrow shift), headline in `text-muted`
-- [ ] T031 [P] [US1] Create `src/components/home/hero.tsx`: availability badge; `h1` display = full name + role (role in `text-muted`); lead; primary "Voir les projets" → `#work`, secondary "Voir le CV" → `/{locale}/cv`, link "Me contacter" → `#contact`; freelance note; facts `dl` (Basé à / Stack / Livré "{projectCount()} projets depuis {firstProjectYear()}"); photo column 4:5 only when `profile.photo` is set (≥ 900 px) and 40 px avatar beside the badge below 900 px, no photo column when `photo` is `null`
-- [ ] T032 [P] [US1] Create `src/components/home/featured-work.tsx` (`section#work`, section-head "Projets phares" + link "Tous les projets {count}" → `/{locale}/work`, 2-column grid ≥ 720 px of `project-card`) and `src/components/home/experience-list.tsx` (`section#about`, rows period mono / role · company / highlights, link "En savoir plus" → `/{locale}/about`)
-- [ ] T033 [US1] Create `src/components/contact/contact-section.tsx` (`section#contact`: section-head "Me contacter", lead, large `mailto:` link, LinkedIn/GitHub/X links) with a slot for the form added in US4
-- [ ] T034 [US1] Create `src/app/[locale]/page.tsx` assembling hero, featured work, experience list and contact section; `generateMetadata` via `buildMetadata`
-- [ ] T035 [US1] Check the home page against the mockup and quickstart scenarios 3, 4, 20, 22 in both languages and both system themes; fix spacing/typography deviations
+- [X] T030 [P] [US1] Create `src/components/ui/project-card.tsx`: whole card is one link to `/{locale}/work/{slug}`, `image-frame` 4:3, mono meta row (`{type} · {year}` left, `Play Store` if `links.store` else status label right), h3 title with arrow (hover: accent underline + 3 px arrow shift), headline in `text-muted`
+- [X] T031 [P] [US1] Create `src/components/home/hero.tsx`: availability badge; `h1` display = full name + role (role in `text-muted`); lead; primary "Voir les projets" → `#work`, secondary "Voir le CV" → `/{locale}/cv`, link "Me contacter" → `#contact`; freelance note; facts `dl` (Basé à / Stack / Livré "{projectCount()} projets depuis {firstProjectYear()}"); photo column 4:5 only when `profile.photo` is set (≥ 900 px) and 40 px avatar beside the badge below 900 px, no photo column when `photo` is `null`
+- [X] T032 [P] [US1] Create `src/components/home/featured-work.tsx` (`section#work`, section-head "Projets phares" + link "Tous les projets {count}" → `/{locale}/work`, 2-column grid ≥ 720 px of `project-card`) and `src/components/home/experience-list.tsx` (`section#about`, rows period mono / role · company / highlights, link "En savoir plus" → `/{locale}/about`)
+- [X] T033 [US1] Create `src/components/contact/contact-section.tsx` (`section#contact`: section-head "Me contacter", lead, large `mailto:` link, LinkedIn/GitHub/X links) with a slot for the form added in US4
+- [X] T034 [US1] Create `src/app/[locale]/page.tsx` assembling hero, featured work, experience list and contact section; `generateMetadata` via `buildMetadata`
+- [X] T035 [US1] Check the home page against the mockup and quickstart scenarios 3, 4, 20, 22 in both languages and both system themes; fix spacing/typography deviations
 
 **Checkpoint**: the home page is complete and usable on its own.
 
@@ -103,11 +103,11 @@ testable increment.
 
 **Independent Test**: quickstart scenarios 6 and 7 — `/fr/work/secret` shows breadcrumb, active "Projets", sections 01→06, the Google Play link and no code link; `/fr/work/inconnu` returns a localized 404.
 
-- [ ] T036 [P] [US2] Create `src/components/work/case-study-header.tsx`: mono meta (type · year · team), h1 title, headline lead, actions (primary = first existing link among `store`/`live`/`code` using `external-link`, other links secondary), status badge, `highlights` strip (only when present, 1–3 items, `tabular-nums`)
-- [ ] T037 [P] [US2] Create `src/components/work/case-study-sheet.tsx` (`aside` + `dl`: Type, Année, Durée, Équipe, Statut, Code = link or "Privé"; sticky at ≥ 960 px) and `src/components/work/case-study-body.tsx` (`article`, sections with mono numbers 01 Problème, 02 Solution, 03 Mon rôle, 04 Impact, 05 Fonctionnalités clés, 06 Stack as mono tags; each section `aria-labelledby`)
-- [ ] T038 [P] [US2] Create `src/components/work/next-project.tsx`: compact card of `getNextProject(slug)` + lead "Un projet similaire…" + primary "Me contacter" → `/{locale}#contact` + secondary "Tous les projets"
-- [ ] T039 [US2] Create `src/app/[locale]/work/[slug]/page.tsx`: `generateStaticParams` (all slugs), `dynamicParams = false`, `notFound()` for unknown slug, breadcrumbs Accueil › Projets › {title}, header, 16:9 `image-frame` (priority image), sheet + body grid (`240px | 1fr` ≥ 960 px), next project; `generateMetadata` (title, headline as description, project image)
-- [ ] T040 [US2] Check `/fr/work/secret`, `/en/work/omoh` (240 px icon must stay sharp), `/fr/work/open-whatsapp-bot` (code link only) against the mockup and quickstart scenarios 6, 7, 8
+- [X] T036 [P] [US2] Create `src/components/work/case-study-header.tsx`: mono meta (type · year · team), h1 title, headline lead, actions (primary = first existing link among `store`/`live`/`code` using `external-link`, other links secondary), status badge, `highlights` strip (only when present, 1–3 items, `tabular-nums`)
+- [X] T037 [P] [US2] Create `src/components/work/case-study-sheet.tsx` (`aside` + `dl`: Type, Année, Durée, Équipe, Statut, Code = link or "Privé"; sticky at ≥ 960 px) and `src/components/work/case-study-body.tsx` (`article`, sections with mono numbers 01 Problème, 02 Solution, 03 Mon rôle, 04 Impact, 05 Fonctionnalités clés, 06 Stack as mono tags; each section `aria-labelledby`)
+- [X] T038 [P] [US2] Create `src/components/work/next-project.tsx`: compact card of `getNextProject(slug)` + lead "Un projet similaire…" + primary "Me contacter" → `/{locale}#contact` + secondary "Tous les projets"
+- [X] T039 [US2] Create `src/app/[locale]/work/[slug]/page.tsx`: `generateStaticParams` (all slugs), `dynamicParams = false`, `notFound()` for unknown slug, breadcrumbs Accueil › Projets › {title}, header, 16:9 `image-frame` (priority image), sheet + body grid (`240px | 1fr` ≥ 960 px), next project; `generateMetadata` (title, headline as description, project image)
+- [X] T040 [US2] Check `/fr/work/secret`, `/en/work/omoh` (240 px icon must stay sharp), `/fr/work/open-whatsapp-bot` (code link only) against the mockup and quickstart scenarios 6, 7, 8
 
 **Checkpoint**: MVP — home + case studies work end to end in both languages.
 

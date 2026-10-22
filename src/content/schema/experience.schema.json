@@ -10,6 +10,7 @@
       "role",
       "start",
       "end",
+      "summary",
       "highlights"
     ],
     "properties": {
@@ -91,6 +92,25 @@
             }
           }
         }
+      },
+      "summary": {
+        "type": "object",
+        "required": [
+          "fr",
+          "en"
+        ],
+        "properties": {
+          "fr": {
+            "type": "string",
+            "minLength": 1
+          },
+          "en": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "description": "Résumé en une phrase (accueil)"
       }
     }
   }

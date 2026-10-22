@@ -93,6 +93,7 @@ migration.
 | `location` | Localized\<string\> | « Douala, Cameroun » |
 | `timezone` | string | « UTC+1 » |
 | `yearsOfExperience` | integer | Affiché « 4+ » |
+| `mainStack` | string[] | Stack principale du hero (« Flutter · Django · Next.js ») |
 | `availability` | `{ "open": boolean, "label": Localized<string> }` | Badge du hero |
 | `email` | string | Adresse publique et destinataire par défaut du formulaire |
 | `social` | `{ "github": URL, "linkedin": URL, "x": URL }` | |
@@ -102,15 +103,15 @@ migration.
 ## Experience — `src/content/experience.json`
 
 Liste ordonnée (plus récent d'abord) de :
-`{ "company": Localized<string>, "role": Localized<string>, "start": int (année), "end": int | null, "highlights": Localized<string[]> }`.
+`{ "company": Localized<string>, "role": Localized<string>, "start": int (année), "end": int | null, "summary": Localized<string>, "highlights": Localized<string[]> }`.
+`summary` (une phrase) est affiché sur l'accueil ; `highlights` sur À propos et dans le CV.
 `end: null` = « aujourd'hui ».
 
 ## Stack — `src/content/stack.json`
 
 Liste de groupes : `{ "id": string, "label": Localized<string>, "items": string[] }`. Groupes
 issus de `SKILL_CATEGORIES` (Core, Backend & infrastructure, Mobile, Web, Bases de données, Autres).
-Le hero affiche la « stack principale » : `Flutter · Django · Next.js` (champ
-`profile`-dérivé du premier groupe, 3 premiers éléments).
+La « stack principale » du hero vient de `profile.mainStack`.
 
 ## Education — `src/content/education.json`
 

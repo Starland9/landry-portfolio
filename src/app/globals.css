@@ -103,6 +103,8 @@ html[data-theme="dark"] {
   --breakpoint-xl: 60rem;
 
   /* Layout & shape */
+  --spacing-gutter: clamp(16px, 4vw, 40px);
+  --spacing-section: clamp(64px, 8vw, 112px);
   --container-page: 72rem;
   --container-prose: 42rem;
   --container-lead: 40rem;
@@ -179,6 +181,14 @@ html[data-theme="dark"] {
   [hidden] {
     display: none !important;
   }
+}
+
+/* Centered page column with responsive side gutters. */
+@utility page-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-page);
+  padding-inline: var(--spacing-gutter);
 }
 
 /* Theme toggle icon follows <html data-theme> so it is right before hydration. */

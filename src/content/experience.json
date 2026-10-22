@@ -1,9 +1,19 @@
 [
   {
-    "company": { "fr": "OVVP Corp", "en": "OVVP Corp" },
-    "role": { "fr": "Développeur full-stack", "en": "Full-Stack Developer" },
+    "company": {
+      "fr": "OVVP Corp",
+      "en": "OVVP Corp"
+    },
+    "role": {
+      "fr": "Développeur full-stack",
+      "en": "Full-Stack Developer"
+    },
     "start": 2024,
     "end": null,
+    "summary": {
+      "fr": "Apps mobiles Flutter, web React/Next.js, backend Node.js et Python. Lead technique sur des projets multi-plateformes.",
+      "en": "Flutter mobile apps, React/Next.js web, Node.js and Python backends. Technical lead on multi-platform projects."
+    },
     "highlights": {
       "fr": [
         "Développement d’applications mobiles Flutter",
@@ -20,10 +30,20 @@
     }
   },
   {
-    "company": { "fr": "Indépendant", "en": "Independent" },
-    "role": { "fr": "Développeur freelance", "en": "Freelance Developer" },
+    "company": {
+      "fr": "Indépendant",
+      "en": "Independent"
+    },
+    "role": {
+      "fr": "Développeur freelance",
+      "en": "Freelance Developer"
+    },
     "start": 2021,
     "end": null,
+    "summary": {
+      "fr": "Applications web et mobiles pour des clients variés, de l’architecture au déploiement.",
+      "en": "Web and mobile applications for various clients, from architecture to deployment."
+    },
     "highlights": {
       "fr": [
         "Applications web et mobiles pour des clients variés",

@@ -207,6 +207,7 @@ export function parseProfile(raw: unknown): Profile {
     location: r.localized(p.location, "location"),
     timezone: r.string(p.timezone, "timezone"),
     yearsOfExperience: r.integer(p.yearsOfExperience, "yearsOfExperience", 0),
+    mainStack: r.stringList(p.mainStack, "mainStack"),
     availability: {
       open: r.boolean(availability.open, "availability.open"),
       label: r.localized(availability.label, "availability.label"),
@@ -236,6 +237,7 @@ export function parseExperience(raw: unknown): Experience[] {
       role: r.localized(e.role, `[${i}].role`),
       start: r.integer(e.start, `[${i}].start`, 2000, 2100),
       end: e.end === null ? null : r.integer(e.end, `[${i}].end`, 2000, 2100),
+      summary: r.localized(e.summary, `[${i}].summary`),
       highlights: r.localizedList(e.highlights, `[${i}].highlights`),
     };
   });
