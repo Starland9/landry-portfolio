@@ -1,3 +1,7 @@
 allowBuilds:
   '@tailwindcss/oxide': true
   sharp: true
+
+# Supply-chain safety: never install a version published less than 24 h ago
+# (same rule as recent pnpm versions enforce in CI).
+minimumReleaseAge: 1440
