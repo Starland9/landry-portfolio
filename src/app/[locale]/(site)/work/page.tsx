@@ -49,7 +49,7 @@ export default async function WorkPage({
       <WorkFilter current={filter} locale={locale} m={m} />
 
       {projects.length > 0 ? (
-        <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2">
+        <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <li key={project.slug}>
               <ProjectCard
@@ -58,6 +58,7 @@ export default async function WorkPage({
                 m={m}
                 headingLevel="h2"
                 eager={index < 2}
+                columns={3}
               />
             </li>
           ))}

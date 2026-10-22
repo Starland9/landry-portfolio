@@ -3,11 +3,17 @@
   "slug": "kamte",
   "title": "Kamte",
   "type": "mobile",
-  "year": 2020,
+  "year": 2025,
   "featured": false,
   "status": "in-production",
-  "duration": { "fr": "2 mois", "en": "2 months" },
-  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "duration": {
+    "fr": "2 mois",
+    "en": "2 months"
+  },
+  "team": {
+    "fr": "Projet solo",
+    "en": "Solo project"
+  },
   "headline": {
     "fr": "Gestionnaire de finances personnelles pour suivre et optimiser ses dépenses au quotidien.",
     "en": "Personal finance manager for tracking and optimizing daily expenses."

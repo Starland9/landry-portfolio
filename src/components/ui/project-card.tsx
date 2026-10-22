@@ -5,7 +5,11 @@ import { localePath } from "@/i18n/config";
 import type { Messages } from "@/i18n/get-messages";
 import { ImageFrame } from "./image-frame";
 
-const CARD_SIZES = "(min-width: 1152px) 540px, (min-width: 720px) 48vw, 92vw";
+// Rendered image width per grid layout (the container is capped at 72rem).
+const CARD_SIZES = {
+  2: "(min-width: 1152px) 540px, (min-width: 720px) 48vw, 92vw",
+  3: "(min-width: 1152px) 360px, (min-width: 960px) 31vw, (min-width: 720px) 48vw, 92vw",
+} as const;
 
 /** Whole card is a single link to the case study. */
 export function ProjectCard({
@@ -14,12 +18,15 @@ export function ProjectCard({
   m,
   headingLevel = "h3",
   eager = false,
+  columns = 2,
 }: {
   project: Project;
   locale: Locale;
   m: Messages;
   headingLevel?: "h2" | "h3";
   eager?: boolean;
+  /** Columns of the grid on wide screens (image sizes). */
+  columns?: 2 | 3;
 }) {
   const Heading = headingLevel;
   const badge = project.links.store ? m.store : m.status[project.status];
@@ -33,7 +40,7 @@ export function ProjectCard({
       <ImageFrame
         image={project.image}
         alt=""
-        sizes={CARD_SIZES}
+        sizes={CARD_SIZES[columns]}
         eager={eager}
         className="group-hover:border-border-strong"
       />
