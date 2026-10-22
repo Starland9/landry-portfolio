@@ -1,14 +1,17 @@
 # syntax=docker/dockerfile:1
 
 ARG NODE_VERSION=24
+# Same pnpm as package.json "packageManager" (never "latest": a new major can change install rules).
+ARG PNPM_VERSION=10.18.3
 
 # ---- Base : Node + pnpm (via corepack) ----
 FROM node:${NODE_VERSION}-alpine AS base
+ARG PNPM_VERSION
 RUN apk add --no-cache libc6-compat
 ENV PNPM_HOME="/pnpm" \
     PATH="/pnpm:$PATH" \
     NEXT_TELEMETRY_DISABLED=1
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 WORKDIR /app
 
 # ---- Deps : installation des dépendances (couche mise en cache) ----
