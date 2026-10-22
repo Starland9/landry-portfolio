@@ -6,7 +6,10 @@
   "year": 2022,
   "featured": false,
   "status": "in-production",
-  "duration": { "fr": "6 semaines", "en": "6 weeks" },
+  "duration": {
+    "fr": "6 semaines",
+    "en": "6 weeks"
+  },
   "team": {
     "fr": "Studio digital (2 devs · 1 designer)",
     "en": "Digital studio (2 devs · 1 designer)"
@@ -70,7 +73,7 @@
     ]
   },
   "technologies": [
-    "Next.js 15",
+    "Next.js",
     "TypeScript",
     "Framer Motion",
     "Tailwind CSS",

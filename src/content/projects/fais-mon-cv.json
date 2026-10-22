@@ -5,9 +5,15 @@
   "type": "web",
   "year": 2024,
   "featured": false,
-  "status": "in-production",
-  "duration": { "fr": "4 semaines", "en": "4 weeks" },
-  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "status": "pilot",
+  "duration": {
+    "fr": "4 semaines",
+    "en": "4 weeks"
+  },
+  "team": {
+    "fr": "Projet solo",
+    "en": "Solo project"
+  },
   "headline": {
     "fr": "Assistant CV propulsé par l’IA pour créer des dossiers de candidature qui se démarquent.",
     "en": "AI-powered CV assistant to create standout job application materials."

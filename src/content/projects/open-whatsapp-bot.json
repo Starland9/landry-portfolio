@@ -6,7 +6,10 @@
   "year": 2025,
   "featured": false,
   "status": "maintained",
-  "team": { "fr": "Communauté open source", "en": "Open-source community" },
+  "team": {
+    "fr": "Projet open source",
+    "en": "Open-source project"
+  },
   "headline": {
     "fr": "Bot WhatsApp open source à l’architecture propre et aux plugins modulaires.",
     "en": "Open-source WhatsApp bot with clean architecture and modular plugins."

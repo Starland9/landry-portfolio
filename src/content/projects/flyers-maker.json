@@ -6,19 +6,25 @@
   "year": 2025,
   "featured": false,
   "status": "live",
-  "duration": { "fr": "3 semaines", "en": "3 weeks" },
-  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "duration": {
+    "fr": "3 semaines",
+    "en": "3 weeks"
+  },
+  "team": {
+    "fr": "Projet solo",
+    "en": "Solo project"
+  },
   "headline": {
-    "fr": "Créez des flyers professionnels en quelques clics, directement depuis le navigateur.",
-    "en": "Create professional flyers in a few clicks, directly from the browser."
+    "fr": "Générez des flyers professionnels avec l’IA en quelques clics, directement depuis le navigateur.",
+    "en": "Generate professional flyers with AI in a few clicks, directly from the browser."
   },
   "description": {
     "fr": "Un outil web no-code pour concevoir, personnaliser et exporter rapidement des flyers et des visuels marketing, avec des modèles responsives et un export de haute qualité.",
     "en": "A no-code web tool for designing, customizing, and exporting flyers and marketing visuals quickly, with responsive templates and high-quality export."
   },
   "summary": {
-    "fr": "FlyerGen AI permet aux petites entreprises et aux créateurs de produire des visuels marketing soignés sans compétences en design : modèles modulaires, éditeur en glisser-déposer et export PNG/PDF.",
-    "en": "FlyerGen AI lets small businesses and creators produce polished marketing visuals without design skills: modular templates, drag-and-drop editor, and PNG/PDF export."
+    "fr": "FlyerGen AI permet aux petites entreprises et aux créateurs de produire des visuels marketing soignés sans compétences en design : génération par IA à partir d’un titre, de mots-clés et d’un style, modèles modulaires, éditeur en glisser-déposer et export PNG/PDF.",
+    "en": "FlyerGen AI lets small businesses and creators produce polished marketing visuals without design skills: AI generation from a title, keywords and a style, modular templates, drag-and-drop editor, and PNG/PDF export."
   },
   "problem": {
     "fr": "Les petites entreprises et les freelances manquent souvent de ressources pour produire des visuels marketing soignés et adaptables à différents formats.",
@@ -56,6 +62,7 @@
   },
   "features": {
     "fr": [
+      "Génération de flyers par IA (Gemini) à partir d’un titre, de mots-clés et d’un style visuel, avec régénération en un clic",
       "Bibliothèque de modèles modulaires",
       "Éditeur en glisser-déposer (texte, images, formes)",
       "Réglages typographiques et palette de couleurs",
@@ -64,6 +71,7 @@
       "Partage des créations par lien public"
     ],
     "en": [
+      "AI flyer generation (Gemini) from a title, keywords and a visual style, with one-click regeneration",
       "Library of modular templates",
       "Drag-and-drop editor (text, images, shapes)",
       "Typography adjustments and color palette",
@@ -82,8 +90,8 @@
   ],
   "image": {
     "src": "/images/projects/flyers-maker.png",
-    "width": 1920,
-    "height": 1200,
+    "width": 1704,
+    "height": 1047,
     "alt": {
       "fr": "Écran de création de FlyerGen AI : formulaire avec titre, mots-clés et choix du style, à côté de l’aperçu d’un flyer généré par IA pour une fête traditionnelle à Douala",
       "en": "FlyerGen AI creation screen: form with title, keywords and style choice, next to the preview of an AI-generated flyer for a traditional festival in Douala"

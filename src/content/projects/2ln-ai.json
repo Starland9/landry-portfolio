@@ -6,7 +6,10 @@
   "year": 2024,
   "featured": false,
   "status": "in-production",
-  "duration": { "fr": "6 semaines", "en": "6 weeks" },
+  "duration": {
+    "fr": "6 semaines",
+    "en": "6 weeks"
+  },
   "team": {
     "fr": "Équipe IA (2 devs · 1 juriste · 1 PM)",
     "en": "AI team (2 devs · 1 legal expert · 1 PM)"
@@ -20,8 +23,8 @@
     "en": "Questions about your employment contract, employee rights, or employer obligations? Get clear and fast answers via an AI assistant specialized in labor law."
   },
   "summary": {
-    "fr": "2LN AI associe une application mobile fluide à un moteur RAG entraîné sur la législation locale pour fournir des réponses fiables en quelques secondes.",
-    "en": "2LN AI combines a fluid mobile application and a RAG engine trained on local legislation to deliver reliable answers within seconds."
+    "fr": "2LN AI associe une application mobile fluide à un moteur RAG appuyé sur la législation locale pour fournir des réponses fiables en quelques secondes.",
+    "en": "2LN AI combines a fluid mobile application and a RAG engine grounded in local legislation to deliver reliable answers within seconds."
   },
   "problem": {
     "fr": "Les salariés n’ont pas d’accès rapide à un conseil juridique personnalisé sans passer par des consultations coûteuses.",

@@ -6,7 +6,10 @@
   "year": 2023,
   "featured": false,
   "status": "pilot",
-  "duration": { "fr": "3 mois", "en": "3 months" },
+  "duration": {
+    "fr": "3 mois",
+    "en": "3 months"
+  },
   "team": {
     "fr": "Équipe produit (3 devs · 1 PM · 1 UX)",
     "en": "Product team (3 devs · 1 PM · 1 UX)"
@@ -70,7 +73,7 @@
     ]
   },
   "technologies": [
-    "Next.js 15",
+    "Next.js",
     "TypeScript",
     "Framer Motion",
     "Tailwind CSS",

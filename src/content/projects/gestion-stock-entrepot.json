@@ -1,12 +1,15 @@
 {
   "$schema": "../schema/project.schema.json",
   "slug": "gestion-stock-entrepot",
-  "title": "Warehouse Stock Manager",
+  "title": "StockPro",
   "type": "web",
   "year": 2026,
   "featured": true,
   "status": "in-production",
-  "team": { "fr": "Projet solo", "en": "Solo project" },
+  "team": {
+    "fr": "Projet solo",
+    "en": "Solo project"
+  },
   "headline": {
     "fr": "Gestion d’entrepôt full-stack, avec un backend Django 6/DRF et un frontend Next.js.",
     "en": "Full-stack warehouse management with Django 6/DRF backend and Next.js frontend."
@@ -16,8 +19,8 @@
     "en": "A full-stack application to manage products, stock, sales, purchases, inventories, and transfers between warehouses from a modern interface."
   },
   "summary": {
-    "fr": "Warehouse Stock Manager est une plateforme de gestion opérationnelle qui centralise tous les flux métier de l’entrepôt : mouvements de stock, ventes, achats, inventaires et administration des fournisseurs — avec une API REST versionnée et sécurisée par JWT.",
-    "en": "Warehouse Stock Manager is an operational management platform that centralizes all warehouse business flows: stock movements, sales, purchases, inventories, and vendor administration — with a versioned, JWT-secured REST API."
+    "fr": "StockPro est une plateforme de gestion opérationnelle qui centralise tous les flux métier de l’entrepôt : mouvements de stock, ventes, achats, inventaires et administration des fournisseurs — avec une API REST versionnée et sécurisée par JWT.",
+    "en": "StockPro is an operational management platform that centralizes all warehouse business flows: stock movements, sales, purchases, inventories, and vendor administration — with a versioned, JWT-secured REST API."
   },
   "problem": {
     "fr": "Le suivi manuel des stocks entraîne des erreurs d’inventaire, des ruptures de stock et un manque de visibilité sur les transferts entre entrepôts.",

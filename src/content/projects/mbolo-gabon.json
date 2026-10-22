@@ -6,7 +6,10 @@
   "year": 2020,
   "featured": false,
   "status": "in-production",
-  "duration": { "fr": "3 mois", "en": "3 months" },
+  "duration": {
+    "fr": "3 mois",
+    "en": "3 months"
+  },
   "team": {
     "fr": "Consortium touristique (2 devs · 1 data manager)",
     "en": "Tourism consortium (2 devs · 1 data manager)"
@@ -46,13 +49,11 @@
   "impact": {
     "fr": [
       "Publié sur le Google Play Store, vérifiable via le lien du store",
-      "Carte hors ligne avec cache local et synchronisation",
-      "Espace professionnel pour gérer les fiches et les disponibilités"
+      "Carte hors ligne avec cache local et synchronisation"
     ],
     "en": [
       "Published on Google Play Store — verifiable via Play Store link",
-      "Offline map with local caching and sync",
-      "Professional space for managing listings and availability"
+      "Offline map with local caching and sync"
     ]
   },
   "features": {
