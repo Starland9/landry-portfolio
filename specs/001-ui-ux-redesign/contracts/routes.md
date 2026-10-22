@@ -17,8 +17,8 @@ référencement).
 
 `{locale}` ∈ `fr`, `en`. `{slug}` = slug d'un fichier de `src/content/projects/`.
 Une valeur de `type` inconnue est ignorée (équivaut à « Tous »).
-Slug inconnu ou chemin inexistant → page 404 dans la langue courante, statut HTTP 404, liens vers
-l'accueil et `/work`.
+Slug inconnu ou chemin inexistant → page 404 rendue côté serveur (`global-not-found`) dans la langue
+de l'URL (sinon cookie / `Accept-Language`), statut HTTP 404, liens vers l'accueil et `/work`.
 
 ## Négociation de langue (proxy)
 
@@ -26,7 +26,8 @@ Appliqué à toute requête hors `/_next/*`, `/api/*` et fichiers avec extension
 
 | Requête | Réponse |
 | --- | --- |
-| URL déjà préfixée par `fr` ou `en` | Servie ; cookie `locale` posé si absent ou différent |
+| URL déjà préfixée par `fr` ou `en` | Servie ; en-tête de requête `x-locale` ajouté ; cookie `locale` posé si absent ou différent |
+| `/{locale}/work/{slug}` avec un slug inconnu | Réécrite vers une route inexistante → 404 globale localisée |
 | URL sans préfixe (ex. `/`, `/work/secret`) | `307` vers `/{langue}{chemin}{query}` |
 
 Choix de `{langue}` : cookie `locale` valide → premier code `fr*`/`en*` de `Accept-Language` par

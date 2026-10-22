@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { projects } from "@/content/projects";
 import {
   LOCALE_COOKIE,
   LOCALE_COOKIE_MAX_AGE,
@@ -6,14 +7,27 @@ import {
   negotiateLocale,
 } from "@/i18n/config";
 
+export const LOCALE_HEADER = "x-locale";
+const slugs = new Set(projects.map((project) => project.slug));
+
 // Every page lives under /fr or /en. Unprefixed URLs are sent to the visitor's
 // language; the last language visited is remembered in a cookie (works without JS).
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const first = pathname.split("/")[1];
+  const segments = pathname.split("/").filter(Boolean);
+  const first = segments[0];
 
   if (isLocale(first)) {
-    const response = NextResponse.next();
+    // Tell the global 404 page which language to use.
+    const headers = new Headers(request.headers);
+    headers.set(LOCALE_HEADER, first);
+
+    // Unknown case study: serve the server-rendered global 404 (an unmatched route).
+    const unknownProject = segments[1] === "work" && segments.length === 3 && !slugs.has(segments[2] ?? "");
+    const response = unknownProject
+      ? NextResponse.rewrite(new URL(`/${first}/404`, request.url), { request: { headers } })
+      : NextResponse.next({ request: { headers } });
+
     if (request.cookies.get(LOCALE_COOKIE)?.value !== first) {
       response.cookies.set(LOCALE_COOKIE, first, {
         path: "/",

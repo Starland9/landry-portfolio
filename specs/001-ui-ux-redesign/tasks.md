@@ -149,7 +149,7 @@ testable increment.
 **Independent Test**: quickstart scenarios 1, 2 and 24.
 
 - [X] T052 [US5] Create `src/components/ui/language-switch.tsx` (client): two links `FR` / `EN` (mono, active one underlined accent, `aria-current="true"`, `hrefLang`, `lang`), target = current path with the first segment swapped (`usePathname`), current query appended on click; mount it in `site-header.tsx` and in `mobile-nav.tsx`
-- [ ] T053 [US5] Verify `lang` on `<html>`, `hreflang` alternates and translated `<title>`s on every page; grep `src/components` and `src/app` for hard-coded user-visible strings and move them to the messages; run quickstart scenarios 1, 2, 24
+- [X] T053 [US5] Verify `lang` on `<html>`, `hreflang` alternates and translated `<title>`s on every page; grep `src/components` and `src/app` for hard-coded user-visible strings and move them to the messages; run quickstart scenarios 1, 2, 24
 
 ---
 
@@ -159,8 +159,8 @@ testable increment.
 
 **Independent Test**: quickstart scenario 5.
 
-- [ ] T054 [P] [US6] Create `src/components/work/work-filter.tsx` (server): `nav` of links Tous / Web / Mobile / Autre → `?type=…`, active one with `aria-current="page"` and filled style, counts per type
-- [ ] T055 [US6] Create `src/app/[locale]/work/page.tsx`: reads `searchParams.type` (unknown → all), h1 "Projets" + total count, filter, grid of `project-card` (year desc), empty state with a link back to "Tous", `generateMetadata`
+- [X] T054 [P] [US6] Create `src/components/work/work-filter.tsx` (server): `nav` of links Tous / Web / Mobile / Autre → `?type=…`, active one with `aria-current="page"` and filled style, counts per type
+- [X] T055 [US6] Create `src/app/[locale]/work/page.tsx`: reads `searchParams.type` (unknown → all), h1 "Projets" + total count, filter, grid of `project-card` (year desc), empty state with a link back to "Tous", `generateMetadata`
 
 ---
 
@@ -170,10 +170,10 @@ testable increment.
 
 **Independent Test**: quickstart scenario 16.
 
-- [ ] T056 [P] [US7] Create `src/lib/github.ts`: `getGithubStats()` → `fetch("https://api.github.com/users/Starland9", { next: { revalidate: 3600 } })` with `Authorization` when `GITHUB_TOKEN` is set; returns `{ publicRepos, followers, memberSince, fetchedAt }` or `null` on any error
-- [ ] T057 [P] [US7] Create `src/components/about/github-stats.tsx` (3 figures + "mis à jour …" + profile link; `null` → discreet sentence + profile link) and `src/components/about/stack-groups.tsx` (groups as `dl` with mono tags)
-- [ ] T058 [P] [US7] Rewrite `src/components/about/tic-tac-toe.tsx` (client, no framer-motion): 3×3 grid of `button`s with `aria-label` ("Case 1, vide" / "Case 1, X"), keyboard playable, simple AI, result and turn announced in a `role="status"` region, reset button, labelled as a bonus; rendered after the main content
-- [ ] T059 [US7] Create `src/app/[locale]/about/page.tsx`: h1, bio, experience list (full highlights), stack groups, education and languages (only when non-empty), GitHub stats, tic-tac-toe section "Bonus"; JSON-LD `Person`; `generateMetadata`
+- [X] T056 [P] [US7] Create `src/lib/github.ts`: `getGithubStats()` → `fetch("https://api.github.com/users/Starland9", { next: { revalidate: 3600 } })` with `Authorization` when `GITHUB_TOKEN` is set; returns `{ publicRepos, followers, memberSince, fetchedAt }` or `null` on any error
+- [X] T057 [P] [US7] Create `src/components/about/github-stats.tsx` (3 figures + "mis à jour …" + profile link; `null` → discreet sentence + profile link) and `src/components/about/stack-groups.tsx` (groups as `dl` with mono tags)
+- [X] T058 [P] [US7] Rewrite `src/components/about/tic-tac-toe.tsx` (client, no framer-motion): 3×3 grid of `button`s with `aria-label` ("Case 1, vide" / "Case 1, X"), keyboard playable, simple AI, result and turn announced in a `role="status"` region, reset button, labelled as a bonus; rendered after the main content
+- [X] T059 [US7] Create `src/app/[locale]/about/page.tsx`: h1, bio, experience list (full highlights), stack groups, education and languages (only when non-empty), GitHub stats, tic-tac-toe section "Bonus"; JSON-LD `Person`; `generateMetadata`
 
 ---
 
@@ -183,8 +183,8 @@ testable increment.
 
 **Independent Test**: quickstart scenarios 17, 18, 19.
 
-- [ ] T060 [P] [US8] Create `src/components/ui/theme-script.tsx`: inline `<script>` for `<head>` that reads `localStorage.theme` (`light` | `dark`) inside `try/catch` and sets `data-theme` on `<html>` before first paint (guide "Preventing flash before hydration"); mount it in `src/app/[locale]/layout.tsx`
-- [ ] T061 [US8] Create `src/components/ui/theme-toggle.tsx` (client): 40 px icon button (moon/sun from lucide), accessible label "Passer au thème sombre/clair" from the messages, resolves `auto` with `matchMedia`, writes `data-theme` + `localStorage.theme`, follows system changes while no manual choice; mount it in `site-header.tsx`
+- [X] T060 [P] [US8] Create `src/components/ui/theme-script.tsx`: inline `<script>` for `<head>` that reads `localStorage.theme` (`light` | `dark`) inside `try/catch` and sets `data-theme` on `<html>` before first paint (guide "Preventing flash before hydration"); mount it in `src/app/[locale]/layout.tsx`
+- [X] T061 [US8] Create `src/components/ui/theme-toggle.tsx` (client): 40 px icon button (moon/sun from lucide), accessible label "Passer au thème sombre/clair" from the messages, resolves `auto` with `matchMedia`, writes `data-theme` + `localStorage.theme`, follows system changes while no manual choice; mount it in `site-header.tsx`
 
 ---
 
@@ -192,7 +192,7 @@ testable increment.
 
 - [ ] T062 [P] Create `src/app/sitemap.ts` (5 pages + 17 case studies × 2 locales, `alternates.languages`) and `src/app/robots.ts` (allow all, sitemap URL)
 - [ ] T063 [P] Create `src/app/[locale]/opengraph-image.tsx` and `src/app/[locale]/work/[slug]/opengraph-image.tsx` with `next/og` (1200 × 630, Terre colours, name/role or project title/headline/type, no gradient)
-- [ ] T064 [P] Add JSON-LD `Person` (name, jobTitle, url, sameAs, address locality Douala) to `src/app/[locale]/page.tsx` via `src/lib/seo.ts`
+- [X] T064 [P] Add JSON-LD `Person` (name, jobTitle, url, sameAs, address locality Douala) to `src/app/[locale]/page.tsx` via `src/lib/seo.ts`
 - [ ] T065 [P] Rewrite `README.md` (what the site is, stack, content editing in `src/content/`, scripts, env vars, Docker) and update `docs/API_PROJECTS.md` per contracts/api-projects.md
 - [ ] T066 Grep the codebase for forbidden patterns (`backdrop-blur`, `bg-gradient`, `bg-linear`, `animate-`, `shadow-`, `blur-`, `framer-motion`, raw hex colours outside `globals.css`) and remove any occurrence
 - [ ] T067 Run `pnpm typecheck`, `pnpm test`, `pnpm build`; then quickstart scenarios 20–27 including Lighthouse mobile on `/fr`, `/fr/work`, `/fr/work/secret`, `/fr/cv` and their `/en` equivalents; fix every score below 95 and every accessibility finding

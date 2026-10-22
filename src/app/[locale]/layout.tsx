@@ -3,9 +3,6 @@ import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { getProfile } from "@/content";
 import { locales } from "@/i18n/config";
 import { getMessages } from "@/i18n/get-messages";
-import { SiteHeader } from "@/components/layout/site-header";
-import { SiteFooter } from "@/components/layout/site-footer";
-import { SkipLink } from "@/components/layout/skip-link";
 import { ThemeScript } from "@/components/ui/theme-script";
 import "../globals.css";
 
@@ -47,8 +44,10 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/[locale]">) {
-  const { locale, m } = await getMessages();
+  const { locale } = await getMessages();
 
+  // Root layout: document, fonts and theme only. The page chrome lives in (site)/layout.tsx
+  // so that (site)/not-found.tsx is a nested boundary, rendered on the server.
   return (
     <html
       lang={locale}
@@ -59,14 +58,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
       <head>
         <ThemeScript />
       </head>
-      <body id="top">
-        <SkipLink label={m.nav.skip} />
-        <SiteHeader />
-        <main id="main" tabIndex={-1} className="focus:outline-none">
-          {children}
-        </main>
-        <SiteFooter />
-      </body>
+      <body id="top">{children}</body>
     </html>
   );
 }

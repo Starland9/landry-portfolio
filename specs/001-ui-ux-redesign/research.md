@@ -202,6 +202,24 @@ Lighthouse via `pnpm dlx lighthouse` et parcours manuel décrit dans [quickstart
 **Alternatives considered** : Vitest + Testing Library (dépendances lourdes pour 5 modules
 purs) ; Playwright + axe (pertinent plus tard, hors périmètre de ce chantier).
 
+## R13 — Pages 404 rendues côté serveur (découvert à l'implémentation)
+
+**Constat** : avec un layout racine dynamique (`[locale]`), Next.js 16.4 ne sait pas rendre
+`[locale]/not-found.tsx` côté serveur : une `notFound()` produit une coquille vide
+(`<html id="__next_error__">`), le contenu n'apparaissant qu'après hydratation (page blanche sans
+JavaScript, pas de `lang`). Vérifié dans `next/dist/server/app-render/app-render.js` et confirmé par
+la doc (`global-not-found` est prévu pour « root layout defined using top-level dynamic segments »).
+
+**Decision** : `experimental.globalNotFound` + `src/app/global-not-found.tsx` localisé. Le proxy
+transmet la langue de l'URL dans l'en-tête `x-locale` et réécrit les études de cas inconnues vers
+une route inexistante ; toute URL inconnue reçoit donc une 404 HTTP rendue côté serveur, dans la
+bonne langue. Les pages sont regroupées sous `[locale]/(site)/` (layout du site séparé du document),
+ce qui garde `(site)/not-found.tsx` pour les navigations côté client.
+
+**Alternatives considered** : layout racine « pass-through » `app/layout.tsx` (à la next-intl) —
+écarté car il fait perdre `next/root-params` et impose de propager la langue partout ; garder la
+404 rendue côté client — contraire à FR-024/constitution (lisible sans JS).
+
 ## Ajustements complémentaires retenus (hors demande initiale)
 
 | Ajustement | Pourquoi |

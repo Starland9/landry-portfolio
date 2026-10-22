@@ -89,19 +89,22 @@ specs/001-ui-ux-redesign/
 src/
 ├── proxy.ts                        # négociation de langue + cookie `locale`
 ├── app/
+│   ├── global-not-found.tsx        # 404 localisée rendue côté serveur (R13)
 │   ├── [locale]/
-│   │   ├── layout.tsx              # layout racine : <html lang data-theme>, polices, script thème, en-tête, pied
-│   │   ├── page.tsx                # Accueil
-│   │   ├── not-found.tsx
-│   │   ├── error.tsx
+│   │   ├── layout.tsx              # layout racine : <html lang data-theme>, polices, script thème
 │   │   ├── opengraph-image.tsx
-│   │   ├── about/page.tsx
-│   │   ├── cv/page.tsx
-│   │   └── work/
-│   │       ├── page.tsx            # liste + filtre ?type=
-│   │       └── [slug]/
-│   │           ├── page.tsx        # étude de cas
-│   │           └── opengraph-image.tsx
+│   │   └── (site)/
+│   │       ├── layout.tsx          # lien d'évitement, en-tête, <main>, pied
+│   │       ├── page.tsx            # Accueil
+│   │       ├── not-found.tsx       # navigations côté client
+│   │       ├── error.tsx
+│   │       ├── about/page.tsx
+│   │       ├── cv/page.tsx
+│   │       └── work/
+│   │           ├── page.tsx        # liste + filtre ?type=
+│   │           └── [slug]/
+│   │               ├── page.tsx    # étude de cas
+│   │               └── opengraph-image.tsx
 │   ├── api/projects/route.ts       # conservée, branchée sur l'adaptateur legacy
 │   ├── globals.css                 # tokens Terre + @theme inline + base + impression
 │   ├── sitemap.ts
