@@ -333,7 +333,7 @@ export function parseLanguages(raw: unknown): SpokenLanguage[] {
     const l = r.object(item, `[${i}]`);
     return {
       language: r.localized(l.language, `[${i}].language`),
-      level: r.localized(l.level, `[${i}].level`),
+      level: l.level === undefined ? undefined : r.localized(l.level, `[${i}].level`),
     };
   });
 }

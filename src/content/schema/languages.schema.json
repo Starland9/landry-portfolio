@@ -5,12 +5,17 @@
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": ["language", "level"],
+    "required": [
+      "language"
+    ],
     "properties": {
       "language": {
         "type": "object",
         "description": "",
-        "required": ["fr", "en"],
+        "required": [
+          "fr",
+          "en"
+        ],
         "additionalProperties": false,
         "properties": {
           "fr": {
@@ -25,8 +30,11 @@
       },
       "level": {
         "type": "object",
-        "description": "ex. Langue maternelle / Native",
-        "required": ["fr", "en"],
+        "description": "Facultatif, ex. Langue maternelle / Native",
+        "required": [
+          "fr",
+          "en"
+        ],
         "additionalProperties": false,
         "properties": {
           "fr": {

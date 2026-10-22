@@ -98,5 +98,5 @@ export type Education = {
 
 export type SpokenLanguage = {
   language: Localized<string>;
-  level: Localized<string>;
+  level?: Localized<string>;
 };

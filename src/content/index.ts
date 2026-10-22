@@ -64,5 +64,15 @@ export function getNextProject(slug: string): Project {
   return byDate[(index + 1) % byDate.length] as Project;
 }
 
+/** "2024 — present", "2023 — 2024", or a single year when it starts and ends the same year. */
+export function period(
+  start: number,
+  end: number | null,
+  present: string,
+): string {
+  if (end === null) return `${start} — ${present}`;
+  return end === start ? String(start) : `${start} — ${end}`;
+}
+
 export const projectCount = () => projects.length;
 export const firstProjectYear = () => Math.min(...projects.map((p) => p.year));

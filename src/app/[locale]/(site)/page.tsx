@@ -49,7 +49,11 @@ export default async function HomePage() {
             </ArrowLink>
           }
         />
-        <ExperienceList items={getExperience()} locale={locale} m={m} />
+        <ExperienceList
+          items={getExperience().slice(0, 3)}
+          locale={locale}
+          m={m}
+        />
       </section>
       <ContactSection
         form={

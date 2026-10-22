@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "title": {
+      "fr": "BTS Génie logiciel",
+      "en": "BTS (Higher National Diploma) in Software Engineering"
+    },
+    "school": "IUC Douala",
+    "start": null,
+    "end": 2022
+  },
+  {
+    "title": {
+      "fr": "Formation en ingénierie IA",
+      "en": "AI engineering course"
+    },
+    "school": "Udemy",
+    "start": null,
+    "end": null
+  }
+]

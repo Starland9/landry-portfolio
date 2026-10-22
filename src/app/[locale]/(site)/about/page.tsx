@@ -104,9 +104,11 @@ export default async function AboutPage() {
                   <span className="font-semibold">{t(item.title, locale)}</span>{" "}
                   <span className="text-muted">· {item.school}</span>
                 </span>
-                <span className="font-mono text-meta text-muted">
-                  {[item.start, item.end].filter(Boolean).join(" — ")}
-                </span>
+                {(item.start || item.end) && (
+                  <span className="font-mono text-meta text-muted">
+                    {[item.start, item.end].filter(Boolean).join(" — ")}
+                  </span>
+                )}
               </li>
             ))}
           </ul>
@@ -125,7 +127,9 @@ export default async function AboutPage() {
                 <span className="font-semibold">
                   {t(item.language, locale)}
                 </span>{" "}
-                <span className="text-muted">· {t(item.level, locale)}</span>
+                {item.level && (
+                  <span className="text-muted">· {t(item.level, locale)}</span>
+                )}
               </li>
             ))}
           </ul>

@@ -1,4 +1,4 @@
-import { t, tList, type Experience, type Locale } from "@/content";
+import { period, t, tList, type Experience, type Locale } from "@/content";
 import type { Messages } from "@/i18n/get-messages";
 
 /**
@@ -24,7 +24,7 @@ export function ExperienceList({
           className="grid gap-x-8 gap-y-2 border-t border-border py-6 first:border-t-0 first:pt-0 sm:grid-cols-[200px_minmax(0,1fr)_minmax(0,1.4fr)]"
         >
           <span className="font-mono text-meta text-muted">
-            {item.start} — {item.end ?? m.common.present}
+            {period(item.start, item.end, m.common.present)}
           </span>
           <h3 className="text-[1.0625rem] leading-snug">
             {t(item.role, locale)}{" "}

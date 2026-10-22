@@ -116,11 +116,11 @@ La « stack principale » du hero vient de `profile.mainStack`.
 ## Education — `src/content/education.json`
 
 Liste de `{ "title": Localized<string>, "school": string, "start": int | null, "end": int | null }`.
-**Vide au départ** (données à fournir par Landry) ; la rubrique est masquée si la liste est vide.
+Rubrique masquée si la liste est vide.
 
 ## Spoken language — `src/content/languages.json`
 
-Liste de `{ "language": Localized<string>, "level": Localized<string> }`. **Vide au départ** ;
+Liste de `{ "language": Localized<string>, "level"?: Localized<string> }` (niveau facultatif) ;
 rubrique masquée si vide.
 
 ## UI messages — `src/i18n/messages/{en,fr}.json`

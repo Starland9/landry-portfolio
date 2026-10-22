@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "language": {
+      "fr": "Français",
+      "en": "French"
+    }
+  },
+  {
+    "language": {
+      "fr": "Anglais",
+      "en": "English"
+    }
+  }
+]

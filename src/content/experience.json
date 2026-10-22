@@ -1,6 +1,28 @@
 [
   {
     "company": {
+      "fr": "Mbolo Gabon (à distance)",
+      "en": "Mbolo Gabon (remote)"
+    },
+    "role": {
+      "fr": "Développeur Flutter",
+      "en": "Flutter Developer"
+    },
+    "start": 2025,
+    "end": null,
+    "summary": {
+      "fr": "Reprise du développement de l’application Mbolo Gabon, dédiée au tourisme au Gabon.",
+      "en": "Took over development of the Mbolo Gabon tourism app."
+    },
+    "highlights": {
+      "fr": [
+        "Reprise du développement de l’application Mbolo Gabon, dédiée au tourisme au Gabon."
+      ],
+      "en": ["Took over development of the Mbolo Gabon tourism app."]
+    }
+  },
+  {
+    "company": {
       "fr": "OVVP Corp",
       "en": "OVVP Corp"
     },
@@ -31,6 +53,52 @@
   },
   {
     "company": {
+      "fr": "Mansexch Crypto",
+      "en": "Mansexch Crypto"
+    },
+    "role": {
+      "fr": "Développeur backend",
+      "en": "Backend Developer"
+    },
+    "start": 2023,
+    "end": null,
+    "summary": {
+      "fr": "Développement du backend Node.js d’une plateforme d’achat et de vente de cryptomonnaies.",
+      "en": "Built the Node.js backend of a cryptocurrency buying and selling platform."
+    },
+    "highlights": {
+      "fr": [
+        "Développement du backend Node.js d’une plateforme d’achat et de vente de cryptomonnaies."
+      ],
+      "en": [
+        "Built the Node.js backend of a cryptocurrency buying and selling platform."
+      ]
+    }
+  },
+  {
+    "company": {
+      "fr": "Global Technology in Africa",
+      "en": "Global Technology in Africa"
+    },
+    "role": {
+      "fr": "Développeur mobile Flutter",
+      "en": "Flutter Mobile Developer"
+    },
+    "start": 2023,
+    "end": 2023,
+    "summary": {
+      "fr": "Développement de l’application mobile de l’entreprise et des projets en cours.",
+      "en": "Developed the company’s mobile app and its ongoing projects."
+    },
+    "highlights": {
+      "fr": [
+        "Développement de l’application mobile de l’entreprise et des projets en cours."
+      ],
+      "en": ["Developed the company’s mobile app and its ongoing projects."]
+    }
+  },
+  {
+    "company": {
       "fr": "Indépendant",
       "en": "Independent"
     },
@@ -57,6 +125,26 @@
         "Collaboration with product teams and designers",
         "Delivery of production-ready, scalable applications"
       ]
+    }
+  },
+  {
+    "company": {
+      "fr": "MESINTECH",
+      "en": "MESINTECH"
+    },
+    "role": {
+      "fr": "Développeur web (stage)",
+      "en": "Web Developer (internship)"
+    },
+    "start": 2021,
+    "end": 2021,
+    "summary": {
+      "fr": "Conception du site web de l’entreprise en tant que stagiaire.",
+      "en": "Designed and built the company website as an intern."
+    },
+    "highlights": {
+      "fr": ["Conception du site web de l’entreprise en tant que stagiaire."],
+      "en": ["Designed and built the company website as an intern."]
     }
   }
 ]

@@ -6,6 +6,7 @@ import {
   getProfile,
   getSpokenLanguages,
   getStack,
+  period,
   t,
   tList,
   type Locale,
@@ -103,7 +104,7 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
                   </span>
                 </h3>
                 <span className="font-mono text-meta text-muted print:text-[8pt]">
-                  {item.start} — {item.end ?? m.common.present}
+                  {period(item.start, item.end, m.common.present)}
                 </span>
               </div>
               <ul className="mt-1.5 space-y-1 text-muted">
@@ -192,7 +193,9 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
                 <span className="font-semibold">
                   {t(item.language, locale)}
                 </span>{" "}
-                <span className="text-muted">· {t(item.level, locale)}</span>
+                {item.level && (
+                  <span className="text-muted">· {t(item.level, locale)}</span>
+                )}
               </li>
             ))}
           </ul>
