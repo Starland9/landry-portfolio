@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="fr" data-palette="terre" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Landry Simo — Ingénieur logiciel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TOKENS — 2 palettes × 2 themes (auto follows the system)
+   ========================================================= */
+html[data-palette="cobalt"] {
+  --bg:#FAFAF9; --surface:#FFFFFF; --frame:#F0F0EE; --fg:#111113; --muted:#55555C;
+  --border:#E3E3E0; --border-strong:#8A8A90; --accent:#1D4ED8; --accent-hover:#1E40AF;
+  --on-accent:#FFFFFF; --ok:#15803D; --err:#B91C1C; color-scheme: light;
+}
+html[data-palette="cobalt"][data-theme="dark"] {
+  --bg:#0E0E10; --surface:#151518; --frame:#1C1C20; --fg:#EDEDEF; --muted:#A1A1A9;
+  --border:#2A2A30; --border-strong:#6B6B73; --accent:#86A6FF; --accent-hover:#A8C0FF;
+  --on-accent:#0E0E10; --ok:#4ADE80; --err:#F87171; color-scheme: dark;
+}
+html[data-palette="terre"] {
+  --bg:#F7F5F0; --surface:#FDFCF9; --frame:#EDE9E1; --fg:#1A1714; --muted:#5C554D;
+  --border:#E0D9CD; --border-strong:#8C8378; --accent:#A83A14; --accent-hover:#8F3110;
+  --on-accent:#FFFFFF; --ok:#2F6B2F; --err:#B42318; color-scheme: light;
+}
+html[data-palette="terre"][data-theme="dark"] {
+  --bg:#13110F; --surface:#1A1715; --frame:#221F1B; --fg:#F0ECE6; --muted:#A8A097;
+  --border:#302B26; --border-strong:#6F675E; --accent:#EE8A5E; --accent-hover:#F4A27E;
+  --on-accent:#13110F; --ok:#7BC97B; --err:#F2836B; color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-palette="cobalt"][data-theme="auto"] {
+    --bg:#0E0E10; --surface:#151518; --frame:#1C1C20; --fg:#EDEDEF; --muted:#A1A1A9;
+    --border:#2A2A30; --border-strong:#6B6B73; --accent:#86A6FF; --accent-hover:#A8C0FF;
+    --on-accent:#0E0E10; --ok:#4ADE80; --err:#F87171; color-scheme: dark;
+  }
+  html[data-palette="terre"][data-theme="auto"] {
+    --bg:#13110F; --surface:#1A1715; --frame:#221F1B; --fg:#F0ECE6; --muted:#A8A097;
+    --border:#302B26; --border-strong:#6F675E; --accent:#EE8A5E; --accent-hover:#F4A27E;
+    --on-accent:#13110F; --ok:#7BC97B; --err:#F2836B; color-scheme: dark;
+  }
+}
+:root {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* type scale */
+  --text-display: clamp(2.5rem, 1.55rem + 4.2vw, 4.75rem);
+  --text-h1: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --text-h2: clamp(1.5rem, 1.25rem + 1.1vw, 2rem);
+  --text-h3: 1.25rem;
+  --text-lead: clamp(1.125rem, 1.03rem + 0.45vw, 1.375rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-mono: 0.8125rem;
+  /* spacing (4px base) */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-6:24px; --s-8:32px; --s-12:48px; --s-16:64px; --s-24:96px;
+  --section: clamp(64px, 8vw, 112px);
+  --gutter: clamp(16px, 4vw, 40px);
+  --container: 72rem;
+  /* shape & motion */
+  --radius-control: 6px; --radius-frame: 10px;
+  --dur: 150ms; --ease: cubic-bezier(.2,0,0,1);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--font-sans); font-size: var(--text-body); line-height: 1.6;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  padding-bottom: 72px; /* room for the mockup toolbar */
+}
+img { display: block; max-width: 100%; height: auto; }
+[id] { scroll-margin-top: 80px; }
+[hidden] { display: none !important; }
+h1, h2, h3 { margin: 0; font-weight: 600; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; }
+a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+    transition: color var(--dur) var(--ease), text-decoration-color var(--dur) var(--ease); }
+a:hover { color: var(--accent-hover); text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent); color: var(--on-accent); }
+.mono { font-family: var(--font-mono); font-size: var(--text-mono); letter-spacing: 0; }
+.muted { color: var(--muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+.icon { width: 18px; height: 18px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+/* language visibility */
+html[lang="fr"] [data-l="en"], html[lang="en"] [data-l="fr"] { display: none !important; }
+
+/* skip link */
+.skip { position: absolute; left: var(--gutter); top: -100px; z-index: 100; background: var(--fg); color: var(--bg);
+        padding: var(--s-3) var(--s-4); border-radius: var(--radius-control); text-decoration: none; font-weight: 600; }
+.skip:focus { top: var(--s-3); }
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+       min-height: 48px; padding: 0 var(--s-6); border-radius: var(--radius-control);
+       font: 600 1rem/1 var(--font-sans); text-decoration: none; cursor: pointer; border: 1px solid transparent;
+       transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease); }
+.btn-primary { background: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent-hover); color: var(--on-accent); }
+.btn-secondary { background: transparent; color: var(--fg); border-color: var(--border-strong); }
+.btn-secondary:hover { background: var(--frame); color: var(--fg); }
+.btn:hover { text-decoration: none; }
+.link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.site-header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--border); }
+.header-bar { display: flex; align-items: center; gap: var(--s-4); height: 64px; }
+.wordmark { font-weight: 600; font-size: 1.0625rem; color: var(--fg); text-decoration: none; white-space: nowrap; margin-right: auto; }
+.wordmark:hover { color: var(--fg); text-decoration: none; }
+.nav-main { display: none; }
+.nav-main ul { display: flex; gap: var(--s-1); list-style: none; }
+.nav-main a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 var(--s-3); color: var(--muted);
+              text-decoration: none; font-weight: 500; border-radius: var(--radius-control); position: relative; }
+.nav-main a:hover { color: var(--fg); background: var(--frame); }
+.nav-main a[aria-current="page"] { color: var(--fg); }
+.nav-main a[aria-current="page"]::after { content: ""; position: absolute; left: var(--s-3); right: var(--s-3); bottom: -13px; height: 2px; background: var(--accent); }
+.header-tools { display: flex; align-items: center; gap: var(--s-1); }
+.lang { display: flex; align-items: center; font-family: var(--font-mono); font-size: var(--text-mono); }
+.lang button { min-width: 36px; min-height: 40px; background: none; border: 0; color: var(--muted); cursor: pointer; font: inherit; border-radius: var(--radius-control); }
+.lang button[aria-pressed="true"] { color: var(--fg); font-weight: 500; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.lang button:hover { color: var(--fg); background: var(--frame); }
+.icon-btn { display: inline-grid; place-items: center; width: 40px; height: 40px; background: none; border: 0; color: var(--fg); cursor: pointer; border-radius: var(--radius-control);
+            transition: background-color var(--dur) var(--ease); }
+.icon-btn:hover { background: var(--frame); }
+.menu-btn { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 40px; padding: 0 var(--s-3); background: none; border: 1px solid var(--border);
+            color: var(--fg); border-radius: var(--radius-control); font: 500 var(--text-small) var(--font-sans); cursor: pointer; }
+.mobile-nav { border-top: 1px solid var(--border); }
+.mobile-nav ul { list-style: none; padding: var(--s-2) 0 var(--s-4); }
+.mobile-nav a { display: flex; justify-content: space-between; align-items: center; min-height: 48px; color: var(--fg); text-decoration: none; font-weight: 500; font-size: 1.125rem; border-bottom: 1px solid var(--border); }
+.mobile-nav a[aria-current="page"] { color: var(--accent); }
+@media (min-width: 820px) {
+  .nav-main { display: block; }
+  .menu-btn, .mobile-nav { display: none !important; }
+}
+.theme-icon-dark { display: none; }
+html[data-resolved="dark"] .theme-icon-dark { display: block; }
+html[data-resolved="dark"] .theme-icon-light { display: none; }
+
+/* =========================================================
+   HERO (home)
+   ========================================================= */
+.hero { padding-block: clamp(48px, 8vw, 104px) var(--section); }
+.hero-grid { display: grid; gap: var(--s-12); align-items: end; }
+@media (min-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--s-16); } .hero[data-photo="none"] .hero-grid { grid-template-columns: minmax(0, 1fr); } }
+.hero[data-photo="none"] .hero-photo { display: none; }
+.status { display: inline-flex; align-items: center; gap: var(--s-2); font-size: var(--text-small); font-weight: 500; color: var(--fg);
+          padding: 6px var(--s-3) 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); flex: none; }
+.display { font-size: var(--text-display); line-height: 1.02; letter-spacing: -0.035em; margin-top: var(--s-6); }
+.display .role { display: block; color: var(--muted); font-weight: 500; }
+.lead { font-size: var(--text-lead); line-height: 1.5; color: var(--fg); max-width: 40rem; margin-top: var(--s-6); }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-4); margin-top: var(--s-8); }
+.cta-row .link-arrow { margin-left: var(--s-2); min-height: 48px; }
+.freelance-note { margin-top: var(--s-6); font-size: var(--text-small); color: var(--muted); }
+.facts { display: grid; gap: 0; margin: var(--s-12) 0 0; border-top: 1px solid var(--border); }
+.facts > div { display: grid; grid-template-columns: 120px 1fr; gap: var(--s-4); padding: var(--s-3) 0; border-bottom: 1px solid var(--border); }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; font-weight: 500; }
+@media (min-width: 720px) {
+  .facts { grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--border); }
+  .facts > div { grid-template-columns: 1fr; gap: var(--s-1); padding: var(--s-4) var(--s-4) var(--s-4) 0; border-bottom: 0; }
+  .facts > div + div { padding-left: var(--s-4); border-left: 1px solid var(--border); }
+}
+.hero-photo { margin: 0; }
+.photo-slot { aspect-ratio: 4 / 5; background: var(--frame); border: 1px dashed var(--border-strong); border-radius: var(--radius-frame);
+              display: grid; place-items: center; text-align: center; color: var(--muted); padding: var(--s-6); }
+.photo-slot strong { display: block; color: var(--fg); font-size: 2.5rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: var(--s-2); }
+.hero-top { display: flex; align-items: center; gap: var(--s-3); }
+.avatar-sm { display: none; width: 40px; height: 40px; flex: none; place-items: center; border-radius: 50%; background: var(--frame);
+             border: 1px dashed var(--border-strong); font-weight: 600; font-size: var(--text-small); }
+.hero[data-photo="none"] .avatar-sm { display: none !important; }
+@media (max-width: 899px) {
+  .hero { padding-top: var(--s-8); }
+  .hero-photo { display: none; }
+  .avatar-sm { display: inline-grid; }
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+.section { padding-block: 0 var(--section); }
+.section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s-2) var(--s-6);
+                border-top: 1px solid var(--fg); padding-top: var(--s-4); margin-bottom: var(--s-12); }
+.section-head h2 { font-size: var(--text-h2); letter-spacing: -0.02em; line-height: 1.2; }
+.section-head .count { font-family: var(--font-mono); font-size: var(--text-mono); color: var(--muted); margin-left: var(--s-2); font-weight: 400; letter-spacing: 0; }
+
+/* project grid + card */
+.work-grid { display: grid; gap: var(--s-12) var(--s-8); list-style: none; }
+@media (min-width: 720px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.card { display: block; color: inherit; text-decoration: none; }
+.card:hover { color: inherit; text-decoration: none; }
+.card:focus-visible { outline-offset: 6px; border-radius: var(--radius-frame); }
+.frame { aspect-ratio: 4 / 3; background: var(--frame); border: 1px solid var(--border); border-radius: var(--radius-frame);
+         display: grid; place-items: center; padding: clamp(16px, 6%, 40px); overflow: hidden; transition: border-color var(--dur) var(--ease); }
+.frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 4px; }
+.frame--wide { aspect-ratio: 16 / 9; }
+.card:hover .frame { border-color: var(--border-strong); }
+.card-meta { display: flex; justify-content: space-between; gap: var(--s-4); margin-top: var(--s-4); color: var(--muted); }
+.card-title { font-size: var(--text-h3); line-height: 1.3; margin-top: var(--s-2); display: flex; align-items: center; gap: var(--s-2); }
+.card-title .icon { transition: transform var(--dur) var(--ease); color: var(--muted); }
+.card:hover .card-title span { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--accent); }
+.card:hover .card-title .icon { transform: translateX(3px); color: var(--fg); }
+.card-desc { color: var(--muted); margin-top: var(--s-1); max-width: 34rem; }
+
+/* experience list */
+.xp { list-style: none; border-bottom: 1px solid var(--border); }
+.xp li { display: grid; gap: var(--s-2) var(--s-8); padding: var(--s-6) 0; border-top: 1px solid var(--border); }
+.xp li:first-child { border-top: 0; padding-top: 0; }
+@media (min-width: 720px) { .xp li { grid-template-columns: 200px minmax(0, 1fr) minmax(0, 1.4fr); } }
+.xp h3 { font-size: 1.0625rem; line-height: 1.4; }
+.xp .company { color: var(--muted); font-weight: 400; }
+
+/* contact */
+.contact-grid { display: grid; gap: var(--s-12); }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: var(--s-16); } }
+.contact-intro p { max-width: 30rem; }
+.big-mail { display: inline-block; margin-top: var(--s-6); font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem); font-weight: 600; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.social { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); margin-top: var(--s-6); }
+.social a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--fg); text-decoration: none; font-weight: 500; }
+.social a:hover { color: var(--accent); }
+.form { display: grid; gap: var(--s-6); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-frame); padding: clamp(20px, 4vw, 32px); }
+.field { display: grid; gap: var(--s-2); }
+.field label, .field legend { font-weight: 500; font-size: var(--text-small); }
+.field .req { color: var(--muted); font-weight: 400; }
+.input { width: 100%; min-height: 48px; padding: var(--s-3) 14px; border: 1px solid var(--border-strong); border-radius: var(--radius-control);
+         background: var(--bg); color: var(--fg); font: 400 1rem/1.5 var(--font-sans); transition: border-color var(--dur) var(--ease); }
+.input:hover { border-color: var(--fg); }
+.input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+textarea.input { min-height: 140px; resize: vertical; }
+.input[aria-invalid="true"] { border-color: var(--err); }
+.field-error { display: flex; gap: 6px; align-items: flex-start; color: var(--err); font-size: var(--text-small); font-weight: 500; }
+.field-error[hidden] { display: none; }
+fieldset.field { border: 0; padding: 0; margin: 0; }
+.choices { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-1); }
+.choice { position: relative; }
+.choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.choice span { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border: 1px solid var(--border-strong); border-radius: 999px;
+               font-size: var(--text-small); font-weight: 500; transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease); }
+.choice input:hover + span { border-color: var(--fg); }
+.choice input:checked + span { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.choice input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.form-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-4); }
+.form-note { font-size: var(--text-small); color: var(--muted); max-width: 22rem; }
+.form-status { display: flex; gap: var(--s-3); align-items: flex-start; padding: var(--s-4); border-radius: var(--radius-control); border: 1px solid; font-weight: 500; }
+.form-status.ok { border-color: var(--ok); color: var(--fg); }
+.form-status.ok .icon { color: var(--ok); }
+.form-status[hidden] { display: none; }
+
+/* footer */
+.site-footer { border-top: 1px solid var(--border); padding-block: var(--s-12); color: var(--muted); font-size: var(--text-small); }
+.footer-grid { display: flex; flex-wrap: wrap; gap: var(--s-6); justify-content: space-between; align-items: center; }
+.footer-grid ul { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); }
+.footer-grid a { color: var(--muted); }
+.footer-grid a:hover { color: var(--fg); }
+
+/* =========================================================
+   CASE STUDY
+   ========================================================= */
+.crumbs { padding-top: var(--s-8); }
+.crumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2); color: var(--muted); font-size: var(--text-small); }
+.crumbs li + li::before { content: "/"; margin-right: var(--s-2); color: var(--border-strong); }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--fg); }
+.crumbs [aria-current="page"] { color: var(--fg); font-weight: 500; }
+.cs-head { padding-block: var(--s-12) var(--s-12); }
+.cs-head .mono { color: var(--muted); }
+.cs-title { font-size: var(--text-h1); line-height: 1.05; letter-spacing: -0.03em; margin-top: var(--s-4); }
+.cs-head .lead { color: var(--muted); max-width: 46rem; }
+.cs-actions { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-4); align-items: center; margin-top: var(--s-8); }
+.badge { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 32px; padding: 0 var(--s-3); border: 1px solid var(--border); border-radius: 999px; font-size: var(--text-small); font-weight: 500; }
+.highlights { display: grid; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-top: var(--s-12); }
+.highlights > div { padding: var(--s-6) 0; }
+.highlights > div + div { border-top: 1px solid var(--border); }
+.highlights strong { display: block; font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.highlights > div > span { color: var(--muted); font-size: var(--text-small); }
+@media (min-width: 720px) {
+  .highlights { grid-template-columns: repeat(3, 1fr); }
+  .highlights > div { padding: var(--s-6) var(--s-6) var(--s-6) 0; }
+  .highlights > div + div { border-top: 0; border-left: 1px solid var(--border); padding-left: var(--s-6); }
+}
+.cs-body { display: grid; gap: var(--s-12); padding-block: var(--section); }
+@media (min-width: 960px) { .cs-body { grid-template-columns: 240px minmax(0, 1fr); gap: var(--s-16); } .cs-aside-inner { position: sticky; top: 96px; } }
+.sheet { display: grid; gap: 0; margin: 0; }
+.sheet > div { display: grid; grid-template-columns: 110px 1fr; gap: var(--s-3); padding: var(--s-3) 0; border-bottom: 1px solid var(--border); font-size: var(--text-small); }
+.sheet > div:first-child { border-top: 1px solid var(--border); }
+.sheet dt { color: var(--muted); }
+.sheet dd { margin: 0; font-weight: 500; }
+@media (min-width: 960px) { .sheet > div { grid-template-columns: 1fr; gap: 2px; } }
+.prose { max-width: 42rem; }
+.prose section + section { margin-top: var(--s-16); }
+.prose h2 { font-size: var(--text-h2); letter-spacing: -0.02em; line-height: 1.2; display: flex; align-items: baseline; gap: var(--s-3); }
+.prose h2 .mono { color: var(--muted); font-weight: 400; }
+.prose p, .prose ul { margin-top: var(--s-4); font-size: 1.0625rem; line-height: 1.7; }
+.prose ul { list-style: none; }
+.prose li { position: relative; padding-left: 22px; }
+.prose li + li { margin-top: var(--s-3); }
+.prose li::before { content: ""; position: absolute; left: 0; top: .78em; width: 10px; height: 1px; background: var(--fg); }
+.tags { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; margin-top: var(--s-4); padding: 0; }
+.tags li { padding: 4px 10px !important; border: 1px solid var(--border); border-radius: var(--radius-control); font-family: var(--font-mono); font-size: var(--text-mono); }
+.tags li::before { display: none; }
+.tags li + li { margin-top: 0 !important; }
+.next { border-top: 1px solid var(--fg); padding-top: var(--s-6); display: grid; gap: var(--s-8); }
+@media (min-width: 820px) { .next { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; } }
+.next .card { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: var(--s-6); align-items: center; }
+.next .frame { padding: 10px; }
+.next-links { display: grid; gap: var(--s-4); align-content: start; }
+
+/* =========================================================
+   MOTION POLICY — feedback only, off when reduced motion
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* =========================================================
+   PRINT (preview of the CV behaviour: light, no chrome)
+   ========================================================= */
+@media print { .mk, .site-header, .site-footer { display: none !important; } }
+
+/* =========================================================
+   MOCKUP TOOLBAR — not part of the design
+   ========================================================= */
+.mk { position: fixed; left: 8px; right: 8px; bottom: 8px; z-index: 1000; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px;
+      padding: 8px 12px; background: #FFF4C2; color: #1a1a1a; border: 1px dashed #8a6d00; border-radius: 8px;
+      font: 12px/1.3 ui-monospace, Menlo, monospace; color-scheme: light; }
+.mk b { font-weight: 700; }
+.mk .grp { display: inline-flex; align-items: center; gap: 4px; }
+.mk button { font: inherit; padding: 4px 8px; border: 1px solid #8a6d00; background: #fff; color: #1a1a1a; border-radius: 4px; cursor: pointer; }
+.mk button[aria-pressed="true"] { background: #1a1a1a; color: #fff; }
+.mk .close { margin-left: auto; }
+.mk[data-collapsed="true"] .grp, .mk[data-collapsed="true"] .lbl { display: none; }
+.mk[data-collapsed="true"] { left: auto; }
+</style>
+</head>
+<body id="top">
+
+<a class="skip" href="#main"><span data-l="fr">Aller au contenu</span><span data-l="en">Skip to content</span></a>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="wordmark" href="#top" data-goto="home">Landry Simo</a>
+    <nav class="nav-main" aria-label="Navigation principale" data-aria-fr="Navigation principale" data-aria-en="Main navigation">
+      <ul>
+        <li><a href="#work" data-nav="work"><span data-l="fr">Projets</span><span data-l="en">Work</span></a></li>
+        <li><a href="#about" data-nav="about"><span data-l="fr">À propos</span><span data-l="en">About</span></a></li>
+        <li><a href="#cv" data-nav="cv">CV</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-tools">
+      <div class="lang" role="group" aria-label="Langue">
+        <button type="button" data-setlang="fr" aria-pressed="true" lang="fr" aria-label="Français">FR</button>
+        <button type="button" data-setlang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+      </div>
+      <button type="button" class="icon-btn" id="themeBtn" aria-label="Passer au thème sombre">
+        <svg class="icon theme-icon-light" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="icon theme-icon-dark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">
+        <span data-l="fr">Menu</span><span data-l="en">Menu</span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav container" id="mobileNav" hidden aria-label="Navigation principale">
+    <ul>
+      <li><a href="#work" data-nav="work"><span><span data-l="fr">Projets</span><span data-l="en">Work</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#about" data-nav="about"><span><span data-l="fr">À propos</span><span data-l="en">About</span></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#cv" data-nav="cv"><span>CV</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+      <li><a href="#contact" data-nav="contact"><span>Contact</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ======================= PAGE: HOME ======================= -->
+<main id="main" tabindex="-1" data-page="home">
+
+  <section class="hero container" id="hero" data-photo="slot" aria-labelledby="hero-title">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-top">
+          <span class="avatar-sm" aria-hidden="true">LS</span>
+          <p class="status"><span class="status-dot" aria-hidden="true"></span>
+            <span data-l="fr">Disponible pour un nouveau poste</span><span data-l="en">Open to new roles</span>
+          </p>
+        </div>
+        <h1 class="display" id="hero-title">Landry Simo
+          <span class="role"><span data-l="fr">Ingénieur logiciel, web&nbsp;&amp;&nbsp;mobile.</span><span data-l="en">Software engineer, web&nbsp;&amp;&nbsp;mobile.</span></span>
+        </h1>
+        <p class="lead">
+          <span data-l="fr">Je conçois et livre des applications qui tournent en production : Flutter pour le mobile, Django et Next.js pour le web et le backend. Plus de 4&nbsp;ans d’expérience, de l’API jusqu’au store.</span>
+          <span data-l="en">I design and ship applications that run in production: Flutter for mobile, Django and Next.js for web and backend. 4+ years of experience, from the API to the app store.</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#work"><span data-l="fr">Voir les projets</span><span data-l="en">View my work</span></a>
+          <a class="btn btn-secondary" href="#cv"><span data-l="fr">Voir le CV</span><span data-l="en">View CV</span></a>
+          <a class="link-arrow" href="#contact"><span data-l="fr">Me contacter</span><span data-l="en">Get in touch</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <p class="freelance-note">
+          <span data-l="fr">Vous avez un projet ? J’accepte aussi des missions freelance. <a href="#contact">Discutons-en</a>.</span>
+          <span data-l="en">Have a project? I also take on freelance work. <a href="#contact">Let’s talk</a>.</span>
+        </p>
+      </div>
+      <figure class="hero-photo">
+        <div class="photo-slot" role="img" aria-label="Emplacement photo">
+          <div><strong>LS</strong><span class="mono"><span data-l="fr">Photo à venir · 4:5</span><span data-l="en">Photo coming · 4:5</span></span></div>
+        </div>
+      </figure>
+    </div>
+    <dl class="facts">
+      <div><dt class="mono"><span data-l="fr">Basé à</span><span data-l="en">Based in</span></dt><dd><span data-l="fr">Douala, Cameroun · UTC+1</span><span data-l="en">Douala, Cameroon · UTC+1</span></dd></div>
+      <div><dt class="mono">Stack</dt><dd>Flutter · Django · Next.js</dd></div>
+      <div><dt class="mono"><span data-l="fr">Livré</span><span data-l="en">Shipped</span></dt><dd><span data-l="fr">17 projets depuis 2020</span><span data-l="en">17 projects since 2020</span></dd></div>
+    </dl>
+  </section>
+
+  <section class="section container" id="work" aria-labelledby="work-title">
+    <div class="section-head">
+      <h2 id="work-title"><span data-l="fr">Projets phares</span><span data-l="en">Selected work</span></h2>
+      <a class="link-arrow" href="#work"><span data-l="fr">Tous les projets</span><span data-l="en">All projects</span> <span class="count">17</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ul class="work-grid">
+      <li>
+        <a class="card" href="#case" data-goto="case">
+          <div class="frame"><img src="../../../public/images/projects/secret.jpg" alt="Cinq écrans de l’application Secret : Hot Seat, discussion de groupe, roue, Loup-garou et Crush secret" width="1410" height="600" loading="lazy"></div>
+          <div class="card-meta mono"><span>Mobile · 2026</span><span>Play Store</span></div>
+          <h3 class="card-title"><span>Secret</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3>
+          <p class="card-desc"><span data-l="fr">Messagerie de groupe pensée pour les jeux entre amis, où l’app joue le maître du jeu.</span><span data-l="en">Group messenger built around the party games friends already play, with the app as game master.</span></p>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="#case" data-goto="case">
+          <div class="frame"><img src="../../../public/images/projects/g-buy.png" alt="Page d’accueil de G-Buy avec les produits vedettes d’un achat groupé" width="1919" height="1076" loading="lazy"></div>
+          <div class="card-meta mono"><span>Web · 2026</span><span><span data-l="fr">En production</span><span data-l="en">In production</span></span></div>
+          <h3 class="card-title"><span>G-Buy</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3>
+          <p class="card-desc"><span data-l="fr">Marketplace qui numérise l’achat groupé au Cameroun.</span><span data-l="en">Marketplace platform that digitizes group-buying commerce in Cameroon.</span></p>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="#case" data-goto="case">
+          <div class="frame"><img src="../../../public/images/projects/kweekk.jpg" alt="Téléphone affichant la liste des réductions de KweekK" width="2000" height="2500" loading="lazy"></div>
+          <div class="card-meta mono"><span>Mobile · 2022</span><span>Play Store</span></div>
+          <h3 class="card-title"><span>KweekK</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3>
+          <p class="card-desc"><span data-l="fr">Club de fidélité numérique offrant des réductions exclusives en Afrique centrale.</span><span data-l="en">Digital loyalty club delivering exclusive discounts across Central Africa.</span></p>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="#case" data-goto="case">
+          <div class="frame"><img src="../../../public/images/projects/isyjob.jpg" alt="Écrans de l’application IsyJob" width="3000" height="2000" loading="lazy"></div>
+          <div class="card-meta mono"><span>Mobile · 2021</span><span><span data-l="fr">En production</span><span data-l="en">In production</span></span></div>
+          <h3 class="card-title"><span>IsyJob</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3>
+          <p class="card-desc"><span data-l="fr">Marketplace de services qui met en relation prestataires et clients en temps réel.</span><span data-l="en">Service marketplace connecting providers and clients in real time.</span></p>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="#case" data-goto="case">
+          <div class="frame"><img src="../../../public/images/projects/stock-entrepot.png" alt="Tableau de bord de Warehouse Stock Manager" width="1922" height="1076" loading="lazy"></div>
+          <div class="card-meta mono"><span>Web · 2026</span><span><span data-l="fr">En cours</span><span data-l="en">Ongoing</span></span></div>
+          <h3 class="card-title"><span>Warehouse Stock Manager</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3>
+          <p class="card-desc"><span data-l="fr">Gestion d’entrepôt full-stack : backend Django&nbsp;6/DRF et frontend Next.js.</span><span data-l="en">Full-stack warehouse management with Django 6/DRF backend and Next.js frontend.</span></p>
+        </a>
+      </li>
+      <li>
+        <a class="card" href="#case" data-goto="case">
+          <div class="frame"><img src="https://2lnlearninginstitute.com/home/approche-pedagogique.webp" alt="Page de 2LN Learning Institute présentant l’approche pédagogique" loading="lazy"></div>
+          <div class="card-meta mono"><span>Web · 2026</span><span><span data-l="fr">En ligne</span><span data-l="en">Live</span></span></div>
+          <h3 class="card-title"><span>2LN Learning Institute</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h3>
+          <p class="card-desc"><span data-l="fr">Plateforme panafricaine de formation professionnelle : leadership, RH et employabilité.</span><span data-l="en">Panafrican professional training platform for leadership, HR, and employability.</span></p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section container" id="about" aria-labelledby="xp-title">
+    <div class="section-head">
+      <h2 id="xp-title"><span data-l="fr">Parcours</span><span data-l="en">Experience</span></h2>
+      <a class="link-arrow" href="#about"><span data-l="fr">En savoir plus</span><span data-l="en">More about me</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <ul class="xp">
+      <li>
+        <span class="mono muted"><span data-l="fr">2024 — aujourd’hui</span><span data-l="en">2024 — present</span></span>
+        <h3><span data-l="fr">Développeur full-stack</span><span data-l="en">Full-Stack Developer</span> <span class="company">· OVVP Corp</span></h3>
+        <p class="muted"><span data-l="fr">Apps mobiles Flutter, web React/Next.js, backend Node.js et Python. Lead technique sur des projets multi-plateformes.</span><span data-l="en">Flutter mobile apps, React/Next.js web, Node.js and Python backends. Technical lead on multi-platform projects.</span></p>
+      </li>
+      <li>
+        <span class="mono muted"><span data-l="fr">2021 — aujourd’hui</span><span data-l="en">2021 — present</span></span>
+        <h3><span data-l="fr">Développeur freelance</span><span data-l="en">Freelance Developer</span> <span class="company">· <span data-l="fr">Indépendant</span><span data-l="en">Independent</span></span></h3>
+        <p class="muted"><span data-l="fr">Applications web et mobiles pour divers clients, de l’architecture au déploiement.</span><span data-l="en">Web and mobile applications for various clients, from architecture to deployment.</span></p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="section container" id="contact" aria-labelledby="contact-title">
+    <div class="section-head">
+      <h2 id="contact-title"><span data-l="fr">Me contacter</span><span data-l="en">Get in touch</span></h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p class="lead" style="margin-top:0"><span data-l="fr">Un poste à pourvoir, une mission, une question ? Écrivez-moi, je réponds sous 48&nbsp;h ouvrées.</span><span data-l="en">A role to fill, a project, a question? Write to me — I reply within 2 business days.</span></p>
+        <a class="big-mail" href="mailto:contact@starland9.dev">contact@starland9.dev</a>
+        <ul class="social">
+          <li><a href="https://www.linkedin.com/in/landry-simo9/" rel="noopener">LinkedIn<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+          <li><a href="https://github.com/Starland9" rel="noopener">GitHub<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+          <li><a href="https://x.com/starland237" rel="noopener">X<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a></li>
+        </ul>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="f-name"><span data-l="fr">Nom</span><span data-l="en">Name</span></label>
+          <input class="input" id="f-name" name="name" autocomplete="name" aria-describedby="e-name" required>
+          <p class="field-error" id="e-name" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span></span></p>
+        </div>
+        <div class="field">
+          <label for="f-email"><span data-l="fr">E-mail</span><span data-l="en">Email</span></label>
+          <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" aria-describedby="e-email" required>
+          <p class="field-error" id="e-email" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span></span></p>
+        </div>
+        <fieldset class="field">
+          <legend><span data-l="fr">Motif</span><span data-l="en">Subject</span></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="reason" value="job" checked><span><span data-l="fr">Poste à pourvoir</span><span data-l="en">Job opportunity</span></span></label>
+            <label class="choice"><input type="radio" name="reason" value="freelance"><span><span data-l="fr">Mission freelance</span><span data-l="en">Freelance project</span></span></label>
+            <label class="choice"><input type="radio" name="reason" value="other"><span><span data-l="fr">Autre</span><span data-l="en">Other</span></span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="f-msg">Message</label>
+          <textarea class="input" id="f-msg" name="message" aria-describedby="e-msg" required></textarea>
+          <p class="field-error" id="e-msg" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg><span></span></p>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
+        <div class="form-status ok" id="formOk" role="status" hidden>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          <span><span data-l="fr">Message envoyé. Merci, je vous réponds sous 48&nbsp;h ouvrées.</span><span data-l="en">Message sent. Thank you — I’ll reply within 2 business days.</span></span>
+        </div>
+        <div class="form-foot">
+          <p class="form-note"><span data-l="fr">Votre adresse sert uniquement à vous répondre.</span><span data-l="en">Your address is only used to reply to you.</span></p>
+          <button class="btn btn-primary" type="submit"><span data-l="fr">Envoyer le message</span><span data-l="en">Send message</span></button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= PAGE: CASE STUDY ======================= -->
+<main id="main-case" tabindex="-1" data-page="case" hidden>
+  <nav class="crumbs container" aria-label="Fil d’Ariane">
+    <ol>
+      <li><a href="#top" data-goto="home"><span data-l="fr">Accueil</span><span data-l="en">Home</span></a></li>
+      <li><a href="#work" data-goto="home"><span data-l="fr">Projets</span><span data-l="en">Work</span></a></li>
+      <li><span aria-current="page">Secret</span></li>
+    </ol>
+  </nav>
+
+  <header class="cs-head container">
+    <p class="mono"><span data-l="fr">Application mobile · 2026 · Projet solo</span><span data-l="en">Mobile app · 2026 · Solo project</span></p>
+    <h1 class="cs-title">Secret</h1>
+    <p class="lead"><span data-l="fr">Messagerie de groupe pensée pour les jeux entre amis, où l’app joue le maître du jeu.</span><span data-l="en">Group messenger built around the party games friends already play, with the app as game master.</span></p>
+    <div class="cs-actions">
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=app.secret.games" rel="noopener"><span data-l="fr">Voir sur Google Play</span><span data-l="en">View on Google Play</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg><span class="sr-only"><span data-l="fr">(site externe)</span><span data-l="en">(external site)</span></span></a>
+      <span class="badge"><span class="status-dot" aria-hidden="true"></span><span data-l="fr">En ligne sur le Play Store</span><span data-l="en">Live on Play Store</span></span>
+    </div>
+    <div class="highlights">
+      <div><strong>9&nbsp;000+</strong><span data-l="fr">tests automatisés, dont des tests de fuite d’anonymat</span><span data-l="en">automated tests, including anonymity-leak tests</span></div>
+      <div><strong><span data-l="fr">4 semaines</span><span data-l="en">4 weeks</span></strong><span data-l="fr">de la conception à la publication, en solo</span><span data-l="en">from design to release, solo</span></div>
+      <div><strong>30+</strong><span data-l="fr">jeux intégrés, du Loup-garou au jeu d’arène temps réel</span><span data-l="en">built-in games, from Werewolf to a real-time arena</span></div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="frame frame--wide"><img src="../../../public/images/projects/secret.jpg" alt="Cinq écrans de l’application Secret : Hot Seat, discussion de groupe, roue, Loup-garou et Crush secret" width="1410" height="600"></div>
+  </div>
+
+  <div class="cs-body container">
+    <aside aria-label="Fiche projet">
+      <div class="cs-aside-inner">
+        <dl class="sheet">
+          <div><dt class="mono">Type</dt><dd><span data-l="fr">Application mobile + web</span><span data-l="en">Mobile + web app</span></dd></div>
+          <div><dt class="mono"><span data-l="fr">Année</span><span data-l="en">Year</span></dt><dd>2026</dd></div>
+          <div><dt class="mono"><span data-l="fr">Durée</span><span data-l="en">Duration</span></dt><dd><span data-l="fr">4 semaines</span><span data-l="en">4 weeks</span></dd></div>
+          <div><dt class="mono"><span data-l="fr">Équipe</span><span data-l="en">Team</span></dt><dd><span data-l="fr">Projet solo</span><span data-l="en">Solo project</span></dd></div>
+          <div><dt class="mono"><span data-l="fr">Statut</span><span data-l="en">Status</span></dt><dd><span data-l="fr">En ligne sur le Play Store</span><span data-l="en">Live on Play Store</span></dd></div>
+          <div><dt class="mono">Code</dt><dd><span data-l="fr">Privé</span><span data-l="en">Private</span></dd></div>
+        </dl>
+      </div>
+    </aside>
+
+    <article class="prose">
+      <section aria-labelledby="cs-problem">
+        <h2 id="cs-problem"><span class="mono">01</span><span data-l="fr">Problème</span><span data-l="en">Problem</span></h2>
+        <p><span data-l="fr">Entre ados et jeunes adultes, les jeux de soirée dépendent d’un admin qui relaie les questions, tient les scores et voit qui a dit quoi — ce qui tue à la fois l’anonymat et le rythme.</span><span data-l="en">Party games between teenagers and young adults depend on an admin who relays questions, keeps score, and can see who said what — which kills both anonymity and momentum.</span></p>
+      </section>
+      <section aria-labelledby="cs-solution">
+        <h2 id="cs-solution"><span class="mono">02</span>Solution</h2>
+        <p><span data-l="fr">Une app Flutter adossée à un moteur de jeu Django où chaque jeu est un module aux règles écrites en fonctions pures, un serveur temps réel séparé en Dart pur pour les jeux d’action, et des salons vocaux LiveKit auto-hébergés pendant les parties.</span><span data-l="en">A Flutter app on top of a Django game engine where every game is a pluggable handler with pure-function rules, a separate pure-Dart real-time server for action games, and self-hosted LiveKit voice rooms during matches.</span></p>
+      </section>
+      <section aria-labelledby="cs-role">
+        <h2 id="cs-role"><span class="mono">03</span><span data-l="fr">Mon rôle</span><span data-l="en">My role</span></h2>
+        <ul>
+          <li><span data-l="fr">Conception, architecture et développement en solo : mobile, web, backend et serveur temps réel.</span><span data-l="en">Solo design, architecture, and development across mobile, web, backend, and real-time server.</span></li>
+          <li><span data-l="fr">Moteur de jeu côté serveur : modules enfichables, règles en fonctions pures vérifiées par 10&nbsp;000 parties en auto-jeu.</span><span data-l="en">Server-authoritative game engine: pluggable handlers, pure-function rules verified by 10,000-game self-play runs.</span></li>
+          <li><span data-l="fr">Arène temps réel en Dart validée octet par octet contre une implémentation de référence indépendante en Python.</span><span data-l="en">Real-time Dart arena validated byte-for-byte against an independent Python reference implementation.</span></li>
+          <li><span data-l="fr">Livraison pilotée par les specs (spec → plan → tâches → implémentation), contrats d’API écrits avant le code.</span><span data-l="en">Spec-driven delivery (spec → plan → tasks → implementation) with API contracts written before code.</span></li>
+          <li><span data-l="fr">Déploiement Docker et Dokploy, FCM et Web Push, publication sur Google Play.</span><span data-l="en">Docker and Dokploy deployment, FCM and Web Push, Google Play release.</span></li>
+        </ul>
+      </section>
+      <section aria-labelledby="cs-impact">
+        <h2 id="cs-impact"><span class="mono">04</span>Impact</h2>
+        <ul>
+          <li><span data-l="fr">Publié sur le Google Play Store, vérifiable via le lien du store.</span><span data-l="en">Published on Google Play Store — verifiable via Play Store link.</span></li>
+          <li><span data-l="fr">9&nbsp;000+ tests automatisés (≈&nbsp;3&nbsp;700 backend, ≈&nbsp;5&nbsp;900 Dart), dont des tests de fuite d’anonymat.</span><span data-l="en">9,000+ automated tests (≈3,700 backend, ≈5,900 Dart), including anonymity-leak tests.</span></li>
+          <li><span data-l="fr">Conçu, développé et livré en solo en environ quatre semaines (733 commits).</span><span data-l="en">Designed, built, and shipped solo in about four weeks (733 commits).</span></li>
+        </ul>
+      </section>
+      <section aria-labelledby="cs-features">
+        <h2 id="cs-features"><span class="mono">05</span><span data-l="fr">Fonctionnalités clés</span><span data-l="en">Key features</span></h2>
+        <ul>
+          <li><span data-l="fr">30+ jeux : Hot Seat, Action ou Vérité, Loup-garou, Undercover, Crush secret, Quiz (≈&nbsp;6&nbsp;000 questions), dames, Ludo, un jeu d’arène façon Bomberman et des courses.</span><span data-l="en">30+ games: Hot Seat, Truth or Dare, Werewolf, Undercover, Secret Crush, Quiz (≈6,000 questions), Checkers, Ludo, a Bomberman-style arena game, and auto racing.</span></li>
+          <li><span data-l="fr">Messagerie complète : studio de stickers, messages vocaux, médias à vue unique, réponses et mentions, notifications push.</span><span data-l="en">Full messaging: sticker studio, voice messages, view-once media, replies and mentions, push notifications.</span></li>
+          <li><span data-l="fr">Anonyme par conception : le serveur ne transmet jamais l’auteur d’une réponse ni les informations cachées (mains, rôles).</span><span data-l="en">Anonymous by design: the server never serializes a submission’s author or hidden information (card hands, roles).</span></li>
+          <li><span data-l="fr">Sécurité et modération : filtre de contenu, médias à vue unique jamais écrits sur disque, jetons à usage unique, accès modérateur audité.</span><span data-l="en">Security and moderation: content filter, view-once media never written to disk, single-use tokens, audited moderator access.</span></li>
+        </ul>
+      </section>
+      <section aria-labelledby="cs-stack">
+        <h2 id="cs-stack"><span class="mono">06</span>Stack</h2>
+        <ul class="tags">
+          <li>Flutter</li><li>Dart</li><li>Flame</li><li>Django</li><li>Channels</li><li>Celery</li><li>PostgreSQL</li><li>Redis</li><li>LiveKit</li><li>Docker</li>
+        </ul>
+      </section>
+    </article>
+  </div>
+
+  <div class="container section">
+    <div class="next">
+      <a class="card" href="#case" data-goto="case">
+        <div class="frame"><img src="../../../public/images/projects/g-buy.png" alt="" width="1919" height="1076" loading="lazy"></div>
+        <div>
+          <p class="mono muted"><span data-l="fr">Projet suivant</span><span data-l="en">Next project</span></p>
+          <h2 class="card-title" style="font-size:var(--text-h2);letter-spacing:-.02em"><span>G-Buy</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></h2>
+          <p class="card-desc"><span data-l="fr">Marketplace qui numérise l’achat groupé au Cameroun.</span><span data-l="en">Marketplace platform that digitizes group-buying commerce in Cameroon.</span></p>
+        </div>
+      </a>
+      <div class="next-links">
+        <p class="lead" style="margin-top:0"><span data-l="fr">Un projet similaire, ou un poste où ce type de travail compte ?</span><span data-l="en">Something similar in mind, or a role where this kind of work matters?</span></p>
+        <div class="cta-row" style="margin-top:0">
+          <a class="btn btn-primary" href="#contact" data-goto="home"><span data-l="fr">Me contacter</span><span data-l="en">Get in touch</span></a>
+          <a class="btn btn-secondary" href="#work" data-goto="home"><span data-l="fr">Tous les projets</span><span data-l="en">All projects</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <p><span data-l="fr">Landry Simo — Ingénieur logiciel, Douala.</span><span data-l="en">Landry Simo — Software engineer, Douala.</span> © 2026</p>
+    <ul>
+      <li><a href="mailto:contact@starland9.dev">E-mail</a></li>
+      <li><a href="https://github.com/Starland9">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/landry-simo9/">LinkedIn</a></li>
+      <li><a href="#top"><span data-l="fr">Retour en haut</span><span data-l="en">Back to top</span></a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- ======================= MOCKUP TOOLBAR (not part of the design) ======================= -->
+<div class="mk" id="mk" aria-label="Contrôles de la maquette">
+  <span class="lbl"><b>MAQUETTE</b></span>
+  <span class="grp">Palette <button data-mk="palette" data-v="cobalt" aria-pressed="false">Cobalt</button><button data-mk="palette" data-v="terre" aria-pressed="true">Terre (retenue)</button></span>
+  <span class="grp">Thème <button data-mk="theme" data-v="auto" aria-pressed="true">Auto</button><button data-mk="theme" data-v="light" aria-pressed="false">Clair</button><button data-mk="theme" data-v="dark" aria-pressed="false">Sombre</button></span>
+  <span class="grp">Page <button data-mk="page" data-v="home" aria-pressed="true">Accueil</button><button data-mk="page" data-v="case" aria-pressed="false">Étude de cas</button></span>
+  <span class="grp">Photo <button data-mk="photo" data-v="slot" aria-pressed="true">Emplacement</button><button data-mk="photo" data-v="none" aria-pressed="false">Sans</button></span>
+  <button class="close" id="mkToggle" aria-expanded="true">Réduire</button>
+</div>
+
+<script>
+(() => {
+  const html = document.documentElement;
+  const mq = matchMedia('(prefers-color-scheme: dark)');
+  const T = {
+    fr: { home: 'Landry Simo — Ingénieur logiciel', case: 'Secret — Étude de cas | Landry Simo', toDark: 'Passer au thème sombre', toLight: 'Passer au thème clair',
+          nav: 'Navigation principale', crumbs: 'Fil d’Ariane', lang: 'Langue', sheet: 'Fiche projet',
+          eName: 'Indiquez votre nom.', eEmail: 'Indiquez une adresse e-mail valide, par exemple nom@domaine.com.', eMsg: 'Votre message doit faire au moins 10 caractères.' },
+    en: { home: 'Landry Simo — Software Engineer', case: 'Secret — Case study | Landry Simo', toDark: 'Switch to dark theme', toLight: 'Switch to light theme',
+          nav: 'Main navigation', crumbs: 'Breadcrumb', lang: 'Language', sheet: 'Project facts',
+          eName: 'Enter your name.', eEmail: 'Enter a valid email address, for example name@domain.com.', eMsg: 'Your message must be at least 10 characters long.' }
+  };
+  const state = { page: 'home', lang: 'fr' };
+
+  const resolved = () => html.dataset.theme === 'auto' ? (mq.matches ? 'dark' : 'light') : html.dataset.theme;
+  function syncTheme() {
+    html.dataset.resolved = resolved();
+    document.getElementById('themeBtn').setAttribute('aria-label', resolved() === 'dark' ? T[state.lang].toLight : T[state.lang].toDark);
+    press('theme', html.dataset.theme);
+  }
+  function press(group, value) {
+    document.querySelectorAll(`[data-mk="${group}"]`).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === value)));
+  }
+  function setLang(l) {
+    state.lang = l; html.lang = l;
+    document.querySelectorAll('[data-setlang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.setlang === l)));
+    document.querySelectorAll('.nav-main, .mobile-nav').forEach(n => n.setAttribute('aria-label', T[l].nav));
+    document.querySelector('.crumbs').setAttribute('aria-label', T[l].crumbs);
+    document.querySelector('.lang').setAttribute('aria-label', T[l].lang);
+    document.querySelector('.cs-body aside').setAttribute('aria-label', T[l].sheet);
+    document.title = T[l][state.page];
+    syncTheme();
+  }
+  function setPage(p, hash) {
+    state.page = p;
+    document.querySelectorAll('main[data-page]').forEach(m => m.hidden = m.dataset.page !== p);
+    document.querySelectorAll('[data-nav]').forEach(a => {
+      const active = p === 'case' ? a.dataset.nav === 'work' : false;
+      active ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current');
+    });
+    document.title = T[state.lang][p];
+    press('page', p);
+    if (hash && p === 'home') { const el = document.querySelector(hash); if (el) { el.scrollIntoView(); return; } }
+    window.scrollTo(0, 0);
+    document.querySelector(`main[data-page="${p}"]`).focus({ preventScroll: true });
+  }
+
+  // site controls
+  document.getElementById('themeBtn').addEventListener('click', () => { html.dataset.theme = resolved() === 'dark' ? 'light' : 'dark'; syncTheme(); });
+  document.querySelectorAll('[data-setlang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.setlang)));
+  const menuBtn = document.getElementById('menuBtn'), mobileNav = document.getElementById('mobileNav');
+  menuBtn.addEventListener('click', () => { const open = menuBtn.getAttribute('aria-expanded') === 'true'; menuBtn.setAttribute('aria-expanded', String(!open)); mobileNav.hidden = open; });
+  mobileNav.addEventListener('click', e => { if (e.target.closest('a')) { menuBtn.setAttribute('aria-expanded', 'false'); mobileNav.hidden = true; } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !mobileNav.hidden) { menuBtn.click(); menuBtn.focus(); } });
+  document.addEventListener('click', e => {
+    const go = e.target.closest('[data-goto]');
+    if (go) { e.preventDefault(); setPage(go.dataset.goto, go.getAttribute('href') !== '#case' ? go.getAttribute('href') : null); return; }
+    const nav = e.target.closest('a[href^="#"]');
+    if (nav && state.page === 'case' && ['#work', '#about', '#contact', '#cv'].includes(nav.getAttribute('href'))) { e.preventDefault(); setPage('home', nav.getAttribute('href')); }
+  });
+  mq.addEventListener('change', syncTheme);
+
+  // mockup toolbar
+  document.querySelectorAll('[data-mk]').forEach(b => b.addEventListener('click', () => {
+    const { mk, v } = b.dataset;
+    if (mk === 'palette') { html.dataset.palette = v; press('palette', v); }
+    if (mk === 'theme') { html.dataset.theme = v; syncTheme(); }
+    if (mk === 'page') setPage(v);
+    if (mk === 'photo') { document.getElementById('hero').dataset.photo = v; press('photo', v); }
+  }));
+  const mkToggle = document.getElementById('mkToggle');
+  mkToggle.addEventListener('click', () => { const c = document.getElementById('mk').dataset.collapsed === 'true'; document.getElementById('mk').dataset.collapsed = String(!c); mkToggle.textContent = c ? 'Réduire' : 'Maquette'; mkToggle.setAttribute('aria-expanded', String(c)); });
+
+  // contact form (mockup: validation + fake success)
+  const form = document.getElementById('contactForm');
+  const showErr = (input, id, msg) => { const p = document.getElementById(id); input.setAttribute('aria-invalid', msg ? 'true' : 'false'); p.hidden = !msg; p.querySelector('span').textContent = msg || ''; return !msg; };
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const t = T[state.lang], n = document.getElementById('f-name'), m = document.getElementById('f-email'), msg = document.getElementById('f-msg');
+    const ok = [
+      showErr(n, 'e-name', n.value.trim().length < 2 ? t.eName : ''),
+      showErr(m, 'e-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m.value) ? '' : t.eEmail),
+      showErr(msg, 'e-msg', msg.value.trim().length < 10 ? t.eMsg : '')
+    ];
+    const firstBad = [n, m, msg][ok.indexOf(false)];
+    if (firstBad) { firstBad.focus(); return; }
+    document.getElementById('formOk').hidden = false;
+    form.reset();
+  });
+
+  // URL params let you open a given variant directly, e.g. ?palette=terre&theme=dark&page=case&lang=en&photo=none
+  const q = new URLSearchParams(location.search);
+  if (q.get('palette')) { html.dataset.palette = q.get('palette'); press('palette', q.get('palette')); }
+  if (q.get('theme')) html.dataset.theme = q.get('theme');
+  if (q.get('photo')) { document.getElementById('hero').dataset.photo = q.get('photo'); press('photo', q.get('photo')); }
+  if (q.get('mk') === 'off') document.getElementById('mk').hidden = true;
+  setLang(q.get('lang') === 'en' ? 'en' : 'fr');
+  if (q.get('page') === 'case') setPage('case');
+  syncTheme();
+})();
+</script>
+</body>
+</html>
