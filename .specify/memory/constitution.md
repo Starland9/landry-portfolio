@@ -1,6 +1,8 @@
 <!--
 Sync Impact Report
-- Version change: (template, unratified) → 1.0.0
+- Version change: 1.0.0 → 1.0.1 (PATCH: III clarified — project images shown in `cover`,
+  at the owner's request; small images keep `contain` on a neutral mat)
+- Previous: (template, unratified) → 1.0.0
 - Modified principles: all placeholders replaced (initial ratification)
   - [PRINCIPLE_1_NAME] → I. Clarté immédiate
   - [PRINCIPLE_2_NAME] → II. Sobriété, aucun effet spécial
@@ -49,8 +51,9 @@ perçue doit venir du travail montré et de la précision de la mise en page.
 ### III. Le travail d'abord
 
 - Les projets, illustrés par des captures réelles, sont le contenu principal du site.
-- Les visuels de projets DOIVENT être présentés dans un cadre uniforme (même ratio, même fond
-  neutre, même traitement), quelle que soit la source de l'image.
+- Les visuels de projets DOIVENT être présentés dans un cadre uniforme (même ratio, même
+  traitement) : image en `cover` (remplit le cadre, rognée si besoin, jamais déformée) ; une image
+  trop petite pour remplir le cadre sans flou est affichée entière sur un fond neutre.
 - Chaque étude de cas DOIT suivre l'ordre : problème → solution → rôle → impact → stack, et
   afficher statut, période et liens (live, store, code) quand ils existent.
 - Aucune affirmation chiffrée sans source vérifiable dans les données du projet.
@@ -133,4 +136,4 @@ site et le CV restent identiques et à jour.
 - Revue de conformité : chaque spec, plan et revue de code vérifie les principes I à VI ; une
   violation non justifiée bloque la fusion.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-22 | **Last Amended**: 2026-10-22
+**Version**: 1.0.1 | **Ratified**: 2026-10-22 | **Last Amended**: 2026-10-22

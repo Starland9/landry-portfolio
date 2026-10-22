@@ -77,7 +77,7 @@ Largeur de lecture : prose ≤ 42rem, accroches ≤ 40rem. `text-wrap: balance` 
 | Lien | `text-accent`, souligné 1 px, décalage 3 px | soulignement 2 px | anneau | externe : icône ↗ + texte masqué « (site externe) » |
 | Navigation | `text-muted` | `text-fg bg-frame` | anneau | active : `text-fg` + barre 2 px accent sous l'élément, `aria-current="page"` |
 | Carte projet | cadre `bg-frame` + bordure `border` | bordure `border-strong`, titre souligné accent, flèche +3 px | anneau autour de la carte (décalage 6 px) | carte entièrement cliquable, un seul lien |
-| Cadre image | ratio 4:3 (cartes) ou 16:9 (étude de cas), `object-fit: contain`, marge interne `clamp(16px, 6%, 40px)` | — | — | image absente : titre du projet centré sur `bg-frame` |
+| Cadre image | ratio 4:3 (cartes) ou 16:9 (étude de cas), `object-fit: cover` (rogné, jamais déformé) | — | — | image < 600 px de large : `contain` centré sur `bg-frame`, marge `clamp(16px, 6%, 40px)` |
 | Champ | fond `bg-bg`, bordure `border-strong`, h ≥ 48 px | bordure `fg` | anneau accent + bordure accent | invalide : bordure `err` + message sous le champ |
 | Choix du motif | pastille bordée `border-strong` | bordure `fg` | anneau | coché : fond `fg`, texte `bg` |
 | Badge de statut | pastille bordée, point 8 px `ok` (statique) | — | — | jamais animé |

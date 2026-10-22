@@ -25,7 +25,7 @@ export function NextProject({
           image={project.image}
           alt=""
           sizes="140px"
-          className="p-2.5 group-hover:border-border-strong"
+          className="group-hover:border-border-strong"
         />
         <div>
           <p className="font-mono text-meta text-muted">

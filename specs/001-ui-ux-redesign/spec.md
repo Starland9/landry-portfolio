@@ -216,8 +216,9 @@ manuellement ; son choix est retenu lors des visites suivantes.
 
 ### Edge Cases
 
-- Une capture très petite (ex. icône de 240 px) ou de format très large (bandeau multi-écrans) :
-  elle est centrée dans le cadre uniforme, jamais agrandie au point d'être floue, jamais déformée.
+- Une capture de format très différent du cadre (bandeau multi-écrans, photo verticale) : elle
+  remplit le cadre et ses bords sont rognés, jamais déformée. Une capture très petite (ex. icône de
+  240 px) est affichée entière, centrée sur un fond neutre, jamais agrandie au point d'être floue.
 - Une image de projet manquante : le cadre affiche le nom du projet sur fond neutre, sans icône
   d'image cassée.
 - Un identifiant de projet inconnu dans l'URL : page « introuvable » dans la langue courante, avec
@@ -263,9 +264,9 @@ manuellement ; son choix est retenu lors des visites suivantes.
 
 **Projets et études de cas**
 
-- **FR-011**: Chaque carte de projet DOIT montrer la capture dans un cadre uniforme (même ratio,
-  même fond neutre pour tous les projets), le titre, l'accroche, le type et l'année, et DOIT être
-  entièrement cliquable vers l'étude de cas.
+- **FR-011**: Chaque carte de projet DOIT montrer la capture dans un cadre uniforme (même ratio
+  pour tous les projets, image remplissant le cadre sans déformation), le titre, l'accroche, le
+  type et l'année, et DOIT être entièrement cliquable vers l'étude de cas.
 - **FR-012**: La page Projets DOIT lister tous les projets du plus récent au plus ancien, afficher
   leur nombre et proposer un filtre Tous / Web / Mobile / Autre dont l'état est reflété dans l'URL.
 - **FR-013**: L'étude de cas DOIT présenter, dans cet ordre : en-tête (titre, accroche, statut,
