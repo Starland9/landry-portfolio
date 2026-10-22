@@ -20,6 +20,8 @@ export type ImageAsset = {
   width: number;
   height: number;
   alt: Localized<string>;
+  /** Part kept visible when the image is cropped to fill its frame (default: center). */
+  focus?: "top" | "center" | "bottom";
 };
 
 export type Links = {

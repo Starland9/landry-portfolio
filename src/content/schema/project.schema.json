@@ -254,7 +254,7 @@
         "src": {
           "type": "string",
           "pattern": "^/images/",
-          "description": "Fichier dans public/, ex. /images/projects/secret.jpg"
+          "description": "Fichier dans public/, ex. /images/projects/secret.webp"
         },
         "width": {
           "type": "integer",
@@ -281,6 +281,10 @@
               "minLength": 1
             }
           }
+        },
+        "focus": {
+          "enum": ["top", "center", "bottom"],
+          "description": "Partie gardée visible quand l’image est rognée pour remplir son cadre (défaut : center)"
         }
       }
     },

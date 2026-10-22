@@ -6,6 +6,12 @@ import { cn } from "@/lib/utils";
 // it is shown whole, centred on the neutral mat, instead (e.g. a 240 px app icon).
 const MIN_COVER_WIDTH = 600;
 
+const FOCUS = {
+  top: "object-top",
+  center: "object-center",
+  bottom: "object-bottom",
+} as const;
+
 type ImageFrameProps = {
   image: ImageAsset;
   alt: string;
@@ -49,7 +55,7 @@ export function ImageFrame({
           fill
           sizes={sizes}
           {...loading}
-          className="object-cover"
+          className={cn("object-cover", FOCUS[image.focus ?? "center"])}
         />
       ) : (
         <Image

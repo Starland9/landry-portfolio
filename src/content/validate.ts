@@ -134,6 +134,14 @@ class Reader {
       width: this.integer(obj.width, `${field}.width`, 1),
       height: this.integer(obj.height, `${field}.height`, 1),
       alt: this.localized(obj.alt, `${field}.alt`),
+      focus:
+        obj.focus === undefined
+          ? undefined
+          : this.oneOf(obj.focus, `${field}.focus`, [
+              "top",
+              "center",
+              "bottom",
+            ]),
     };
   }
 }
