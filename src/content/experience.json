@@ -1,6 +1,31 @@
 [
   {
     "company": {
+      "fr": "2LN RH (freelance, à distance)",
+      "en": "2LN RH (freelance, remote)"
+    },
+    "role": {
+      "fr": "Lead Software Engineer & DevOps",
+      "en": "Lead Software Engineer & DevOps"
+    },
+    "start": 2026,
+    "end": null,
+    "summary": {
+      "fr": "Responsable des projets de 2LN de bout en bout, de l’idée jusqu’au déploiement.",
+      "en": "Owns 2LN’s projects end to end, from the idea to deployment."
+    },
+    "highlights": {
+      "fr": [
+        "Responsable de tout ce qui entre en jeu, de l’idée jusqu’au déploiement des projets de 2LN"
+      ],
+      "en": [
+        "In charge of everything from the idea to the deployment of 2LN’s projects"
+      ]
+    },
+    "projects": ["2ln-learning-institute", "2ln-ai"]
+  },
+  {
+    "company": {
       "fr": "Mbolo Gabon (à distance)",
       "en": "Mbolo Gabon (remote)"
     },

@@ -1,6 +1,7 @@
 import { frenchTypography } from "@/i18n/format";
 import { projects } from "./projects";
 import {
+  ContentError,
   parseEducation,
   parseExperience,
   parseLanguages,
@@ -19,6 +20,19 @@ export { projectStatuses, projectTypes } from "./types";
 
 const profile = parseProfile(profileSource);
 const experience = parseExperience(experienceSource);
+
+// Every project referenced by an experience must exist (fails the build otherwise).
+experience.forEach((item, i) =>
+  item.projects?.forEach((slug) => {
+    if (!projects.some((p) => p.slug === slug)) {
+      throw new ContentError(
+        "experience.json",
+        `[${i}].projects`,
+        `projet inconnu : ${slug}`,
+      );
+    }
+  }),
+);
 const stack = parseStack(stackSource);
 const education = parseEducation(educationSource);
 const spokenLanguages = parseLanguages(languagesSource);
@@ -40,6 +54,10 @@ export function tList(value: Localized<string[]>, locale: Locale): string[] {
 
 export const getProfile = () => profile;
 export const getExperience = () => experience;
+
+/** The role in which a project was built, if an experience lists it. */
+export const getProjectExperience = (slug: string) =>
+  experience.find((item) => item.projects?.includes(slug));
 export const getStack = () => stack;
 export const getEducation = () => education;
 export const getSpokenLanguages = () => spokenLanguages;

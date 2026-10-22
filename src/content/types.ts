@@ -81,6 +81,8 @@ export type Experience = {
   end: number | null;
   summary: Localized<string>;
   highlights: Localized<string[]>;
+  /** Slugs of the projects built in this role. */
+  projects?: string[];
 };
 
 export type StackGroup = {

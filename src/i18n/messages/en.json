@@ -31,7 +31,10 @@
     "skip": "Skip to content",
     "breadcrumb": "Breadcrumb",
     "language": "Language",
-    "languageNames": { "fr": "Français", "en": "English" }
+    "languageNames": {
+      "fr": "Français",
+      "en": "English"
+    }
   },
   "theme": {
     "toDark": "Switch to dark theme",
@@ -43,7 +46,8 @@
     "allProjects": "All projects",
     "moreAboutMe": "More about me",
     "backToTop": "Back to top",
-    "email": "Email"
+    "email": "Email",
+    "projects": "Projects"
   },
   "types": {
     "web": "Web",
@@ -99,7 +103,8 @@
       "duration": "Duration",
       "team": "Team",
       "status": "Status",
-      "code": "Code"
+      "code": "Code",
+      "context": "Context"
     },
     "codePrivate": "Private",
     "sections": {

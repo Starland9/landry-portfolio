@@ -59,6 +59,18 @@ test("every project image exists in public/", () => {
   }
 });
 
+test("projects listed in experience.json exist", () => {
+  const slugs = new Set(projectFiles.map(slugOf));
+  const experience = parseExperience(
+    readJson(join(CONTENT, "experience.json")),
+  );
+  for (const item of experience) {
+    for (const slug of item.projects ?? []) {
+      assert.ok(slugs.has(slug), `experience.json: unknown project ${slug}`);
+    }
+  }
+});
+
 test("the other content files are valid", () => {
   assert.doesNotThrow(() =>
     parseProfile(readJson(join(CONTENT, "profile.json"))),

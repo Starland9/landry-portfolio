@@ -295,6 +295,10 @@ export function parseExperience(raw: unknown): Experience[] {
       end: e.end === null ? null : r.integer(e.end, `[${i}].end`, 2000, 2100),
       summary: r.localized(e.summary, `[${i}].summary`),
       highlights: r.localizedList(e.highlights, `[${i}].highlights`),
+      projects:
+        e.projects === undefined
+          ? undefined
+          : r.stringList(e.projects, `[${i}].projects`),
     };
   });
 }
@@ -333,7 +337,10 @@ export function parseLanguages(raw: unknown): SpokenLanguage[] {
     const l = r.object(item, `[${i}]`);
     return {
       language: r.localized(l.language, `[${i}].language`),
-      level: l.level === undefined ? undefined : r.localized(l.level, `[${i}].level`),
+      level:
+        l.level === undefined
+          ? undefined
+          : r.localized(l.level, `[${i}].level`),
     };
   });
 }

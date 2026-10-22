@@ -4,6 +4,7 @@ import {
   getExperience,
   getFeaturedProjects,
   getProfile,
+  getProject,
   getSpokenLanguages,
   getStack,
   period,
@@ -117,6 +118,14 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
                   </li>
                 ))}
               </ul>
+              {item.projects && item.projects.length > 0 && (
+                <p className="mt-1 text-sm text-muted print:text-[8.5pt]">
+                  {m.common.projects} :{" "}
+                  {item.projects
+                    .map((slug) => getProject(slug)?.title ?? slug)
+                    .join(", ")}
+                </p>
+              )}
             </li>
           ))}
         </ul>

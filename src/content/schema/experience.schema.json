@@ -92,6 +92,14 @@
         },
         "additionalProperties": false,
         "description": "Résumé en une phrase (accueil)"
+      },
+      "projects": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "description": "Slugs des projets réalisés dans ce poste (fichiers de projects/)"
       }
     }
   }

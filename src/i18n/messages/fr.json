@@ -31,7 +31,10 @@
     "skip": "Aller au contenu",
     "breadcrumb": "Fil d’Ariane",
     "language": "Langue",
-    "languageNames": { "fr": "Français", "en": "English" }
+    "languageNames": {
+      "fr": "Français",
+      "en": "English"
+    }
   },
   "theme": {
     "toDark": "Passer au thème sombre",
@@ -43,7 +46,8 @@
     "allProjects": "Tous les projets",
     "moreAboutMe": "En savoir plus",
     "backToTop": "Retour en haut",
-    "email": "E-mail"
+    "email": "E-mail",
+    "projects": "Projets"
   },
   "types": {
     "web": "Web",
@@ -99,7 +103,8 @@
       "duration": "Durée",
       "team": "Équipe",
       "status": "Statut",
-      "code": "Code"
+      "code": "Code",
+      "context": "Contexte"
     },
     "codePrivate": "Privé",
     "sections": {

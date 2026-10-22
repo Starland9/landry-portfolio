@@ -103,8 +103,10 @@ migration.
 ## Experience — `src/content/experience.json`
 
 Liste ordonnée (plus récent d'abord) de :
-`{ "company": Localized<string>, "role": Localized<string>, "start": int (année), "end": int | null, "summary": Localized<string>, "highlights": Localized<string[]> }`.
+`{ "company": Localized<string>, "role": Localized<string>, "start": int (année), "end": int | null, "summary": Localized<string>, "highlights": Localized<string[]>, "projects"?: string[] }`.
 `summary` (une phrase) est affiché sur l'accueil ; `highlights` sur À propos et dans le CV.
+`projects` (facultatif) liste les slugs des projets réalisés dans ce poste : liens dans le parcours,
+ligne « Projets » du CV, ligne « Contexte » de la fiche projet ; un slug inconnu fait échouer le build.
 `end: null` = « aujourd'hui ».
 
 ## Stack — `src/content/stack.json`

@@ -1,4 +1,4 @@
-import { t, type Locale, type Project } from "@/content";
+import { getProjectExperience, t, type Locale, type Project } from "@/content";
 import type { Messages } from "@/i18n/get-messages";
 import { ExternalLink } from "@/components/ui/links";
 
@@ -12,6 +12,7 @@ export function CaseStudySheet({
   locale: Locale;
   m: Messages;
 }) {
+  const role = getProjectExperience(project.slug);
   const rows = [
     { label: m.caseStudy.sheet.type, value: m.typesLong[project.type] },
     { label: m.caseStudy.sheet.year, value: String(project.year) },
@@ -24,6 +25,14 @@ export function CaseStudySheet({
         ]
       : []),
     { label: m.caseStudy.sheet.team, value: t(project.team, locale) },
+    ...(role
+      ? [
+          {
+            label: m.caseStudy.sheet.context,
+            value: `${t(role.role, locale)} · ${t(role.company, locale)}`,
+          },
+        ]
+      : []),
     { label: m.caseStudy.sheet.status, value: m.status[project.status] },
   ];
 
