@@ -222,3 +222,34 @@ html[data-theme="dark"] .theme-icon-moon {
     animation: none !important;
   }
 }
+
+/* ==========================================================================
+   Print — the CV page prints as a clean A4 document, always in light colours
+   ========================================================================== */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 16mm;
+  }
+
+  html[data-theme] {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --frame: #ffffff;
+    --fg: #111111;
+    --muted: #444444;
+    --border: #cccccc;
+    --border-strong: #888888;
+    --accent: #111111;
+    color-scheme: light;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

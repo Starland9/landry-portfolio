@@ -19,3 +19,4 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
     </div>
   );
 }
+

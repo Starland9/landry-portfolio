@@ -18,15 +18,16 @@ JavaScript.
 ## Sortie (`ContactState`)
 
 ```ts
+type Values = { name: string; email: string; reason: string; message: string };
 type ContactState =
   | { status: "idle" }
   | { status: "success" }
-  | { status: "invalid"; errors: Partial<Record<"name" | "email" | "message", string>>; values: { name: string; email: string; reason: string; message: string } }
-  | { status: "rate-limited" }
-  | { status: "error" }; // envoi SMTP impossible
+  | { status: "invalid"; errors: Partial<Record<"name" | "email" | "message", string>>; values: Values }
+  | { status: "rate-limited"; values: Values }
+  | { status: "error"; values: Values }; // envoi SMTP impossible
 ```
 
-- `invalid` renvoie les valeurs saisies pour que rien ne soit perdu (sans JS aussi).
+- `invalid`, `rate-limited` et `error` renvoient les valeurs saisies pour que rien ne soit perdu (sans JS aussi).
 - Piège rempli, soumission < 3 s, ou doublon (même e-mail + message < 60 s) → `success` sans envoi
   (le robot ne doit rien apprendre ; un humain qui double-clique voit le succès une fois).
 - Plus de 5 envois / heure / IP → `rate-limited` : « Trop de messages envoyés. Réessayez dans une

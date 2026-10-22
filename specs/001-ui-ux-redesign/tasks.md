@@ -119,10 +119,10 @@ testable increment.
 
 **Independent Test**: quickstart scenario 9 in both languages.
 
-- [ ] T041 [P] [US3] Create `src/components/cv/print-button.tsx` (client, `window.print()`, label "Imprimer / Enregistrer en PDF", hidden in print)
-- [ ] T042 [US3] Create `src/components/cv/cv-document.tsx`: header (name, role, location, e-mail, site, LinkedIn, GitHub), summary (`bio`), experience, selected projects (featured, one line each: title — headline — year — main link), stack (groups inline), education and spoken languages sections rendered only when their list is non-empty
-- [ ] T043 [US3] Create `src/app/[locale]/cv/page.tsx` (h1 "CV", print button, document, `generateMetadata`) and add print rules to `src/app/globals.css`: `@page { size: A4; margin: 14mm }`, light tokens forced, header/footer/skip link/buttons hidden, links printed with their URL where useful, `break-inside: avoid` on entries
-- [ ] T044 [US3] Print `/fr/cv` and `/en/cv` to PDF from Chrome headless and confirm ≤ 2 pages; tighten spacing if needed
+- [X] T041 [P] [US3] Create `src/components/cv/print-button.tsx` (client, `window.print()`, label "Imprimer / Enregistrer en PDF", hidden in print)
+- [X] T042 [US3] Create `src/components/cv/cv-document.tsx`: header (name, role, location, e-mail, site, LinkedIn, GitHub), summary (`bio`), experience, selected projects (featured, one line each: title — headline — year — main link), stack (groups inline), education and spoken languages sections rendered only when their list is non-empty
+- [X] T043 [US3] Create `src/app/[locale]/cv/page.tsx` (h1 "CV", print button, document, `generateMetadata`) and add print rules to `src/app/globals.css`: `@page { size: A4; margin: 14mm }`, light tokens forced, header/footer/skip link/buttons hidden, links printed with their URL where useful, `break-inside: avoid` on entries
+- [X] T044 [US3] Print `/fr/cv` and `/en/cv` to PDF from Chrome headless and confirm ≤ 2 pages; tighten spacing if needed
 
 ---
 
@@ -132,13 +132,13 @@ testable increment.
 
 **Independent Test**: quickstart scenarios 10–15.
 
-- [ ] T045 [P] [US4] Create `src/lib/contact/validate.ts` (pure): `validateContact(input, locale)` with verbatim rules — `name` "2–100 caractères après trim, retours à la ligne interdits", `email` "Format e-mail, ≤ 254 caractères", `reason` "`job` | `freelance` | `other`" (unknown → `other`), `message` "10–5000 caractères après trim", `locale` unknown → `en`; returns field errors with the localized messages of contracts/contact-action.md
-- [ ] T046 [P] [US4] Create `src/lib/contact/rate-limit.ts` (pure, injectable clock): sliding window "5 envois par heure et par IP" and duplicate detection "même e-mail + même message dans les 60 s"
-- [ ] T047 [P] [US4] Write `tests/contact.test.ts` covering validation boundaries (1/2/100/101 chars name, 9/10/5000/5001 chars message, newline in name, invalid e-mail), rate limit (6th call in an hour refused, allowed again after the window) and duplicate detection
-- [ ] T048 [P] [US4] Create `src/lib/contact/mailer.ts` (`import "server-only"`): nodemailer transport from `SMTP_*` env (secure defaults to `true` on port 465), JSON transport when `SMTP_HOST` is missing in development, explicit error in production; `sendContactMail()` with From/To/Reply-To/Subject/body per contracts/contact-action.md (subject without line breaks)
-- [ ] T049 [US4] Create `src/lib/contact/action.ts` (`"use server"`): `sendContactMessage(prevState, formData)` → honeypot `website` filled or `startedAt` < 3 s or duplicate → `{ status: "success" }` without sending; client IP from `x-forwarded-for` (first hop) or `x-real-ip` via `headers()`; rate limited → `rate-limited`; invalid → `invalid` with errors and submitted values; SMTP failure → `error` (logged server-side)
-- [ ] T050 [US4] Create `src/components/contact/contact-form.tsx` (client, `useActionState`): labelled fields with native constraints (`required`, `type="email"`, `minLength`, `maxLength`, `autocomplete`), reason as radio pills in a `fieldset`/`legend`, hidden `locale` and `startedAt`, honeypot outside tab order, errors under fields with `aria-describedby` + `aria-invalid`, focus on first invalid field, `role="status"` region for success/rate-limited/error (with clickable direct e-mail), submit disabled + "Envoi…" while pending, values preserved on error, form reset on success
-- [ ] T051 [US4] Mount the form in `src/components/contact/contact-section.tsx` (two columns ≥ 900 px) and run quickstart scenarios 10, 12, 13, 14, 15 (and 11 when SMTP credentials are available)
+- [X] T045 [P] [US4] Create `src/lib/contact/validate.ts` (pure): `validateContact(input, locale)` with verbatim rules — `name` "2–100 caractères après trim, retours à la ligne interdits", `email` "Format e-mail, ≤ 254 caractères", `reason` "`job` | `freelance` | `other`" (unknown → `other`), `message` "10–5000 caractères après trim", `locale` unknown → `en`; returns field errors with the localized messages of contracts/contact-action.md
+- [X] T046 [P] [US4] Create `src/lib/contact/rate-limit.ts` (pure, injectable clock): sliding window "5 envois par heure et par IP" and duplicate detection "même e-mail + même message dans les 60 s"
+- [X] T047 [P] [US4] Write `tests/contact.test.ts` covering validation boundaries (1/2/100/101 chars name, 9/10/5000/5001 chars message, newline in name, invalid e-mail), rate limit (6th call in an hour refused, allowed again after the window) and duplicate detection
+- [X] T048 [P] [US4] Create `src/lib/contact/mailer.ts` (`import "server-only"`): nodemailer transport from `SMTP_*` env (secure defaults to `true` on port 465), JSON transport when `SMTP_HOST` is missing in development, explicit error in production; `sendContactMail()` with From/To/Reply-To/Subject/body per contracts/contact-action.md (subject without line breaks)
+- [X] T049 [US4] Create `src/lib/contact/action.ts` (`"use server"`): `sendContactMessage(prevState, formData)` → honeypot `website` filled or `startedAt` < 3 s or duplicate → `{ status: "success" }` without sending; client IP from `x-forwarded-for` (first hop) or `x-real-ip` via `headers()`; rate limited → `rate-limited`; invalid → `invalid` with errors and submitted values; SMTP failure → `error` (logged server-side)
+- [X] T050 [US4] Create `src/components/contact/contact-form.tsx` (client, `useActionState`): labelled fields with native constraints (`required`, `type="email"`, `minLength`, `maxLength`, `autocomplete`), reason as radio pills in a `fieldset`/`legend`, hidden `locale` and `startedAt`, honeypot outside tab order, errors under fields with `aria-describedby` + `aria-invalid`, focus on first invalid field, `role="status"` region for success/rate-limited/error (with clickable direct e-mail), submit disabled + "Envoi…" while pending, values preserved on error, form reset on success
+- [X] T051 [US4] Mount the form in `src/components/contact/contact-section.tsx` (two columns ≥ 900 px) and run quickstart scenarios 10, 12, 13, 14, 15 (and 11 when SMTP credentials are available)
 
 ---
 
@@ -148,7 +148,7 @@ testable increment.
 
 **Independent Test**: quickstart scenarios 1, 2 and 24.
 
-- [ ] T052 [US5] Create `src/components/ui/language-switch.tsx` (client): two links `FR` / `EN` (mono, active one underlined accent, `aria-current="true"`, `hrefLang`, `lang`), target = current path with the first segment swapped (`usePathname`), current query appended on click; mount it in `site-header.tsx` and in `mobile-nav.tsx`
+- [X] T052 [US5] Create `src/components/ui/language-switch.tsx` (client): two links `FR` / `EN` (mono, active one underlined accent, `aria-current="true"`, `hrefLang`, `lang`), target = current path with the first segment swapped (`usePathname`), current query appended on click; mount it in `site-header.tsx` and in `mobile-nav.tsx`
 - [ ] T053 [US5] Verify `lang` on `<html>`, `hreflang` alternates and translated `<title>`s on every page; grep `src/components` and `src/app` for hard-coded user-visible strings and move them to the messages; run quickstart scenarios 1, 2, 24
 
 ---

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { getExperience } from "@/content";
+import { getExperience, getProfile } from "@/content";
 import { getMessages } from "@/i18n/get-messages";
 import { buildMetadata, personJsonLd } from "@/lib/seo";
 import { localePath } from "@/i18n/config";
 import { Hero } from "@/components/home/hero";
 import { FeaturedWork } from "@/components/home/featured-work";
 import { ExperienceList } from "@/components/home/experience-list";
+import { ContactForm } from "@/components/contact/contact-form";
 import { ContactSection } from "@/components/contact/contact-section";
 import { ArrowLink } from "@/components/ui/links";
 import { SectionHead } from "@/components/ui/section-head";
@@ -40,7 +41,7 @@ export default async function HomePage() {
         />
         <ExperienceList items={getExperience()} locale={locale} m={m} />
       </section>
-      <ContactSection />
+      <ContactSection form={<ContactForm locale={locale} email={getProfile().email} m={m.contact} />} />
     </>
   );
 }
