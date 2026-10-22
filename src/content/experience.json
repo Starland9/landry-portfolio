@@ -44,7 +44,8 @@
         "Reprise du développement de l’application Mbolo Gabon, dédiée au tourisme au Gabon."
       ],
       "en": ["Took over development of the Mbolo Gabon tourism app."]
-    }
+    },
+    "projects": ["mbolo-gabon"]
   },
   {
     "company": {
@@ -74,7 +75,8 @@
         "Backend architecture with Node.js/Python",
         "Technical lead on complex multi-platform projects"
       ]
-    }
+    },
+    "projects": ["kweekk", "isyjob"]
   },
   {
     "company": {
@@ -150,7 +152,8 @@
         "Collaboration with product teams and designers",
         "Delivery of production-ready, scalable applications"
       ]
-    }
+    },
+    "projects": ["kamte", "omoh"]
   },
   {
     "company": {

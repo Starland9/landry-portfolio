@@ -3,10 +3,13 @@
   "slug": "kweekk",
   "title": "KweekK",
   "type": "mobile",
-  "year": 2022,
+  "year": 2024,
   "featured": true,
   "status": "live",
-  "duration": { "fr": "4 mois", "en": "4 months" },
+  "duration": {
+    "fr": "4 mois",
+    "en": "4 months"
+  },
   "team": {
     "fr": "Équipe mobile (2 devs · 1 QA · 1 PO)",
     "en": "Mobile team (2 devs · 1 QA · 1 PO)"

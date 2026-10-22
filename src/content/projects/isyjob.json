@@ -3,10 +3,13 @@
   "slug": "isyjob",
   "title": "IsyJob",
   "type": "mobile",
-  "year": 2021,
+  "year": 2024,
   "featured": true,
   "status": "in-production",
-  "duration": { "fr": "5 mois", "en": "5 months" },
+  "duration": {
+    "fr": "5 mois",
+    "en": "5 months"
+  },
   "team": {
     "fr": "Équipe startup (3 devs · 1 designer · 1 PM)",
     "en": "Startup crew (3 devs · 1 designer · 1 PM)"
