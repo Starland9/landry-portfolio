@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-ARG NODE_VERSION=22
+ARG NODE_VERSION=24
 
 # ---- Base : Node + pnpm (via corepack) ----
 FROM node:${NODE_VERSION}-alpine AS base

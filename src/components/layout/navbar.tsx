@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Github, Mail } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
+import { Github } from "@/components/icons/brand-icons";
 import { cn } from "@/lib/utils";
 import { NAVIGATION_ITEMS } from "@/lib/constants";
 

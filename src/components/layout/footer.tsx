@@ -2,7 +2,7 @@
 
 import { SOCIAL_LINKS } from "@/lib/constants";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Mail, Heart, ArrowUp } from "lucide-react";
+import { Mail, Heart, ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const scrollToTop = () => {

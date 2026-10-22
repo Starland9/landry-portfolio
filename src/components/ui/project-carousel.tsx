@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { Github } from "@/components/icons/brand-icons";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import { ProjectImage } from "@/components/ui/project-image";

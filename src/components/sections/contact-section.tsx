@@ -6,9 +6,6 @@ import { GlassCard } from "@/components/ui/glass-card";
 import { GlassButton } from "@/components/ui/glass-button";
 import {
   Mail,
-  Github,
-  Linkedin,
-  Twitter,
   MapPin,
   Send,
   CheckCircle,

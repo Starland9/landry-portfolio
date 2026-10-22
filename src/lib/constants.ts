@@ -1,15 +1,13 @@
 import {
   Code2,
   Database,
-  Github,
   Globe,
-  Linkedin,
   Mail,
   MapPin,
   Server,
   Smartphone,
-  Twitter,
 } from "lucide-react";
+import { Github, Linkedin, Twitter } from "@/components/icons/brand-icons";
 
 export const PERSONAL_INFO = {
   name: "Starland9",
