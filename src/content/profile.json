@@ -24,11 +24,7 @@
   },
   "timezone": "UTC+1",
   "yearsOfExperience": 4,
-  "mainStack": [
-    "Flutter",
-    "Django",
-    "Next.js"
-  ],
+  "mainStack": ["Flutter", "Django", "Next.js"],
   "availability": {
     "open": true,
     "label": {

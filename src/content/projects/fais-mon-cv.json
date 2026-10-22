@@ -68,7 +68,13 @@
       "Analytics dashboard to track downloads and conversions"
     ]
   },
-  "technologies": ["Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS", "Firebase"],
+  "technologies": [
+    "Next.js 15",
+    "TypeScript",
+    "Framer Motion",
+    "Tailwind CSS",
+    "Firebase"
+  ],
   "image": {
     "src": "/images/projects/cv.jpg",
     "width": 3000,

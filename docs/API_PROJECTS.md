@@ -14,9 +14,9 @@ Récupère la liste des projets vedettes avec options de filtrage, recherche, tr
 
 | Paramètre | Type | Description | Exemple |
 |-----------|------|-------------|---------|
-| `category` | string | Filtrer par catégorie (`web`, `mobile`, `all`) | `?category=web` |
+| `category` | string | Filtrer par type (`web`, `mobile`, `other`, `all`) | `?category=web` |
 | `search` | string | Recherche textuelle dans tous les champs | `?search=IA` |
-| `status` | string | Filtrer par statut du projet | `?status=En production` |
+| `status` | string | Filtrer par statut (`Live`, `In production`, `Pilot in production`, `Ongoing`, `Actively maintained`) | `?status=In production` |
 | `featured` | boolean | Filtrer les projets vedettes uniquement | `?featured=true` |
 | `technologies` | string | Technologies séparées par virgule | `?technologies=Next.js,TypeScript` |
 
@@ -60,7 +60,7 @@ GET /api/projects?technologies=Next.js,TypeScript
 
 ### 5. Projets en production, triés par titre
 ```bash
-GET /api/projects?status=En production&sortBy=title&order=asc
+GET /api/projects?status=In production&sortBy=title&order=asc
 ```
 
 ### 6. Pagination (page 2, 5 résultats)
@@ -94,16 +94,15 @@ GET /api/projects?category=web&search=IA&featured=true&sortBy=timeline&order=des
       "impact": ["500+ CV générés...", "..."],
       "features": ["Assistant IA...", "..."],
       "role": ["Product design...", "..."],
-      "timeline": "2024 · 4 semaines",
+      "timeline": "2024 · 4 weeks",
       "team": "Solo project",
-      "status": "En production",
+      "status": "In production",
       "technologies": ["Next.js 15", "TypeScript", "..."],
       "image": "/images/projects/cv.jpg",
       "liveUrl": "https://cv.starland9.dev",
       "githubUrl": null,
       "featured": true,
-      "category": "web",
-      "color": "from-cyan-500 to-purple-500"
+      "category": "web"
     }
   ],
   "pagination": {
@@ -116,7 +115,7 @@ GET /api/projects?category=web&search=IA&featured=true&sortBy=timeline&order=des
   },
   "stats": {
     "total": 12,
-    "categories": ["web", "mobile"],
+    "categories": ["mobile", "web", "other"],
     "technologies": ["Next.js 15", "TypeScript", "Flutter", "..."]
   },
   "filters": {
@@ -230,3 +229,15 @@ function ProjectsList() {
 - Les technologies peuvent être filtrées avec correspondance partielle
 - Le tri par `timeline` extrait l'année du champ texte
 - Les filtres peuvent être combinés librement
+
+## Source des données
+
+Depuis la refonte (spec `specs/001-ui-ux-redesign`), les projets viennent de
+`src/content/projects/<slug>.json` (un fichier par projet, en français et en anglais).
+L'API renvoie la version **anglaise**, avec la même forme de réponse qu'avant
+(adaptateur : `src/content/legacy.ts`). Changements mineurs :
+
+- `category` vaut `web`, `mobile` ou `other` (`other` remplace `Bot`) ;
+- `status` est l'un des libellés anglais listés plus haut ;
+- le champ décoratif `color` n'existe plus ;
+- les liens Play Store n'ont plus le paramètre de suivi `pcampaignid`.

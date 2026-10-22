@@ -6,7 +6,10 @@
   },
   {
     "id": "backend",
-    "label": { "fr": "Backend et infrastructure", "en": "Backend & infrastructure" },
+    "label": {
+      "fr": "Backend et infrastructure",
+      "en": "Backend & infrastructure"
+    },
     "items": ["REST API", "PostgreSQL", "Docker", "Node.js", "JWT", "Firebase"]
   },
   {
@@ -17,7 +20,14 @@
   {
     "id": "web",
     "label": { "fr": "Web et frontend", "en": "Web & frontend" },
-    "items": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"]
+    "items": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vercel"
+    ]
   },
   {
     "id": "databases",

@@ -7,7 +7,10 @@
   "featured": false,
   "status": "in-production",
   "duration": { "fr": "6 semaines", "en": "6 weeks" },
-  "team": { "fr": "Studio digital (2 devs · 1 designer)", "en": "Digital studio (2 devs · 1 designer)" },
+  "team": {
+    "fr": "Studio digital (2 devs · 1 designer)",
+    "en": "Digital studio (2 devs · 1 designer)"
+  },
   "headline": {
     "fr": "Expérience e-commerce premium pour la mode urbaine camerounaise.",
     "en": "Premium e-commerce experience for Cameroonian urban fashion."
@@ -66,7 +69,13 @@
       "Headless CMS for marketing content and lookbooks"
     ]
   },
-  "technologies": ["Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS", "Firebase"],
+  "technologies": [
+    "Next.js 15",
+    "TypeScript",
+    "Framer Motion",
+    "Tailwind CSS",
+    "Firebase"
+  ],
   "image": {
     "src": "/images/projects/tchokos.jpg",
     "width": 3001,

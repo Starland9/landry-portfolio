@@ -3,7 +3,11 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-export const iconProps = { size: 18, strokeWidth: 1.75, "aria-hidden": true } as const;
+export const iconProps = {
+  size: 18,
+  strokeWidth: 1.75,
+  "aria-hidden": true,
+} as const;
 
 /** Internal link followed by an arrow ("Me contacter →"). */
 export function ArrowLink({
@@ -12,7 +16,13 @@ export function ArrowLink({
   ...props
 }: ComponentProps<typeof Link> & { children: ReactNode }) {
   return (
-    <Link className={cn("inline-flex items-center gap-1.5 font-semibold", className)} {...props}>
+    <Link
+      className={cn(
+        "inline-flex items-center gap-1.5 font-semibold",
+        className,
+      )}
+      {...props}
+    >
       {children}
       <ArrowRight {...iconProps} />
     </Link>

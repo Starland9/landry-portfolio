@@ -40,14 +40,19 @@ export function normalizeContact(raw: Record<string, unknown>): ContactInput {
   return {
     name: text(raw.name).trim(),
     email: text(raw.email).trim(),
-    reason: (reasons as readonly string[]).includes(reason) ? (reason as Reason) : "other",
+    reason: (reasons as readonly string[]).includes(reason)
+      ? (reason as Reason)
+      : "other",
     message: text(raw.message).trim(),
     locale: raw.locale === "fr" ? "fr" : "en",
   };
 }
 
 /** Returns one message per invalid field (empty object when valid). */
-export function validateContact(input: ContactInput, messages: ErrorMessages): FieldErrors {
+export function validateContact(
+  input: ContactInput,
+  messages: ErrorMessages,
+): FieldErrors {
   const errors: FieldErrors = {};
 
   if (
@@ -62,8 +67,10 @@ export function validateContact(input: ContactInput, messages: ErrorMessages): F
     errors.email = messages.email;
   }
 
-  if (input.message.length < LIMITS.messageMin) errors.message = messages.messageShort;
-  else if (input.message.length > LIMITS.messageMax) errors.message = messages.messageLong;
+  if (input.message.length < LIMITS.messageMin)
+    errors.message = messages.messageShort;
+  else if (input.message.length > LIMITS.messageMax)
+    errors.message = messages.messageLong;
 
   return errors;
 }

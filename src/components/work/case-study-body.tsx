@@ -2,11 +2,23 @@ import type { ReactNode } from "react";
 import { t, tList, type Locale, type Project } from "@/content";
 import type { Messages } from "@/i18n/get-messages";
 
-function Section({ id, number, title, children }: { id: string; number: string; title: string; children: ReactNode }) {
+function Section({
+  id,
+  number,
+  title,
+  children,
+}: {
+  id: string;
+  number: string;
+  title: string;
+  children: ReactNode;
+}) {
   return (
     <section aria-labelledby={id} className="[&+&]:mt-16">
       <h2 id={id} className="flex items-baseline gap-3 text-h2">
-        <span className="font-mono text-meta font-normal text-muted">{number}</span>
+        <span className="font-mono text-meta font-normal text-muted">
+          {number}
+        </span>
         {title}
       </h2>
       <div className="mt-4 text-[1.0625rem] leading-[1.7]">{children}</div>
@@ -30,7 +42,15 @@ function List({ items }: { items: string[] }) {
 }
 
 /** Problem → solution → role → impact → features → stack. */
-export function CaseStudyBody({ project, locale, m }: { project: Project; locale: Locale; m: Messages }) {
+export function CaseStudyBody({
+  project,
+  locale,
+  m,
+}: {
+  project: Project;
+  locale: Locale;
+  m: Messages;
+}) {
   const s = m.caseStudy.sections;
   return (
     <article className="max-w-prose">
@@ -52,7 +72,10 @@ export function CaseStudyBody({ project, locale, m }: { project: Project; locale
       <Section id="stack" number="06" title={s.stack}>
         <ul className="flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
-            <li key={tech} className="rounded-control border border-border px-2.5 py-1 font-mono text-meta">
+            <li
+              key={tech}
+              className="rounded-control border border-border px-2.5 py-1 font-mono text-meta"
+            >
               {tech}
             </li>
           ))}

@@ -72,7 +72,14 @@
       "Public link sharing for designs"
     ]
   },
-  "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Gemini API", "Vercel", "Firebase"],
+  "technologies": [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Gemini API",
+    "Vercel",
+    "Firebase"
+  ],
   "image": {
     "src": "/images/projects/flyers-maker.png",
     "width": 1920,

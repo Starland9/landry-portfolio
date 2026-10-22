@@ -13,18 +13,33 @@ import {
 } from "@/content";
 import type { Messages } from "@/i18n/get-messages";
 
-const shortUrl = (url: string) => url.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "");
+const shortUrl = (url: string) =>
+  url.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "");
 
 function projectLink(project: Project) {
-  if (project.links.store) return { href: project.links.store, label: "Google Play" };
-  if (project.links.live) return { href: project.links.live, label: shortUrl(project.links.live) };
-  if (project.links.code) return { href: project.links.code, label: shortUrl(project.links.code) };
+  if (project.links.store)
+    return { href: project.links.store, label: "Google Play" };
+  if (project.links.live)
+    return { href: project.links.live, label: shortUrl(project.links.live) };
+  if (project.links.code)
+    return { href: project.links.code, label: shortUrl(project.links.code) };
   return null;
 }
 
-function CvSection({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+function CvSection({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: ReactNode;
+}) {
   return (
-    <section aria-labelledby={id} className="mt-10 break-inside-avoid-page print:mt-5">
+    <section
+      aria-labelledby={id}
+      className="mt-10 break-inside-avoid-page print:mt-5"
+    >
       <h2
         id={id}
         className="border-b border-border pb-2 font-mono text-meta tracking-wide text-muted uppercase print:pb-1 print:text-[8pt]"
@@ -51,9 +66,12 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
   return (
     <article className="rounded-frame border border-border bg-surface p-[clamp(20px,5vw,56px)] print:rounded-none print:border-0 print:bg-transparent print:p-0 print:text-[9.5pt] print:leading-snug">
       <header>
-        <p className="text-h1 font-semibold print:text-[22pt] print:leading-tight">{profile.fullName}</p>
+        <p className="text-h1 font-semibold print:text-[22pt] print:leading-tight">
+          {profile.fullName}
+        </p>
         <p className="mt-2 text-lead text-muted print:mt-0.5 print:text-[11pt]">
-          {t(profile.role, locale).replace(/\.$/, "")} · {t(profile.location, locale)}
+          {t(profile.role, locale).replace(/\.$/, "")} ·{" "}
+          {t(profile.location, locale)}
         </p>
         <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm print:mt-2 print:text-[8.5pt]">
           {contacts.map((contact) => (
@@ -73,10 +91,16 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
       <CvSection id="cv-experience" title={m.cv.experience}>
         <ul className="space-y-5 print:space-y-2.5">
           {getExperience().map((item) => (
-            <li key={`${item.start}-${item.company.en}`} className="break-inside-avoid">
+            <li
+              key={`${item.start}-${item.company.en}`}
+              className="break-inside-avoid"
+            >
               <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                 <h3 className="font-semibold">
-                  {t(item.role, locale)} <span className="font-normal text-muted">· {t(item.company, locale)}</span>
+                  {t(item.role, locale)}{" "}
+                  <span className="font-normal text-muted">
+                    · {t(item.company, locale)}
+                  </span>
                 </h3>
                 <span className="font-mono text-meta text-muted print:text-[8pt]">
                   {item.start} — {item.end ?? m.common.present}
@@ -84,7 +108,10 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
               </div>
               <ul className="mt-1.5 space-y-1 text-muted">
                 {tList(item.highlights, locale).map((highlight) => (
-                  <li key={highlight} className="relative pl-4 before:absolute before:top-[0.75em] before:left-0 before:h-px before:w-2 before:bg-muted">
+                  <li
+                    key={highlight}
+                    className="relative pl-4 before:absolute before:top-[0.75em] before:left-0 before:h-px before:w-2 before:bg-muted"
+                  >
                     {highlight}
                   </li>
                 ))}
@@ -108,7 +135,10 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
                     </span>
                   </h3>
                   {link && (
-                    <a href={link.href} className="text-sm text-fg print:text-[8.5pt]">
+                    <a
+                      href={link.href}
+                      className="text-sm text-fg print:text-[8.5pt]"
+                    >
                       {link.label}
                     </a>
                   )}
@@ -135,7 +165,10 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
         <CvSection id="cv-education" title={m.cv.education}>
           <ul className="space-y-2">
             {education.map((item) => (
-              <li key={`${item.school}-${item.title.en}`} className="flex flex-wrap justify-between gap-x-4">
+              <li
+                key={`${item.school}-${item.title.en}`}
+                className="flex flex-wrap justify-between gap-x-4"
+              >
                 <span>
                   <span className="font-semibold">{t(item.title, locale)}</span>{" "}
                   <span className="text-muted">· {item.school}</span>
@@ -156,7 +189,9 @@ export function CvDocument({ locale, m }: { locale: Locale; m: Messages }) {
           <ul className="flex flex-wrap gap-x-8 gap-y-1">
             {languages.map((item) => (
               <li key={item.language.en}>
-                <span className="font-semibold">{t(item.language, locale)}</span>{" "}
+                <span className="font-semibold">
+                  {t(item.language, locale)}
+                </span>{" "}
                 <span className="text-muted">· {t(item.level, locale)}</span>
               </li>
             ))}

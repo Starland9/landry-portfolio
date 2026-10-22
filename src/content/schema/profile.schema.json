@@ -33,10 +33,7 @@
     "role": {
       "type": "object",
       "description": "Affiché sous le nom sur l’accueil",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -52,10 +49,7 @@
     "lead": {
       "type": "object",
       "description": "Phrase d’accroche de l’accueil",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -71,10 +65,7 @@
     "bio": {
       "type": "object",
       "description": "Présentation (À propos, CV)",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -90,10 +81,7 @@
     "freelanceNote": {
       "type": "object",
       "description": "Mention freelance, secondaire",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -109,10 +97,7 @@
     "location": {
       "type": "object",
       "description": "",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -134,10 +119,7 @@
     },
     "availability": {
       "type": "object",
-      "required": [
-        "open",
-        "label"
-      ],
+      "required": ["open", "label"],
       "additionalProperties": false,
       "properties": {
         "open": {
@@ -146,10 +128,7 @@
         "label": {
           "type": "object",
           "description": "",
-          "required": [
-            "fr",
-            "en"
-          ],
+          "required": ["fr", "en"],
           "additionalProperties": false,
           "properties": {
             "fr": {
@@ -170,11 +149,7 @@
     },
     "social": {
       "type": "object",
-      "required": [
-        "github",
-        "linkedin",
-        "x"
-      ],
+      "required": ["github", "linkedin", "x"],
       "additionalProperties": false,
       "properties": {
         "github": {
@@ -195,12 +170,7 @@
       "anyOf": [
         {
           "type": "object",
-          "required": [
-            "src",
-            "width",
-            "height",
-            "alt"
-          ],
+          "required": ["src", "width", "height", "alt"],
           "additionalProperties": false,
           "properties": {
             "src": {
@@ -221,10 +191,7 @@
             "alt": {
               "type": "object",
               "description": "Description de l’image pour les lecteurs d’écran",
-              "required": [
-                "fr",
-                "en"
-              ],
+              "required": ["fr", "en"],
               "additionalProperties": false,
               "properties": {
                 "fr": {

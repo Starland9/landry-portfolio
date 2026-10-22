@@ -73,7 +73,14 @@
       "Versioned REST API + JWT authentication"
     ]
   },
-  "technologies": ["Django 6", "Django REST Framework", "Next.js", "TypeScript", "PostgreSQL", "JWT"],
+  "technologies": [
+    "Django 6",
+    "Django REST Framework",
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+    "JWT"
+  ],
   "image": {
     "src": "/images/projects/stock-entrepot.png",
     "width": 1922,

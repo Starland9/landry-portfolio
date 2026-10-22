@@ -6,7 +6,12 @@ import { PrintButton } from "@/components/cv/print-button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale, m } = await getMessages();
-  return buildMetadata({ locale, path: "/cv", title: m.meta.cv.title, description: m.meta.cv.description });
+  return buildMetadata({
+    locale,
+    path: "/cv",
+    title: m.meta.cv.title,
+    description: m.meta.cv.description,
+  });
 }
 
 export default async function CvPage() {

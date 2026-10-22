@@ -13,11 +13,13 @@ export function ProjectCard({
   locale,
   m,
   headingLevel = "h3",
+  eager = false,
 }: {
   project: Project;
   locale: Locale;
   m: Messages;
   headingLevel?: "h2" | "h3";
+  eager?: boolean;
 }) {
   const Heading = headingLevel;
   const badge = project.links.store ? m.store : m.status[project.status];
@@ -32,6 +34,7 @@ export function ProjectCard({
         image={project.image}
         alt=""
         sizes={CARD_SIZES}
+        eager={eager}
         className="group-hover:border-border-strong"
       />
       <div className="mt-4 flex justify-between gap-4 font-mono text-meta text-muted">
@@ -51,7 +54,9 @@ export function ProjectCard({
           className="shrink-0 text-muted transition-[color,translate] group-hover:translate-x-[3px] group-hover:text-fg"
         />
       </Heading>
-      <p className="mt-1 max-w-[34rem] text-muted">{t(project.headline, locale)}</p>
+      <p className="mt-1 max-w-[34rem] text-muted">
+        {t(project.headline, locale)}
+      </p>
     </Link>
   );
 }

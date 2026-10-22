@@ -8,14 +8,22 @@ type Theme = "light" | "dark";
 function resolvedTheme(): Theme {
   const attr = document.documentElement.dataset.theme;
   if (attr === "light" || attr === "dark") return attr;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 /**
  * Light/dark switch. The icon is chosen by CSS from <html data-theme>, so the
  * first paint is right even before hydration; the label follows the state.
  */
-export function ThemeToggle({ toDark, toLight }: { toDark: string; toLight: string }) {
+export function ThemeToggle({
+  toDark,
+  toLight,
+}: {
+  toDark: string;
+  toLight: string;
+}) {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
@@ -44,8 +52,18 @@ export function ThemeToggle({ toDark, toLight }: { toDark: string; toLight: stri
       aria-label={theme === "dark" ? toLight : toDark}
       className="inline-grid size-10 place-items-center rounded-control text-fg transition-colors hover:bg-frame"
     >
-      <Moon size={18} strokeWidth={1.75} aria-hidden="true" className="theme-icon-moon" />
-      <Sun size={18} strokeWidth={1.75} aria-hidden="true" className="theme-icon-sun" />
+      <Moon
+        size={18}
+        strokeWidth={1.75}
+        aria-hidden="true"
+        className="theme-icon-moon"
+      />
+      <Sun
+        size={18}
+        strokeWidth={1.75}
+        aria-hidden="true"
+        className="theme-icon-sun"
+      />
     </button>
   );
 }

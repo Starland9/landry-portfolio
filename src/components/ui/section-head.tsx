@@ -10,7 +10,13 @@ type SectionHeadProps = {
 };
 
 /** Section title preceded by a 1 px rule, with an optional action on the right. */
-export function SectionHead({ id, title, action, as: Heading = "h2", className }: SectionHeadProps) {
+export function SectionHead({
+  id,
+  title,
+  action,
+  as: Heading = "h2",
+  className,
+}: SectionHeadProps) {
   return (
     <div
       className={cn(

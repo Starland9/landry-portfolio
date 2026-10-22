@@ -71,8 +71,11 @@ html[data-theme="dark"] {
   --color-ok: var(--ok);
   --color-err: var(--err);
 
-  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-sans:
+    var(--font-instrument), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-mono:
+    var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 @theme {

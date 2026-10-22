@@ -19,7 +19,12 @@ export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale, m } = await getMessages();
-  return buildMetadata({ locale, path: "/about", title: m.meta.about.title, description: m.meta.about.description });
+  return buildMetadata({
+    locale,
+    path: "/about",
+    title: m.meta.about.title,
+    description: m.meta.about.description,
+  });
 }
 
 export default async function AboutPage() {
@@ -32,7 +37,9 @@ export default async function AboutPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(locale)) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personJsonLd(locale)),
+        }}
       />
       <div className="page-container pt-12 pb-section">
         <h1 className="text-h1">{m.about.title}</h1>
@@ -42,12 +49,23 @@ export default async function AboutPage() {
         </p>
       </div>
 
-      <section aria-labelledby="about-experience" className="page-container pb-section">
+      <section
+        aria-labelledby="about-experience"
+        className="page-container pb-section"
+      >
         <SectionHead id="about-experience" title={m.about.experience} />
-        <ExperienceList items={getExperience()} locale={locale} m={m} variant="full" />
+        <ExperienceList
+          items={getExperience()}
+          locale={locale}
+          m={m}
+          variant="full"
+        />
       </section>
 
-      <section aria-labelledby="about-stack" className="page-container pb-section">
+      <section
+        aria-labelledby="about-stack"
+        className="page-container pb-section"
+      >
         <SectionHead id="about-stack" title={m.about.stack} />
         <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
           {getStack().map((group) => (
@@ -56,7 +74,10 @@ export default async function AboutPage() {
               <dd className="mt-2">
                 <ul className="flex flex-wrap gap-2">
                   {group.items.map((item) => (
-                    <li key={item} className="rounded-control border border-border px-2.5 py-1 font-mono text-meta">
+                    <li
+                      key={item}
+                      className="rounded-control border border-border px-2.5 py-1 font-mono text-meta"
+                    >
                       {item}
                     </li>
                   ))}
@@ -68,11 +89,17 @@ export default async function AboutPage() {
       </section>
 
       {education.length > 0 && (
-        <section aria-labelledby="about-education" className="page-container pb-section">
+        <section
+          aria-labelledby="about-education"
+          className="page-container pb-section"
+        >
           <SectionHead id="about-education" title={m.about.education} />
           <ul className="space-y-3">
             {education.map((item) => (
-              <li key={`${item.school}-${item.title.en}`} className="flex flex-wrap justify-between gap-x-6">
+              <li
+                key={`${item.school}-${item.title.en}`}
+                className="flex flex-wrap justify-between gap-x-6"
+              >
                 <span>
                   <span className="font-semibold">{t(item.title, locale)}</span>{" "}
                   <span className="text-muted">· {item.school}</span>
@@ -87,12 +114,17 @@ export default async function AboutPage() {
       )}
 
       {languages.length > 0 && (
-        <section aria-labelledby="about-languages" className="page-container pb-section">
+        <section
+          aria-labelledby="about-languages"
+          className="page-container pb-section"
+        >
           <SectionHead id="about-languages" title={m.about.languages} />
           <ul className="flex flex-wrap gap-x-10 gap-y-2">
             {languages.map((item) => (
               <li key={item.language.en}>
-                <span className="font-semibold">{t(item.language, locale)}</span>{" "}
+                <span className="font-semibold">
+                  {t(item.language, locale)}
+                </span>{" "}
                 <span className="text-muted">· {t(item.level, locale)}</span>
               </li>
             ))}
@@ -100,12 +132,18 @@ export default async function AboutPage() {
         </section>
       )}
 
-      <section aria-labelledby="about-github" className="page-container pb-section">
+      <section
+        aria-labelledby="about-github"
+        className="page-container pb-section"
+      >
         <SectionHead id="about-github" title={m.about.github.title} />
         <GithubStats locale={locale} m={m} />
       </section>
 
-      <section aria-labelledby="about-bonus" className="page-container pb-section">
+      <section
+        aria-labelledby="about-bonus"
+        className="page-container pb-section"
+      >
         <SectionHead id="about-bonus" title={m.about.bonus.title} />
         <p className="mb-6 text-muted">{m.about.bonus.intro}</p>
         <TicTacToe m={m.about.bonus} />

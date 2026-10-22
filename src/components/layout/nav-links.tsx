@@ -7,14 +7,21 @@ import { cn } from "@/lib/utils";
 export type NavItem = { href: string; label: string; match?: string };
 
 /** Desktop navigation; the current section gets aria-current and a 2 px accent bar. */
-export function NavLinks({ items, label }: { items: NavItem[]; label: string }) {
+export function NavLinks({
+  items,
+  label,
+}: {
+  items: NavItem[];
+  label: string;
+}) {
   const pathname = usePathname();
 
   return (
     <nav aria-label={label} className="hidden md:block">
       <ul className="flex gap-1">
         {items.map((item) => {
-          const active = item.match !== undefined && pathname.startsWith(item.match);
+          const active =
+            item.match !== undefined && pathname.startsWith(item.match);
           return (
             <li key={item.href}>
               <Link

@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     // Filtre par catégorie
     if (category && category !== "all") {
       filteredProjects = filteredProjects.filter(
-        (project) => project.category === category
+        (project) => project.category === category,
       );
     }
 
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
     // Filtre par statut
     if (status) {
       filteredProjects = filteredProjects.filter(
-        (project) => project.status.toLowerCase() === status.toLowerCase()
+        (project) => project.status.toLowerCase() === status.toLowerCase(),
       );
     }
 
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
     if (featured !== null && featured !== undefined) {
       const isFeatured = featured === "true";
       filteredProjects = filteredProjects.filter(
-        (project) => project.featured === isFeatured
+        (project) => project.featured === isFeatured,
       );
     }
 
@@ -74,9 +74,9 @@ export async function GET(request: NextRequest) {
       filteredProjects = filteredProjects.filter((project) =>
         technologies.some((tech) =>
           project.technologies.some((projectTech) =>
-            projectTech.toLowerCase().includes(tech.toLowerCase().trim())
-          )
-        )
+            projectTech.toLowerCase().includes(tech.toLowerCase().trim()),
+          ),
+        ),
       );
     }
 
@@ -145,7 +145,7 @@ export async function GET(request: NextRequest) {
         success: false,
         error: "Une erreur est survenue lors de la récupération des projets",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

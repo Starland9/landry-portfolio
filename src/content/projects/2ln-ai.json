@@ -7,7 +7,10 @@
   "featured": false,
   "status": "in-production",
   "duration": { "fr": "6 semaines", "en": "6 weeks" },
-  "team": { "fr": "Équipe IA (2 devs · 1 juriste · 1 PM)", "en": "AI team (2 devs · 1 legal expert · 1 PM)" },
+  "team": {
+    "fr": "Équipe IA (2 devs · 1 juriste · 1 PM)",
+    "en": "AI team (2 devs · 1 legal expert · 1 PM)"
+  },
   "headline": {
     "fr": "Assistant juridique IA qui démocratise le droit du travail auprès des salariés.",
     "en": "AI legal assistant democratizing labor law for employees."
@@ -66,7 +69,15 @@
       "Admin dashboard to monitor dataset and feedback"
     ]
   },
-  "technologies": ["Flutter", "Dart", "REST API", "Firebase", "Python", "RAG", "ML"],
+  "technologies": [
+    "Flutter",
+    "Dart",
+    "REST API",
+    "Firebase",
+    "Python",
+    "RAG",
+    "ML"
+  ],
   "image": {
     "src": "/images/projects/2ln-ai.jpg",
     "width": 3000,

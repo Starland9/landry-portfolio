@@ -29,19 +29,37 @@ export default async function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(locale)) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(personJsonLd(locale)),
+        }}
       />
       <Hero />
       <FeaturedWork />
-      <section id="experience" aria-labelledby="experience-title" className="page-container pb-section">
+      <section
+        id="experience"
+        aria-labelledby="experience-title"
+        className="page-container pb-section"
+      >
         <SectionHead
           id="experience-title"
           title={m.home.experience}
-          action={<ArrowLink href={localePath(locale, "/about")}>{m.common.moreAboutMe}</ArrowLink>}
+          action={
+            <ArrowLink href={localePath(locale, "/about")}>
+              {m.common.moreAboutMe}
+            </ArrowLink>
+          }
         />
         <ExperienceList items={getExperience()} locale={locale} m={m} />
       </section>
-      <ContactSection form={<ContactForm locale={locale} email={getProfile().email} m={m.contact} />} />
+      <ContactSection
+        form={
+          <ContactForm
+            locale={locale}
+            email={getProfile().email}
+            m={m.contact}
+          />
+        }
+      />
     </>
   );
 }

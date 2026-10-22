@@ -1,9 +1,21 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { normalizeContact, validateContact, type ContactInput } from "../src/lib/contact/validate.ts";
-import { createDuplicateGuard, createRateLimiter } from "../src/lib/contact/rate-limit.ts";
+import {
+  normalizeContact,
+  validateContact,
+  type ContactInput,
+} from "../src/lib/contact/validate.ts";
+import {
+  createDuplicateGuard,
+  createRateLimiter,
+} from "../src/lib/contact/rate-limit.ts";
 
-const messages = { name: "NAME", email: "EMAIL", messageShort: "SHORT", messageLong: "LONG" };
+const messages = {
+  name: "NAME",
+  email: "EMAIL",
+  messageShort: "SHORT",
+  messageLong: "LONG",
+};
 const valid: ContactInput = {
   name: "Ada Lovelace",
   email: "ada@example.com",
@@ -11,7 +23,8 @@ const valid: ContactInput = {
   message: "Hello, I have a role for you.",
   locale: "en",
 };
-const check = (patch: Partial<ContactInput>) => validateContact({ ...valid, ...patch }, messages);
+const check = (patch: Partial<ContactInput>) =>
+  validateContact({ ...valid, ...patch }, messages);
 
 test("a valid message has no errors", () => {
   assert.deepEqual(check({}), {});
@@ -42,9 +55,24 @@ test("message length boundaries (10–5000)", () => {
 });
 
 test("normalizeContact trims and applies safe defaults", () => {
-  const input = normalizeContact({ name: "  Ada ", email: " a@b.co ", reason: "hack", message: "  hi  ", locale: "de" });
-  assert.deepEqual(input, { name: "Ada", email: "a@b.co", reason: "other", message: "hi", locale: "en" });
-  assert.equal(normalizeContact({ reason: "freelance", locale: "fr" }).reason, "freelance");
+  const input = normalizeContact({
+    name: "  Ada ",
+    email: " a@b.co ",
+    reason: "hack",
+    message: "  hi  ",
+    locale: "de",
+  });
+  assert.deepEqual(input, {
+    name: "Ada",
+    email: "a@b.co",
+    reason: "other",
+    message: "hi",
+    locale: "en",
+  });
+  assert.equal(
+    normalizeContact({ reason: "freelance", locale: "fr" }).reason,
+    "freelance",
+  );
   assert.equal(normalizeContact({ locale: "fr" }).locale, "fr");
 });
 

@@ -83,7 +83,14 @@
       "Admin space: audit log"
     ]
   },
-  "technologies": ["Django", "Next.js", "TypeScript", "PostgreSQL", "REST API", "JWT"],
+  "technologies": [
+    "Django",
+    "Next.js",
+    "TypeScript",
+    "PostgreSQL",
+    "REST API",
+    "JWT"
+  ],
   "image": {
     "src": "/images/projects/g-buy.png",
     "width": 1919,

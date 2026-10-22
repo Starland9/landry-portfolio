@@ -27,14 +27,20 @@ export function ExperienceList({
             {item.start} — {item.end ?? m.common.present}
           </span>
           <h3 className="text-[1.0625rem] leading-snug">
-            {t(item.role, locale)} <span className="font-normal text-muted">· {t(item.company, locale)}</span>
+            {t(item.role, locale)}{" "}
+            <span className="font-normal text-muted">
+              · {t(item.company, locale)}
+            </span>
           </h3>
           {variant === "short" ? (
             <p className="text-muted">{t(item.summary, locale)}</p>
           ) : (
             <ul className="space-y-2 text-muted">
               {tList(item.highlights, locale).map((highlight) => (
-                <li key={highlight} className="relative pl-5 before:absolute before:top-[0.8em] before:left-0 before:h-px before:w-2.5 before:bg-muted">
+                <li
+                  key={highlight}
+                  className="relative pl-5 before:absolute before:top-[0.8em] before:left-0 before:h-px before:w-2.5 before:bg-muted"
+                >
                   {highlight}
                 </li>
               ))}

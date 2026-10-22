@@ -4,13 +4,23 @@ import type { Messages } from "@/i18n/messages";
 import { getGithubStats } from "@/lib/github";
 import { ExternalLink } from "@/components/ui/links";
 
-export async function GithubStats({ locale, m }: { locale: Locale; m: Messages }) {
+export async function GithubStats({
+  locale,
+  m,
+}: {
+  locale: Locale;
+  m: Messages;
+}) {
   const stats = await getGithubStats();
   const profileUrl = getProfile().social.github;
   const g = m.about.github;
 
   const profileLink = (
-    <ExternalLink href={profileUrl} externalLabel={m.common.externalSite} className="inline-flex items-center gap-1 font-medium">
+    <ExternalLink
+      href={profileUrl}
+      externalLabel={m.common.externalSite}
+      className="inline-flex items-center gap-1 font-medium"
+    >
       {g.profile}
     </ExternalLink>
   );
@@ -29,7 +39,9 @@ export async function GithubStats({ locale, m }: { locale: Locale; m: Messages }
     { value: stats.followers, label: g.followers },
     { value: stats.memberSince, label: g.since },
   ];
-  const updated = new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(new Date(stats.fetchedAt));
+  const updated = new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(
+    new Date(stats.fetchedAt),
+  );
 
   return (
     <div>
@@ -44,7 +56,9 @@ export async function GithubStats({ locale, m }: { locale: Locale; m: Messages }
             }
           >
             <dt className="text-sm text-muted">{figure.label}</dt>
-            <dd className="text-figure font-semibold tabular-nums">{figure.value}</dd>
+            <dd className="text-figure font-semibold tabular-nums">
+              {figure.value}
+            </dd>
           </div>
         ))}
       </dl>

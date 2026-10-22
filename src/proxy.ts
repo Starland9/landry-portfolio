@@ -23,9 +23,14 @@ export function proxy(request: NextRequest) {
     headers.set(LOCALE_HEADER, first);
 
     // Unknown case study: serve the server-rendered global 404 (an unmatched route).
-    const unknownProject = segments[1] === "work" && segments.length === 3 && !slugs.has(segments[2] ?? "");
+    const unknownProject =
+      segments[1] === "work" &&
+      segments.length === 3 &&
+      !slugs.has(segments[2] ?? "");
     const response = unknownProject
-      ? NextResponse.rewrite(new URL(`/${first}/404`, request.url), { request: { headers } })
+      ? NextResponse.rewrite(new URL(`/${first}/404`, request.url), {
+          request: { headers },
+        })
       : NextResponse.next({ request: { headers } });
 
     if (request.cookies.get(LOCALE_COOKIE)?.value !== first) {

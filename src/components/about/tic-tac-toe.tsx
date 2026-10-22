@@ -10,14 +10,20 @@ type Cell = "X" | "O" | null;
 type Board = Cell[];
 
 const LINES = [
-  [0, 1, 2], [3, 4, 5], [6, 7, 8],
-  [0, 3, 6], [1, 4, 7], [2, 5, 8],
-  [0, 4, 8], [2, 4, 6],
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ];
 
 function winner(board: Board): Cell {
   for (const [a, b, c] of LINES) {
-    if (board[a] && board[a] === board[b] && board[a] === board[c]) return board[a];
+    if (board[a] && board[a] === board[b] && board[a] === board[c])
+      return board[a];
   }
   return null;
 }
@@ -41,29 +47,47 @@ export function TicTacToe({ m }: { m: Messages["about"]["bonus"] }) {
   const result = winner(board);
   const full = board.every(Boolean);
   const over = Boolean(result) || full;
-  const status = result === "X" ? m.win : result === "O" ? m.lose : full ? m.draw : m.yourTurn;
+  const status =
+    result === "X"
+      ? m.win
+      : result === "O"
+        ? m.lose
+        : full
+          ? m.draw
+          : m.yourTurn;
 
   const play = (index: number) => {
     if (over || board[index]) return;
     const next = [...board];
     next[index] = "X";
-    if (!winner(next) && next.some((cell) => !cell)) next[computerMove(next)] = "O";
+    if (!winner(next) && next.some((cell) => !cell))
+      next[computerMove(next)] = "O";
     setBoard(next);
   };
 
   return (
     <div className="flex flex-wrap items-start gap-8">
-      <div role="group" aria-label={m.board} className="grid grid-cols-3 gap-1.5">
+      <div
+        role="group"
+        aria-label={m.board}
+        className="grid grid-cols-3 gap-1.5"
+      >
         {board.map((cell, index) => (
           <button
             key={index}
             type="button"
             onClick={() => play(index)}
             disabled={over || cell !== null}
-            aria-label={format(m.cell, { n: index + 1, state: cell ?? m.empty })}
+            aria-label={format(m.cell, {
+              n: index + 1,
+              state: cell ?? m.empty,
+            })}
             className="grid size-16 place-items-center rounded-control border border-border-strong bg-surface font-mono text-2xl font-medium text-fg transition-colors enabled:hover:bg-frame disabled:cursor-default"
           >
-            <span aria-hidden="true" className={cell === "O" ? "text-accent" : undefined}>
+            <span
+              aria-hidden="true"
+              className={cell === "O" ? "text-accent" : undefined}
+            >
               {cell}
             </span>
           </button>
@@ -73,7 +97,10 @@ export function TicTacToe({ m }: { m: Messages["about"]["bonus"] }) {
         <p role="status" className="font-medium">
           {status}
         </p>
-        <Button variant="secondary" onClick={() => setBoard(Array(9).fill(null))}>
+        <Button
+          variant="secondary"
+          onClick={() => setBoard(Array(9).fill(null))}
+        >
           <RotateCcw size={18} strokeWidth={1.75} aria-hidden="true" />
           {m.reset}
         </Button>

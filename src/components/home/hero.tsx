@@ -14,17 +14,31 @@ export async function Hero() {
   const photo = profile.photo;
 
   const facts = [
-    { label: m.home.facts.basedIn, value: `${t(profile.location, locale)} · ${profile.timezone}` },
+    {
+      label: m.home.facts.basedIn,
+      value: `${t(profile.location, locale)} · ${profile.timezone}`,
+    },
     { label: m.home.facts.stack, value: profile.mainStack.join(" · ") },
     {
       label: m.home.facts.shipped,
-      value: format(m.home.facts.shippedValue, { count: projectCount(), year: firstProjectYear() }),
+      value: format(m.home.facts.shippedValue, {
+        count: projectCount(),
+        year: firstProjectYear(),
+      }),
     },
   ];
 
   return (
-    <section aria-labelledby="hero-title" className="page-container pt-8 pb-section lg:pt-[clamp(48px,8vw,104px)]">
-      <div className={cn("grid items-end gap-12", photo && "lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16")}>
+    <section
+      aria-labelledby="hero-title"
+      className="page-container pt-8 pb-section lg:pt-[clamp(48px,8vw,104px)]"
+    >
+      <div
+        className={cn(
+          "grid items-end gap-12",
+          photo && "lg:grid-cols-[minmax(0,1fr)_300px] lg:gap-16",
+        )}
+      >
         <div>
           <div className="flex items-center gap-3">
             {photo && (
@@ -36,12 +50,16 @@ export async function Hero() {
                 className="size-10 rounded-full object-cover lg:hidden"
               />
             )}
-            {profile.availability.open && <StatusBadge>{t(profile.availability.label, locale)}</StatusBadge>}
+            {profile.availability.open && (
+              <StatusBadge>{t(profile.availability.label, locale)}</StatusBadge>
+            )}
           </div>
 
           <h1 id="hero-title" className="mt-6 text-display">
             {profile.fullName}
-            <span className="block font-medium text-muted">{t(profile.role, locale)}</span>
+            <span className="block font-medium text-muted">
+              {t(profile.role, locale)}
+            </span>
           </h1>
 
           <p className="mt-6 max-w-lead text-lead">{t(profile.lead, locale)}</p>
@@ -57,7 +75,8 @@ export async function Hero() {
           </div>
 
           <p className="mt-6 text-sm text-muted">
-            {t(profile.freelanceNote, locale)} <a href="#contact">{m.home.freelanceCta}</a>.
+            {t(profile.freelanceNote, locale)}{" "}
+            <a href="#contact">{m.home.freelanceCta}</a>.
           </p>
         </div>
 
@@ -69,7 +88,8 @@ export async function Hero() {
               width={photo.width}
               height={photo.height}
               sizes="300px"
-              priority
+              loading="eager"
+              fetchPriority="high"
               className="aspect-[4/5] w-full rounded-frame border border-border object-cover"
             />
           </figure>

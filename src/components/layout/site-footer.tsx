@@ -20,7 +20,10 @@ export async function SiteFooter() {
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           {links.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="inline-flex min-h-10 items-center text-muted hover:text-fg">
+              <a
+                href={link.href}
+                className="inline-flex min-h-10 items-center text-muted hover:text-fg"
+              >
                 {link.label}
               </a>
             </li>

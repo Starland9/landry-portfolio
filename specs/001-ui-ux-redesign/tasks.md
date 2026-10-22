@@ -190,13 +190,13 @@ testable increment.
 
 ## Phase 11: Polish & Cross-Cutting Concerns
 
-- [ ] T062 [P] Create `src/app/sitemap.ts` (5 pages + 17 case studies × 2 locales, `alternates.languages`) and `src/app/robots.ts` (allow all, sitemap URL)
-- [ ] T063 [P] Create `src/app/[locale]/opengraph-image.tsx` and `src/app/[locale]/work/[slug]/opengraph-image.tsx` with `next/og` (1200 × 630, Terre colours, name/role or project title/headline/type, no gradient)
+- [X] T062 [P] Create `src/app/sitemap.ts` (5 pages + 17 case studies × 2 locales, `alternates.languages`) and `src/app/robots.ts` (allow all, sitemap URL)
+- [X] T063 [P] Create `src/app/[locale]/opengraph-image.tsx` and `src/app/[locale]/work/[slug]/opengraph-image.tsx` with `next/og` (1200 × 630, Terre colours, name/role or project title/headline/type, no gradient)
 - [X] T064 [P] Add JSON-LD `Person` (name, jobTitle, url, sameAs, address locality Douala) to `src/app/[locale]/page.tsx` via `src/lib/seo.ts`
-- [ ] T065 [P] Rewrite `README.md` (what the site is, stack, content editing in `src/content/`, scripts, env vars, Docker) and update `docs/API_PROJECTS.md` per contracts/api-projects.md
-- [ ] T066 Grep the codebase for forbidden patterns (`backdrop-blur`, `bg-gradient`, `bg-linear`, `animate-`, `shadow-`, `blur-`, `framer-motion`, raw hex colours outside `globals.css`) and remove any occurrence
-- [ ] T067 Run `pnpm typecheck`, `pnpm test`, `pnpm build`; then quickstart scenarios 20–27 including Lighthouse mobile on `/fr`, `/fr/work`, `/fr/work/secret`, `/fr/cv` and their `/en` equivalents; fix every score below 95 and every accessibility finding
-- [ ] T068 Final visual pass against `specs/001-ui-ux-redesign/mockups/index.html` at 360, 768, 1440 px in light and dark; screenshots of the result for the owner
+- [X] T065 [P] Rewrite `README.md` (what the site is, stack, content editing in `src/content/`, scripts, env vars, Docker) and update `docs/API_PROJECTS.md` per contracts/api-projects.md
+- [X] T066 Grep the codebase for forbidden patterns (`backdrop-blur`, `bg-gradient`, `bg-linear`, `animate-`, `shadow-`, `blur-`, `framer-motion`, raw hex colours outside `globals.css`) and remove any occurrence
+- [X] T067 Run `pnpm typecheck`, `pnpm test`, `pnpm build`; then quickstart scenarios 20–27 including Lighthouse mobile on `/fr`, `/fr/work`, `/fr/work/secret`, `/fr/cv` and their `/en` equivalents; fix every score below 95 and every accessibility finding
+- [X] T068 Final visual pass against `specs/001-ui-ux-redesign/mockups/index.html` at 360, 768, 1440 px in light and dark; screenshots of the result for the owner
 
 ---
 

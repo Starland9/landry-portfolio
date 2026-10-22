@@ -7,7 +7,10 @@
   "featured": false,
   "status": "pilot",
   "duration": { "fr": "3 mois", "en": "3 months" },
-  "team": { "fr": "Équipe produit (3 devs · 1 PM · 1 UX)", "en": "Product team (3 devs · 1 PM · 1 UX)" },
+  "team": {
+    "fr": "Équipe produit (3 devs · 1 PM · 1 UX)",
+    "en": "Product team (3 devs · 1 PM · 1 UX)"
+  },
   "headline": {
     "fr": "Digitalise les tontines africaines pour une gestion transparente et automatisée.",
     "en": "Digitalizes African rotating savings groups for transparent, automated management."
@@ -66,7 +69,13 @@
       "Analytics module for cash flow visualization"
     ]
   },
-  "technologies": ["Next.js 15", "TypeScript", "Framer Motion", "Tailwind CSS", "Firebase"],
+  "technologies": [
+    "Next.js 15",
+    "TypeScript",
+    "Framer Motion",
+    "Tailwind CSS",
+    "Firebase"
+  ],
   "image": {
     "src": "/images/projects/njangiflow.jpg",
     "width": 3000,

@@ -1,14 +1,33 @@
 import Link from "next/link";
-import { getProjects, projectTypes, type Locale, type ProjectType } from "@/content";
+import {
+  getProjects,
+  projectTypes,
+  type Locale,
+  type ProjectType,
+} from "@/content";
 import { localePath } from "@/i18n/config";
 import type { Messages } from "@/i18n/messages";
 import { cn } from "@/lib/utils";
 
 /** Type filter as plain links (?type=…): shareable, works without JavaScript. */
-export function WorkFilter({ current, locale, m }: { current?: ProjectType; locale: Locale; m: Messages }) {
+export function WorkFilter({
+  current,
+  locale,
+  m,
+}: {
+  current?: ProjectType;
+  locale: Locale;
+  m: Messages;
+}) {
   const base = localePath(locale, "/work");
   const options = [
-    { key: "all", label: m.work.all, href: base, count: getProjects().length, active: !current },
+    {
+      key: "all",
+      label: m.work.all,
+      href: base,
+      count: getProjects().length,
+      active: !current,
+    },
     ...projectTypes.map((type) => ({
       key: type,
       label: m.types[type],
@@ -35,7 +54,12 @@ export function WorkFilter({ current, locale, m }: { current?: ProjectType; loca
               )}
             >
               {option.label}
-              <span className={cn("font-mono text-meta", option.active ? "text-bg/80" : "text-muted")}>
+              <span
+                className={cn(
+                  "font-mono text-meta",
+                  option.active ? "text-bg/80" : "text-muted",
+                )}
+              >
                 {option.count}
               </span>
             </Link>

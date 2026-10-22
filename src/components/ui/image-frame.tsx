@@ -7,7 +7,8 @@ type ImageFrameProps = {
   alt: string;
   ratio?: "4/3" | "16/9";
   sizes: string;
-  priority?: boolean;
+  /** Above-the-fold image (likely LCP): load right away with high priority. */
+  eager?: boolean;
   className?: string;
 };
 
@@ -16,7 +17,14 @@ type ImageFrameProps = {
  * every project, image fully visible (never cropped) and never upscaled past
  * its intrinsic size.
  */
-export function ImageFrame({ image, alt, ratio = "4/3", sizes, priority, className }: ImageFrameProps) {
+export function ImageFrame({
+  image,
+  alt,
+  ratio = "4/3",
+  sizes,
+  eager,
+  className,
+}: ImageFrameProps) {
   return (
     <div
       className={cn(
@@ -31,7 +39,8 @@ export function ImageFrame({ image, alt, ratio = "4/3", sizes, priority, classNa
         width={image.width}
         height={image.height}
         sizes={sizes}
-        priority={priority}
+        loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : undefined}
         className="h-auto max-h-full w-auto max-w-full rounded-[4px] object-contain"
       />
     </div>

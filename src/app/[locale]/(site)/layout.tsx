@@ -3,7 +3,9 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SkipLink } from "@/components/layout/skip-link";
 
-export default async function SiteLayout({ children }: LayoutProps<"/[locale]">) {
+export default async function SiteLayout({
+  children,
+}: LayoutProps<"/[locale]">) {
   const { m } = await getMessages();
   return (
     <>

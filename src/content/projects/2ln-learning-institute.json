@@ -69,7 +69,17 @@
       "Blog, contact, and enterprise-oriented conversion paths"
     ]
   },
-  "technologies": ["Next.js", "Django", "Stalwart", "Docker", "Dokploy", "PostgreSQL", "Celery", "Redis", "SEO"],
+  "technologies": [
+    "Next.js",
+    "Django",
+    "Stalwart",
+    "Docker",
+    "Dokploy",
+    "PostgreSQL",
+    "Celery",
+    "Redis",
+    "SEO"
+  ],
   "image": {
     "src": "/images/projects/2ln-learning-institute.webp",
     "width": 740,

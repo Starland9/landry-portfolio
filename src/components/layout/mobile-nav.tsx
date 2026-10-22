@@ -57,7 +57,8 @@ export function MobileNav({
       >
         <ul className="page-container pt-2 pb-4">
           {items.map((item) => {
-            const active = item.match !== undefined && pathname.startsWith(item.match);
+            const active =
+              item.match !== undefined && pathname.startsWith(item.match);
             return (
               <li key={item.href}>
                 <Link

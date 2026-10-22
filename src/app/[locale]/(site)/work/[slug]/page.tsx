@@ -18,7 +18,9 @@ export function generateStaticParams() {
   return getProjects().map((project) => ({ slug: project.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/work/[slug]">): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/work/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
@@ -31,7 +33,9 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/work/[sl
   });
 }
 
-export default async function CaseStudyPage({ params }: PageProps<"/[locale]/work/[slug]">) {
+export default async function CaseStudyPage({
+  params,
+}: PageProps<"/[locale]/work/[slug]">) {
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
@@ -54,7 +58,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[locale]/wor
           alt={t(project.image.alt, locale)}
           ratio="16/9"
           sizes="(min-width: 1152px) 1072px, 92vw"
-          priority
+          eager
         />
       </div>
 

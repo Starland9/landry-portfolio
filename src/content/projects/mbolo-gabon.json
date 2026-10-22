@@ -7,7 +7,10 @@
   "featured": false,
   "status": "in-production",
   "duration": { "fr": "3 mois", "en": "3 months" },
-  "team": { "fr": "Consortium touristique (2 devs · 1 data manager)", "en": "Tourism consortium (2 devs · 1 data manager)" },
+  "team": {
+    "fr": "Consortium touristique (2 devs · 1 data manager)",
+    "en": "Tourism consortium (2 devs · 1 data manager)"
+  },
   "headline": {
     "fr": "Guide touristique immersif pour explorer le Gabon en toute confiance.",
     "en": "Immersive tourist guide for exploring Gabon with confidence."

@@ -6,17 +6,20 @@ import { getMessages } from "@/i18n/get-messages";
 import { ThemeScript } from "@/components/ui/theme-script";
 import "../globals.css";
 
+// `subsets` = subsets preloaded; latin-ext glyphs (œ…) still load on demand.
 const sans = Instrument_Sans({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-instrument",
   display: "swap",
 });
 
 const mono = JetBrains_Mono({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-jetbrains",
   display: "swap",
+  // Metadata only, never the largest text: keep it off the critical path.
+  preload: false,
 });
 
 export const dynamicParams = false;
@@ -29,7 +32,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const { m } = await getMessages();
   return {
     metadataBase: new URL(getProfile().siteUrl),
-    title: { default: m.meta.home.title, template: `%s | ${getProfile().fullName}` },
+    title: {
+      default: m.meta.home.title,
+      template: `%s | ${getProfile().fullName}`,
+    },
     description: m.meta.home.description,
     authors: [{ name: getProfile().fullName, url: getProfile().siteUrl }],
     creator: getProfile().fullName,
@@ -43,7 +49,9 @@ export const viewport: Viewport = {
   ],
 };
 
-export default async function RootLayout({ children }: LayoutProps<"/[locale]">) {
+export default async function RootLayout({
+  children,
+}: LayoutProps<"/[locale]">) {
   const { locale } = await getMessages();
 
   // Root layout: document, fonts and theme only. The page chrome lives in (site)/layout.tsx

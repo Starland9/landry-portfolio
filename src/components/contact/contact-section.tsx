@@ -15,7 +15,11 @@ export async function ContactSection({ form }: { form?: ReactNode }) {
   ];
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="page-container pb-section">
+    <section
+      id="contact"
+      aria-labelledby="contact-title"
+      className="page-container pb-section"
+    >
       <SectionHead id="contact-title" title={m.contact.title} />
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-16">
         <div>

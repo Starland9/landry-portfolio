@@ -38,11 +38,7 @@
       "description": "Nom propre, non traduit"
     },
     "type": {
-      "enum": [
-        "web",
-        "mobile",
-        "other"
-      ]
+      "enum": ["web", "mobile", "other"]
     },
     "year": {
       "type": "integer",
@@ -53,21 +49,12 @@
       "description": "Exactement 6 projets phares sur l’accueil"
     },
     "status": {
-      "enum": [
-        "live",
-        "in-production",
-        "pilot",
-        "ongoing",
-        "maintained"
-      ]
+      "enum": ["live", "in-production", "pilot", "ongoing", "maintained"]
     },
     "duration": {
       "type": "object",
       "description": "Durée, ex. 4 semaines / 4 weeks (facultatif)",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -83,10 +70,7 @@
     "team": {
       "type": "object",
       "description": "ex. Projet solo / Solo project",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -102,10 +86,7 @@
     "headline": {
       "type": "object",
       "description": "Accroche des cartes et de l’en-tête (≤ 140 caractères)",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -123,10 +104,7 @@
     "description": {
       "type": "object",
       "description": "",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -142,10 +120,7 @@
     "summary": {
       "type": "object",
       "description": "",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -161,10 +136,7 @@
     "problem": {
       "type": "object",
       "description": "Section 01",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -180,10 +152,7 @@
     "solution": {
       "type": "object",
       "description": "Section 02",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -199,10 +168,7 @@
     "role": {
       "type": "object",
       "description": "Section 03",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -226,10 +192,7 @@
     "impact": {
       "type": "object",
       "description": "Section 04",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -253,10 +216,7 @@
     "features": {
       "type": "object",
       "description": "Section 05",
-      "required": [
-        "fr",
-        "en"
-      ],
+      "required": ["fr", "en"],
       "additionalProperties": false,
       "properties": {
         "fr": {
@@ -288,12 +248,7 @@
     },
     "image": {
       "type": "object",
-      "required": [
-        "src",
-        "width",
-        "height",
-        "alt"
-      ],
+      "required": ["src", "width", "height", "alt"],
       "additionalProperties": false,
       "properties": {
         "src": {
@@ -314,10 +269,7 @@
         "alt": {
           "type": "object",
           "description": "Description de l’image pour les lecteurs d’écran",
-          "required": [
-            "fr",
-            "en"
-          ],
+          "required": ["fr", "en"],
           "additionalProperties": false,
           "properties": {
             "fr": {
@@ -334,11 +286,7 @@
     },
     "links": {
       "type": "object",
-      "required": [
-        "live",
-        "store",
-        "code"
-      ],
+      "required": ["live", "store", "code"],
       "additionalProperties": false,
       "properties": {
         "live": {
@@ -383,19 +331,13 @@
       "description": "Chiffres clés vérifiables (facultatif)",
       "items": {
         "type": "object",
-        "required": [
-          "value",
-          "label"
-        ],
+        "required": ["value", "label"],
         "additionalProperties": false,
         "properties": {
           "value": {
             "type": "object",
             "description": "",
-            "required": [
-              "fr",
-              "en"
-            ],
+            "required": ["fr", "en"],
             "additionalProperties": false,
             "properties": {
               "fr": {
@@ -411,10 +353,7 @@
           "label": {
             "type": "object",
             "description": "",
-            "required": [
-              "fr",
-              "en"
-            ],
+            "required": ["fr", "en"],
             "additionalProperties": false,
             "properties": {
               "fr": {

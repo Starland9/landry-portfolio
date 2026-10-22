@@ -18,7 +18,12 @@ export function StatusBadge({
         className,
       )}
     >
-      {dot && <span className="size-2 shrink-0 rounded-full bg-ok" aria-hidden="true" />}
+      {dot && (
+        <span
+          className="size-2 shrink-0 rounded-full bg-ok"
+          aria-hidden="true"
+        />
+      )}
       {children}
     </span>
   );

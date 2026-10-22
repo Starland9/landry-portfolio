@@ -6,7 +6,15 @@ import type { Messages } from "@/i18n/get-messages";
 import { ButtonLink } from "@/components/ui/button";
 import { ImageFrame } from "@/components/ui/image-frame";
 
-export function NextProject({ project, locale, m }: { project: Project; locale: Locale; m: Messages }) {
+export function NextProject({
+  project,
+  locale,
+  m,
+}: {
+  project: Project;
+  locale: Locale;
+  m: Messages;
+}) {
   return (
     <div className="grid gap-8 border-t border-fg pt-6 md:grid-cols-2 md:items-start">
       <Link
@@ -20,7 +28,9 @@ export function NextProject({ project, locale, m }: { project: Project; locale: 
           className="p-2.5 group-hover:border-border-strong"
         />
         <div>
-          <p className="font-mono text-meta text-muted">{m.caseStudy.nextProject}</p>
+          <p className="font-mono text-meta text-muted">
+            {m.caseStudy.nextProject}
+          </p>
           <p className="mt-1 flex items-center gap-2 text-h2 font-semibold">
             <span className="decoration-accent decoration-2 underline-offset-4 group-hover:underline">
               {project.title}
@@ -39,7 +49,9 @@ export function NextProject({ project, locale, m }: { project: Project; locale: 
       <div className="grid content-start gap-4">
         <p className="text-lead">{m.caseStudy.similar}</p>
         <div className="flex flex-wrap gap-3">
-          <ButtonLink href={`${localePath(locale)}#contact`}>{m.home.contact}</ButtonLink>
+          <ButtonLink href={`${localePath(locale)}#contact`}>
+            {m.home.contact}
+          </ButtonLink>
           <ButtonLink href={localePath(locale, "/work")} variant="secondary">
             {m.common.allProjects}
           </ButtonLink>

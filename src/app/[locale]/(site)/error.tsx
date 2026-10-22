@@ -5,7 +5,12 @@ import en from "@/i18n/messages/en.json";
 import fr from "@/i18n/messages/fr.json";
 import { Button } from "@/components/ui/button";
 
-export default function ErrorPage({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function ErrorPage({
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   const params = useParams<{ locale: string }>();
   const m = (params.locale === "fr" ? fr : en).error;
 
@@ -19,4 +24,3 @@ export default function ErrorPage({ reset }: { error: Error & { digest?: string 
     </div>
   );
 }
-

@@ -7,7 +7,10 @@
   "featured": true,
   "status": "live",
   "duration": { "fr": "4 mois", "en": "4 months" },
-  "team": { "fr": "Équipe mobile (2 devs · 1 QA · 1 PO)", "en": "Mobile team (2 devs · 1 QA · 1 PO)" },
+  "team": {
+    "fr": "Équipe mobile (2 devs · 1 QA · 1 PO)",
+    "en": "Mobile team (2 devs · 1 QA · 1 PO)"
+  },
   "headline": {
     "fr": "Club de fidélité digital offrant des réductions exclusives en Afrique centrale.",
     "en": "Digital loyalty club delivering exclusive discounts across Central Africa."

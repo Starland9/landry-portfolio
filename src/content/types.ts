@@ -6,7 +6,13 @@ export type Localized<T> = { fr: T; en: T };
 export const projectTypes = ["web", "mobile", "other"] as const;
 export type ProjectType = (typeof projectTypes)[number];
 
-export const projectStatuses = ["live", "in-production", "pilot", "ongoing", "maintained"] as const;
+export const projectStatuses = [
+  "live",
+  "in-production",
+  "pilot",
+  "ongoing",
+  "maintained",
+] as const;
 export type ProjectStatus = (typeof projectStatuses)[number];
 
 export type ImageAsset = {

@@ -1,7 +1,14 @@
 "use client";
 
 import { CircleAlert, Check } from "lucide-react";
-import { useActionState, useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import {
+  useActionState,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { sendContactMessage, type ContactState } from "@/lib/contact/action";
 import {
   LIMITS,
@@ -37,9 +44,12 @@ function withEmail(template: string, email: string): ReactNode {
 }
 
 export function ContactForm({ locale, email, m }: Props) {
-  const [state, formAction, pending] = useActionState<ContactState, FormData>(sendContactMessage, {
-    status: "idle",
-  });
+  const [state, formAction, pending] = useActionState<ContactState, FormData>(
+    sendContactMessage,
+    {
+      status: "idle",
+    },
+  );
   const [clientErrors, setClientErrors] = useState<FieldErrors | null>(null);
   const [startedAt, setStartedAt] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
@@ -47,12 +57,14 @@ export function ContactForm({ locale, email, m }: Props) {
   // Time trap: set when the form becomes interactive (empty without JS, which skips the check).
   useEffect(() => setStartedAt(String(Date.now())), []);
 
-  const errors: FieldErrors = clientErrors ?? (state.status === "invalid" ? state.errors : {});
+  const errors: FieldErrors =
+    clientErrors ?? (state.status === "invalid" ? state.errors : {});
   const values = "values" in state ? state.values : undefined;
 
   const focusFirstInvalid = (fieldErrors: FieldErrors) => {
     const first = FIELDS.find((field) => fieldErrors[field]);
-    if (first) formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
+    if (first)
+      formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
   };
 
   // Server-side refusal (e.g. without client checks): move focus to the first invalid field.
@@ -62,7 +74,9 @@ export function ContactForm({ locale, email, m }: Props) {
 
   // Instant feedback with the same rules as the server; the server stays the source of truth.
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    const input = normalizeContact(Object.fromEntries(new FormData(event.currentTarget)));
+    const input = normalizeContact(
+      Object.fromEntries(new FormData(event.currentTarget)),
+    );
     const found = validateContact(input, m.errors);
     if (Object.keys(found).length > 0) {
       event.preventDefault();
@@ -75,13 +89,22 @@ export function ContactForm({ locale, email, m }: Props) {
 
   const fieldError = (field: ContactField) =>
     errors[field] ? (
-      <p id={`${field}-error`} className="flex items-start gap-1.5 text-sm font-medium text-err">
-        <CircleAlert size={18} strokeWidth={1.75} aria-hidden="true" className="mt-px shrink-0" />
+      <p
+        id={`${field}-error`}
+        className="flex items-start gap-1.5 text-sm font-medium text-err"
+      >
+        <CircleAlert
+          size={18}
+          strokeWidth={1.75}
+          aria-hidden="true"
+          className="mt-px shrink-0"
+        />
         {errors[field]}
       </p>
     ) : null;
 
-  const describedBy = (field: ContactField) => (errors[field] ? `${field}-error` : undefined);
+  const describedBy = (field: ContactField) =>
+    errors[field] ? `${field}-error` : undefined;
 
   return (
     <form
@@ -173,27 +196,50 @@ export function ContactForm({ locale, email, m }: Props) {
       </div>
 
       {/* Honeypot: invisible to people, tempting for bots. */}
-      <div aria-hidden="true" className="absolute -left-[10000px] h-px w-px overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="absolute -left-[10000px] h-px w-px overflow-hidden"
+      >
         <label htmlFor="contact-website">Website</label>
-        <input id="contact-website" name="website" tabIndex={-1} autoComplete="off" />
+        <input
+          id="contact-website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
       </div>
 
       <div role="status" aria-live="polite">
         {state.status === "success" && !clientErrors && (
           <p className="flex items-start gap-3 rounded-control border border-ok p-4 font-medium">
-            <Check size={18} strokeWidth={1.75} aria-hidden="true" className="mt-0.5 shrink-0 text-ok" />
+            <Check
+              size={18}
+              strokeWidth={1.75}
+              aria-hidden="true"
+              className="mt-0.5 shrink-0 text-ok"
+            />
             {m.success}
           </p>
         )}
         {state.status === "rate-limited" && (
           <p className="flex items-start gap-3 rounded-control border border-err p-4 font-medium">
-            <CircleAlert size={18} strokeWidth={1.75} aria-hidden="true" className="mt-0.5 shrink-0 text-err" />
+            <CircleAlert
+              size={18}
+              strokeWidth={1.75}
+              aria-hidden="true"
+              className="mt-0.5 shrink-0 text-err"
+            />
             <span>{withEmail(m.rateLimited, email)}</span>
           </p>
         )}
         {state.status === "error" && (
           <p className="flex items-start gap-3 rounded-control border border-err p-4 font-medium">
-            <CircleAlert size={18} strokeWidth={1.75} aria-hidden="true" className="mt-0.5 shrink-0 text-err" />
+            <CircleAlert
+              size={18}
+              strokeWidth={1.75}
+              aria-hidden="true"
+              className="mt-0.5 shrink-0 text-err"
+            />
             <span>{withEmail(m.error, email)}</span>
           </p>
         )}
@@ -201,7 +247,11 @@ export function ContactForm({ locale, email, m }: Props) {
 
       <div className="flex flex-wrap items-center justify-between gap-4">
         <p className="max-w-[22rem] text-sm text-muted">{m.note}</p>
-        <Button type="submit" disabled={pending} aria-busy={pending || undefined}>
+        <Button
+          type="submit"
+          disabled={pending}
+          aria-busy={pending || undefined}
+        >
           {pending ? m.sending : m.submit}
         </Button>
       </div>

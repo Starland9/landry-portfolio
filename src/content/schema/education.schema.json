@@ -5,20 +5,12 @@
   "items": {
     "type": "object",
     "additionalProperties": false,
-    "required": [
-      "title",
-      "school",
-      "start",
-      "end"
-    ],
+    "required": ["title", "school", "start", "end"],
     "properties": {
       "title": {
         "type": "object",
         "description": "",
-        "required": [
-          "fr",
-          "en"
-        ],
+        "required": ["fr", "en"],
         "additionalProperties": false,
         "properties": {
           "fr": {

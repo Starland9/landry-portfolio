@@ -13,9 +13,24 @@ type BuildMetadataInput = {
 };
 
 /** Title, description, canonical URL, hreflang alternates and social cards for a page. */
-export function buildMetadata({ locale, path, title, description, absoluteTitle }: BuildMetadataInput): Metadata {
+export function buildMetadata({
+  locale,
+  path,
+  title,
+  description,
+  absoluteTitle,
+}: BuildMetadataInput): Metadata {
   const url = localePath(locale, path);
-  const languages = Object.fromEntries(locales.map((l) => [l, localePath(l, path)]));
+  // The page-level openGraph object replaces the inherited one, so the shared image is
+  // declared here; a case study's own opengraph-image file still takes precedence.
+  const image = {
+    url: `${localePath(locale)}/opengraph-image`,
+    width: 1200,
+    height: 630,
+  };
+  const languages = Object.fromEntries(
+    locales.map((l) => [l, localePath(l, path)]),
+  );
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description,
@@ -31,8 +46,14 @@ export function buildMetadata({ locale, path, title, description, absoluteTitle 
       siteName: getProfile().fullName,
       locale: locale === "fr" ? "fr_FR" : "en_US",
       alternateLocale: locale === "fr" ? "en_US" : "fr_FR",
+      images: [image],
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image.url],
+    },
   };
 }
 
@@ -48,6 +69,10 @@ export function personJsonLd(locale: Locale) {
     email: `mailto:${profile.email}`,
     url: new URL(localePath(locale), profile.siteUrl).toString(),
     sameAs: [profile.social.github, profile.social.linkedin, profile.social.x],
-    address: { "@type": "PostalAddress", addressLocality: "Douala", addressCountry: "CM" },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Douala",
+      addressCountry: "CM",
+    },
   };
 }

@@ -9,14 +9,20 @@ export async function FeaturedWork() {
   const { locale, m } = await getMessages();
 
   return (
-    <section id="work" aria-labelledby="work-title" className="page-container pb-section">
+    <section
+      id="work"
+      aria-labelledby="work-title"
+      className="page-container pb-section"
+    >
       <SectionHead
         id="work-title"
         title={m.home.featured}
         action={
           <ArrowLink href={localePath(locale, "/work")}>
             {m.common.allProjects}
-            <span className="font-mono text-meta font-normal text-muted">{projectCount()}</span>
+            <span className="font-mono text-meta font-normal text-muted">
+              {projectCount()}
+            </span>
           </ArrowLink>
         }
       />
