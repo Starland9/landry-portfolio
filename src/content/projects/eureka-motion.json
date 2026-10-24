@@ -1,0 +1,160 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "eureka-motion",
+  "title": "Eureka Motion",
+  "type": "web",
+  "year": 2026,
+  "featured": false,
+  "status": "ongoing",
+  "duration": {
+    "fr": "12 jours",
+    "en": "12 days"
+  },
+  "team": {
+    "fr": "Projet de hackathon, en solo",
+    "en": "Hackathon project, solo"
+  },
+  "headline": {
+    "fr": "Plateforme où l’élève écrit ce qu’il n’a pas compris et reçoit une explication animée, narrée et sous-titrée.",
+    "en": "A platform where students write what they didn’t understand and get an animated, narrated, subtitled explanation."
+  },
+  "description": {
+    "fr": "Eureka Motion rend visibles les concepts abstraits. L’élève complète une phrase, « Je n’ai pas compris la loi de la gravité », et reçoit en quelques secondes une explication en scènes (accroche, analogie, mécanisme, formule, exemple chiffré, récapitulatif), jouée dans la page, narrée et sous-titrée, en français ou en anglais, du collège au supérieur. Les grandeurs se manipulent à l’aide de curseurs : la figure et le résultat se recalculent à chaque image. Si l’image ne parle pas, un bouton propose une autre analogie.",
+    "en": "Eureka Motion makes abstract concepts visible. Students complete a sentence, “I didn’t understand the law of gravity”, and within seconds get an explanation in scenes (hook, analogy, mechanism, formula, worked example, recap), played in the page, narrated and subtitled, in French or English, from middle school to university. Quantities are manipulated with sliders: the figure and the result are recalculated on every frame. If the picture doesn’t click, a button offers another analogy."
+  },
+  "summary": {
+    "fr": "L’élève écrit ce qui lui échappe et reçoit une explication animée, narrée et sous-titrée (FR/EN), avec curseurs, quiz et export vidéo. Le modèle n’écrit pas de code d’animation : il produit un document structuré que le code valide, scène par scène, avant de l’afficher.",
+    "en": "Students write what escapes them and get an animated, narrated, subtitled explanation (FR/EN), with sliders, a quiz and video export. The model doesn’t write animation code: it produces a structured document that the code validates, scene by scene, before showing it."
+  },
+  "problem": {
+    "fr": "Un élève bloqué sur un concept (gravité, dérivée, pH, tri à bulles) n’a que du texte ou des vidéos qui ne répondent pas à sa question précise. Générer une animation à la demande avec un modèle de langage est possible, mais ce que le modèle écrit est rarement fiable : un code qui tourne peut afficher une figure fausse ou confuse, et attendre plusieurs minutes une vidéo fait perdre l’élève. Deux contraintes ont guidé le projet : la démonstration ne doit pas pouvoir échouer, et une explication fausse vaut pire que pas d’explication.",
+    "en": "A student stuck on a concept (gravity, derivatives, pH, bubble sort) only finds text or videos that don’t answer their exact question. Generating an animation on demand with a language model is possible, but what the model writes is rarely reliable: code that runs can still draw a wrong or confusing figure, and waiting several minutes for a video loses the student. Two constraints guided the project: the demo must not be able to fail, and a wrong explanation is worse than none."
+  },
+  "solution": {
+    "fr": "Le modèle écrit un document JSON (plan, paramètres, modèle de calcul, scènes) validé par un schéma Zod, que des primitives du dépôt interprètent dans un lecteur Remotion. Un modèle juge relit le plan, puis chaque scène passe six règles déterministes et un contrôle de conformité : une scène non validée est corrigée ou écartée, jamais affichée. Les scènes arrivent en flux, la première se jouant pendant que les suivantes se préparent, et un mode dégradé propose 24 explications de référence sans réseau ni base.",
+    "en": "The model writes a JSON document (plan, parameters, calculation model, scenes) validated by a Zod schema, which the repository’s own primitives interpret in a Remotion player. A judge model reviews the plan, then every scene goes through six deterministic rules and a conformity check: a scene that doesn’t pass is fixed or dropped, never shown. Scenes are streamed, the first one playing while the next are prepared, and a degraded mode offers 24 reference explanations with no network or database."
+  },
+  "role": {
+    "fr": [
+      "Produit, design, développement full-stack et déploiement, en solo, du 12 au 24 octobre 2026 (153 commits)",
+      "Pipeline de génération : sortie du modèle contrainte par schéma, plan relu par un juge, six règles de validation par scène, quatre rôles de modèle pouvant viser chacun un fournisseur différent",
+      "Interpréteur d’expressions écrit pour le projet (sans eval), pour que les curseurs recalculent la figure et le résultat à chaque image, avec un budget de 16 ms par image vérifié par un script",
+      "Exécution isolée du code Manim généré : conteneur sans réseau, racine en lecture seule, sans capacité Linux, arrêt à 150 s, contrôle statique en simple préfiltre",
+      "Voix synthétisée avec repli entre Azure Speech, Kokoro et Pocket TTS ; sans voix joignable, l’explication se joue avec les sous-titres seuls",
+      "Design system « Planche » (thèmes Papier et Tableau), accessibilité, français et anglais dès le départ",
+      "Méthode Spec Kit : constitution de huit principes, spécification, plan, 98 tâches et contrats ; développement mené avec Claude Code et des agents de code délégués par tâche"
+    ],
+    "en": [
+      "Product, design, full-stack development and deployment, solo, from 12 to 24 October 2026 (153 commits)",
+      "Generation pipeline: schema-constrained model output, plan reviewed by a judge, six validation rules per scene, four model roles that can each target a different provider",
+      "Expression interpreter written for the project (no eval), so sliders recalculate the figure and the result on every frame, within a 16 ms frame budget checked by a script",
+      "Isolated execution of the generated Manim code: no-network container, read-only root, no Linux capabilities, 150 s cut-off, static analysis only as a pre-filter",
+      "Synthesised voice with fallback between Azure Speech, Kokoro and Pocket TTS; with no voice reachable, the explanation plays with subtitles only",
+      "“Planche” design system (Paper and Board themes), accessibility, French and English from day one",
+      "Spec Kit method: an eight-principle constitution, a specification, a plan, 98 tasks and contracts; built with Claude Code and coding agents delegated per task"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Premier jeton en 0,7 à 1,0 s (deepseek-flash sans réflexion) ; première scène sans voix en moins de 15 s sur quatre concepts, avec un fournisseur réel",
+      "Une explication déjà générée (même concept, niveau et langue) repart du cache en environ 1 s",
+      "Rôle du juge réglé après mesure : plus de 20 s avec réflexion, 2 s sans, donc réflexion coupée sur ce rôle",
+      "Rendu Manim d’une scène de 30 s en 20 s (2 CPU, 2 Go) ; une connexion sortante et une écriture hors du volume d’échange échouent bien",
+      "≈ 85 000 lignes de TypeScript, 118 fichiers de tests, 10 parcours Playwright, 50 fichiers Python ; 91 tâches sur 98 faites",
+      "Limites : les 24 explications de référence ont été produites avec le modèle et ne sont pas encore relues par une personne ; aucun test avec des élèves n’a eu lieu, donc aucun retour d’utilisateur réel à citer",
+      "Limites : le jeu de 40 questions n’a pas encore été joué sur la version déployée, et l’isolation du bac à sable Manim est vérifiée en local, pas encore sous Dokploy"
+    ],
+    "en": [
+      "First token in 0.7 to 1.0 s (deepseek-flash without reasoning); first scene without voice in under 15 s across four concepts, with a real provider",
+      "An explanation already generated (same concept, level and language) is served from cache in about 1 s",
+      "Judge role tuned after measurement: over 20 s with reasoning, 2 s without, so reasoning is switched off for that role",
+      "A 30 s Manim scene rendered in 20 s (2 CPU, 2 GB); an outbound connection and a write outside the exchange volume do fail",
+      "≈ 85,000 lines of TypeScript, 118 test files, 10 Playwright journeys, 50 Python files; 91 of 98 tasks done",
+      "Limits: the 24 reference explanations were produced with the model and have not yet been reviewed by a person; no test with students has taken place, so there is no real user feedback to quote",
+      "Limits: the 40-question benchmark has not yet been run on the deployed version, and the Manim sandbox isolation is verified locally, not yet under Dokploy"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Question libre : une phrase à compléter, le niveau (collège, lycée, supérieur), la langue (français, anglais) et le thème (Papier ou Tableau) ; la première scène se joue pendant que les suivantes se préparent",
+      "Curseurs sur les grandeurs du concept (masses, distance, tension…) : la figure, les valeurs et le résultat surligné se recalculent à chaque image",
+      "« Je n’ai toujours pas compris » : une autre analogie, une version plus simple, un zoom sur une étape ou une question de suivi libre, avec la liste des versions de la session",
+      "Quiz de quelques questions : une erreur renvoie à la scène à revoir",
+      "Colophon « Comment cette explication a été construite » : plan pédagogique, analogie retenue et verdict de vérification de chaque scène",
+      "Voix synchronisée sur la durée réelle des fichiers audio, sous-titres, raccourcis clavier et mouvement réduit respecté",
+      "Lien de partage public et export MP4 préparés en arrière-plan ; version approfondie en Manim rendue dans un conteneur isolé",
+      "24 explications de référence (12 concepts × 2 langues, six matières) jouables sans réseau ni base de données, et un point de santé qui expose l’état de chaque service"
+    ],
+    "en": [
+      "Free-form question: a sentence to complete, the level (middle school, high school, higher education), the language (French, English) and the theme (Paper or Board); the first scene plays while the next ones are prepared",
+      "Sliders on the concept’s quantities (masses, distance, voltage…): the figure, the values and the highlighted result are recalculated on every frame",
+      "“I still don’t get it”: another analogy, a simpler version, a zoom on one step or a free follow-up question, with the session’s versions listed",
+      "A short quiz: a wrong answer sends the student back to the scene to review",
+      "Colophon “How this explanation was built”: teaching plan, chosen analogy and verification verdict for each scene",
+      "Voice synced to the real duration of the audio files, subtitles, keyboard shortcuts and reduced motion respected",
+      "Public share link and MP4 export prepared in the background; deeper Manim version rendered in an isolated container",
+      "24 reference explanations (12 concepts × 2 languages, six subjects) playable with no network or database, and a health endpoint exposing the state of each service"
+    ]
+  },
+  "technologies": [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Remotion",
+    "Zod",
+    "PostgreSQL",
+    "Drizzle",
+    "Tailwind CSS",
+    "Python",
+    "Manim",
+    "Docker",
+    "DeepSeek"
+  ],
+  "image": {
+    "src": "/images/projects/eureka-motion.webp",
+    "width": 1200,
+    "height": 900,
+    "alt": {
+      "fr": "Page d’accueil d’Eureka Motion : la phrase à compléter « Je n’ai pas compris la loi de la gravité », le bouton Expliquer et les choix de langue, de niveau et de thème",
+      "en": "Eureka Motion home page: the sentence to complete “Je n’ai pas compris la loi de la gravité” (“I didn’t understand the law of gravity”), the Expliquer button and the language, level and theme choices"
+    },
+    "focus": "top"
+  },
+  "links": {
+    "live": null,
+    "store": null,
+    "code": "https://github.com/Starland9/eureka-motion"
+  },
+  "highlights": [
+    {
+      "value": {
+        "fr": "12 jours",
+        "en": "12 days"
+      },
+      "label": {
+        "fr": "du 12 au 24 octobre 2026, en solo, pendant un hackathon",
+        "en": "from 12 to 24 October 2026, solo, during a hackathon"
+      }
+    },
+    {
+      "value": {
+        "fr": "6 règles",
+        "en": "6 rules"
+      },
+      "label": {
+        "fr": "de validation déterministes avant qu’une scène soit montrée",
+        "en": "of deterministic validation before a scene is shown"
+      }
+    },
+    {
+      "value": {
+        "fr": "≈ 1 s",
+        "en": "≈ 1 s"
+      },
+      "label": {
+        "fr": "pour resservir une explication déjà générée",
+        "en": "to serve an explanation that was already generated"
+      }
+    }
+  ]
+}
