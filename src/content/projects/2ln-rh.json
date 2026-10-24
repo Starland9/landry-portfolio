@@ -1,0 +1,146 @@
+{
+  "$schema": "../schema/project.schema.json",
+  "slug": "2ln-rh",
+  "title": "2LN RH",
+  "type": "web",
+  "year": 2026,
+  "featured": false,
+  "status": "in-production",
+  "duration": {
+    "fr": "7 semaines",
+    "en": "7 weeks"
+  },
+  "team": {
+    "fr": "Projet client",
+    "en": "Client project"
+  },
+  "headline": {
+    "fr": "Plateforme RH SaaS multi-entreprises : pilotage des talents pour les grandes organisations, administration du personnel pour les PME.",
+    "en": "Multi-tenant HR SaaS platform: talent management for large organisations, staff administration for SMEs."
+  },
+  "description": {
+    "fr": "Une plateforme SaaS qui porte deux produits RH. Talent Intelligence couvre la cartographie des métiers et des compétences, la mobilité interne, les diagnostics et la succession. SimpliRH couvre le registre du personnel, les congés, les entretiens, la formation et le coffre-fort de documents. Chaque entreprise a son espace, en français ou en anglais, avec une gestion des données conforme au RGPD et à la loi camerounaise.",
+    "en": "A SaaS platform carrying two HR products. Talent Intelligence covers job and skills mapping, internal mobility, diagnostics and succession. SimpliRH covers the staff register, leave, appraisal interviews, training and a document vault. Each company gets its own workspace in French or English, with data handling that follows GDPR and Cameroonian law."
+  },
+  "summary": {
+    "fr": "2LN RH sert deux publics avec un seul socle : les directions RH de grandes organisations, qui pilotent les talents, et les PME, qui doivent tenir leur administration du personnel. Chaque organisation choisit un produit et reçoit son propre espace.",
+    "en": "2LN RH serves two audiences from a single foundation: HR departments of large organisations, which steer their talent, and SMEs, which must keep their staff administration in order. Each organisation picks a product and gets its own workspace."
+  },
+  "problem": {
+    "fr": "2LN voulait servir deux publics avec un seul socle : les directions RH de grandes organisations, qui pilotent les talents, et les PME, qui doivent tenir leur administration du personnel, sans mélanger les données de l’une et de l’autre.",
+    "en": "2LN wanted to serve two audiences from a single foundation: HR departments of large organisations, which steer their talent, and SMEs, which must keep their staff administration in order, without ever mixing one company’s data with another’s."
+  },
+  "solution": {
+    "fr": "Une API Django et deux applications Next.js (l’espace client et le back-office) partagent une base PostgreSQL. L’isolation entre entreprises est assurée deux fois : par l’application et par la base de données elle-même (Row Level Security). L’identité est déléguée à Zitadel, avec second facteur, connexion d’entreprise et connexion par numéro de téléphone pour les salariés sans adresse e-mail. Chaque fonctionnalité part d’une spécification écrite, puis est développée et testée, des règles d’accès jusqu’aux parcours dans le navigateur.",
+    "en": "A Django API and two Next.js applications (the customer workspace and the back-office) share a PostgreSQL database. Isolation between companies is enforced twice: by the application and by the database itself (Row Level Security). Identity is delegated to Zitadel, with MFA, company sign-in and phone-number sign-in for staff without an e-mail address. Every feature starts from a written specification, then is built and tested, from access rules up to browser journeys."
+  },
+  "role": {
+    "fr": [
+      "Conception et développement de bout en bout : architecture, backend, interfaces, infrastructure et mise en production",
+      "Développement piloté par des spécifications, avec des agents IA encadrés par mes revues"
+    ],
+    "en": [
+      "End-to-end design and development: architecture, backend, interfaces, infrastructure and production rollout",
+      "Spec-driven development, with AI agents supervised through my reviews"
+    ]
+  },
+  "impact": {
+    "fr": [
+      "Isolation des données : double barrière, l’application et la Row Level Security de PostgreSQL, avec des tests qui vérifient qu’aucune entreprise ne lit les données des autres sur chaque route",
+      "Identité : OIDC avec Zitadel, second facteur, connexion Microsoft ou Google pour les entreprises",
+      "Cycle de vie des données : durées de conservation par catégorie, export et effacement à la demande, purge automatique quotidienne, registre des traitements",
+      "IA encadrée : un seul point d’appel aux modèles, un fournisseur interchangeable, des réponses validées, un budget mensuel par entreprise, et une mise en service seulement après une mesure de qualité",
+      "Qualité : interface bilingue, accessibilité WCAG 2.1 AA vérifiée automatiquement sur chaque écran, budgets de performance contrôlés par Lighthouse",
+      "Exploitation : déploiement par Dokploy, certificats joker, sauvegardes quotidiennes hors serveur, suivi des erreurs"
+    ],
+    "en": [
+      "Data isolation: a double barrier, the application and PostgreSQL Row Level Security, with tests checking on every route that no company can read another’s data",
+      "Identity: OIDC with Zitadel, MFA, Microsoft or Google sign-in for companies",
+      "Data lifecycle: retention periods per category, export and erasure on request, automatic daily purge, register of processing activities",
+      "Governed AI: a single entry point to the models, an interchangeable provider, validated answers, a monthly budget per company, and go-live only after a quality measurement",
+      "Quality: bilingual interface, WCAG 2.1 AA accessibility checked automatically on every screen, performance budgets enforced by Lighthouse",
+      "Operations: Dokploy deployment, wildcard certificates, daily off-server backups, error monitoring"
+    ]
+  },
+  "features": {
+    "fr": [
+      "Talent Intelligence : référentiel des métiers et des compétences, profils collaborateurs enrichis, appariement pour la mobilité interne, campagnes de diagnostic, indice de risque de départ, succession sur les postes critiques et tableau de bord pour la direction",
+      "SimpliRH : registre du personnel et dossier de chaque salarié, fiches de poste, coffre-fort de documents avec modèles de courriers, échéancier légal, congés et absences",
+      "SimpliRH côté salarié : portail pensé pour le téléphone, entretiens annuels avec signature, plan de formation",
+      "Assistant RH qui répond en citant les articles du Code du travail",
+      "Centre de notifications et back-office pour l’équipe 2LN",
+      "Interface en français et en anglais, un espace par entreprise"
+    ],
+    "en": [
+      "Talent Intelligence: job and skills framework, enriched employee profiles, matching for internal mobility, diagnostic campaigns, flight-risk index, succession for critical positions and an executive dashboard",
+      "SimpliRH: staff register and a file for each employee, job descriptions, document vault with letter templates, legal calendar, leave and absences",
+      "SimpliRH for employees: a phone-first portal, signed annual appraisal interviews, training plan",
+      "HR assistant that answers by citing articles of the Labour Code",
+      "Notification centre and a back-office for the 2LN team",
+      "French and English interface, one workspace per company"
+    ]
+  },
+  "technologies": [
+    "Python",
+    "Django",
+    "Django REST Framework",
+    "PostgreSQL",
+    "Redis",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Zitadel",
+    "MinIO",
+    "Docker",
+    "Dokploy",
+    "Playwright"
+  ],
+  "image": {
+    "src": "/images/projects/2ln-rh.webp",
+    "width": 1440,
+    "height": 960,
+    "alt": {
+      "fr": "Page d’accueil de 2LN RH : « Des outils RH à la mesure de votre entreprise », deux parcours pour les PME et les grandes organisations, une carte de mobilité interne et l’écran d’un salarié avec son solde de congés sur un téléphone",
+      "en": "2LN RH home page: “HR tools tailored to your company”, two paths for SMEs and large organisations, an internal-mobility card and an employee screen showing a leave balance on a phone"
+    },
+    "focus": "top"
+  },
+  "links": {
+    "live": "https://2ln.ai",
+    "store": null,
+    "code": null
+  },
+  "highlights": [
+    {
+      "value": {
+        "fr": "32",
+        "en": "32"
+      },
+      "label": {
+        "fr": "fonctionnalités spécifiées et livrées en environ 7 semaines",
+        "en": "features specified and delivered in about 7 weeks"
+      }
+    },
+    {
+      "value": {
+        "fr": "≈ 14 600",
+        "en": "≈ 14,600"
+      },
+      "label": {
+        "fr": "tests backend, plus ≈ 510 tests de bout en bout dans le navigateur",
+        "en": "backend tests, plus ≈ 510 end-to-end browser tests"
+      }
+    },
+    {
+      "value": {
+        "fr": "2 produits",
+        "en": "2 products"
+      },
+      "label": {
+        "fr": "Talent Intelligence et SimpliRH, sur un même socle multi-entreprises",
+        "en": "Talent Intelligence and SimpliRH, on one multi-tenant foundation"
+      }
+    }
+  ]
+}

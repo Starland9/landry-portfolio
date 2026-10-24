@@ -8,6 +8,7 @@ import kweekk from "./kweekk.json";
 import isyjob from "./isyjob.json";
 import gestionStockEntrepot from "./gestion-stock-entrepot.json";
 import twoLnLearningInstitute from "./2ln-learning-institute.json";
+import twoLnRh from "./2ln-rh.json";
 import faisMonCv from "./fais-mon-cv.json";
 import openWhatsappBot from "./open-whatsapp-bot.json";
 import flyersMaker from "./flyers-maker.json";
@@ -28,6 +29,7 @@ const sources: Record<string, unknown> = {
   isyjob,
   "gestion-stock-entrepot": gestionStockEntrepot,
   "2ln-learning-institute": twoLnLearningInstitute,
+  "2ln-rh": twoLnRh,
   "fais-mon-cv": faisMonCv,
   "open-whatsapp-bot": openWhatsappBot,
   "flyers-maker": flyersMaker,
