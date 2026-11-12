@@ -4,7 +4,7 @@
   "title": "KweekK",
   "type": "mobile",
   "year": 2024,
-  "featured": true,
+  "featured": false,
   "status": "live",
   "duration": {
     "fr": "4 mois",

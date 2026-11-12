@@ -4,7 +4,7 @@
   "title": "Eureka Motion",
   "type": "web",
   "year": 2026,
-  "featured": false,
+  "featured": true,
   "status": "ongoing",
   "duration": {
     "fr": "12 jours",
@@ -121,7 +121,7 @@
     "focus": "top"
   },
   "links": {
-    "live": null,
+    "live": "https://eureka-motion.starland9.dev",
     "store": null,
     "code": "https://github.com/Starland9/eureka-motion"
   },

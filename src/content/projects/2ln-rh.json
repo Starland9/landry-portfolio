@@ -4,7 +4,7 @@
   "title": "2LN RH",
   "type": "web",
   "year": 2026,
-  "featured": false,
+  "featured": true,
   "status": "in-production",
   "duration": {
     "fr": "7 semaines",

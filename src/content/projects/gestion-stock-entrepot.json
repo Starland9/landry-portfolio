@@ -4,7 +4,7 @@
   "title": "StockPro",
   "type": "web",
   "year": 2026,
-  "featured": true,
+  "featured": false,
   "status": "in-production",
   "team": {
     "fr": "Projet solo",

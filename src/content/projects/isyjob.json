@@ -4,7 +4,7 @@
   "title": "IsyJob",
   "type": "mobile",
   "year": 2024,
-  "featured": true,
+  "featured": false,
   "status": "in-production",
   "duration": {
     "fr": "5 mois",
